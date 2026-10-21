@@ -1,0 +1,174 @@
+/* ===== v29 (21.10.2026): поправки след срещата с Боби. Зарежда се последен на главните страници. ===== */
+:root{
+  --g29:linear-gradient(90deg,#B61DFF 0%,#CE13A8 33%,#FF0000 100%);
+  --x29:min(1260px,calc(100vw - 40px));
+}
+@media(min-width:1024px){:root{--x29:min(1260px,calc(100vw - 160px))}}
+
+/* 1) Логото: на компютър и таблет винаги цялото; само на телефон при скрол остава малкото N */
+@media(min-width:768px) and (max-width:1023px){.hdr.mini .logo{width:99.5px!important}}
+@media(min-width:1024px){.hdr.mini .logo{width:124.4px!important}}
+
+/* 3) Unbounded само за главните заглавия (h1 и заглавията на секциите), всичко останало е Manrope */
+.agdaily,.agdaily *,
+.ar-sl-t h3,.ar-gn .vs,.ar-gn .x b,.ar-sl-t h3,.ar-tt,.ar-gp h3,.ar-q summary i,.ar-lb-end b,.ar-included,.ar-ban h2,.ar-ban-p b,.ar-pr .ar-ban h2,.ar-wth h2,.ar-lsh h2,
+.gbox h3,#suh,.ag-name,.lsw .gate h3,.p26 h2,.p26-p b,.k26-fg h2,.k27 h2,.k27-pr b,
+.fq-gh,.za-stats b,.za-step i,.a7-chip,.a7-mood,.z6-hl,.z6-mft,.z6-ct h3,
+.t10-hd h2,.t10-n,.t10-c,.zc b,.addx-h b,.pt .pn,.adh b,.pcard b,.pcard .pr,.sumb .s3 strong,.webbig b,.faq2 summary::before,.rlx-t,.num,.st3 b,.pr1 b,.oc b{
+  font-family:Manrope,system-ui,-apple-system,sans-serif!important;letter-spacing:-.02em}
+.agdaily{font-weight:800!important}
+.ar-sl-t h3{font-weight:800!important;letter-spacing:-.03em}
+.gbox h3,.fq-gh{font-weight:800!important}
+
+/* 4) Етикетите: бели, черен текст, градиентна рамка (вместо пълен градиент навсякъде) */
+.ag-tile .ag-pm,.ar-pm,.k26-cd em,.k26-leg .pm,.k26-ph em,.k27-ps b,.k26-ls .l-pr,.ag-mod .sc-sp b,.l29{
+  background:linear-gradient(#fff,#fff) padding-box,var(--g29) border-box!important;
+  border:1px solid transparent!important;color:#0E0E0E!important;box-shadow:none!important;text-shadow:none!important}
+.ag-mod .sc-sp b{clip-path:none!important;border-radius:4px}
+.ar-lg .ar-pm,#mods .th-lg .ar-pm{box-shadow:0 0 0 3px #0A090D!important}
+
+/* 4) Бутоните по дизайн системата на Лили: градиент (Branded) само за главното действие на екрана,
+   в менюто е Primary (бял), второстепенните са Default (сив) */
+.pnav .pcta,.hdr .cta{background:#FBFBFB!important;color:#0E0E0E!important;box-shadow:none!important}
+.pnav .pcta:hover,.hdr .cta:hover{background:#fff!important;box-shadow:0 8px 24px rgba(255,255,255,.14)!important}
+.btn,.b1,.b2{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .3s,background-color .2s,filter .2s,color .2s}
+.btn-p:hover,.k27-bt .b1:hover{transform:translateY(-1px);filter:brightness(1.08);box-shadow:0 10px 30px rgba(140,35,141,.45)}
+.btn-p:active,.btn-s:active,.btn-w:active{transform:translateY(0) scale(.98)}
+.btn-s:hover{background:#3d3d3d;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.btn:focus-visible,.b1:focus-visible,.b2:focus-visible,.m29-c:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(hover:none){.btn-p:hover,.btn-s:hover{transform:none}}
+
+/* 2) Под-марката върху видео в хирото на Theatre/Arena: белият етикет + сянка, за да се чете на всеки кадър */
+.sc-ov .sc-bdg{filter:drop-shadow(0 4px 18px rgba(0,0,0,.55)) drop-shadow(0 1px 3px rgba(0,0,0,.4))}
+.sc-ov::before{content:"";position:absolute;left:50%;top:50%;width:min(1100px,120vw);height:min(560px,90svh);transform:translate(-50%,-46%);
+  background:radial-gradient(closest-side,rgba(10,9,13,.55),rgba(10,9,13,.28) 55%,transparent);pointer-events:none;z-index:-1}
+.sc-ov{isolation:isolate}
+.ag-logo,.k29-bd{filter:drop-shadow(0 3px 12px rgba(0,0,0,.5))}
+
+/* 6) Хирото (v27): по-прозрачен фон около N - видеото се вижда леко и извън буквата. ?fon=0 връща плътния фон */
+html:not(.fon0) .ag-root:not(.nfree) .ag-vid{
+  -webkit-mask-image:url(assets/symbol.svg),linear-gradient(rgba(0,0,0,var(--fon29,.16)),rgba(0,0,0,var(--fon29,.16)));
+  mask-image:url(assets/symbol.svg),linear-gradient(rgba(0,0,0,var(--fon29,.16)),rgba(0,0,0,var(--fon29,.16)));
+  -webkit-mask-size:var(--nms,500px) auto,100% 100%;mask-size:var(--nms,500px) auto,100% 100%;
+  -webkit-mask-position:var(--nml,0) var(--nmt,0),0 0;mask-position:var(--nml,0) var(--nmt,0),0 0;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+
+/* 7) Началната: големите карти носят етикета на модула */
+.k26-cd span .k29-bd{display:block;height:24px;width:auto;margin:0 0 8px}
+@media(max-width:734px){.k26-cd span .k29-bd{height:20px;margin-bottom:6px}}
+
+/* ===== общ контейнер на новите секции ===== */
+.x29{width:var(--x29);margin:0 auto}
+.s29-top{display:grid;gap:14px;margin:0 0 32px;max-width:760px}
+.s29-top .h2{margin:0}
+.s29-top p{margin:0;font:500 18px/1.55 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.68);text-wrap:pretty}
+@media(max-width:767px){.s29-top{margin-bottom:24px}.s29-top p{font-size:16px}}
+
+/* 7) Нова секция: какво има във всеки модул */
+.m29{padding:clamp(72px,9vw,128px) 0 0;position:relative;z-index:3}
+.m29-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.m29-g--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.m29-c{text-align:left;position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/5;padding:22px;border-radius:16px;overflow:hidden;
+  background:#141218;color:#fff;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.m29-g--3 .m29-c{aspect-ratio:16/11}
+.m29-c>img:not(.m29-bd),.m29-c>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .5s}
+.m29-c>video{opacity:0}
+.m29-c.pl>video{opacity:1}
+.m29-c::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,13,0) 30%,rgba(10,9,13,.55) 58%,rgba(10,9,13,.94))}
+.m29-c .m29-bd{display:block;height:28px;width:auto;margin:0 0 14px;align-self:flex-start}
+.m29-c h3{margin:0;font:800 22px/1.18 Manrope,system-ui,sans-serif;letter-spacing:-.02em}
+.m29-c p{margin:8px 0 0;font:500 15px/1.5 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.72)}
+.m29-go{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font:700 14px/1 Manrope,system-ui,sans-serif;color:#fff}
+.m29-go svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+@media(hover:hover){
+  .m29-c:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),0 24px 60px rgba(0,0,0,.45)}
+  .m29-c:hover>img:not(.m29-bd),.m29-c:hover>video{transform:scale(1.04)}
+  .m29-c:hover .m29-go svg{transform:translateX(3px)}
+}
+@media(max-width:1023px){.m29-g,.m29-g--3{grid-template-columns:repeat(2,minmax(0,1fr))}.m29-g--3 .m29-c:last-child{grid-column:1/-1;aspect-ratio:16/8}}
+@media(max-width:599px){
+  .m29-g,.m29-g--3{grid-template-columns:1fr;gap:12px}
+  .m29-c,.m29-g--3 .m29-c,.m29-g--3 .m29-c:last-child{aspect-ratio:auto;min-height:300px;padding:18px}
+  .m29-c .m29-bd{height:24px;margin-bottom:10px}
+  .m29-c h3{font-size:20px}
+  .m29-c p{font-size:14px}
+  .m29-go{margin-top:12px}
+}
+
+/* 8) Цените като тийзър: две карти една до друга, по-ниската цена, без калкулатора */
+.t29-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:920px;margin:0 auto}
+.t29-c{position:relative;display:flex;flex-direction:column;padding:28px;border-radius:20px;background:linear-gradient(180deg,#1d1b22,#151319);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.t29-c--hi{background:radial-gradient(120% 90% at 100% 0%,rgba(182,29,255,.22),transparent 55%),radial-gradient(90% 80% at 0% 100%,rgba(255,0,0,.1),transparent 60%),linear-gradient(180deg,#1d1b22,#151319)}
+.l29{display:inline-flex;align-items:center;align-self:flex-start;height:26px;padding:0 11px;border-radius:999px;font:800 12px/1 Manrope,system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase}
+.t29-c h3{margin:18px 0 0;font:800 24px/1.2 Manrope,system-ui,sans-serif;letter-spacing:-.02em;color:#fff}
+.t29-c>p{margin:8px 0 0;font:500 15px/1.5 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.68)}
+.t29-p{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:26px}
+.t29-p small{font:600 15px/1 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.68)}
+.t29-p b{font:800 clamp(34px,3.4vw,44px)/1 Manrope,system-ui,sans-serif;letter-spacing:-.03em;color:#fff}
+.t29-f{margin:10px 0 0!important;font:500 13px/1.45 Manrope,system-ui,sans-serif!important;color:rgba(255,255,255,.5)!important}
+.t29-add{margin:20px auto 0;max-width:920px;text-align:center;font:500 15px/1.5 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.68)}
+.t29-add b{color:#fff;font-weight:700}
+.t29-bt{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:24px}
+.t29-bt .btn{min-height:52px;padding:0 28px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:16px}
+@media(max-width:767px){
+  .t29-g{grid-template-columns:1fr;gap:12px}
+  .t29-c{padding:22px}
+  .t29-c h3{font-size:21px;margin-top:14px}
+  .t29-p{padding-top:20px}
+  .t29-bt{flex-direction:column;align-items:stretch;max-width:420px;margin-left:auto;margin-right:auto}
+}
+#ceni .t29{margin-top:8px}
+#ceni>.w:first-child .rv{text-align:center}
+#ceni>.w:first-child .h2{margin-left:auto;margin-right:auto}
+#ceni .ticks25{margin-top:28px}
+
+/* 10) Theatre/Arena: краят на страницата = планът (тийзър) + другите модули, в една секция */
+.e29{padding:clamp(72px,8vw,120px) 0 clamp(40px,5vw,72px)}
+.e29 .s29-top{margin-left:auto;margin-right:auto;text-align:center;justify-items:center}
+.e29-mh{margin:clamp(64px,7vw,96px) 0 20px;font:800 clamp(24px,2.4vw,32px)/1.15 Manrope,system-ui,sans-serif;letter-spacing:-.02em;color:#fff}
+
+/* 9) Apple компонентът: телефонът е по-голям и изрязан отдолу (както при Apple), без празно място около него.
+   Theatre (#kak.tf-section, сцена 1260x612) */
+@media(min-width:768px){
+  #kak .tf-share .tf-phone,#kak .tf-cont .tf-phone{left:690px;top:132px;width:336px;height:726px;border-radius:56px;padding:8px;border-width:7px}
+  #kak .tf-share .tf-phone .tf-screen,#kak .tf-cont .tf-phone .tf-screen{border-radius:42px}
+  #kak .tf-share .tf-phone:before,#kak .tf-cont .tf-phone:before{top:16px;width:94px;height:25px}
+  #kak .tf-share .tf-phone:after,#kak .tf-cont .tf-phone:after{display:none}
+  #kak .tf-cast .tf-phone{left:150px;top:132px;width:336px;height:726px;border-radius:56px;padding:8px;border-width:7px}
+  #kak .tf-cast .tf-phone .tf-screen{border-radius:42px}
+  #kak .tf-cast .tf-phone:before{top:16px;width:94px;height:25px}
+  #kak .tf-cast .tf-phone:after{display:none}
+  #kak .tf-rate .tf-phone{left:690px;top:132px;width:336px;height:726px;border-radius:56px;padding:8px;border-width:7px}
+  #kak .tf-rate .tf-phone .tf-screen{border-radius:42px}
+  #kak .tf-rate .tf-phone:before{top:16px;width:94px;height:25px}
+  #kak .tf-rate .tf-phone:after{display:none}
+  #kak .tf-copy{top:50%;translate:0 -50%}
+  #kak .tf-cast .tf-copy{left:600px;top:50%}
+}
+@media(max-width:767px){
+  #kak .tf-card{height:640px}
+  #kak .tf-phone,#kak .tf-cast .tf-phone{left:calc(50% - 130px);top:262px;width:260px;height:562px;border-radius:44px}
+  #kak .tf-cont .tf-phone{top:262px}
+  #kak .tf-phone:after{display:none}
+  #kak .tf-tablet,#kak .tf-prem .tf-tablet{top:262px;left:calc(50% - 130px);width:260px;height:562px}
+}
+@media(max-width:380px){
+  #kak .tf-card{height:600px}
+  #kak .tf-phone,#kak .tf-cast .tf-phone,#kak .tf-cont .tf-phone,#kak .tf-tablet,#kak .tf-prem .tf-tablet{top:250px;left:calc(50% - 120px);width:240px;height:519px}
+}
+/* Arena (#kak .ar-sl): телефонът е закован за долния ръб и излиза извън картата */
+.ar-sl{min-height:560px}
+.ar-sl-m.ar-m-phone{align-self:stretch;place-items:start center;padding:64px 40px 0 0;overflow:visible}
+.ar-m-phone .ar-ph{width:min(330px,74%);margin-bottom:-160px}
+.ar-m-phone .ar-ph:not(.ar-ph-img){border-radius:48px}
+.ar-sl:not(.on) .ar-sl-m.ar-m-phone>*{transform:translateY(60px) scale(.98)}
+@media(max-width:899px){
+  .ar-sl{min-height:0}
+  .ar-sl-m.ar-m-phone{padding:28px 20px 0;height:430px;overflow:hidden}
+  .ar-m-phone .ar-ph{width:min(260px,72%);margin-bottom:0}
+}
+.m29-c,.m29-c h3,.m29-c p,.m29-go{text-align:left!important}.m29-go{align-self:flex-start;justify-content:flex-start}
+.m29-c{align-items:stretch!important}
+.m29-c{min-width:0;width:100%}
+.m29-g--3 .m29-c,.m29-g--3 .m29-c:last-child{aspect-ratio:auto!important;min-height:300px}
+@media(max-width:599px){.m29-c{aspect-ratio:auto!important;min-height:300px}}

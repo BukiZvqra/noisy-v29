@@ -10,6 +10,8 @@
  /* сменя се сама на 4,2 сек (като въртележката от страницата за избор); спира при мишка върху картите или редовете, пауза, преглед, регистрация */
  var hov=false,t0=Date.now(),cur=0;root.addEventListener('agchange',function(e){cur=e.detail;t0=Date.now()});
  var zone=root.querySelector('.ag-stick');zone.addEventListener('mouseenter',function(){hov=true});zone.addEventListener('mouseleave',function(){hov=false;t0=Date.now()});
+ /* 21.10 (Коста): горната карта не се сменя сама, докато потребителят скролва или докосва страницата; брояч от 4,2 сек започва отначало след всяко движение */
+ ['scroll','wheel','touchstart','touchmove','pointerdown','keydown'].forEach(function(ev){addEventListener(ev,function(){t0=Date.now()},{passive:true})});
  setInterval(function(){var r=zone.getBoundingClientRect(),vis=r.bottom>innerHeight*.3&&r.top<innerHeight*.7;
   if(!vis||hov||document.hidden||root.classList.contains('is-shrinking')||root.classList.contains('is-paused')||root.classList.contains('pv-open')||document.querySelector('#su.on,.pvw.on')){t0=Date.now();return}
   if(Date.now()-t0>4200&&window.agGo){t0=Date.now();window.agGo(cur+1)}},250);

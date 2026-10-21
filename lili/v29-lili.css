@@ -1,0 +1,10 @@
+/* v29 (21.10.2026, Боби): вертикалните телефони са по-големи и изрязани отдолу като при Apple, без празно място в картата */
+@media(min-width:735px){
+  .card[data-i="0"] .dv{scale:1.36;transform-origin:50% 0;top:104px!important;left:690px!important}
+  .card[data-i="0"] .tx{top:50%!important;translate:0 -50%}
+  .card[data-i="4"] .dv{scale:1.15;transform-origin:50% 0;top:40px!important;left:250px!important}
+}
+@media(max-width:734px){
+  .fx-managed[data-i="0"] .dv,.card[data-i="0"] .dv{transform:scale(.95)!important;transform-origin:50% 0!important;top:226px!important;left:calc(50% - 129px)!important}
+  .fx-managed[data-i="4"] .dv,.card[data-i="4"] .dv{transform:scale(.85)!important;transform-origin:50% 0!important;top:196px!important;left:calc(50% - 142px)!important}
+}

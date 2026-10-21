@@ -81,7 +81,8 @@
   });
   let start = null, dragged = false;
   stick.style.touchAction = 'pan-y';
-  stick.addEventListener('pointerdown', e => { start = {x:e.clientX,y:e.clientY}; dragged = false; });
+  /* 21.10 (Коста): влаченето на редовете с картички отдолу не сменя горната карта; суайпът важи само върху горните карти */
+  stick.addEventListener('pointerdown', e => { if (!e.target.closest('#frame')) { start = null; return; } start = {x:e.clientX,y:e.clientY}; dragged = false; });
   stick.addEventListener('pointerup', e => {
     if (!start) return;
     const dx = e.clientX - start.x, dy = e.clientY - start.y;
