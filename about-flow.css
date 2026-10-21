@@ -1,0 +1,79 @@
+/* „За нас“, долна част: без твърди ленти, цветът преминава от секция в секция; един ритъм и един акцент (19.10.2026) */
+.za{--fl:clamp(72px,8vw,112px)}
+.za .za-creator,.za .a7-tk,.za .a7-lic,.za .a7-questions{position:relative;isolation:auto;background:none;margin:0;padding:calc(var(--fl)/2) 0}
+.za .za-creator{padding-top:var(--fl)}
+/* едно общо непрекъснато сияние за целия блок (без шевове между секциите) */
+.za .za-flow{background:
+ radial-gradient(560px 460px at 90% 24%,rgba(182,29,255,.26),transparent 72%),
+ radial-gradient(420px 380px at 4% 16%,rgba(255,0,0,.10),transparent 72%),
+ radial-gradient(760px 420px at 50% 44%,rgba(206,19,168,.18),transparent 72%),
+ radial-gradient(420px 340px at 4% 66%,rgba(255,0,0,.07),transparent 70%),
+ radial-gradient(440px 340px at 94% 76%,rgba(182,29,255,.09),transparent 70%),
+ radial-gradient(640px 240px at 50% calc(100% - 230px),rgba(182,29,255,.05),transparent 70%)}
+/* един акцент пред всяко заглавие + еднаква големина */
+.za .za-creator h2.h2,.za .a7-tk h2,.za .a7-lic h2,.za .a7-questions h2{font:700 clamp(26px,2.6vw,40px)/1.2 Unbounded,Manrope,sans-serif;letter-spacing:-.01em;color:#fff;margin:0 0 20px;max-width:20ch;text-wrap:balance}
+.za .a7-tk h2{max-width:none}
+/* твоето съдържание: водещо изречение, после по-тихо */
+.za .za-creator-copy p{margin:0 0 14px;font-size:16px;line-height:1.65;color:rgba(255,255,255,.66)}
+.za .za-creator-copy p:nth-of-type(1){font-size:clamp(18px,1.5vw,21px);line-height:1.5;color:#fff}
+.za .za-creator-copy p:nth-of-type(3){margin:22px 0 14px;color:#fff;font-weight:600}
+.za .za-creator-art{border-radius:18px;overflow:hidden;box-shadow:0 30px 80px -24px rgba(182,29,255,.55),0 10px 30px rgba(0,0,0,.45)}
+.za .za-creator-art img{transform:scale(1.1)}
+/* технологии и лицензирано: повече въздух около логата */
+.za .a7-tk img{margin-top:clamp(12px,2vw,28px)}
+.za .a7-lic p{color:rgba(255,255,255,.7)}
+/* въпроси: тънка линия, бутон като таблетка */
+.za .a7-questions{padding-top:calc(var(--fl)/2)}
+.za .a7-questions .w{position:relative;padding-top:calc(var(--fl)/2)}
+.za .anchor{margin-top:calc(var(--fl)/2);background:transparent}
+@media(prefers-reduced-motion:reduce){.za .a7-questions .a7-more{transition:none}}
+
+/* Бутони: същият като „Пробвай NOISY“ в менюто (брандовият градиент, радиус 8, височина 44) */
+.za .za-creator-cta,.za .za-more,.za .a7-lic .a7-more,.za .a7-questions .a7-more{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;height:44px;padding:0 24px;border:0;border-radius:8px;background:var(--btn-p-bg,linear-gradient(90deg,#8024B6 0%,#8C238D 45%,#B2261B 100%));color:#fff;font:700 16px/24px Manrope,system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:none;transition:box-shadow .2s}
+.za .za-creator-cta:hover,.za .za-more:hover,.za .a7-lic .a7-more:hover,.za .a7-questions .a7-more:hover{box-shadow:0 10px 30px rgba(140,35,141,.45);text-decoration:none;filter:none}
+.za .za-more{margin-top:20px}
+.za .za-more .za-go{width:auto;height:auto;border-radius:0;background:none!important;box-shadow:none!important;transform:none!important}
+.za .za-more .za-go svg{width:18px;height:18px;stroke:#fff}
+.za .a7-lic .a7-more svg,.za .a7-questions .a7-more svg{width:18px;height:18px}
+.za .za-more:focus-visible,.za .za-creator-cta:focus-visible,.za .a7-more:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:8px}
+.za .a7-lic .a7-more{margin-top:20px}
+/* снимка на създателя: портрет (19.10.2026) */
+.za .za-creator-art{aspect-ratio:1044/1263;width:min(100%,420px);justify-self:end;border-radius:20px}
+.za .za-creator-art img{transform:none;object-fit:cover}
+@media(max-width:767px){.za .za-creator-art{justify-self:start;width:min(100%,340px)}}
+/* изрязана фигура (прозрачен фон): без рамка, без правоъгълна сянка, леко изнесена към ръба (19.10.2026) */
+.za .za-creator-art{aspect-ratio:860/1260;width:min(100%,400px);border-radius:0;overflow:visible;box-shadow:none;align-self:end}
+.za .za-creator-art img{object-fit:contain;filter:drop-shadow(0 24px 50px rgba(182,29,255,.35))}
+@media(max-width:767px){.za .za-creator-art{width:min(100%,300px)}}
+/* лога на технологиите: малко по-малки и центрирани; „Всички партньори“ е махнат */
+.za .a7-tk img{width:min(760px,100%);margin-left:auto;margin-right:auto}
+.za .a7-lic p{margin-bottom:0}
+.za .za-creator-art img{-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+/* без фон зад жената: само фигурата, без сянка-ореол */
+.za .za-creator-art img{filter:none}
+/* технологии: и заглавието е по средата, като логата */
+.za .a7-tk{text-align:center}
+.za .a7-tk h2{margin-left:auto;margin-right:auto}
+/* хиро: същото N като на фона на финалния призив (assets/symbol.svg в собствените му цветове) върху тъмна основа (19.10.2026) */
+.za-hero .za-bg{background:
+ radial-gradient(50% 50% at 12% 10%,rgba(182,29,255,.16),transparent 70%),
+ radial-gradient(46% 46% at 90% 90%,rgba(255,26,60,.12),transparent 70%),
+ #0A090D;filter:none}
+.za-hero .za-bg::before,.za-hero .za-bg::after{content:"";position:absolute;left:50%;top:50%;width:min(700px,78vw);aspect-ratio:99.63/104;transform:translate(-50%,-50%);background:url(assets/symbol.svg) center/contain no-repeat;pointer-events:none}
+.za-hero .za-bg::before{opacity:.6}
+.za-hero .za-bg::after{width:min(820px,90vw);filter:blur(46px);opacity:.4;z-index:-1}
+@media(max-width:767px){.za-hero .za-bg::before{opacity:.5}}
+/* изображението вече има собствено избледняване на пуловера: без допълнителна маска */
+.za .za-creator-art img{-webkit-mask-image:none;mask-image:none}
+/* пуловерът се топи в цветовете на страницата: допълнителна мека маска по страните и надолу */
+/* телефон: жената е най-отгоре, по средата, по-голяма и без празното избледняло място; текстът започва върху края ѝ */
+@media(max-width:767px){
+ .za .za-creator-in{gap:0}
+ .za .za-creator-art{order:-1;justify-self:center;align-self:auto;width:min(100%,380px);aspect-ratio:860/960;margin:0 auto -44px}
+ .za .za-creator-art img{height:100%;object-fit:cover;object-position:50% 81%;-webkit-mask-image:none;mask-image:none}
+ .za .za-creator-copy{position:relative;z-index:1}
+}
+/* бутоните в картите на световете („Разгледай …“) са бели */
+.za .za-more{background:#FBFBFB;color:#1E1E1E}
+.za .za-more .za-go svg{stroke:#1E1E1E}
+.za .za-more:hover{box-shadow:0 10px 30px rgba(255,255,255,.18)}

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NOISY · Ефекти на карусела</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var v=document.createElement('video');if(!v.canPlayType('video/mp4; codecs="avc1.42E01E"'))document.documentElement.classList.add('nomp4')})()</script>
+<style>
+:root{--bg:#0A090D;--line:rgba(255,255,255,.1);--mute:#A9A6B2;--grad:linear-gradient(90deg,#8024B6,#8C238D,#B2261B)}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:#F7F5FA;font:400 16px/1.5 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;padding:10px 16px;background:rgba(10,9,13,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .home{color:var(--mute);text-decoration:none;display:inline-flex;align-items:center;min-height:40px;white-space:nowrap}
+.top b{white-space:nowrap}
+.top .pg{display:flex;gap:4px}
+.top .pg a{display:inline-flex;align-items:center;min-height:36px;padding:0 10px;border-radius:8px;color:var(--mute);text-decoration:none;font-weight:600;font-size:14px;white-space:nowrap}
+.top .pg a.on{background:rgba(255,255,255,.08);color:#fff}
+.top nav{margin-left:auto;display:flex;gap:6px;overflow-x:auto}
+.top nav a{flex:none;display:grid;place-items:center;min-width:40px;height:40px;padding:0 6px;border-radius:8px;border:1px solid var(--line);background:#1C1B22;text-decoration:none;font-weight:700;font-size:14px}
+@media (max-width:760px){.top{flex-wrap:wrap;gap:6px}.top nav{margin-left:0;width:100%}.top .pg{margin-left:auto}}
+.intro{max-width:780px;margin:0 auto;padding:56px 16px 24px;text-align:center}
+.intro h1{margin:0 0 12px;font:700 clamp(28px,4.4vw,48px)/1.1 Unbounded,Manrope,sans-serif;letter-spacing:-.02em}
+.intro p{margin:0 auto;color:var(--mute);max-width:62ch}
+
+.ex{padding:56px 0 64px;border-top:1px solid var(--line)}
+.ex .hd{max-width:1180px;margin:0 auto 26px;padding:0 16px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ex .hd small{display:block;font:700 12px Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.ex .hd h2{margin:2px 0 0;font:700 clamp(20px,2.6vw,28px)/1.2 Unbounded,Manrope,sans-serif;letter-spacing:-.02em}
+.ex .hd p{margin:6px 0 0;color:var(--mute);max-width:62ch}
+.rec{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:6px;background:var(--grad);font:700 12px Manrope,sans-serif;color:#fff;vertical-align:4px}
+
+/* ===== общо за карусела ===== */
+.car{--cw:min(900px,64vw);--ch:calc(var(--cw)*9/16);position:relative;height:calc(var(--ch) + 40px);perspective:1400px;overflow:hidden;touch-action:pan-y;user-select:none}
+@media (max-width:760px){.car{--cw:78vw;--ch:calc(var(--cw)*1.12)}}
+.sl{position:absolute;left:50%;top:20px;width:var(--cw);height:var(--ch);margin-left:calc(var(--cw)/-2);border-radius:16px;overflow:hidden;background:#16141b;will-change:transform,opacity;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.sl .im{position:absolute;inset:0;overflow:hidden}
+.sl .im img,.sl .im video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sl .im video{opacity:0;transition:opacity .6s}
+.sl.on .im video.pl{opacity:1}
+.sl::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 50% 50%,rgba(0,0,0,.15),rgba(0,0,0,.55));pointer-events:none}
+.sl .lg{position:absolute;left:50%;top:50%;z-index:2;height:clamp(26px,3.6vw,48px);transform:translate(-50%,-50%);filter:drop-shadow(0 4px 18px rgba(0,0,0,.5))}
+.sl .cat{position:absolute;left:0;right:0;bottom:18px;z-index:2;text-align:center;font:600 clamp(13px,1.3vw,16px) Manrope,sans-serif;color:rgba(255,255,255,.85)}
+.sl .ring{position:absolute;inset:0;z-index:3;border:2px solid #fff;border-radius:inherit;opacity:0;transition:opacity .4s;pointer-events:none}
+.sl.on .ring{opacity:1}
+.ctl{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px}
+.ctl button.ar{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.04);color:#fff;font-size:20px;cursor:pointer}
+.ctl button.ar:hover{background:rgba(255,255,255,.12)}
+.dots{display:flex;gap:8px}
+.dots button{position:relative;width:10px;height:10px;padding:0;border:0;border-radius:6px;background:rgba(255,255,255,.28);cursor:pointer;overflow:hidden;transition:width .35s}
+.dots button.on{width:38px}
+.dots button i{position:absolute;inset:0;width:0;background:var(--grad)}
+.dots button.on i{animation:dfill var(--iv,4s) linear forwards}
+.car.paused~.ctl .dots button.on i,.ex.paused .dots button.on i{animation-play-state:paused}
+@keyframes dfill{to{width:100%}}
+
+/* щори и диагонал */
+.strip{position:absolute;top:0;bottom:0;overflow:hidden;z-index:5;will-change:transform}
+.strip>div{position:absolute;top:0;bottom:0;background-size:cover;background-position:center}
+.edge{position:absolute;top:-20%;bottom:-20%;width:6px;z-index:6;background:linear-gradient(180deg,#B61DFF,#CE13A8,#FF3B3B);box-shadow:0 0 30px 6px rgba(206,19,168,.6);transform:rotate(14deg);pointer-events:none;opacity:0}
+.end{padding:64px 16px 96px;text-align:center;color:var(--mute);border-top:1px solid var(--line)}
+.end a{display:inline-flex;margin-top:14px;min-height:48px;align-items:center;padding:0 20px;border-radius:8px;background:var(--grad);color:#fff;text-decoration:none;font-weight:700}
+@media (prefers-reduced-motion:reduce){.dots button.on i{animation:none;width:100%}}
+</style>
+</head>
+<body>
+<header class="top"><a class="home" href="index.html">NOISY v22</a><span style="color:var(--mute)">/</span><b>Ефекти на карусела</b><span class="pg"><a href="n-vsichki.html">Всички N</a><a href="n-efekti.html">N</a><a class="on" href="karusel-efekti.html">Карусел</a></span><nav aria-label="Варианти" id="nav"></nav></header>
+<div class="intro"><h1>Как да се сменят модулите</h1><p>Едни и същи карти (NOISY, Theatre, Showtime, Arena, Newsroom), различен ефект при смяна. Сменят се сами на 4 секунди. Може и със стрелките, точките или с плъзгане. Като посочиш картата с мишката, спира.</p></div>
+<div id="list"></div>
+<div class="end">Кажи номера на ефекта, който ти харесва.<br><a href="n-efekti.html">← Към ефектите на N</a></div>
+
+<script>
+(function(){
+var ext=document.documentElement.classList.contains('nomp4')?'.webm':'.mp4',RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var D=[['NOISY','Всичко на едно място','img/noisy-card.jpg','vid/trailer','assets/logo.svg'],['Theatre','Филми и сериали','img/house-of-the-dragon-back.jpg','vid/m/theatre-sm','assets/Theatre.svg'],['Showtime','Реалити и шоу','img/igri-2.jpg','vid/m/showtime-sm','assets/Showtime.svg'],['Arena','Спорт на живо','img/nn/brazil_norway.jpg','vid/m/arena-sm','assets/Arena.svg'],['Newsroom','Новините накратко','img/nr-2.jpg','vid/m/newsroom-sm','assets/Newsroom.svg']];
+var N=D.length;
+var E=[
+ ['Плъзгане (както е сега)','Картите са в редица и се плъзгат меко. Съседните са притъмнени. За сравнение.','pos'],
+ ['Кавър флоу','Съседните карти са наклонени в 3D като обложки, текущата излиза напред.','pos',1],
+ ['Тесте','Картите са на купчина. Предната отлита настрани със завъртане, а следващата се качва.','pos'],
+ ['Паралакс','Картата се плъзга, а кадърът вътре в нея върви по-бавно, като прозорец. Усеща се дълбочина.','pos'],
+ ['Въртележка','Картите стоят в кръг в пространството и целият кръг се завърта.','pos'],
+ ['Куб','Картите са страни на куб, който се завърта към следващата.','tr'],
+ ['Диагонал на N','Новата карта влиза по диагонал, под ъгъла на чертите на N, с цветна светеща черта по ръба.','tr',1],
+ ['Ленти','Новата карта се сглобява от вертикални ленти, които падат една след друга.','tr'],
+ ['Зум','Старата карта се приближава и се размазва, а новата изплува от дълбочината.','tr'],
+ ['Обръщане','Картата се обръща като карта за игра и отзад е следващият модул.','tr']
+];
+var list=document.getElementById('list'),nav=document.getElementById('nav');
+function eio(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+E.forEach(function(e,ix){var n=ix+1,sec=document.createElement('section');sec.className='ex';sec.id='c'+n;
+ sec.innerHTML='<div class="hd"><div><small>Ефект '+n+'</small><h2>'+e[0]+(e[3]?'<span class="rec">Препоръка</span>':'')+'</h2><p>'+e[1]+'</p></div></div><div class="car"></div><div class="ctl"><button type="button" class="ar" data-d="-1" aria-label="Предишен">‹</button><div class="dots"></div><button type="button" class="ar" data-d="1" aria-label="Следващ">›</button></div>';
+ list.appendChild(sec);var a=document.createElement('a');a.href='#c'+n;a.textContent=n;nav.appendChild(a);build(sec,n,e[2])});
+
+function slide(d,i){var s=document.createElement('div');s.className='sl';s.innerHTML='<div class="im"><img src="'+d[2]+'" alt="" draggable="false"><video muted loop playsinline preload="none" data-src="'+d[3]+ext+'"></video></div><img class="lg" src="'+d[4]+'" alt="'+d[0]+'" draggable="false"><div class="cat">'+d[1]+'</div><div class="ring"></div>';s.dataset.i=i;return s}
+function wrap(d){d=((d%N)+N)%N;return d>N/2?d-N:d}
+
+function build(sec,n,kind){
+ var car=sec.querySelector('.car'),dots=sec.querySelector('.dots'),cur=0,busy=false,hover=false,iv=4000,timer=0,vis=false;
+ var sl=D.map(function(d,i){var s=slide(d,i);car.appendChild(s);return s});
+ D.forEach(function(d,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label',d[0]);b.innerHTML='<i></i>';b.addEventListener('click',function(){go(i,i>cur?1:-1)});dots.appendChild(b)});
+ sec.style.setProperty('--iv',iv+'ms');
+ function setDots(){[].forEach.call(dots.children,function(b,j){b.classList.remove('on');void b.offsetWidth;b.classList.toggle('on',j===cur)})}
+ function vids(){sl.forEach(function(s,j){var v=s.querySelector('video');s.classList.toggle('on',j===cur);if(j===cur&&vis){if(!v.src)v.src=v.dataset.src;v.onplaying=function(){v.classList.add('pl')};var p=v.play();if(p&&p.catch)p.catch(function(){})}else{v.pause();v.classList.remove('pl')}})}
+ /* ===== позиционни ефекти: всяка карта има място според разстоянието d до текущата ===== */
+ function place(s,d,instant){var W=car.clientWidth,cw=sl[0].offsetWidth,a=Math.abs(d),t='',o=1,z=10-a,f='',im='';
+  switch(n){
+   case 1:t='translateX('+(d*(cw+24))+'px)';o=a>2?0:1;f=a?'brightness(.45)':'';break;
+   case 2:t='translateX('+(d*cw*.58)+'px) translateZ('+(-a*220)+'px) rotateY('+(-Math.sign(d)*Math.min(a,1)*48)+'deg)';o=a>2?0:a===2?.5:1;f=a?'brightness(.55)':'';break;
+   case 3:if(d<0){t='translate(-125%,30px) rotate(-16deg)';o=0}else{t='translate('+(d*Math.min(70,cw*.09))+'px,'+(-d*6)+'px) scale('+(1-d*.05)+')';o=d>3?0:1-d*.2}z=10-d;f=d>0?'brightness('+(1-d*.18)+')':'';break;
+   case 4:t='translateX('+(d*(cw+24))+'px)';o=a>2?0:1;f=a?'brightness(.45)':'';im='translateX('+(-d*38)+'%) scale(1.35)';break;
+   case 5:var R=cw*1.15;t='rotateY('+(d*40)+'deg) translateZ('+R+'px)';o=a>=2?.25:a?.6:1;f=a?'brightness(.5)':'';break;
+  }
+  s.style.transition=instant?'none':'transform .85s cubic-bezier(.22,1,.36,1),opacity .85s,filter .85s';
+  var ii=s.querySelector('.im');ii.style.transition=s.style.transition;ii.style.transform=im;
+  if(n===5){s.style.transform='translateZ('+(-cw*1.15)+'px) '+t}else s.style.transform=t;
+  s.style.opacity=o;s.style.zIndex=z;s.style.filter=f}
+ var last=sl.map(function(){return 0});
+ function layout(instant){sl.forEach(function(s,j){var d=wrap(j-cur);place(s,d,instant||Math.abs(d-last[j])>2);last[j]=d})}
+ /* ===== преходни ефекти: само текущата се вижда, смяната е анимация ===== */
+ function only(){sl.forEach(function(s,j){s.style.transition='none';s.style.transform='';s.style.filter='';s.style.clipPath='';s.style.opacity=j===cur?1:0;s.style.zIndex=j===cur?2:1;s.style.visibility=j===cur?'visible':'hidden'})}
+ function anim(el,k,o){return el.animate(k,Object.assign({duration:900,easing:'cubic-bezier(.65,0,.35,1)',fill:'forwards'},o)).finished}
+ function trans(pi,ni,dir){var P=sl[pi],Q=sl[ni];Q.style.visibility='visible';Q.style.opacity=1;P.style.zIndex=2;Q.style.zIndex=3;var done;
+  switch(n){
+   case 6:car.style.perspective='1600px';P.style.zIndex=3;Q.style.zIndex=2;
+    done=Promise.all([anim(P,[{transformOrigin:dir>0?'100% 50%':'0% 50%',transform:'translateX(0) rotateY(0)',filter:'brightness(1)'},{transformOrigin:dir>0?'100% 50%':'0% 50%',transform:'translateX('+(dir>0?-100:100)+'%) rotateY('+(dir>0?-90:90)+'deg)',filter:'brightness(.3)'}]),
+     anim(Q,[{transformOrigin:dir>0?'0% 50%':'100% 50%',transform:'translateX('+(dir>0?100:-100)+'%) rotateY('+(dir>0?90:-90)+'deg)',filter:'brightness(.3)'},{transformOrigin:dir>0?'0% 50%':'100% 50%',transform:'translateX(0) rotateY(0)',filter:'brightness(1)'}])]);break;
+   case 7:var a0=dir>0?'polygon(130% 0,200% 0,200% 100%,100% 100%)':'polygon(-100% 0,0% 0,-30% 100%,-100% 100%)',a1=dir>0?'polygon(0% 0,200% 0,200% 100%,-30% 100%)':'polygon(-100% 0,130% 0,100% 100%,-100% 100%)';
+    var ed=document.createElement('div');ed.className='edge';Q.appendChild(ed);
+    done=Promise.all([anim(Q,[{clipPath:a0},{clipPath:a1}],{duration:1000,easing:'cubic-bezier(.7,0,.25,1)'}),anim(P,[{transform:'scale(1)',filter:'brightness(1)'},{transform:'scale(.94)',filter:'brightness(.4)'}],{duration:1000}),
+     anim(ed,dir>0?[{left:'115%',opacity:1},{left:'-15%',opacity:1}]:[{left:'-15%',opacity:1},{left:'115%',opacity:1}],{duration:1000,easing:'cubic-bezier(.7,0,.25,1)'})]).then(function(){ed.remove()});break;
+   case 8:Q.style.visibility='hidden';var K=7,w=Q.offsetWidth,h=Q.offsetHeight,img=D[ni][2],ps=[];for(var k=0;k<K;k++){var st=document.createElement('div');st.className='strip';st.style.left=(k*w/K)+'px';st.style.width=(w/K+1)+'px';st.style.top='20px';st.style.height=h+'px';st.style.marginLeft=(-w/2)+'px';st.style.left='calc(50% + '+(k*w/K)+'px)';st.style.borderRadius=k===0?'16px 0 0 16px':k===K-1?'0 16px 16px 0':'0';
+     st.innerHTML='<div style="left:'+(-k*w/K)+'px;width:'+w+'px;background-image:url('+img+')"></div>';car.appendChild(st);var o=dir>0?k:K-1-k;
+     ps.push(anim(st,[{transform:'translateY('+(k%2?110:-110)+'%)',opacity:0},{transform:'translateY(0)',opacity:1}],{duration:700,delay:o*70,easing:'cubic-bezier(.22,1,.36,1)'}))}
+    ps.push(anim(P,[{filter:'brightness(1)'},{filter:'brightness(.3)'}],{duration:900}));
+    done=Promise.all(ps).then(function(){Q.style.visibility='visible';[].forEach.call(car.querySelectorAll('.strip'),function(x){x.remove()})});break;
+   case 9:done=Promise.all([anim(P,[{transform:'scale(1)',filter:'blur(0) brightness(1)',opacity:1},{transform:'scale(1.25)',filter:'blur(14px) brightness(1.3)',opacity:0}],{duration:900}),anim(Q,[{transform:'scale(.82)',filter:'blur(12px)',opacity:0},{transform:'scale(1)',filter:'blur(0)',opacity:1}],{duration:1000,easing:'cubic-bezier(.22,1,.36,1)'})]);break;
+   case 10:Q.style.opacity=0;done=anim(P,[{transform:'rotateY(0) scale(1)'},{transform:'rotateY('+(dir>0?-90:90)+'deg) scale(.88)'}],{duration:450,easing:'cubic-bezier(.55,0,1,.45)'}).then(function(){P.style.opacity=0;Q.style.opacity=1;return anim(Q,[{transform:'rotateY('+(dir>0?90:-90)+'deg) scale(.88)'},{transform:'rotateY(0) scale(1)'}],{duration:500,easing:'cubic-bezier(0,.55,.45,1)'})});break;
+  }
+  return done.then(function(){P.getAnimations().forEach(function(a){a.cancel()});Q.getAnimations().forEach(function(a){a.cancel()});only()})}
+ function go(i,dir){if(busy||i===cur)return;var pi=cur;cur=(i+N)%N;setDots();restart();
+  if(kind==='pos'){layout();vids()}else{busy=true;sl[pi].querySelector('video').pause();trans(pi,cur,dir).then(function(){busy=false;vids()})}}
+ function restart(){clearTimeout(timer);timer=setTimeout(auto,iv)}
+ function auto(){if(vis&&!hover&&!RM&&!document.hidden)go(cur+1,1);else restart()}
+ sec.querySelectorAll('.ar').forEach(function(b){b.addEventListener('click',function(){var d=+b.dataset.d;go(cur+d,d)})});
+ car.addEventListener('mouseenter',function(){hover=true;sec.classList.add('paused')});car.addEventListener('mouseleave',function(){hover=false;sec.classList.remove('paused');restart()});
+ sl.forEach(function(s,j){s.addEventListener('click',function(){if(kind==='pos'&&j!==cur)go(j,wrap(j-cur)>0?1:-1)})});
+ var x0=null;car.addEventListener('pointerdown',function(e){x0=e.clientX});car.addEventListener('pointerup',function(e){if(x0==null)return;var dx=e.clientX-x0;x0=null;if(Math.abs(dx)>40)go(cur+(dx<0?1:-1),dx<0?1:-1)});
+ addEventListener('keydown',function(e){if(!vis)return;var r=sec.getBoundingClientRect();if(r.top>innerHeight/2||r.bottom<innerHeight/2)return;if(e.key==='ArrowRight')go(cur+1,1);if(e.key==='ArrowLeft')go(cur-1,-1)});
+ new IntersectionObserver(function(es){vis=es[0].isIntersecting;vids();if(vis)restart()},{threshold:.35}).observe(car);
+ if(kind==='pos')layout(true);else only();setDots();
+ addEventListener('resize',function(){if(kind==='pos')layout(true)});
+}
+})();
+</script>
+</body>
+</html>

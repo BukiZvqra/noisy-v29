@@ -1,0 +1,115 @@
+/* ===== NOISY v14: „Channelling the Noise" =====
+   Идея: страницата започва в шум и се изчиства. Всеки елемент пристига като кратък сигнал
+   (разцепване в цветовете на марката) и щраква на място. Бързо и сухо, не плаващо като Apple. */
+:root{--v:#B61DFF;--m:#CE13A8;--r:#FF0000;--snap:cubic-bezier(.77,0,.18,1)}
+
+/* ---------- 1. влизане при скрол: сигнал, който се изчиства ---------- */
+.rv,.rvk>*{opacity:0;transform:none;filter:none;transition:none;-webkit-mask-image:none;mask-image:none;clip-path:none}
+.rv.in,.rvk.in>*{opacity:1;transform:none;filter:none;animation:var(--nfx,nfxResolve) .62s steps(1,end) backwards;animation-delay:calc(var(--d,0) * 1ms)}
+html{--nfx:nfxResolve}
+html[data-nfx=resolve]{--nfx:nfxResolve}
+html[data-nfx=static]{--nfx:nfxStatic}
+html[data-nfx=slice]{--nfx:nfxSlice}
+@keyframes nfxResolve{
+ 0%{opacity:0;transform:translateX(-10px);filter:drop-shadow(5px 0 0 var(--v)) drop-shadow(-5px 0 0 var(--r))}
+ 14%{opacity:1;transform:translateX(8px);filter:drop-shadow(4px 0 0 var(--v)) drop-shadow(-4px 0 0 var(--r))}
+ 28%{transform:translateX(-5px);filter:drop-shadow(-3px 0 0 var(--v)) drop-shadow(3px 0 0 var(--r))}
+ 44%{transform:translateX(3px);filter:drop-shadow(2px 0 0 var(--v)) drop-shadow(-2px 0 0 var(--r))}
+ 62%{transform:translateX(-1px);filter:drop-shadow(1px 0 0 var(--m))}
+ 100%{transform:none;filter:none}}
+@keyframes nfxStatic{0%{opacity:0}10%{opacity:.7;filter:contrast(2) brightness(1.6)}22%{opacity:.1}34%{opacity:.9;filter:contrast(1.6)}48%{opacity:.35}62%{opacity:1;filter:brightness(1.25)}100%{opacity:1;filter:none}}
+@keyframes nfxSlice{0%{clip-path:inset(0 0 88% 0);transform:translateX(-14px)}18%{clip-path:inset(46% 0 38% 0);transform:translateX(12px)}36%{clip-path:inset(0 0 40% 0);transform:translateX(-8px)}58%{clip-path:inset(22% 0 0 0);transform:translateX(5px)}80%{clip-path:inset(6% 0 0 0);transform:translateX(-2px)}100%{clip-path:inset(0);transform:none}}
+html[data-nfx=soft] .rv,html[data-nfx=soft] .rvk>*{opacity:0!important;transform:translate3d(0,36px,0) scale(.985)!important;filter:blur(6px)!important;transition:opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.2s cubic-bezier(.16,1,.3,1),filter 1.1s cubic-bezier(.16,1,.3,1)!important;transition-delay:calc(var(--d,0) * 1ms)!important}
+html[data-nfx=soft] .rv.in,html[data-nfx=soft] .rvk.in>*{opacity:1!important;transform:none!important;filter:none!important;animation:none}
+@media(prefers-reduced-motion:reduce){.rv,.rvk>*{opacity:1!important;animation:none!important}}
+
+/* ---------- 2. хиро: шумът се изчиства ---------- */
+.hero{--grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:var(--grain);opacity:0;mix-blend-mode:screen}
+body.hero-on .hero::after{animation:grainOut 1.6s steps(8,end) both}
+@keyframes grainOut{0%{opacity:.55;background-position:0 0}20%{background-position:-60px 40px}40%{opacity:.4;background-position:50px -30px}60%{background-position:-20px -60px}80%{opacity:.14;background-position:30px 20px}100%{opacity:0}}
+body.hero-on .hero h1{animation:nfxResolve .8s steps(1,end) .1s both}
+body.hero-on .hero .sub{animation:nfxResolve .7s steps(1,end) .35s both}
+body.hero-on .hero .ctas{animation:nfxResolve .7s steps(1,end) .55s both}
+body:not(.hero-on) .hero h1,body:not(.hero-on) .hero .sub,body:not(.hero-on) .hero .ctas{opacity:0}
+.hero h1{background:linear-gradient(180deg,#fff 55%,#e9d9f5);-webkit-background-clip:text;background-clip:text}
+.hero .sig{opacity:.16;animation:sigPulse 7s ease-in-out infinite}
+@keyframes sigPulse{0%,100%{opacity:.12;transform:translate(-50%,-50%) scale(1)}50%{opacity:.2;transform:translate(-50%,-50%) scale(1.03)}}
+@media(prefers-reduced-motion:reduce){.hero::after,.hero .sig{animation:none!important}}
+
+/* ---------- 3. подпис: сигнална линия над секциите ---------- */
+.sec::before{width:92px;height:10px;background:
+ linear-gradient(90deg,var(--v),var(--m) 40%,var(--r));-webkit-mask:linear-gradient(#000,#000) 0 4px/58px 3px no-repeat,linear-gradient(135deg,transparent 0 3px,#000 3px 100%) 58px 0/34px 10px no-repeat;mask:linear-gradient(#000,#000) 0 4px/58px 3px no-repeat,linear-gradient(135deg,transparent 0 3px,#000 3px 100%) 58px 0/34px 10px no-repeat;
+ clip-path:polygon(0 40%,62% 40%,70% 0,78% 100%,86% 40%,100% 40%,100% 70%,86% 70%,78% 100%,70% 30%,62% 70%,0 70%)}
+.kick{letter-spacing:.02em}
+.h2{letter-spacing:-.02em}
+
+/* ---------- 4. видео: по-живо, бележката е малък етикет ---------- */
+.vnote{left:0;top:0;bottom:auto;max-width:none;padding:6px 12px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border:0;border-radius:0 0 4px 0;background:rgba(10,9,13,.85)}
+.vnote{content:none}
+.vf{max-width:900px}
+.vf video{filter:saturate(1.08) contrast(1.04)}
+
+/* ---------- 5. цени на телефон: по-кратко ---------- */
+}
+
+/* ---------- 6. платформи: голяма Web + три малки ---------- */
+.pl3{display:grid;gap:12px;grid-template-columns:1fr;margin-top:28px}
+@media(min-width:900px){.pl3{grid-template-columns:1.3fr 1fr;gap:16px}}
+.pi{display:inline-grid;place-items:center;flex:none;width:52px;height:52px;border:1px solid rgba(255,255,255,.16);border-radius:4px;background:#17161d;color:#fff;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%)}.pi svg{width:26px;height:26px}.pi.big{width:72px;height:72px}.pi.big svg{width:36px;height:36px}
+.webbig{position:relative;display:flex;gap:18px;align-items:flex-start;padding:24px;background:linear-gradient(160deg,rgba(182,29,255,.25),rgba(206,19,168,.14) 50%,rgba(255,0,0,.12));border:1px solid rgba(206,19,168,.7);border-radius:6px;overflow:hidden;transition:transform .3s var(--snap)}
+.webbig::before{content:"";position:absolute;left:0;top:0;width:56px;height:3px;background:var(--spectrum)}
+.webbig:hover{transform:translateY(-3px)}
+.webbig .pi{background:var(--spectrum);border-color:transparent}
+.webbig b{display:block;font-family:Unbounded,Manrope,sans-serif;font-size:21px;margin-top:6px}.webbig p{color:var(--mute);margin:6px 0 16px}
+.webbig .pb{font-style:normal;font-size:13px;font-weight:800;padding:4px 10px;border-radius:2px;background:#fff;color:#0A090D;display:inline-block}
+.btn3b{display:inline-block;padding:13px 22px;background:#fff;color:#0A090D;font-weight:800;border-radius:4px}
+.soons{display:grid;gap:10px;align-content:start}
+.soons>div{display:flex;gap:12px;align-items:center;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:4px;min-height:72px}
+.soons .tx{flex:1}.soons b{display:block;font-size:16px}.soons small{color:var(--mute);font-size:14px}
+.soons em{font-style:normal;font-size:13px;font-weight:800;padding:4px 10px;border:1px solid rgba(255,255,255,.3);border-radius:2px;color:#d9d6e0}
+.soons .pi{opacity:.85}
+@media(max-width:640px){.webbig{flex-direction:column;padding:18px}.webbig .pi.big{width:56px;height:56px}.webbig b{font-size:19px}}
+
+/* ---------- 7. ЧЗВ ---------- */
+details{position:relative;transition:background .25s}
+details[open]{background:#2f2e36}
+details[open]::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--v),var(--m),var(--r))}
+
+/* ---------- 8. финален призив ---------- */
+.end .sig{opacity:.18;height:min(110%,420px)}
+
+/* ---------- 9. лаборатория за ефекта (?lab=1) ---------- */
+.nlab[hidden]{display:none}.nlab b{width:100%;font-size:12px;color:var(--mute)}
+.nlab button{appearance:none;min-height:36px;padding:0 12px;border:1px solid var(--line2);background:#1c1b22;color:#fff;font:700 13px Manrope,sans-serif;border-radius:3px;cursor:pointer}
+.nlab button[aria-pressed=true]{background:var(--spectrum);border-color:transparent}
+.hero{-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 78%,transparent 100%);padding-bottom:70px}
+.vid13{margin-top:-96px}
+
+/* ---- панел „Пробвай сам" ---- */
+.nlab{position:fixed;left:12px;bottom:12px;z-index:55;width:min(340px,calc(100vw - 24px));background:rgba(14,13,18,.96);border:1px solid rgba(206,19,168,.7);border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.6);display:block;padding:0;font-size:14px}
+.nlab[hidden]{display:none}
+.nlt{appearance:none;display:flex;justify-content:space-between;align-items:center;width:100%;min-height:48px;padding:0 14px;border:0;background:var(--spectrum);color:#fff;font:800 14px Manrope,sans-serif;border-radius:5px 5px 0 0;cursor:pointer;text-align:left}
+.nlt i{font-style:normal;font-size:20px}.nlab:has(#nlb[hidden]) .nlt{border-radius:5px}
+.nlb{padding:12px 14px 14px}.nlb[hidden]{display:none}
+.nlb>b{display:block;font-size:12px;color:var(--mute);letter-spacing:.04em;text-transform:uppercase;margin:6px 0}
+.nrow{display:flex;flex-wrap:wrap;gap:6px}
+.nlab button:not(.nlt){appearance:none;min-height:40px;padding:0 12px;border:1px solid var(--line2);background:#1c1b22;color:#fff;font:700 14px Manrope,sans-serif;border-radius:3px;cursor:pointer}
+.nlab button[aria-pressed=true]{background:var(--spectrum);border-color:transparent}
+.nlab.noamp [data-amp]{opacity:.35;pointer-events:none}
+#ndesc{margin:12px 0 0;padding:10px 12px;background:#111016;border:1px dashed var(--line2);border-radius:3px;color:#e7e4ee;font-size:14px;line-height:1.4}
+.nlx{margin:10px 0 0;color:var(--mute);font-size:13px;line-height:1.4}
+.nre{margin-top:12px;width:100%}
+
+/* обхват на ефекта: каквото е извън избраното, влиза спокойно */
+@keyframes plainIn{from{opacity:0}to{opacity:1}}
+html[data-scope=head] [data-sg=v].in,html[data-scope=head] [data-sg=o].in,html[data-scope=headvid] [data-sg=o].in{animation:plainIn .5s ease-out backwards;animation-delay:calc(var(--d,0) * 1ms)}
+html[data-scope=head] .rvk.in>[data-sg=o],html[data-scope=head] .rvk.in>[data-sg=v],html[data-scope=headvid] .rvk.in>[data-sg=o]{animation:plainIn .5s ease-out backwards;animation-delay:calc(var(--d,0) * 1ms)}
+html[data-scope=head] body.hero-on .hero .sub,html[data-scope=head] body.hero-on .hero .ctas,html[data-scope=headvid] body.hero-on .hero .sub,html[data-scope=headvid] body.hero-on .hero .ctas{animation:plainIn .6s ease-out .4s backwards}
+html[data-scope=head] body.hero-on .hero::after,html[data-scope=head] .ngrain{opacity:0;animation:none}
+
+/* панелът е вдясно, за да не закрива заглавието; на телефон е над долната лента */
+.nlab{left:auto;right:12px;bottom:12px}
+@media(max-width:760px){.nlab{left:12px;right:12px;width:auto;bottom:72px}}
+
+.pc3 .inc{display:grid!important;gap:5px}.pc3 .inc li{display:block;white-space:normal}

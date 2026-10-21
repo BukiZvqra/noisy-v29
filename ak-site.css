@@ -1,0 +1,124 @@
+/* Apple карусел „Повече от гледане“ в сайта: ak.css, ограден в #ak (генерирано 15.10.2026) */
+#ak .akback{position:fixed;left:16px;top:12px;z-index:20;padding:8px 14px;min-height:44px;display:inline-flex;align-items:center;border-radius:980px;background:rgba(0,0,0,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:14px;font-weight:600;color:#f5f5f7}
+.ak{--akW:min(1260px,calc(100vw - 160px));--akH:612px;--akM:calc((100vw - var(--akW)) / 2);--akGap:20px;--akpw:420px;--akds:.97;--akids:.75;--akpt:62px;
+  background:#222222;color:#f5f5f7;position:relative;overflow:clip;padding:144px 0 120px;min-height:100vh}
+.ak *{box-sizing:border-box}
+#ak .akh{margin:0 0 48px;padding:0 var(--akM);font:600 48px/52px Manrope,system-ui,sans-serif;letter-spacing:-.144px;color:#f5f5f7;
+  opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.28,.11,.32,1),transform 1s cubic-bezier(.28,.11,.32,1)}
+.ak.in .akh{opacity:1;transform:none}
+#ak .akg{display:flex;gap:var(--akGap);overflow-x:auto;overflow-y:hidden;padding:0 var(--akM);scroll-padding:0 var(--akM);scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;outline:none}
+#ak .akg::-webkit-scrollbar{display:none}
+#ak .akg.anim{scroll-snap-type:none}
+#ak .akg:focus-visible{outline:2px solid #fff;outline-offset:-4px;border-radius:28px}
+.ak .hcard{position:relative;flex:none;display:block;width:var(--akW);height:var(--akH);padding:0;margin:0;border-radius:28px;overflow:hidden;isolation:isolate;
+  scroll-snap-align:start;scroll-snap-stop:always;
+  background:linear-gradient(180deg,#2D2D2D 1%,#131313 68%,#131313 100%);
+  opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.28,.11,.32,1) calc(.3s + var(--i,0) * .15s),transform 1s cubic-bezier(.28,.11,.32,1) calc(.3s + var(--i,0) * .15s)}
+.ak.in .hcard{opacity:1;transform:none}
+.ak .hcard::before{display:none!important}
+.ak .hcard:not(.full)::after{display:none!important}
+.ak .hcard.full::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 75%)}
+.ak .hcard.full>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+#ak .akcap{position:absolute;left:210px;top:50%;width:400px;z-index:3;transform:translate3d(var(--cx,0px),-50%,0);will-change:transform}
+.ak .hcard .tag{display:block;margin:0 0 16px}
+.ak .hcard .tag img{height:22px;width:auto}
+.ak .hcard .cap{position:static!important;margin:0!important;max-width:none!important;width:auto!important;padding:0;text-align:left;font:600 28px/32px Manrope,system-ui,sans-serif!important;letter-spacing:.196px;color:#f5f5f7}
+.ak .hcard .cap span{display:inline!important;color:#f5f5f7!important;font:inherit!important;letter-spacing:inherit!important}
+.ak .hcard .shc{position:static;display:contents}
+.ak .hcard .phone,.ak .hcard .atv{-webkit-mask-image:none;mask-image:none}
+.ak .hcard .phone.dvc{--pw:var(--akpw)!important;--ds:var(--akds)!important;position:absolute;left:calc(50% + 197px - var(--akpw) / 2);top:var(--akpt);margin:0;width:var(--akpw)!important;height:calc(var(--akpw) * 882 / 433)!important}
+.ak .hcard .ipadw{--iw2:var(--akpw)!important;--ids:var(--akids)!important;position:absolute;left:calc(50% + 197px - var(--akpw) / 2);top:var(--akpt);margin:0!important;width:var(--akpw)!important;height:calc(var(--akpw) * 778 / 560)!important;align-self:auto!important}
+.ak .hcard .atv{position:absolute;left:calc(50% + 260px);top:50%;transform:translate(-50%,-50%);width:560px!important;max-width:none!important;margin:0!important;display:block!important}
+.ak .hcard .phone,.ak .hcard .phone.dvc{transform:none!important;transition:none!important;opacity:1;transform-origin:50% 45%}
+.ak .hcard .phone.dvc{--zs:1;scale:var(--zs)}
+.ak .hcard .ipadw{scale:var(--zs,1);transform-origin:50% 45%}
+.ak .hcard .atv{scale:var(--zs,1);transform-origin:50% 50%}
+.ak .hcard[data-fx="battery"] .phone.dvc{--zs:1.61}
+.ak .hcard[data-fx="chip"] .atv{--zs:1.28;opacity:0}
+.ak .hcard[data-fx="colors"] .phone.dvc{--zs:1.11;opacity:.3;transform-origin:50% 48%}
+.ak .hcard[data-fx="camera"] .ipadw{--zs:1.28;opacity:.5;transform-origin:32% 38%}
+.ak .hcard[data-fx="news"]>video{scale:1.1;opacity:.4;transform-origin:42% 45%}
+.ak .hcard:not([data-fx="battery"]) .akcap{left:50%;top:48px;width:min(584px,calc(100% - 80px));margin-left:calc(min(584px,calc(100% - 80px)) / -2);transform:translate3d(var(--cx,0px),0,0);text-align:center}
+.ak .hcard:not([data-fx="battery"]) .cap{text-align:center}
+.ak .hcard:not([data-fx="battery"]) .tag{display:flex;justify-content:center}
+.ak .hcard:not([data-fx="battery"]) .phone.dvc,.ak .hcard:not([data-fx="battery"]) .ipadw{left:calc(50% - var(--akpw) / 2);top:214px}
+.ak .hcard[data-fx="chip"] .atv{left:50%;top:206px;transform:translateX(-50%);width:min(660px,56%)!important}
+.ak .hcard[data-fx="camera"] .ipadw{--akpw:440px;--akids:.7857}
+#ak .akfog,#ak .akgleam{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;opacity:0;z-index:1}
+#ak .akfog{background:radial-gradient(52% 46% at 28% 58%,rgba(205,218,240,.62),transparent 70%),radial-gradient(48% 50% at 72% 46%,rgba(190,206,232,.55),transparent 70%),radial-gradient(80% 62% at 50% 64%,rgba(150,166,198,.5),transparent 76%);filter:blur(26px);mix-blend-mode:screen}
+#ak .akgleam{background:linear-gradient(100deg,transparent 32%,rgba(255,255,255,.1) 50%,transparent 68%);top:46%;height:54%}
+#ak .akfan{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+#ak .akfan .fp{--fpw:330px;position:absolute;top:262px;width:var(--fpw);aspect-ratio:393/852;border-radius:calc(var(--fpw) * .12);background:#0e0e10;border:calc(var(--fpw) * .024) solid #2a2a2f;box-shadow:inset 0 0 0 1px #46464d,0 34px 60px rgba(0,0,0,.55);overflow:hidden;filter:brightness(.82)}
+#ak .akfan .fp img{width:100%;height:100%;object-fit:cover;object-position:top}
+#ak .akfan .fp.l{left:calc(50% - 330px - var(--fpw) / 2);transform:perspective(1500px) rotateY(24deg) rotateZ(-5deg);transform-origin:70% 60%}
+#ak .akfan .fp.r{left:calc(50% + 330px - var(--fpw) / 2);transform:perspective(1500px) rotateY(-24deg) rotateZ(5deg);transform-origin:30% 60%}
+.ak .hcard[data-fx="siri"] .phone.dvc{--akpw:380px;--akds:.8776;top:196px;z-index:2}
+@media (prefers-reduced-motion:reduce){.ak .hcard .phone.dvc,.ak .hcard .ipadw,.ak .hcard .atv,.ak .hcard>video{scale:1!important;opacity:1!important}}
+#ak .akctl{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:48px;opacity:0;transition:opacity .15s 1s}
+.ak.in .akctl{opacity:1}
+#ak .akpill,#ak .akpp{background:rgba(66,66,69,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+#ak .akpill{display:flex;align-items:center;gap:0;height:56px;padding:0 18px;border-radius:980px}
+#ak .akd{appearance:none;border:0;background:none;padding:0;height:56px;width:24px;display:grid;place-items:center;cursor:pointer;transition:width .4s cubic-bezier(.4,0,.2,1)}
+#ak .akd i{display:block;width:8px;height:8px;border-radius:980px;background:rgba(245,245,247,.55);position:relative;overflow:hidden;transition:width .4s cubic-bezier(.4,0,.2,1),background .3s}
+#ak .akd:hover i{background:#f5f5f7}
+#ak .akd.on{width:56px}
+#ak .akd.on i{width:48px;background:rgba(245,245,247,.35)}
+#ak .akd.on i::after{content:"";position:absolute;inset:0;background:#f5f5f7;transform-origin:left;transform:scaleX(0);animation:akfill var(--ms,7000ms) linear forwards}
+#ak .akctl.paused .akd.on i::after,#ak .akctl.off .akd.on i::after{animation-play-state:paused}
+#ak .akctl.done .akd.on i::after{animation:none;transform:scaleX(1)}
+@keyframes akfill{to{transform:scaleX(1)}}
+#ak .akpp{appearance:none;border:0;width:56px;height:56px;border-radius:50%;cursor:pointer;position:relative;color:#f5f5f7}
+#ak .akpp::before{content:"";position:absolute;left:50%;top:50%;width:14px;height:16px;transform:translate(-40%,-50%);background:currentColor;clip-path:polygon(0 0,100% 50%,0 100%)}
+#ak .akpp[aria-pressed="false"]::before{clip-path:polygon(0 0,32% 0,32% 100%,0 100%,0 0,68% 0,100% 0,100% 100%,68% 100%,68% 0);width:14px;transform:translate(-50%,-50%)}
+#ak .akpp:hover{background:rgba(90,90,94,.85)}
+#ak .akpp:focus-visible,#ak .akd:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media (max-width:1068px){.ak{--akW:calc(100vw - 112px);--akH:576px;--akpw:360px;--akds:.8314;--akids:.6429;--akpt:230px;padding:120px 0 100px}
+#ak .akh{font-size:40px;line-height:44px;margin-bottom:40px}
+#ak .akcap{left:116px;right:116px;top:44px;width:auto;transform:translate3d(var(--cx,0px),0,0);text-align:center}
+.ak .hcard .tag{display:flex;justify-content:center}
+.ak .hcard .cap{font-size:24px!important;line-height:28px!important;text-align:center}
+.ak .hcard .phone.dvc,.ak .hcard .ipadw{left:calc(50% - var(--akpw) / 2)}
+.ak .hcard .atv{left:50%;top:auto;bottom:40px;transform:translateX(-50%);width:min(620px,80%)!important}
+
+}
+@media (max-width:734px){.ak{--akW:calc(100vw - 69px);--akH:480px;--akM:24px;--akpw:250px;--akds:.5774;--akids:.4464;--akpt:200px;padding:112px 0 80px}
+#ak .akh{font-size:32px;line-height:36px;margin-bottom:66px}
+#ak .akcap{left:32px;right:32px;top:32px}
+.ak .hcard .cap{font-size:17px!important;line-height:21px!important}
+.ak .hcard .tag img{height:18px}
+.ak .hcard .atv{bottom:28px;width:calc(100% - 40px)!important}
+
+}
+@media (max-width:1068px){#ak .akfan .fp{--fpw:230px;top:300px}
+#ak .akfan .fp.l{left:calc(50% - 235px - var(--fpw) / 2)}
+#ak .akfan .fp.r{left:calc(50% + 235px - var(--fpw) / 2)}
+.ak .hcard[data-fx="siri"] .phone.dvc{--akpw:300px;--akds:.6928;top:250px}
+.ak .hcard:not([data-fx="battery"]) .phone.dvc,.ak .hcard:not([data-fx="battery"]) .ipadw{top:230px}
+.ak .hcard[data-fx="chip"] .atv{top:auto;bottom:40px}}
+@media (max-width:734px){#ak .akfan{display:none}
+.ak .hcard[data-fx="siri"] .phone.dvc{--akpw:250px;--akds:.5774;top:200px}
+.ak .hcard:not([data-fx="battery"]) .akcap{width:auto;left:32px;right:32px;margin-left:0}}
+@media (prefers-reduced-motion:reduce){#ak .akh,.ak .hcard,#ak .akctl{opacity:1;transform:none;transition:none}
+#ak .akcap{transform:translate3d(0,-50%,0)}
+
+}
+#ak .akm{position:absolute;left:50%;top:0;height:100%;transform:translateX(-50%);z-index:0;pointer-events:none}
+#ak .akm img.st{position:relative;display:block;height:100%;width:auto;max-width:none}
+#ak .akm video,#ak .akm img.en{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;display:block}
+#ak .akm video{opacity:0}
+#ak .hcard.clip-on .akm video{opacity:1}
+#ak .hcard.clip-on .akm img.st{visibility:hidden}
+#ak .akm img.en{opacity:0;transition:opacity .2s ease-out}
+#ak .hcard.clip-end .akm img.en{opacity:1}
+#ak .hcard.hasclip .akcap{z-index:3}
+#ak .akg{cursor:grab;touch-action:pan-x pan-y}
+#ak .akg.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.ak .hcard[data-fx="news"]>video{scale:1;opacity:1}
+#ak .akm img.st,#ak .akm img.en{user-select:none;-webkit-user-drag:none}
+@media(prefers-reduced-motion:reduce){#ak .akcap{transform:translate3d(0,-50%,0)}
+.ak .hcard:not([data-fx="battery"]) .akcap{transform:none}
+#ak .akd.on i::after{animation:none;transform:scaleX(1)}
+
+}
+@media(prefers-reduced-motion:reduce) and (max-width:1068px){#ak .akcap{transform:none}}
+

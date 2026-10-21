@@ -1,0 +1,179 @@
+/* ===== v19 (12.10.2026): без ефекти при скрол, горе са малки карти на модулите, редовете под тях показват съдържанието на избрания модул ===== */
+
+/* 1. Без ефекти: всичко е на мястото си веднага (без Сигнал, Статика, Резен и плавно издигане) */
+.rv,.rvk>*,.rv.in,.rvk.in>*{opacity:1!important;transform:none!important;filter:none!important;animation:none!important;transition:none!important;clip-path:none!important;-webkit-mask-image:none!important;mask-image:none!important}
+body.hero-on .hero h1,body.hero-on .hero .sub,body.hero-on .hero .ctas{animation:none!important}
+
+/* 2. Размери: картата на модула е малко по-голяма от плочките под нея */
+.ag-root{--ag-w:280px;--ag-h:158px;--ag-gap:12px;--ag-radius:6px;--ag-tile-w:196px;--ag-tile-h:110px;--ag-tile-gap:12px;--ag-pick-h:88px;
+ --ag-lift:calc((var(--ag-gap) + var(--ag-pick-h) + 2 * (var(--ag-tile-h) + var(--ag-tile-gap))) / 2)}
+@media(min-width:735px){.ag-root{--ag-w:360px;--ag-h:203px;--ag-gap:16px;--ag-tile-w:240px;--ag-tile-h:135px;--ag-tile-gap:16px;--ag-pick-h:92px}}
+@media(min-width:1069px){.ag-root{--ag-w:400px;--ag-h:225px;--ag-gap:20px;--ag-radius:6px;--ag-tile-w:300px;--ag-tile-h:169px;--ag-tile-gap:18px;--ag-pick-h:96px}}
+@media(min-width:1069px) and (max-height:820px){.ag-root{--ag-w:360px;--ag-h:203px;--ag-gap:18px;--ag-tile-w:210px;--ag-tile-h:118px;--ag-tile-gap:14px;--ag-pick-h:84px}}
+
+/* картата и редовете са една група, центрирана във височината на екрана */
+.ag-slide{top:calc(50% - var(--ag-lift) * var(--ag-p,1))}
+.ag-shelves{margin-top:calc((var(--ag-h) - 100svh) / 2 + var(--ag-gap) - var(--ag-lift))}
+.ag-footer{display:none!important}
+
+/* 3. Картата на модула: лого, статус и един ред текст */
+.ag-surface::after{background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,0) 40%,rgba(0,0,0,0) 52%,rgba(0,0,0,.82))!important}
+.ag-mod{position:absolute;left:14px;right:14px;top:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.ag-logo{height:18px;width:auto;max-width:60%;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
+.ag-slide[data-w=noisy] .ag-logo{height:20px}
+.ag-st{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:var(--r,4px);background:rgba(10,9,13,.72);font-size:11px;font-weight:800;white-space:nowrap;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.ag-st::before{content:"";width:6px;height:6px;border-radius:50%;background:#9a96a6}
+.ag-st.ok::before{background:#3ddc84}.ag-st.soon::before{background:#ffb020}.ag-st.prep::before{background:#b61dff}
+.ag-line{position:absolute;left:14px;right:14px;bottom:11px;margin:0;font-size:15px;line-height:1.25;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.ag-slide.is-current .ag-mod,.ag-slide.is-current .ag-line{opacity:clamp(0,calc((var(--ag-p,1) - .75) * 4),1)}
+@media(min-width:1069px){.ag-mod{left:18px;right:18px;top:16px}.ag-logo{height:22px}.ag-slide[data-w=noisy] .ag-logo{height:24px}.ag-line{left:18px;right:18px;bottom:15px;font-size:18px}.ag-st{height:26px;font-size:12px}}
+
+/* избраната карта е светла и с рамка, съседните са затъмнени и се натискат */
+.ag-slide .ag-surface{transition:filter .35s,box-shadow .35s}
+.ag-slide:not(.is-current) .ag-surface{filter:brightness(.42) saturate(.75)}
+.ag-root:not(.is-shrinking) .ag-slide{pointer-events:auto;cursor:pointer}
+.ag-root:not(.is-shrinking) .ag-slide.is-current{cursor:default}
+.ag-root:not(.is-shrinking) .ag-slide.is-current .ag-surface{box-shadow:0 0 0 2px #fff,0 18px 50px rgba(0,0,0,.55)}
+.ag-root:not(.is-shrinking) .ag-slide:not(.is-current):hover .ag-surface{filter:brightness(.62) saturate(.9)}
+
+/* стрелките са малки кръгчета до картата (на телефон се плъзга) */
+.ag-side{top:calc(50% - var(--ag-lift) * var(--ag-p,1));width:44px;height:44px;border-radius:50%;background:rgba(10,9,13,.78);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:24px;line-height:1;display:grid;place-items:center;transform:translate(-50%,-50%)}
+.ag-prev{left:calc(50% - var(--ag-w) / 2)}.ag-next{right:auto;left:calc(50% + var(--ag-w) / 2)}
+.ag-side:hover{background:#fff;color:#0A090D}
+@media(max-width:734px){.ag-side{display:none}}
+
+/* 4. Под картата: точки, какво гледаш в момента и връзка към модула */
+.ag-pick{height:28px;display:flex;align-items:center;justify-content:center;gap:14px}
+.agdots{display:flex;gap:2px}
+.agd{width:22px;height:28px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.agd::before{content:"";width:7px;height:7px;border-radius:4px;background:rgba(255,255,255,.35);transition:width .3s,background .3s}
+.agd.on::before{width:22px;background:var(--spectrum)}
+.ag-hint{font-size:12px;color:var(--mute);font-weight:600}
+.ag-root.used .ag-hint{opacity:0;transition:opacity .4s}
+.ag-now{height:calc(var(--ag-pick-h) - 28px);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px}
+.ag-now-t{display:flex;flex-direction:column;min-width:0}
+.ag-now-t b{font-size:20px;line-height:1.15;font-weight:800;letter-spacing:-.01em}
+.ag-now-t small{font-size:13px;color:var(--mute);font-weight:600}
+.ag-more{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:var(--r,4px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35);font-size:14px;font-weight:800;white-space:nowrap}
+.ag-more:hover{background:#fff;color:#0A090D}
+@media(min-width:735px){.ag-now{padding:0 max(20px,calc((100vw - 1200px) / 2))}.ag-now-t b{font-size:24px}.ag-hint{font-size:13px}}
+
+/* смяната на модула се вижда ясно: редовете и заглавието излизат наново */
+.ag-rows,.ag-now-t{transition:opacity .2s ease,transform .2s ease}
+.ag-root.swap .ag-rows,.ag-root.swap .ag-now-t{opacity:0;transform:translateY(8px)}
+.ag-tile .ag-tile-label{font-size:13px;padding:18px 10px 7px}
+@media(min-width:1069px){.ag-tile .ag-tile-label{font-size:15px;padding:22px 12px 9px}}
+.ag-tile img{transition:transform .4s}
+.ag-tile:hover img{transform:scale(1.04)}
+
+/* името на модула: символът и думата, четимо на всяка ширина */
+.ag-nm{display:inline-flex;align-items:center;gap:7px;font-size:17px;font-weight:800;letter-spacing:-.01em;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.ag-nm img{width:auto;height:18px}
+@media(min-width:1069px){.ag-nm{font-size:19px}.ag-nm img{height:20px}}
+
+/* ===== картите горе: само логото от Figma, отзад размазани кадри от предаванията (без заглавие и без статус) ===== */
+.ag-slide:not([data-w=noisy]) .ag-art{display:none}
+.ag-bg{position:absolute;inset:-10%;z-index:-2;display:grid;grid-template-columns:1.2fr 1fr 1fr;filter:blur(8px) saturate(1.2) brightness(.62)}
+.ag-bg img{width:100%;height:100%;object-fit:cover;display:block}
+.ag-slide[data-w=noisy] .ag-art{filter:blur(7px) saturate(1.15) brightness(.62);transform:scale(1.08)}
+.ag-surface::after{background:radial-gradient(70% 70% at 50% 50%,rgba(10,9,13,0),rgba(10,9,13,.5))!important}
+.ag-mod{inset:0!important;display:grid!important;place-items:center;justify-content:center!important}
+.ag-logo{height:32px!important;width:auto;max-width:72%;filter:drop-shadow(0 4px 18px rgba(0,0,0,.55))}
+.ag-slide[data-w=noisy] .ag-logo{height:30px!important}
+@media(min-width:1069px){.ag-logo{height:44px!important}.ag-slide[data-w=noisy] .ag-logo{height:40px!important}}
+.ag-st,.ag-line,.ag-nm{display:none!important}
+
+/* ===== преглед при натискане на заглавие (като във v10): кадърът излита, тече няколко секунди, после „Хареса ти?“ ===== */
+.pvw{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;background:rgba(5,4,7,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity .35s ease}
+.pvw.on{opacity:1;pointer-events:auto}
+.pvbox{position:relative;width:min(980px,100%);aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#000;box-shadow:0 40px 120px rgba(0,0,0,.7)}
+.pvbox video,.pvbox .kbi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pvbox .kbi.go{animation:kb 9s linear forwards}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.14)}}
+.pvbox::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5),transparent 22%,transparent 68%,rgba(0,0,0,.85));pointer-events:none;z-index:1}
+.pvbox .flash{position:absolute;inset:0;z-index:3;background:#fff;opacity:0;pointer-events:none}
+.pvw.on .flash{animation:pvflash .5s ease}
+@keyframes pvflash{0%{opacity:.35}100%{opacity:0}}
+.ptopbar{position:absolute;left:20px;right:20px;top:16px;display:flex;justify-content:space-between;align-items:center;z-index:2}
+.pmeta{height:30px}
+.px{appearance:none;border:0;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:24px;cursor:pointer;z-index:6;position:relative}
+.px:hover{background:#fff;color:#0A090D}
+.pfoot{position:absolute;left:24px;right:24px;bottom:20px;z-index:2}
+.ptitle{font-size:28px;font-weight:800;margin-bottom:12px;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.pbar{height:5px;border-radius:980px;background:rgba(255,255,255,.25);overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:var(--spectrum)}
+.ptimes{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);margin-top:8px}
+.tgate{position:absolute;inset:0;z-index:5;display:grid;place-items:center;background:rgba(6,5,8,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .5s ease}
+.tgate.on{opacity:1;pointer-events:auto}
+.gbox{text-align:center;padding:0 16px;transform:translateY(16px) scale(.97);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.tgate.on .gbox{transform:none}
+.gk{font-size:17px;color:var(--mute);margin:0}
+.gbox h3{font-size:48px;line-height:1.05;margin:6px 0 10px;letter-spacing:-.02em}
+.gs{font-size:17px;color:rgba(247,245,250,.85);margin:0 0 24px}
+.gbtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.gf{font-size:13px;color:var(--mute);margin:14px 0 0}
+.pflip{position:fixed;z-index:95;background:center/cover no-repeat;border-radius:6px;pointer-events:none;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.ag-root.pv-open .ag-flow{animation-play-state:paused}
+.ag-tile{cursor:pointer}
+.ag-tile::after{content:"▶";position:absolute;right:10px;top:10px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:rgba(10,9,13,.7);opacity:0;transition:opacity .25s}
+.ag-tile:hover::after,.ag-tile:focus-visible::after{opacity:1}
+@media(max-width:734px){.pvw{padding:12px}.ptitle{font-size:17px;margin-bottom:8px}.pfoot{left:14px;right:14px;bottom:12px}.ptopbar{left:12px;right:12px;top:10px}.gbox h3{font-size:24px;margin:4px 0 6px}.gk{font-size:14px}.gs{font-size:14px;margin-bottom:14px}.gbtns .btn{min-height:40px;padding:0 16px;font-size:14px}.gf{display:none}}
+
+/* без цветната чертичка над секциите (Коста, 13.10) */
+.sec::before,.vf::before,.webbig::before,.pt::before{content:none!important;display:none!important}
+.ptm{font-variant-numeric:tabular-nums}
+.tgate.on~.pfoot,.pvbox:has(.tgate.on) .pfoot{opacity:0;transition:opacity .3s}
+.ag-logo{height:40px!important}.ag-slide[data-w=noisy] .ag-logo{height:34px!important}
+@media(min-width:1069px){.ag-logo{height:58px!important}.ag-slide[data-w=noisy] .ag-logo{height:46px!important}}
+.pvbox .kbi{background:center/cover no-repeat}
+
+/* видео вместо статични снимки: фонът на картите и плочките */
+.ag-bgv{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;z-index:-2;filter:blur(3px) saturate(1.2) brightness(.62)}
+.ag-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;padding:0!important;margin:0!important;border:0!important;background:none!important}
+.ag-tile video.pl{opacity:1}
+.ag-tile .ag-tile-label{z-index:2}
+
+/* ===== бележките на Лили (13.10) ===== */
+/* редовете са в закрепената сцена; след като картите се наместят, има спокойна зона (40% от екрана), в която нищо не се връща към N */
+.ag-root{--ag-pick-h:30px}
+.ag-scene{height:calc(100svh + var(--ag-nlen,900px) + 760px + 40svh)!important}
+.ag-stick .ag-shelves{position:absolute;left:0;right:0;top:calc(50% - var(--ag-lift) + var(--ag-h) / 2 + var(--ag-gap));margin-top:0!important;z-index:4}
+.ag-pick{height:30px}
+/* подзаглавието на героя на един ред на компютър */
+@media(min-width:761px){.nhero .ntext .sub{max-width:62ch}}
+
+/* „Повече от гледане“ се събира и на 13" лаптоп; стрелки отстрани (Коста, 13.10) */
+.hlside{display:none}
+@media(min-width:1024px){
+ #hl{position:relative}
+ #hl .hcard{height:var(--hlh,620px)!important;min-height:0!important}
+ #hl header{margin-bottom:22px}
+ .hlside{display:grid;place-items:center;position:absolute;top:calc(var(--railtop,0px) + var(--hlh,620px) / 2);transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(10,9,13,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-size:28px;line-height:1;cursor:pointer;z-index:6;transition:background .2s,color .2s,opacity .2s}
+ .hlside.l{left:calc(12vw - 26px)}.hlside.r{right:calc(12vw - 26px)}
+ .hlside:hover{background:#fff;color:#0A090D}
+ .hlside:disabled{opacity:.25;cursor:default}
+ .hlctl{margin-top:18px!important}
+}
+/* 13.10 голям монитор: картите „Повече от гледане“ до 1320px, центрирани; фонът на галерията = фона на страницата */
+@media(min-width:1024px){
+ #hl{--hlpad:max(12vw,calc((100vw - 1320px) / 2))}
+ #hl .hlrail{grid-auto-columns:calc(100vw - 2 * var(--hlpad))!important;padding:0 var(--hlpad)!important;scroll-padding:0 var(--hlpad)!important}
+ #hl header{padding:0 var(--hlpad)!important}
+ #hl .hlside.l{left:calc(var(--hlpad) - 26px)}#hl .hlside.r{right:calc(var(--hlpad) - 26px)}
+}
+.ag-root,.ag-stick{background:var(--bg,#0A090D)!important}
+/* 13.10: „Повече от гледане“ подравнено по контейнера на останалите секции (1136px) */
+@media(min-width:1024px){
+ #hl .hlrail{grid-auto-columns:100%!important;padding:0 max(var(--g,32px),calc((100% - 1136px) / 2))!important;scroll-padding:0 max(var(--g,32px),calc((100% - 1136px) / 2))!important}
+ #hl header{padding:0 max(var(--g,32px),calc((100% - 1136px) / 2))!important}
+ #hl .hlside.l{left:calc(max(var(--g,32px),calc((100% - 1136px) / 2)) - 26px)}#hl .hlside.r{right:calc(max(var(--g,32px),calc((100% - 1136px) / 2)) - 26px)}
+}
+/* 13.10: плочките - картинката и видеото се увеличават заедно, плавно */
+.ag-tile img,.ag-tile video{transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .45s ease!important;transform-origin:center}
+.ag-tile:hover img,.ag-tile:hover video{transform:scale(1.04)}
+#hl{z-index:2}
+/* 14.10 проверка: по-голяма зона за пръст на телефон, видът не се мени */
+@media(max-width:1023px){.agdots{gap:0}.agd{width:34px;height:40px}.hdr .logo{padding:10px 0;box-sizing:content-box}}
+/* 14.10 проверка (Lighthouse CLS 0,35): преди gallery.js текущата карта е на цял екран, както е при отваряне най-горе */
+.ag-slide.is-current{width:var(--ag-current-w,100vw);height:var(--ag-current-h,max(100svh,494px))}
+#mods{--ag-p:0}

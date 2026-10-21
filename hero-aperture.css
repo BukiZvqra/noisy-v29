@@ -1,0 +1,91 @@
+/* The mark belongs to the hero. Nothing covers or delays the landing page. */
+.nhero.n-aperture-hero{isolation:isolate}
+.na-backdrop{position:absolute;inset:0;background:#0a090d;z-index:0}
+.nhero.n-aperture-hero .hbg{opacity:1}
+.nhero.n-aperture-hero .hx{opacity:clamp(0,calc(1 - var(--np,0)*1.6),1)!important}
+.n-aperture{
+  --nw:clamp(240px,32vw,480px);--nx:77%;--ny:53%;
+  --lift:1;--px:0px;--py:0px;
+  position:absolute;left:var(--nx);top:var(--ny);width:var(--nw);
+  aspect-ratio:99.63/104;z-index:2;pointer-events:none;
+  transform:translate(-50%,-50%);perspective:1000px;
+  opacity:calc(1 - var(--np,0)*2.2);
+}
+.n-aperture i{display:block;position:absolute;inset:0;pointer-events:none}
+.n-aperture .na-well{
+  background:#020104;
+  -webkit-mask:url(assets/symbol.svg) center/contain no-repeat;
+  mask:url(assets/symbol.svg) center/contain no-repeat;
+  filter:drop-shadow(0 0 1px #f7f5fa);
+}
+.n-aperture .na-rim{
+  inset:-2px;transform:translate(1px,1px);
+  background:linear-gradient(135deg,#c188d9 0%,#40233e 26%,#120b13 58%,#e25066 100%);
+  -webkit-mask:url(assets/symbol.svg) center/contain no-repeat;
+  mask:url(assets/symbol.svg) center/contain no-repeat;
+}
+.n-aperture .na-cavity{
+  inset:2px;background:linear-gradient(145deg,#010102 12%,#08050c 48%,#210b1b 100%);
+  -webkit-mask:url(assets/symbol.svg) center/contain no-repeat;
+  mask:url(assets/symbol.svg) center/contain no-repeat;
+}
+.n-aperture .na-solid{
+  inset:4px;
+  transform:translate(calc(var(--lift)*-24px + var(--px)),calc(var(--lift)*-36px + var(--py)));
+  filter:drop-shadow(10px 16px 10px rgba(0,0,0,.7));
+}
+.n-aperture .na-edge{
+  background:linear-gradient(125deg,#4c0c70 5%,#8c126b 46%,#5b1010 100%);
+  -webkit-mask:url(assets/symbol.svg) center/contain no-repeat;
+  mask:url(assets/symbol.svg) center/contain no-repeat;
+  transform:translate(calc(var(--lift)*var(--d)*2px),calc(var(--lift)*var(--d)*3px));
+}
+.n-aperture .na-face{
+  background:linear-gradient(125deg,#b61dff 0%,#ce13a8 42%,#f21b25 100%);
+  -webkit-mask:url(assets/symbol.svg) center/contain no-repeat;
+  mask:url(assets/symbol.svg) center/contain no-repeat;
+}
+.n-aperture .na-face::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.44) 0%,transparent 23%,rgba(17,0,22,.38) 65%,rgba(255,255,255,.12) 100%);
+}
+/* The original compositions keep their content; the opening sits in their free space. */
+.n-aperture[data-layout="side"]{--nw:clamp(240px,30vw,440px);--nx:78%;--ny:56%}
+.nhero[data-aperture="side"] .hx{z-index:3}
+.nhero[data-aperture="side"] .ha .fan{top:47%;transform:translateY(-44%) scale(.9)}
+.nhero[data-aperture="side"] .hcc .bd{top:47%}
+.n-aperture[data-layout="center"]{--nw:clamp(160px,19vw,260px);--nx:50%;--ny:24%}
+.nhero[data-aperture="center"] .hx{z-index:1}
+.nhero[data-aperture="center"] .nglow{opacity:.3}
+.nhero.n-aperture-hero .ntext{z-index:5}
+.ag-root.nfree .n-aperture{visibility:hidden}
+/* An expanding N opening reveals the existing video and worlds underneath. */
+.nhero.na-opening .na-backdrop{
+  -webkit-mask-image:linear-gradient(#000,#000),url(assets/symbol.svg);
+  mask-image:linear-gradient(#000,#000),url(assets/symbol.svg);
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:0 0,var(--hole-x) var(--hole-y);
+  mask-position:0 0,var(--hole-x) var(--hole-y);
+  -webkit-mask-size:100% 100%,var(--hole-size) auto;
+  mask-size:100% 100%,var(--hole-size) auto;
+  -webkit-mask-composite:xor;mask-composite:exclude;
+}
+.n-aperture-hero ~ .ag-vid{pointer-events:none}
+.aperture-study .nfaq-s .tl,.aperture-study a[href^="mailto:"]{display:inline-flex;align-items:center;min-height:44px}
+.aperture-study .foot.foot22 .f-legal p a[href^="mailto:"]{display:inline-flex!important;min-height:44px!important;align-items:center}
+.hx3-backdrop{position:absolute;inset:0;pointer-events:none}
+.n-aperture-hero .hb .sk:nth-child(5){flex-grow:1.7;max-width:18vw}
+@media(max-width:760px){
+  .n-aperture[data-layout]{--nw:min(58vw,240px);--nx:52%;--ny:77%}
+  .nhero[data-aperture="side"] .ha .fan{top:auto;bottom:10svh;transform:translateX(50%) scale(.86)}
+  .n-aperture[data-layout="center"]{--nw:min(37vw,160px);--ny:19%}
+  .nhero[data-aperture="side"] .hcc .bd{top:auto}
+  .n-aperture[data-layout="dock"]{--nw:min(45vw,200px);--ny:76%}
+}
+@media(prefers-reduced-motion:reduce){
+  .nhero.n-aperture-static{display:block!important;position:relative;inset:auto;height:100svh;--np:0;background:#0a090d}
+  .nhero.n-aperture-static *{animation:none!important;transition:none!important}
+  .aperture-study #mods{margin-top:0}
+  .nhero.na-opening .na-backdrop{-webkit-mask:none;mask:none}
+  .n-aperture{--lift:1!important;--px:0px!important;--py:0px!important}
+}

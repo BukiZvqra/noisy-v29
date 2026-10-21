@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NOISY · Избор</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var v=document.createElement('video');if(!v.canPlayType('video/mp4; codecs="avc1.42E01E"'))document.documentElement.classList.add('nomp4')})()</script>
+<style>
+
+:root{--bg:#0A090D;--panel:#141319;--line:rgba(255,255,255,.1);--text:#F7F5FA;--mute:#A9A6B2;--grad:linear-gradient(90deg,#8024B6,#8C238D,#B2261B);--nw:min(64vw,400px,52svh)}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.5 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 16px;background:rgba(10,9,13,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top b{font-weight:700}
+.top .home{color:var(--mute);text-decoration:none;display:inline-flex;align-items:center;min-height:40px}
+.top nav{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.top nav a{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px;padding:0 10px;border-radius:8px;border:1px solid var(--line);background:#1C1B22;text-decoration:none;font-weight:600;font-size:14px}
+.top nav a:hover{background:#25242C}
+.intro{max-width:760px;margin:0 auto;padding:40px 16px 8px;text-align:center}
+.intro h1{margin:0 0 10px;font:700 clamp(26px,4vw,40px)/1.15 Unbounded,Manrope,sans-serif;letter-spacing:-.02em}
+.intro p{margin:0;color:var(--mute)}
+.v{position:relative;min-height:max(100svh,620px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px 16px 56px;overflow:hidden;border-top:1px solid var(--line)}
+.v h2{position:relative;z-index:5;margin:0;font:700 clamp(20px,2.6vw,28px)/1.2 Unbounded,Manrope,sans-serif;letter-spacing:-.02em;text-align:center}
+.v h2 small{display:block;margin-bottom:6px;font:600 13px Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.v .rec{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:6px;background:var(--grad);font:700 12px Manrope,sans-serif;letter-spacing:0;text-transform:none;color:#fff;vertical-align:middle}
+.v p.d{position:relative;z-index:5;max-width:52ch;margin:10px auto 0;color:var(--mute);text-align:center}
+.stage{position:relative;display:grid;place-items:center;width:100%;height:calc(var(--nw)*1.25);margin-top:28px}
+/* N: трейлърът, изрязан във формата на символа */
+.n{position:relative;z-index:3;width:var(--nw);aspect-ratio:99.63/104;-webkit-mask:url(assets/symbol.svg) center/contain no-repeat;mask:url(assets/symbol.svg) center/contain no-repeat}
+.n video{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(1.15) contrast(1.05)}
+.fx{position:absolute;pointer-events:none}
+
+/* 1 · Мек ореол */
+.v1 .halo{width:calc(var(--nw)*1.5);height:calc(var(--nw)*1.5);border-radius:50%;background:radial-gradient(closest-side,rgba(206,19,168,.55),rgba(128,36,182,.25) 55%,transparent 75%);filter:blur(40px);animation:breathe 9s ease-in-out infinite alternate}
+@keyframes breathe{from{transform:scale(.9);opacity:.6}to{transform:scale(1.06);opacity:.9}}
+
+/* 2 · Цветна аура, която бавно се върти */
+.v2 .aura{width:calc(var(--nw)*1.3);height:calc(var(--nw)*1.3);border-radius:50%;background:conic-gradient(from 0deg,#8024B6,#CE13A8,#B2261B,#5B1BA0,#8024B6);filter:blur(64px);opacity:.55;animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* 3 · Светлинен контур с бавен отблясък */
+.v3 .ol{width:calc(var(--nw)*1.1)}
+.v3 .ol img{display:block;width:100%;height:auto;opacity:.55}
+.v3 .ol .sw{position:absolute;inset:0;-webkit-mask:linear-gradient(115deg,transparent 42%,#000 50%,transparent 58%) 0 0/300% 100% no-repeat;mask:linear-gradient(115deg,transparent 42%,#000 50%,transparent 58%) 0 0/300% 100% no-repeat;animation:sweep 7s ease-in-out infinite}
+.v3 .ol .sw img{opacity:1;filter:brightness(1.8) drop-shadow(0 0 6px #CE13A8)}
+@keyframes sweep{0%,45%{-webkit-mask-position:100% 0;mask-position:100% 0}90%,100%{-webkit-mask-position:0 0;mask-position:0 0}}
+
+/* 4 · 3D наклон: мишката на компютър, скролът на телефон */
+.v4 .stage{perspective:900px}
+.v4 .tilt{position:relative;z-index:3;transform-style:preserve-3d;will-change:transform}
+.v4 .tilt .n{transform:translateZ(30px)}
+.v4 .tilt .sh{position:absolute;inset:6% 4%;z-index:1;-webkit-mask:url(assets/symbol.svg) center/contain no-repeat;mask:url(assets/symbol.svg) center/contain no-repeat;background:linear-gradient(135deg,#8024B6,#CE13A8 55%,#B2261B);filter:blur(16px);opacity:.55;transform:translateZ(-30px)}
+.v4 .floor{bottom:4%;width:calc(var(--nw)*.9);height:30px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.7),transparent);filter:blur(6px)}
+
+/* 5 · Отражение като на стъкло */
+.v5 .stage{height:calc(var(--nw)*1.75);align-content:start}
+.v5 .n.refl{position:absolute;top:calc(var(--nw)*1.06);left:50%;width:var(--nw);transform:translateX(-50%) scaleY(-1);opacity:.32;-webkit-mask:url(assets/symbol.svg) center/contain no-repeat,linear-gradient(to top,#000,transparent 55%);-webkit-mask-composite:source-in;mask:url(assets/symbol.svg) center/contain no-repeat intersect,linear-gradient(to top,#000,transparent 55%)}
+.v5 .glass{left:0;right:0;top:calc(var(--nw)*1.05);height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent)}
+
+/* 6 · Сянка в дълбочина, само при скрол */
+.v6 .depth{z-index:2;width:var(--nw);aspect-ratio:99.63/104;-webkit-mask:url(assets/symbol.svg) center/contain no-repeat;mask:url(assets/symbol.svg) center/contain no-repeat;background:linear-gradient(135deg,#8024B6,#CE13A8 55%,#B2261B);opacity:.5;will-change:transform}
+
+/* 7 · Бавни светлини (боке) */
+.v7 .bk{width:var(--s);height:var(--s);left:var(--x);top:var(--y);border-radius:50%;background:radial-gradient(closest-side,var(--c),transparent);filter:blur(6px);opacity:.4;animation:drift var(--t) ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(var(--dx),var(--dy))}}
+
+/* 8 · Голямо N във фона с мек паралакс */
+.v8 .big{z-index:1;width:calc(var(--nw)*2.6);aspect-ratio:99.63/104;-webkit-mask:url(assets/symbol.svg) center/contain no-repeat;mask:url(assets/symbol.svg) center/contain no-repeat;background:linear-gradient(135deg,#8024B6,#CE13A8 55%,#B2261B);opacity:.09;filter:blur(2px);will-change:transform}
+
+.end{padding:56px 16px 80px;text-align:center;color:var(--mute);border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* ===== обща страница ===== */
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+.top{flex-wrap:wrap}
+.top nav a.g{padding:0 14px}
+.grp{border-top:1px solid var(--line);padding:48px 0 8px}
+.gh{max-width:1180px;margin:0 auto;padding:0 16px 8px}
+.gh h2{margin:0;font:700 clamp(24px,3.4vw,36px)/1.15 Unbounded,Manrope,sans-serif;letter-spacing:-.02em}
+.gh p{margin:8px 0 0;color:var(--mute);max-width:70ch}
+.v{min-height:auto;padding:56px 16px 48px}
+:root{--nw:min(58vw,340px,44svh)}
+.vv{max-width:1180px;margin:0 auto;padding:40px 16px 48px;border-top:1px dashed rgba(255,255,255,.08)}
+.vv>h3{margin:0;font:700 clamp(18px,2.2vw,22px)/1.25 Unbounded,Manrope,sans-serif;letter-spacing:-.01em}
+.vv>h3 small{display:block;margin-bottom:4px;font:600 12px Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.vv>p.d{margin:6px 0 24px;color:var(--mute);max-width:70ch}
+.rec{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:6px;background:var(--grad);font:700 12px Manrope,sans-serif;letter-spacing:0;text-transform:none;color:#fff;vertical-align:middle}
+.ttl{margin:0 0 20px;font:700 clamp(22px,3vw,34px)/1.15 Unbounded,Manrope,sans-serif;letter-spacing:-.02em}
+.ico{display:grid!important;place-items:center;flex:none;width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(128,36,182,.35),rgba(206,19,168,.25) 55%,rgba(178,38,27,.3));box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);color:#fff}
+.ico svg{width:22px;height:22px}
+.ico img{width:22px;height:22px}
+
+/* ===== карусел: общи ===== */
+.k{position:relative;overflow:hidden;border-radius:16px;background:#07060A;padding:24px 0 28px}
+.k-row{position:relative;overflow:hidden;height:calc(var(--th) + 12px)}
+.k-tr{position:absolute;left:0;top:0;display:flex;gap:12px;will-change:transform}
+.k-t{position:relative;flex:none;width:var(--tw);height:var(--th);border-radius:10px;overflow:hidden;background:#16141b}
+.k-t img{width:100%;height:100%;object-fit:cover;display:block}
+.k-t span{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 8px;font:600 13px/1.2 Manrope,sans-serif;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+.k{--tw:200px;--th:113px}
+@media (min-width:900px){.k{--tw:280px;--th:158px}.k-t span{font-size:15px}}
+.k-rows{transition:opacity .35s}
+.k-rows.sw{opacity:0}
+.k-logo{height:26px;width:auto;display:block}
+.k-daily{margin:18px 0 0;text-align:center;font:600 clamp(16px,2vw,22px)/1.2 Unbounded,Manrope,sans-serif;letter-spacing:-.02em}
+.k-daily span{background:linear-gradient(90deg,#B61DFF,#CE13A8 45%,#FF3B3B);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* K1 coverflow */
+.k1 .cf{position:relative;height:clamp(150px,22vw,250px);perspective:1100px;margin-bottom:18px}
+.k1 .cc{position:absolute;left:50%;top:0;width:clamp(240px,36vw,440px);height:100%;margin-left:calc(clamp(240px,36vw,440px)/-2);border-radius:14px;overflow:hidden;transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .8s,filter .8s;cursor:pointer;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.k1 .cc img.bg,.k3 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(3px) brightness(.45)}
+.k1 .cc .k-logo,.k3 .stagec .k-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:clamp(22px,3vw,34px)}
+.k1 .cc.on{box-shadow:0 0 0 2px #fff,0 20px 50px rgba(0,0,0,.5)}
+/* K2 табове */
+.k2 .tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:0 12px 20px}
+.k2 .tb{position:relative;overflow:hidden;display:flex;align-items:center;gap:8px;height:48px;padding:0 18px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#16141b;cursor:pointer}
+.k2 .tb .k-logo{height:18px}
+.k2 .tb i{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--grad)}
+.k2 .tb.on{background:#211d2a;border-color:rgba(206,19,168,.6)}
+.k2 .tb.on i{animation:fill 6s linear forwards}
+@keyframes fill{to{width:100%}}
+/* K3 витрина */
+.k3 .stagec{position:relative;width:min(92%,880px);aspect-ratio:16/7;margin:0 auto;border-radius:16px;overflow:hidden}
+.k3 .stagec .bg{filter:brightness(.5);animation:kb 7s ease-out forwards}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+.k3 .stagec::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 50%,transparent,rgba(0,0,0,.55))}
+.k3 .stagec .k-logo{z-index:2;height:clamp(28px,4vw,48px)}
+.k3 .th{display:flex;justify-content:center;gap:8px;margin:12px auto 20px;padding:0 12px;flex-wrap:wrap}
+.k3 .thb{position:relative;width:clamp(56px,9vw,110px);aspect-ratio:16/9;border-radius:8px;overflow:hidden;border:0;padding:0;cursor:pointer;opacity:.5;background:#16141b}
+.k3 .thb img{width:100%;height:100%;object-fit:cover;display:block}
+.k3 .thb.on{opacity:1}
+.k3 .thb i{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--grad)}
+.k3 .thb.on i{animation:fill 5s linear forwards}
+/* K4 наклонена стена */
+.k4 .sel{display:flex;gap:10px;justify-content:center;padding:0 12px 18px;overflow-x:auto}
+.k4 .sc{flex:none;position:relative;width:clamp(96px,14vw,170px);aspect-ratio:16/9;border-radius:10px;overflow:hidden;cursor:pointer;opacity:.55;transition:opacity .3s}
+.k4 .sc img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(2px) brightness(.45)}
+.k4 .sc .k-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:16px}
+.k4 .sc.on{opacity:1;box-shadow:0 0 0 2px #fff}
+.k4 .wall{transform:perspective(1300px) rotateX(12deg) rotateZ(-3deg) scale(1.02);transform-origin:50% 20%;padding:10px 0}
+/* K5 мозайка */
+.k5 .lnk{display:flex;gap:6px 22px;justify-content:center;flex-wrap:wrap;padding:0 12px 18px}
+.k5 .lk{border:0;background:none;color:var(--mute);font:600 15px Manrope,sans-serif;padding:8px 2px;cursor:pointer;border-bottom:2px solid transparent}
+.k5 .lk.on{color:#fff;border-color:#CE13A8}
+.k5 .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(70px,9vw,130px);gap:10px;padding:0 16px}
+.k5 .bt{position:relative;border-radius:10px;overflow:hidden;background:#16141b}
+.k5 .bt:first-child{grid-column:span 2;grid-row:span 2}
+.k5 .bt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .9s}
+.k5 .bt span{position:absolute;left:0;right:0;bottom:0;padding:16px 10px 8px;font:600 13px Manrope,sans-serif;background:linear-gradient(transparent,rgba(0,0,0,.75));transition:opacity .9s}
+@media (max-width:700px){.k5 .bento{grid-template-columns:repeat(2,1fr)}.k5 .bt:nth-child(n+4){display:none}}
+
+/* ===== цени: самата главна в рамка ===== */
+#g-c .vv{max-width:none}
+.fr{width:100%;height:min(1100px,92svh);border:1px solid var(--line);border-radius:16px;background:var(--bg);display:block}
+
+/* ===== гаранции ===== */
+.G{display:block}
+.g1{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:16px;background:#141319}
+.g1>div{display:flex;align-items:center;gap:14px;padding:20px}
+.g1>div+div{border-left:1px solid var(--line)}
+.g1 b{display:block;font:600 16px Manrope,sans-serif}.g1 span:not(.ico){display:block;margin-top:2px;font-size:14px;color:var(--mute)}
+@media (max-width:700px){.g1>div{flex-direction:column;text-align:center;gap:8px;padding:16px 8px}.g1 b{font-size:13px;line-height:1.25}.g1 span:not(.ico){display:none}.g1 .ico{width:38px;height:38px}}
+.g2{max-width:620px;margin:0 auto;border:1px solid var(--line);border-radius:16px;background:#141319;padding:6px 20px}
+.g2>div{display:flex;align-items:center;gap:14px;padding:14px 0}.g2>div+div{border-top:1px solid var(--line)}
+.g2 b{display:block;font:600 16px Manrope,sans-serif}.g2 span:not(.ico){display:block;font-size:14px;color:var(--mute)}
+.g2 .ico{width:36px;height:36px;border-radius:10px}.g2 .ico svg{width:18px;height:18px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g3>div{position:relative;padding:24px 20px;border-radius:16px;background:#141319;text-align:center}
+.g3>div::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,#8024B6,#CE13A8,#B2261B);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.7}
+.g3 .ico{margin:0 auto 12px}.g3 b{display:block;font:600 17px Manrope,sans-serif}.g3 span:not(.ico){display:block;margin-top:4px;font-size:14px;color:var(--mute)}
+@media (max-width:700px){.g3{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.g3>div{scroll-snap-align:start}}
+.g4{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;align-items:stretch}
+.g4>div{padding:22px 20px;border-radius:16px;background:#141319;border:1px solid var(--line)}
+.g4 .big{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,rgba(128,36,182,.28),rgba(178,38,27,.18));border-color:rgba(206,19,168,.35)}
+.g4 .big strong{font:700 64px/1 Unbounded,sans-serif;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.g4 b{display:block;font:600 16px Manrope,sans-serif}.g4 span:not(.ico){display:block;margin-top:2px;font-size:14px;color:var(--mute)}
+@media (max-width:700px){.g4{grid-template-columns:1fr 1fr;gap:10px}.g4 .big{grid-column:span 2}.g4 .big strong{font-size:48px}.g4>div:not(.big) span:not(.ico){display:none}.g4>div{padding:16px}}
+.g5{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.g5>div{position:relative;display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 20px 0 8px;border-radius:999px;background:#141319}
+.g5>div::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(90deg,#8024B6,#CE13A8,#B2261B);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.g5 .ico{width:36px;height:36px;border-radius:50%}.g5 .ico svg{width:18px;height:18px}
+.g5 b{font:600 15px Manrope,sans-serif}
+
+/* ===== платформи ===== */
+.p1{display:grid;gap:12px}
+.p1 .main{display:flex;align-items:center;gap:18px;padding:22px;border-radius:16px;background:linear-gradient(135deg,rgba(128,36,182,.3),rgba(178,38,27,.15));border:1px solid rgba(206,19,168,.4)}
+.p1 .main b{display:block;font:700 20px Unbounded,sans-serif}.p1 .main span:not(.ico){color:var(--mute)}
+.p1 .main a{margin-left:auto;flex:none}
+.btnw{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:8px;background:#FBFBFB;color:#111;font:700 15px Manrope,sans-serif;text-decoration:none}
+.p1 .row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.p1 .row>div{display:flex;align-items:center;gap:12px;padding:16px;border-radius:14px;background:#141319;border:1px solid var(--line)}
+.p1 .row b{display:block;font:600 15px Manrope,sans-serif}.p1 .row span:not(.ico){display:block;font-size:13px;color:var(--mute)}
+@media (max-width:700px){.p1 .main{flex-wrap:wrap}.p1 .main a{margin-left:62px}.p1 .row>div{flex-direction:column;text-align:center;gap:8px;padding:14px 6px}.p1 .row span:not(.ico){display:none}}
+.p2{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.p2 .tx p{color:var(--mute);margin:0 0 20px}
+.p2 .gr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.p2 .gr>div{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:14px;background:#141319;border:1px solid var(--line)}
+.p2 .gr>div.on{border-color:rgba(206,19,168,.5);background:linear-gradient(135deg,rgba(128,36,182,.22),#141319)}
+.p2 .gr b{font:600 15px Manrope,sans-serif}.p2 .gr span:not(.ico){font-size:13px;color:var(--mute)}
+@media (max-width:800px){.p2{grid-template-columns:1fr;gap:20px}}
+.p3 .dev{display:flex;align-items:flex-end;justify-content:center;gap:clamp(12px,3vw,32px);padding:10px 0 24px}
+.p3 .scr{display:grid;place-items:center;border:2px solid rgba(255,255,255,.35);background:linear-gradient(135deg,#2a1240,#3a0f2a);color:#fff;font:700 clamp(10px,1.4vw,15px) Unbounded,sans-serif}
+.p3 .tv{width:clamp(150px,28vw,320px);aspect-ratio:16/9;border-radius:8px}
+.p3 .lap{width:clamp(120px,22vw,250px);aspect-ratio:16/10;border-radius:8px 8px 2px 2px;border-bottom-width:8px}
+.p3 .ph{width:clamp(44px,7vw,80px);aspect-ratio:9/19;border-radius:12px}
+.p3 .bd{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.p3 .bd>span{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-radius:10px;background:#141319;border:1px solid var(--line);font:600 14px Manrope,sans-serif}
+.p3 .bd img{width:18px;height:18px}
+.p4{text-align:center}
+.p4 .btnw{min-height:56px;padding:0 28px;font-size:16px;background:var(--grad);color:#fff}
+.p4 .bd{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.p4 .bd>span{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 18px;border-radius:12px;background:#000;border:1px solid rgba(255,255,255,.28);text-align:left}
+.p4 .bd small{display:block;font-size:11px;color:var(--mute);line-height:1}.p4 .bd b{display:block;font:600 15px Manrope,sans-serif;line-height:1.2}
+.p4 .bd img{width:22px;height:22px}
+.p5{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.p5>span{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 20px 0 8px;border-radius:14px;background:#141319;border:1px solid var(--line);font:600 15px Manrope,sans-serif}
+.p5>span.on{background:linear-gradient(135deg,rgba(128,36,182,.35),rgba(178,38,27,.2));border-color:rgba(206,19,168,.5)}
+.p5 .ico{width:40px;height:40px;border-radius:10px}
+@media (max-width:700px){.p5{display:grid;grid-template-columns:1fr 1fr}}
+@media (max-width:700px){.top nav{margin-left:0;width:100%;flex-wrap:nowrap;overflow-x:auto}.top nav a.g{flex:none;padding:0 12px}}
+.pgs{display:flex;gap:6px;margin-left:8px}.pgs a{display:inline-flex;align-items:center;min-height:32px;padding:0 10px;border-radius:8px;color:var(--mute);text-decoration:none;font-weight:600;font-size:14px}.pgs a.on{background:rgba(255,255,255,.08);color:#fff}
+.nfr{position:relative;width:100%;height:min(86svh,820px);border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#07060A}.nfr iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.nfr .ld{position:absolute;inset:0;display:grid;place-items:center;color:var(--mute);font-size:14px}
+.foot2{padding:48px 16px 80px;text-align:center;color:var(--mute);border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header class="top"><a class="home" href="index.html">NOISY v22</a><span>/</span><b>Избор</b><span class="pgs"><a class="on" href="izbor.html">Страница 1</a><a href="izbor-2.html">Страница 2</a><a href="n-efekti.html">Ефекти N</a><a href="karusel-efekti.html">Ефекти карусел</a></span><nav aria-label="Раздели"><a class="g" href="#g-n">N</a><a class="g" href="#g-k">Карусел</a><a class="g" href="#g-c">Цени</a><a class="g" href="#g-g">Гаранции</a><a class="g" href="#g-p">Платформи</a></nav></header>
+<div class="intro"><h1>Избери вариантите</h1><p>Всичко на едно място: N, каруселът с модулите, цените, гаранциите и платформите. Към всеки раздел има няколко варианта с номер. Кажи например „N 4, карусел 2, цени B, гаранции 1, платформи 5“ и ги слагам в главната.</p></div>
+
+<section class="grp" id="g-n"><div class="gh"><h2>1 · N в началото</h2><p>Всеки прозорец е самата главна със слоевете на N, заглавието и бутона, плюс ефекта. Мръдни мишката върху прозореца, скролни вътре и ще видиш и прехода.</p></div>
+<div class="vv nfx"><h3><small>Вариант 1</small>Мек ореол</h3><p class="d">Зад N диша розова светлина, много бавно (9 сек).</p><div class="nfr" data-src="index.html?fx=1&amp;nointro=1"><span class="ld">Зарежда се…</span></div></div>
+<div class="vv nfx"><h3><small>Вариант 2</small>Цветна аура</h3><p class="d">Размазан кръг в цветовете на NOISY се върти зад N за 28 секунди.</p><div class="nfr" data-src="index.html?fx=2&amp;nointro=1"><span class="ld">Зарежда се…</span></div></div>
+<div class="vv nfx"><h3><small>Вариант 3</small>Светлинен контур</h3><p class="d">Тънък контур около N, по който на 7 секунди минава отблясък.</p><div class="nfr" data-src="index.html?fx=3&amp;nointro=1"><span class="ld">Зарежда се…</span></div></div>
+<div class="vv nfx"><h3><small>Вариант 4</small>3D наклон <span class="rec">Препоръка</span></h3><p class="d">N и слоевете му се накланят като предмет към мишката (на телефон бавно сами).</p><div class="nfr" data-src="index.html?fx=4&amp;nointro=1"><span class="ld">Зарежда се…</span></div></div>
+<div class="vv nfx"><h3><small>Вариант 5</small>Отражение</h3><p class="d">Под N се отразява видеото, като на тъмно стъкло.</p><div class="nfr" data-src="index.html?fx=5&amp;nointro=1"><span class="ld">Зарежда се…</span></div></div>
+<div class="vv nfx"><h3><small>Вариант 6</small>Сянка при скрол</h3><p class="d">Цветно копие на N се отделя встрани, докато скролваш.</p><div class="nfr" data-src="index.html?fx=6&amp;nointro=1"><span class="ld">Зарежда се…</span></div></div>
+<div class="vv nfx"><h3><small>Вариант 7</small>Бавни светлини</h3><p class="d">Размазани светлини плуват около логото, като боке.</p><div class="nfr" data-src="index.html?fx=7&amp;nointro=1"><span class="ld">Зарежда се…</span></div></div>
+<div class="vv nfx"><h3><small>Вариант 8</small>Голямо N във фона</h3><p class="d">Огромно бледо N зад логото се мести обратно на мишката и скрола.</p><div class="nfr" data-src="index.html?fx=8&amp;nointro=1"><span class="ld">Зарежда се…</span></div></div>
+</section>
+
+<section class="grp" id="g-k"><div class="gh"><h2>2 · Каруселът с модулите</h2><p>Горе избираш модул (NOISY, Theatre, Showtime, Arena, Newsroom), долу се сменят заглавията. Пет различни подредби и движения.</p></div>
+ <div class="vv"><h3><small>Карусел 1</small>Въртележка в 3D <span class="rec">Препоръка</span></h3><p class="d">Модулите стоят като на въртележка: средният е отпред, другите се накланят назад. Сменят се на 4,5 сек. Редовете отдолу скачат с по една карта в противоположни посоки.</p><div class="k k1" data-k="1"></div></div>
+ <div class="vv"><h3><small>Карусел 2</small>Табове с логата</h3><p class="d">Вместо големи карти: табове с логата на модулите и линия, която се пълни 6 сек. По-малко място, повече заглавия.</p><div class="k k2" data-k="2"></div></div>
+ <div class="vv"><h3><small>Карусел 3</small>Витрина</h3><p class="d">Един голям кадър на модула с бавен зум, отдолу малки миниатюри с линия за времето. Под тях един ред заглавия.</p><div class="k k3" data-k="3"></div></div>
+ <div class="vv"><h3><small>Карусел 4</small>Наклонена стена</h3><p class="d">Малки карти за избор горе, а заглавията са три реда в перспектива, като стена, и се движат на стъпки в различни посоки.</p><div class="k k4" data-k="4"></div></div>
+ <div class="vv"><h3><small>Карусел 5</small>Мозайка</h3><p class="d">Без плъзгане: една голяма и няколко малки плочки. На всяка секунда една от тях плавно се сменя с друго заглавие.</p><div class="k k5" data-k="5"></div></div>
+</section>
+
+<section class="grp" id="g-c"><div class="gh"><h2>3 · Цените</h2><p>Самата главна в рамка, превъртяна до цените. Разликата е в пакетите, отстоянията и размера.</p></div>
+ <div class="vv"><h3><small>Цени A</small>Както е сега</h3><p class="d">За сравнение.</p><iframe class="fr" data-src="index.html?pz=A" title="Цени A" loading="lazy"></iframe></div>
+ <div class="vv"><h3><small>Цени B</small>По-голямо и изравнено <span class="rec">Препоръка</span></h3><p class="d">На компютър всичко е с 10% по-голямо и по-широко, отстоянията са равни (40px), пакетите са по-големи карти с по-едри имена и логата.</p><iframe class="fr" data-src="index.html?pz=B" title="Цени B" loading="lazy"></iframe></div>
+ <div class="vv"><h3><small>Цени C</small>Пакетите като тънка лента</h3><p class="d">Без снимките: две тънки ленти с името и логата. Заема най-малко място, особено на телефон.</p><iframe class="fr" data-src="index.html?pz=C" title="Цени C" loading="lazy"></iframe></div>
+</section>
+
+<section class="grp" id="g-g"><div class="gh"><h2>4 · Гаранциите</h2><p>Едни и същи три неща, подредени по различен начин. Всички са компактни на телефон.</p></div>
+ <div class="vv"><h3><small>Гаранции 1</small>Една лента <span class="rec">Препоръка</span></h3><p class="d">Трите в една рамка с разделители. На телефон са три в един ред, само иконка и заглавие.</p><div class="G g1"><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><div><b>14 дни гаранция</b><span>Ако не ти хареса, връщаме парите.</span></div></div><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 7a8 8 0 1 0 11.4 0"/></svg></span><div><b>Спираш, когато решиш</b><span>С един бутон в профила, без обаждания.</span></div></div><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><div><b>Цената не се променя</b><span>Запазваш си цената, докато абонаментът е активен.</span></div></div></div></div>
+ <div class="vv"><h3><small>Гаранции 2</small>Списък в една карта</h3><p class="d">Тясна карта в средата, трите една под друга с тънки линии. Като в чекаут.</p><div class="G g2"><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><div><b>14 дни гаранция</b><span>Ако не ти хареса, връщаме парите.</span></div></div><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 7a8 8 0 1 0 11.4 0"/></svg></span><div><b>Спираш, когато решиш</b><span>С един бутон в профила, без обаждания.</span></div></div><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><div><b>Цената не се променя</b><span>Запазваш си цената, докато абонаментът е активен.</span></div></div></div></div>
+ <div class="vv"><h3><small>Гаранции 3</small>Карти с цветен кант</h3><p class="d">Три карти с градиентна рамка. На телефон се плъзгат настрани, вместо да са една под друга.</p><div class="G g3"><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><div><b>14 дни гаранция</b><span>Ако не ти хареса, връщаме парите.</span></div></div><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 7a8 8 0 1 0 11.4 0"/></svg></span><div><b>Спираш, когато решиш</b><span>С един бутон в профила, без обаждания.</span></div></div><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><div><b>Цената не се променя</b><span>Запазваш си цената, докато абонаментът е активен.</span></div></div></div></div>
+ <div class="vv"><h3><small>Гаранции 4</small>Акцент върху 14-те дни</h3><p class="d">Голямо „14“ в цветовете на NOISY и двете други до него. На телефон: голямото отгоре, двете отдолу една до друга.</p><div class="G g4"><div class="big"><strong>14</strong><div><b>дни гаранция</b><span>Ако не ти хареса, връщаме парите.</span></div></div><div><span class="ico" style="margin-bottom:10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 7a8 8 0 1 0 11.4 0"/></svg></span><b>Спираш, когато решиш</b><span>С един бутон в профила, без обаждания.</span></div><div><span class="ico" style="margin-bottom:10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><b>Цената не се променя</b><span>Запазваш си цената, докато абонаментът е активен.</span></div></div></div>
+ <div class="vv"><h3><small>Гаранции 5</small>Чипове</h3><p class="d">Само заглавията в заоблени чипове с цветна рамка, центрирани. Най-кратко.</p><div class="G g5"><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><b>14 дни гаранция</b></div><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 7a8 8 0 1 0 11.4 0"/></svg></span><b>Спираш, когато решиш</b></div><div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><b>Цената не се променя</b></div></div></div>
+</section>
+
+<section class="grp" id="g-p"><div class="gh"><h2>5 · Къде се гледа</h2><p>„В браузъра. Скоро и в приложенията.“ по пет начина, всичките по-компактни от сега.</p></div>
+ <div class="vv"><h3><small>Платформи 1</small>Карта и три иконки <span class="rec">Препоръка</span></h3><p class="d">Браузърът е главната карта, а App Store, Google Play и телевизорът са в един ред под нея (на телефон също).</p><h4 class="ttl">В браузъра. Скоро и в приложенията.</h4>
+  <div class="p1"><div class="main"><span class="ico"><img src="assets/p-globe.svg" alt=""></span><div><b>Гледай в браузъра</b><span>noisy.net, на телефон, таблет и компютър.</span></div><a class="btnw" href="https://noisy.net" target="_blank" rel="noopener">Отвори NOISY ↗</a></div>
+  <div class="row"><div><span class="ico"><img src="assets/p-apple.svg" alt=""></span><div><b>App Store</b><span>iPhone и iPad</span></div></div><div><span class="ico"><img src="assets/p-googleplay.svg" alt=""></span><div><b>Google Play</b><span>Android</span></div></div><div><span class="ico"><img src="assets/p-tv.svg" alt=""></span><div><b>Телевизор</b><span>Smart TV</span></div></div></div></div></div>
+ <div class="vv"><h3><small>Платформи 2</small>Текст и решетка</h3><p class="d">Вляво заглавие, изречение и бутон, вдясно четирите места 2 × 2. Браузърът е маркиран.</p>
+  <div class="p2"><div class="tx"><h4 class="ttl">В браузъра. Скоро и в приложенията.</h4><p>Отваряш noisy.net и гледаш. Без инсталиране.</p><a class="btnw" href="https://noisy.net" target="_blank" rel="noopener">Отвори NOISY ↗</a></div>
+  <div class="gr"><div class="on"><span class="ico"><img src="assets/p-globe.svg" alt=""></span><b>Браузър</b><span>Телефон, таблет, компютър</span></div><div><span class="ico"><img src="assets/p-apple.svg" alt=""></span><b>App Store</b><span>iPhone и iPad</span></div><div><span class="ico"><img src="assets/p-googleplay.svg" alt=""></span><b>Google Play</b><span>Android</span></div><div><span class="ico"><img src="assets/p-tv.svg" alt=""></span><b>Телевизор</b><span>Smart TV</span></div></div></div></div>
+ <div class="vv"><h3><small>Платформи 3</small>Устройствата</h3><p class="d">Телевизор, лаптоп и телефон с noisy.net на екрана, под тях малки знаци за магазините.</p><h4 class="ttl" style="text-align:center">В браузъра. Скоро и в приложенията.</h4>
+  <div class="p3"><div class="dev"><div class="scr tv">noisy.net</div><div class="scr lap">noisy.net</div><div class="scr ph">N</div></div><div class="bd"><span><img src="assets/p-apple.svg" alt="">App Store</span><span><img src="assets/p-googleplay.svg" alt="">Google Play</span><span><img src="assets/p-tv.svg" alt="">Smart TV</span></div></div></div>
+ <div class="vv"><h3><small>Платформи 4</small>Бутон и знаци</h3><p class="d">Един голям бутон „Гледай на noisy.net“ и под него знаци като тези на магазините.</p><h4 class="ttl" style="text-align:center">В браузъра. Скоро и в приложенията.</h4>
+  <div class="p4"><a class="btnw" href="https://noisy.net" target="_blank" rel="noopener">Гледай на noisy.net ↗</a><div class="bd"><span><img src="assets/p-apple.svg" alt=""><div><small>за iPhone и iPad</small><b>App Store</b></div></span><span><img src="assets/p-googleplay.svg" alt=""><div><small>за Android</small><b>Google Play</b></div></span><span><img src="assets/p-tv.svg" alt=""><div><small>за телевизора</small><b>Smart TV</b></div></span></div></div></div>
+ <div class="vv"><h3><small>Платформи 5</small>Един ред</h3><p class="d">Четирите места в един ред, браузърът е цветен. На телефон 2 × 2. Най-кратко.</p><h4 class="ttl" style="text-align:center">В браузъра. Скоро и в приложенията.</h4>
+  <div class="p5"><span class="on"><span class="ico"><img src="assets/p-globe.svg" alt=""></span>noisy.net</span><span><span class="ico"><img src="assets/p-apple.svg" alt=""></span>App Store</span><span><span class="ico"><img src="assets/p-googleplay.svg" alt=""></span>Google Play</span><span><span class="ico"><img src="assets/p-tv.svg" alt=""></span>Smart TV</span></div></div>
+</section>
+
+<div class="foot2">Кажи номерата, които ти харесват, и ги слагам в главната на v21.</div>
+
+
+<script>
+/* ===== цени: рамките се зареждат, когато стигнеш до тях, и се превъртат до цените ===== */
+(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var f=e.target;io.unobserve(f);
+ f.addEventListener('load',function(){var d=f.contentDocument,w=f.contentWindow;if(!d)return;var sk=d.getElementById('skip');if(sk)sk.click();
+  function to(){var c=d.getElementById('ceni');if(c)w.scrollTo(0,c.getBoundingClientRect().top+w.scrollY-70)}[400,1500,3000,5000].forEach(function(t){setTimeout(to,t)});var n=0;w.addEventListener('scroll',function(){n++},{passive:true})});f.src=f.dataset.src})},{rootMargin:'300px'});
+ [].forEach.call(document.querySelectorAll('.fr'),function(f){io.observe(f)})})();
+</script>
+<script>
+/* ===== каруселът: истинските данни от главната ===== */
+(function(){
+ var RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ var LOGO={noisy:'assets/logo.svg',theatre:'assets/Theatre.svg',showtime:'assets/Showtime.svg',arena:'assets/Arena.svg',newsroom:'assets/Newsroom.svg'};
+ fetch('index.html').then(function(r){return r.text()}).then(function(h){
+  var m=h.split('id="ag-data">')[1].split('<\/script>')[0],D=JSON.parse(m),S=D.slides,B=D.byWorld;
+  S.forEach(function(s){s.logo=LOGO[s.world]||LOGO.noisy});
+  [].forEach.call(document.querySelectorAll('.k'),function(el){build(el,+el.dataset.k,S,B)})});
+ function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+ function tiles(list){return list.map(function(x){return '<div class="k-t"><img src="'+x[0]+'" alt="" loading="lazy"><span>'+esc(x[1])+'</span></div>'}).join('')}
+ /* редове, които скачат с по една карта; посоката се редува */
+ function Rows(host,rowsData,opt){opt=opt||{};var rs=[];host.innerHTML='';
+  rowsData.forEach(function(r,k){var row=document.createElement('div');row.className='k-row';var tr=document.createElement('div');tr.className='k-tr';tr.innerHTML=tiles(r)+tiles(r)+tiles(r);row.appendChild(tr);host.appendChild(row);
+   rs.push({tr:tr,n:r.length,dir:(k+(opt.flip||0))%2?1:-1,o:0,i:0})});
+  function geo(q){var t=q.tr.children[0];return t?t.getBoundingClientRect().width+12:212}
+  rs.forEach(function(q){q.st=geo(q);q.o=q.dir<0?0:-q.st*q.n;q.tr.style.transform='translate3d('+q.o+'px,0,0)'});
+  return {step:function(){rs.forEach(function(q){q.st=geo(q);q.o+=q.dir*q.st;q.tr.style.transition='transform .9s cubic-bezier(.22,1,.36,1)';q.tr.style.transform='translate3d('+q.o+'px,0,0)';
+    setTimeout(function(){var w=q.dir<0?(q.o<=-q.st*q.n):(q.o>=0);if(w){q.o+=q.dir<0?q.st*q.n:-q.st*q.n;q.tr.style.transition='none';q.tr.style.transform='translate3d('+q.o+'px,0,0)'}},950)})}}}
+ function vis(el){var r=el.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight&&!document.hidden}
+ function daily(el){var p=document.createElement('p');p.className='k-daily';p.innerHTML='Всеки ден <span>ново съдържание.</span>';el.appendChild(p)}
+ function build(el,k,S,B){var cur=0,rowsBox=document.createElement('div');rowsBox.className='k-rows';var rows=null;
+  function setRows(i,only){rowsBox.classList.add('sw');setTimeout(function(){var d=B[S[i].world];rows=Rows(rowsBox,only?[d[0]]:d,{});rowsBox.classList.remove('sw')},300)}
+  if(k===1){var cf=document.createElement('div');cf.className='cf';cf.innerHTML=S.map(function(s,i){return '<div class="cc" data-i="'+i+'"><img class="bg" src="'+s.landscape+'" alt=""><img class="k-logo" src="'+s.logo+'" alt="'+esc(s.title)+'"></div>'}).join('');el.appendChild(cf);
+   var cs=[].slice.call(cf.children);function lay(){cs.forEach(function(c,i){var d=i-cur,n=S.length;if(d>n/2)d-=n;if(d<-n/2)d+=n;var a=Math.abs(d);
+    c.style.transform='translateX('+(d*62)+'%) translateZ('+(-a*140)+'px) rotateY('+(-d*28)+'deg)';c.style.opacity=a>2?0:a===2?.3:a===1?.65:1;c.style.zIndex=10-a;c.style.filter=a?'brightness(.7)':'none';c.classList.toggle('on',!a)})}
+   cs.forEach(function(c){c.addEventListener('click',function(){cur=+c.dataset.i;lay();setRows(cur);t0=Date.now()})});lay();el.appendChild(rowsBox);setRows(0);daily(el);
+   var t0=Date.now();setInterval(function(){if(!vis(el)||RM)return;if(Date.now()-t0>4500){cur=(cur+1)%S.length;lay();setRows(cur);t0=Date.now()}},300)}
+  if(k===2){var tb=document.createElement('div');tb.className='tabs';tb.innerHTML=S.map(function(s,i){return '<button type="button" class="tb" data-i="'+i+'"><img class="k-logo" src="'+s.logo+'" alt="'+esc(s.title)+'"><i></i></button>'}).join('');el.appendChild(tb);
+   var bs=[].slice.call(tb.children);function on(i){cur=i;bs.forEach(function(b,j){b.classList.remove('on');void b.offsetWidth;b.classList.toggle('on',j===i)});setRows(i);t0=Date.now()}
+   bs.forEach(function(b){b.addEventListener('click',function(){on(+b.dataset.i)})});el.appendChild(rowsBox);on(0);daily(el);var t0=Date.now();
+   setInterval(function(){if(!vis(el)||RM)return;if(Date.now()-t0>6000)on((cur+1)%S.length)},300)}
+  if(k===3){var st=document.createElement('div');st.className='stagec';el.appendChild(st);var th=document.createElement('div');th.className='th';th.innerHTML=S.map(function(s,i){return '<button type="button" class="thb" data-i="'+i+'" aria-label="'+esc(s.title)+'"><img src="'+s.landscape+'" alt=""><i></i></button>'}).join('');el.appendChild(th);
+   var tbs=[].slice.call(th.children);function on3(i){cur=i;var s=S[i];st.innerHTML='<img class="bg" src="'+s.landscape+'" alt=""><img class="k-logo" src="'+s.logo+'" alt="'+esc(s.title)+'">';tbs.forEach(function(b,j){b.classList.remove('on');void b.offsetWidth;b.classList.toggle('on',j===i)});setRows(i,true);t0=Date.now()}
+   tbs.forEach(function(b){b.addEventListener('click',function(){on3(+b.dataset.i)})});el.appendChild(rowsBox);on3(0);daily(el);var t0=Date.now();
+   setInterval(function(){if(!vis(el)||RM)return;if(Date.now()-t0>5000)on3((cur+1)%S.length)},300)}
+  if(k===4){var sel=document.createElement('div');sel.className='sel';sel.innerHTML=S.map(function(s,i){return '<div class="sc" data-i="'+i+'"><img class="bg" src="'+s.landscape+'" alt=""><img class="k-logo" src="'+s.logo+'" alt="'+esc(s.title)+'"></div>'}).join('');el.appendChild(sel);
+   var ss=[].slice.call(sel.children);function on4(i){cur=i;ss.forEach(function(c,j){c.classList.toggle('on',j===i)});var d=B[S[i].world];rowsBox.classList.add('sw');setTimeout(function(){rows=Rows(rowsBox,[d[0],d[1],d[0].slice().reverse()]);rowsBox.classList.remove('sw')},300);t0=Date.now()}
+   ss.forEach(function(c){c.addEventListener('click',function(){on4(+c.dataset.i)})});var wall=document.createElement('div');wall.className='wall';wall.appendChild(rowsBox);el.appendChild(wall);on4(0);daily(el);var t0=Date.now();
+   setInterval(function(){if(!vis(el)||RM)return;if(Date.now()-t0>6000)on4((cur+1)%S.length)},300)}
+  if(k===5){var ln=document.createElement('div');ln.className='lnk';ln.innerHTML=S.map(function(s,i){return '<button type="button" class="lk" data-i="'+i+'">'+esc(s.title)+'</button>'}).join('');el.appendChild(ln);
+   var bento=document.createElement('div');bento.className='bento';el.appendChild(bento);var pool=[],ptr=0,cells=[];
+   function on5(i){cur=i;[].forEach.call(ln.children,function(b,j){b.classList.toggle('on',j===i)});var d=B[S[i].world];pool=d[0].concat(d[1]);ptr=0;
+    bento.innerHTML='';cells=[];for(var c=0;c<5;c++){var x=pool[ptr++%pool.length],b=document.createElement('div');b.className='bt';b.innerHTML='<img src="'+x[0]+'" alt=""><span>'+esc(x[1])+'</span>';bento.appendChild(b);cells.push(b)}t0=Date.now()}
+   [].forEach.call(ln.children,function(b){b.addEventListener('click',function(){on5(+b.dataset.i)})});on5(0);daily(el);var t0=Date.now(),ci=0;
+   setInterval(function(){if(!vis(el)||RM)return;if(Date.now()-t0>9000){on5((cur+1)%S.length);return}var cell=cells[ci++%cells.length],x=pool[ptr++%pool.length],im=cell.querySelector('img'),sp=cell.querySelector('span');
+    im.style.opacity=0;sp.style.opacity=0;setTimeout(function(){im.src=x[0];sp.textContent=x[1];im.onload=function(){im.style.opacity=1;sp.style.opacity=1}},500)},1200)}
+  if(k!==5)setInterval(function(){if(rows&&vis(el)&&!RM)rows.step()},1600);
+ }
+})();
+</script>
+<script>(function(){var F=[].slice.call(document.querySelectorAll('.nfr'));function chk(){F.forEach(function(f){var r=f.getBoundingClientRect(),near=r.bottom>-innerHeight*.6&&r.top<innerHeight*1.6,i=f.querySelector('iframe');if(near&&!i){i=document.createElement('iframe');i.title='Главната с ефект';i.src=f.dataset.src;f.appendChild(i)}else if(!near&&i)i.remove()})}addEventListener('scroll',chk,{passive:true});addEventListener('resize',chk);chk()})();</script>
+</body>
+</html>

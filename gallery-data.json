@@ -1,0 +1,102 @@
+{
+ "autoMs": 6000,
+ "slides": [
+  {
+   "id": "igri",
+   "world": "showtime",
+   "title": "Игри на волята",
+   "category": "Реалити",
+   "description": "Важните моменти. Направо към тях.",
+   "portrait": "img/igri-2.jpg",
+   "landscape": "img/igri-2.jpg",
+   "video": "vid/kap.mp4",
+   "page": "showtime.html"
+  },
+  {
+   "id": "hotd",
+   "world": "theatre",
+   "title": "Домът на дракона",
+   "category": "Сериали",
+   "description": "Още един епизод. И цялата история.",
+   "portrait": "img/house-of-the-dragon-back.jpg",
+   "landscape": "img/house-of-the-dragon-back.jpg",
+   "video": "vid/hotd.mp4",
+   "page": "theatre.html"
+  },
+  {
+   "id": "arena",
+   "world": "arena",
+   "title": "Твоят мач",
+   "category": "Спорт",
+   "description": "Мачът, събитията и статистиката.",
+   "portrait": "img/levski-cl.jpg",
+   "landscape": "img/levski-cl.jpg",
+   "video": "vid/lev-goal.mp4",
+   "page": "arena.html"
+  },
+  {
+   "id": "fermata",
+   "world": "showtime",
+   "title": "Фермата",
+   "category": "Реалити",
+   "description": "От епизода до момента за групата.",
+   "portrait": "img/fermata-1.jpg",
+   "landscape": "img/fermata-1.jpg",
+   "video": "vid/fm.mp4",
+   "page": "showtime.html"
+  },
+  {
+   "id": "penguin",
+   "world": "theatre",
+   "title": "Пингвинът",
+   "category": "Сериали",
+   "description": "Историята и хората зад нея.",
+   "portrait": "img/the-penguin-back.jpg",
+   "landscape": "img/the-penguin-back.jpg",
+   "video": "vid/penguin.mp4",
+   "page": "theatre.html"
+  },
+  {
+   "id": "news",
+   "world": "newsroom",
+   "title": "Newsroom",
+   "category": "Новини",
+   "description": "Важното от деня, на едно място.",
+   "portrait": "img/news-btv.jpg",
+   "landscape": "img/news-btv.jpg",
+   "video": "vid/newsroom.mp4",
+   "page": "newsroom.html"
+  },
+  {
+   "id": "lotus",
+   "world": "theatre",
+   "title": "Белият лотос",
+   "category": "Сериали",
+   "description": "Намери следващата си история.",
+   "portrait": "img/white-lotus-back.jpg",
+   "landscape": "img/white-lotus-back.jpg",
+   "video": "vid/lotus.mp4",
+   "page": "theatre.html"
+  }
+ ],
+ "rows": [
+  [
+   "hotd",
+   "penguin",
+   "igri",
+   "lotus",
+   "fermata",
+   "arena",
+   "news"
+  ],
+  [
+   "fermata",
+   "lotus",
+   "arena",
+   "igri",
+   "news",
+   "hotd",
+   "penguin"
+  ]
+ ]
+}

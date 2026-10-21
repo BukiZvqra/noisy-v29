@@ -1,0 +1,18 @@
+/* 16.10 (Коста): секцията с карусела и редовете като във v20 (плоски карти, без 3D), без точки; последните картки в редовете са замъглени */
+.k20:not(.is-shrinking) .ag-stick #frame{perspective:none}
+.k20:not(.is-shrinking) .ag-slide:not(.is-current){transform:translate(calc(-50% + var(--ag-x,0px)),-50%);opacity:var(--ag-opacity,1)}
+.k20:not(.is-shrinking) .ag-slide{transition:opacity .5s!important}
+.k20:not(.is-shrinking) .ag-slide:not(.is-current) .ag-surface{filter:brightness(.8) saturate(.92)}
+.k20 .ag-pick{display:none!important}
+.k20 .ag-rows{position:relative}
+/* блърът е за горните картички: най-външните са замъглени и преливат в черното */
+/* 20.10 (Коста, [35]): без тъмния страничен ръб около видеото на хирото; страничната маска е махната */
+.k20 #frame{-webkit-mask-image:none;mask-image:none}
+/* 20.10 (Коста): страничните карти не са затъмнени и размазани в черно */
+.k20:not(.is-shrinking) .ag-slide:not(.is-current) .ag-surface{filter:brightness(.8) saturate(.92)}
+/* банерът с приложенията: лилавото преливане стига до края на екрана и изчезва */
+.wa{overflow:visible!important;isolation:isolate;background:none!important;border:0!important;border-radius:0!important}
+.wa::before{content:"";position:absolute;z-index:-1;pointer-events:none;top:-70px;bottom:-70px;left:calc(50% - 50vw);right:calc(50% - 50vw);background:radial-gradient(48% 60% at 22% 50%,rgba(206,19,168,.30),rgba(140,24,190,.12) 50%,transparent 80%);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 35%,#000 65%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 35%,#000 65%,transparent 100%)}
+
+/* 20.10 (Коста, пак): страничните карти не са затъмнени в черно във всяко състояние на карусела (v19.css ги затъмняваше и когато е .is-shrinking) */
+.k20 .ag-slide:not(.is-current) .ag-surface{filter:brightness(.8) saturate(.92)!important}

@@ -1,0 +1,178 @@
+/* Arena като Discover на главната (15.10.2026 нощ). Генерира се с _tools/build-arena-dc.py */
+/* хирото: значката ARENA над заглавието */
+.sc-bdg{display:block;width:clamp(150px,16vw,234px);height:auto;margin:0 auto 18px}
+@media (max-width:734px){.sc-bdg{width:150px;margin-bottom:12px}}
+
+/* етикетът на спорта в картата: N + тъмен етикет, както Theatre/Arena/Showtime/Newsroom */
+.ag-mod .sc-sp{display:inline-flex;align-items:center;gap:6px;height:22px;width:auto;max-width:none}
+.ag-mod .sc-sp img{display:block;height:100%;width:auto}
+.ag-mod .sc-sp b{display:inline-flex;align-items:center;height:100%;padding:0 10px;background:#231F20;clip-path:polygon(0 8%,100% 0,100% 92%,0 100%);font:500 11px/1 Manrope,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#fff;white-space:nowrap}
+@media (min-width:1069px){.ag-mod .sc-sp{height:26px}.ag-mod .sc-sp b{font-size:13px;padding:0 12px}}
+.ag-slide.is-current .ag-mod .sc-sp{height:30px}
+.ag-slide.is-current .ag-mod .sc-sp b{font-size:14px;padding:0 14px}
+
+/* плочка с логото на първенството (когато нямаме кадър) */
+.ag-tile .ag-tt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:18px;background:radial-gradient(120% 90% at 50% 0%,#2a1d3a 0%,#15121b 60%,#0f0d13 100%)}
+.ag-tile .ag-tt img{width:auto;height:58%;max-height:96px;aspect-ratio:1;border-radius:50%;object-fit:cover;box-shadow:0 10px 28px rgba(0,0,0,.5)}
+/* празна плочка: само името на първенството и знакът на спорта, оцветени по спорта */
+.ag-tile .ag-tt0::before{content:"";width:46%;height:60%;background:url(assets/symbol-outline.svg) no-repeat center/contain;opacity:.22}
+.ag-tile .ag-tt0[data-w=basketball]{background:radial-gradient(120% 90% at 50% 0%,#3a2414 0%,#17110d 60%,#100d0b 100%)}
+.ag-tile .ag-tt0[data-w=f1]{background:radial-gradient(120% 90% at 50% 0%,#3a1418 0%,#170d0f 60%,#100b0c 100%)}
+.ag-tile .ag-tt0[data-w=tennis]{background:radial-gradient(120% 90% at 50% 0%,#1d2f1a 0%,#10160f 60%,#0c100b 100%)}
+.ag-tile .ag-tt0[data-w=football]{background:radial-gradient(120% 90% at 50% 0%,#14283a 0%,#0d1217 60%,#0b0e10 100%)}
+
+/* Premium по плочките: дискретно, горе вдясно */
+.ag-tile .ag-pm{position:absolute;top:8px;right:8px;z-index:3;display:inline-flex;align-items:center;height:18px;padding:0 7px;border-radius:5px;background:linear-gradient(90deg,#8024B6,#8C238D 50%,#B2261B);font:700 9px/1 Manrope,system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#fff}
+
+/* дисклеймърът под редовете */
+.sc-pmn{padding:8px 20px 0;text-align:center}
+.sc-pmn .ar-note{margin:0 auto;max-width:60ch}
+
+/* ---------- банерът „Всичко, което видя тук“ (15.10 нощ): по-спокоен, с цена вдясно и картите като връзки ---------- */
+.ar-pr .ar-ban{padding:44px 44px 36px;border-radius:28px;background:radial-gradient(70% 90% at 0% 0%,rgba(128,36,182,.28),transparent 60%),radial-gradient(60% 80% at 100% 100%,rgba(178,38,27,.22),transparent 60%),#121117;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.ar-pr .ar-ban::before,.ar-pr .ar-ban::after{display:none}
+.ar-pr .ar-ban-h{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px 48px}
+.ar-ban-k{margin:0 0 12px;font:600 13px/1 Manrope,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.ar-pr .ar-ban h2{max-width:22ch;font:700 clamp(24px,2.6vw,38px)/1.15 Unbounded,Manrope,sans-serif;letter-spacing:-.03em;text-wrap:balance}
+.ar-ban-p{text-align:right}
+.ar-ban-p p{margin:0;display:flex;align-items:baseline;justify-content:flex-end;gap:8px;color:#fff}
+.ar-ban-p b{font:700 clamp(30px,3.2vw,44px)/1 Unbounded,Manrope,sans-serif;letter-spacing:-.03em}
+.ar-ban-p small{font:500 15px/1 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.7)}
+.ar-ban-p>span{display:block;margin-top:8px;font:400 14px/1.3 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.55)}
+.ar-pr .ar-mds{margin-top:36px;gap:16px}
+.ar-pr .ar-md{aspect-ratio:4/5;padding:0;border-radius:18px;background:#0d0c11}
+.ar-pr .ar-md-on{padding:18px}
+.ar-md-a{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:8px;padding:18px;color:#fff;text-decoration:none;border-radius:inherit}
+.ar-pr .ar-md-on{box-shadow:inset 0 0 0 2px rgba(206,19,168,.9),0 18px 50px rgba(206,19,168,.22)}
+.ar-pr .ar-md:not(.ar-md-on){box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.ar-pr .ar-md-k{left:16px;top:16px;height:28px;padding:0 12px 0 9px;font:600 13px/1 Manrope,system-ui,sans-serif}
+.ar-pr .ar-md-l{height:30px}
+.ar-pr .ar-md-d{font:500 15px/1.3 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.82)}
+.ar-md-go{display:inline-flex;align-items:center;gap:8px;margin-top:4px;font:700 14px/1 Manrope,system-ui,sans-serif;color:#fff;opacity:.0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.ar-md-go svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ar-md-a:hover .ar-md-go,.ar-md-a:focus-visible .ar-md-go{opacity:1;transform:none}
+@media (hover:none){.ar-md-go{opacity:.85;transform:none}}
+.ar-md-a:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+.ar-ban-b{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;margin-top:32px;padding-top:28px;border-top:1px solid rgba(255,255,255,.08)}
+.ar-ban-t{display:flex;flex-wrap:wrap;gap:10px 24px;margin:0;padding:0;list-style:none}
+.ar-ban-t li{display:flex;align-items:center;gap:8px;font:500 15px/1.4 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.85)}
+.ar-ban-t svg{flex:none;width:16px;height:16px;fill:none;stroke:#CE13A8;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ar-pr .ar-ban-a .btn{min-height:50px}
+@media (max-width:900px){
+  .ar-pr .ar-ban{padding:28px 18px 24px;border-radius:22px}
+  .ar-pr .ar-ban-h{grid-template-columns:1fr}
+  .ar-ban-p{text-align:left}.ar-ban-p p{justify-content:flex-start}
+  .ar-pr .ar-mds{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:24px}
+  .ar-pr .ar-md{aspect-ratio:3/4}
+  .ar-md-a,.ar-pr .ar-md-on{padding:12px}
+  .ar-pr .ar-md-k{left:10px;top:10px;height:24px;font-size:11px;padding:0 9px 0 7px}
+  .ar-pr .ar-md-l{height:22px}
+  .ar-pr .ar-md-d{font-size:13px}
+  .ar-ban-t{flex-direction:column;gap:10px}
+  .ar-ban-a{width:100%}.ar-pr .ar-ban-a .btn{flex:1 1 0}
+}
+
+/* ---------- Коста 15.10 нощ: сцената започва от видеото на цял екран, с текста за Arena върху него ---------- */
+#mods .nhero,#mods .hfl{display:none!important}
+.sc-ov{position:absolute;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 20px max(9vh,64px);text-align:center;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,9,13,.45) 0,rgba(10,9,13,0) 26%,rgba(10,9,13,.1) 45%,rgba(10,9,13,.82) 100%);
+  opacity:clamp(0,calc(1 - var(--ag-p,0)*5),1);transform:translateY(calc(var(--ag-p,0)*-36px));transition:visibility 0s}
+.sc-ov.gone{visibility:hidden}
+.sc-ov .sc-bdg{margin:0 auto 18px}
+.sc-ov h1{margin:0;max-width:18ch;font:700 clamp(34px,5.4vw,78px)/1.08 Unbounded,Manrope,sans-serif;letter-spacing:-.03em;color:#fff;text-wrap:balance}
+.sc-ov p{margin:16px 0 26px;max-width:46ch;font:400 clamp(16px,1.4vw,19px)/1.5 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.82)}
+.sc-ov .btn{pointer-events:auto;min-height:52px;padding:0 30px}
+.sc-scr{display:block;width:22px;height:34px;margin-top:22px;border:2px solid rgba(255,255,255,.55);border-radius:12px;position:relative}
+.sc-scr::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:7px;margin-left:-2px;border-radius:2px;background:#fff;animation:scScr 1.6s ease-in-out infinite}
+@keyframes scScr{0%{transform:translateY(0);opacity:1}70%{transform:translateY(9px);opacity:0}100%{opacity:0}}
+@media (max-width:734px){.sc-ov{padding-bottom:max(12vh,90px)}.sc-ov p{margin:12px 0 20px}}
+
+/* „Arena Premium“ в розовия градиент на марката */
+.sc-g{font-weight:700;background:linear-gradient(90deg,#B61DFF,#CE13A8 55%,#FF3B3B);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Коста 15.10 нощ: банерът разтеглен по ширината на екрана, по-едри карти */
+.ar-pr>.w{max-width:none;padding:0 clamp(16px,2.4vw,40px)}
+.ar-pr .ar-ban{max-width:1680px;margin:0 auto;padding:clamp(28px,3.6vw,64px)}
+.ar-pr .ar-ban h2{max-width:none;font-size:clamp(26px,3vw,48px)}
+.ar-pr .ar-mds{gap:clamp(10px,1.2vw,20px);margin-top:clamp(24px,3vw,48px)}
+.ar-pr .ar-md{aspect-ratio:5/6}
+@media (min-width:901px){.ar-pr .ar-md-l{height:clamp(30px,2.4vw,40px)}.ar-pr .ar-md-d{font-size:clamp(15px,1.15vw,18px)}}
+@media (max-width:900px){.ar-pr .ar-md{aspect-ratio:3/4}}
+.ar-pr .ar-ban h2 span{display:block}
+/* иконите на лигите между слогана и дисклеймъра */
+.sc-pmn .ar-lgw{margin:0 0 22px;padding-top:0}
+/* лигите и от другите спортове: логото върху светъл кръг */
+.sc-lgx img{object-fit:contain!important;background:#F3F2F5;padding:18%;box-sizing:border-box}
+.sc-pmn .ar-lgs{flex-wrap:wrap;justify-content:center;max-width:980px;margin:0 auto}
+@media (max-width:640px){.sc-pmn .ar-lgs{flex-wrap:wrap;gap:18px 10px}.sc-pmn .ar-lg{width:58px;height:58px}}
+@media (min-width:900px){.sc-pmn .ar-lgs{max-width:none;flex-wrap:nowrap;gap:0 18px}.sc-pmn .ar-lg{width:clamp(64px,6.4vw,92px);height:clamp(64px,6.4vw,92px)}}
+/* по-малко празно между банера и въпросите */
+.ar-sec.ar-pr{padding-bottom:clamp(24px,3vw,40px)}
+.ar-sec.ar-faq{padding-top:clamp(40px,4.5vw,64px)}
+
+/* ---------- Коста 16.10: епичните карти (като „Our Games“): героят стои в картата и излиза над нея ---------- */
+.ar-pr .ar-mds{margin-top:clamp(70px,8vw,130px)}
+.ar-pr .ar-md{overflow:visible;isolation:isolate;background:none}
+.ar-md-bg{position:absolute;inset:0;z-index:0;overflow:hidden;border-radius:inherit;background:#0d0c11;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ar-md-bg .ar-md-p,.ar-md-bg .ar-md-v{z-index:0;filter:blur(2px) brightness(.62) saturate(1.1);transform:scale(1.08)}
+.ar-pr .ar-md::after{z-index:2;border-radius:inherit;background:linear-gradient(180deg,rgba(10,9,13,0) 0%,rgba(10,9,13,0) 45%,rgba(10,9,13,.75) 72%,rgba(10,9,13,.96) 100%)}
+.ar-md-h{position:absolute;z-index:1;left:50%;bottom:16%;height:112%;width:auto;max-width:118%;object-fit:contain;object-position:50% 100%;pointer-events:none;
+  transform:translateX(-50%);transform-origin:50% 100%;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55));
+  -webkit-mask-image:linear-gradient(180deg,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,#000 82%,transparent 100%);
+  transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .6s}
+.ar-md[data-w=showtime] .ar-md-h{height:86%;max-width:130%}
+.ar-md[data-w=newsroom] .ar-md-h{height:104%}
+.ar-md-c,.ar-pr .ar-md-a{z-index:3}
+.ar-md-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:8px;padding:18px}
+.ar-pr .ar-md-k{z-index:4}
+.ar-pr .ar-md:hover .ar-md-h{transform:translateX(-50%) translateY(-7%) scale(1.06);filter:drop-shadow(0 28px 40px rgba(0,0,0,.6))}
+.ar-pr .ar-md:hover .ar-md-bg{transform:scale(1.02)}
+.ar-pr .ar-md:hover .ar-md-p,.ar-pr .ar-md:hover .ar-md-v{transform:scale(1.12)}
+@media (max-width:900px){.ar-pr .ar-mds{margin-top:56px;row-gap:56px}.ar-md-c{padding:12px}.ar-md-h{height:108%}}
+@media (prefers-reduced-motion:reduce){.ar-md-h,.ar-md-bg{transition:none}}
+.ar-pr .ar-md-on{padding:0}
+.ar-md[data-w=newsroom] .ar-md-h{height:92%;max-width:96%}
+.ar-md-c{padding-bottom:42px}@media (max-width:900px){.ar-md-c{padding-bottom:36px}}
+/* Коста 16.10: 2 карти с герой, 2 с голямото лого на модула; ефектът в 3D */
+.ar-pr .ar-mds{perspective:1200px}
+.ar-pr .ar-md{transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ar-pr .ar-md:hover{transform:rotateX(4deg) rotateY(-5deg) translateY(-4px)}
+.ar-md-h{transform:translateX(-50%) translateZ(40px)}
+.ar-pr .ar-md:hover .ar-md-h{transform:translateX(-50%) translateY(-7%) translateZ(70px) scale(1.06)}
+.ar-md-h.ar-md-lg{bottom:58%;height:auto;width:96%;max-width:none;-webkit-mask-image:none;mask-image:none;
+  filter:drop-shadow(0 20px 26px rgba(0,0,0,.65)) drop-shadow(0 0 30px rgba(206,19,168,.35));transform:translateX(-50%) rotate(-4deg) translateZ(50px)}
+.ar-pr .ar-md:hover .ar-md-h.ar-md-lg{transform:translateX(-50%) translateY(-14%) rotate(-2deg) translateZ(80px) scale(1.06)}
+.ar-md-logo .ar-md-l{display:none}
+@media (max-width:900px){.ar-md-h.ar-md-lg{width:100%;bottom:60%}}
+.ar-md-h.ar-md-lg{bottom:80%;width:104%}@media (max-width:900px){.ar-md-h.ar-md-lg{bottom:84%;width:108%}}
+.ar-pr .ar-md-logo .ar-md-k{top:auto;bottom:86px}@media (max-width:900px){.ar-pr .ar-md-logo .ar-md-k{bottom:70px}}
+/* 16.10: само героите; баскетболистите са по-широк кадър */
+.ar-md[data-w=arena] .ar-md-h{height:110%;max-width:112%}
+/* 16.10: лигите стоят под редовете вместо слогана */
+#mods .sc-lgin{margin:clamp(28px,3vw,48px) auto 0;padding:0 20px}
+#mods .sc-lgin .ar-lgs{flex-wrap:nowrap;justify-content:center;gap:0 clamp(10px,1.4vw,22px)}
+#mods .sc-lgin .ar-lg{width:clamp(48px,5.4vw,84px);height:clamp(48px,5.4vw,84px)}
+@media (max-width:734px){#mods .sc-lgin .ar-lgs{flex-wrap:wrap;gap:16px 10px}}
+/* 16.10: повече въздух между точките на „Повече от мача“ и Livescore */
+.ar-sec.ar-ls{margin-top:clamp(48px,5vw,90px)}
+/* 16.10: банерът без 3D наклон (не се връзва с дизайна); героите остават и леко се вдигат */
+.ar-pr .ar-mds{perspective:none}
+.ar-pr .ar-md,.ar-pr .ar-md:hover{transform:none!important}
+.ar-md-h{transform:translateX(-50%)}
+.ar-pr .ar-md:hover .ar-md-h{transform:translateX(-50%) translateY(-4%) scale(1.03)}
+.ar-sec.ar-more{padding-bottom:clamp(64px,7vw,120px)}
+/* 16.10: дисклеймърът е точно под иконите на лигите */
+#mods .sc-lgin .ar-note{margin:14px auto 0;max-width:60ch;text-align:center}
+#mods .sc-lgin .ar-note{max-width:none;white-space:nowrap;font-size:13px}@media (max-width:734px){#mods .sc-lgin .ar-note{white-space:normal;font-size:12px;line-height:1.4}}
+/* 16.10 вечер (Коста): обикновени карти - размазан кадър, лого и текст; без изскачащи герои и 3D; цената под картите */
+.ar-pr .ar-md-h,.ar-pr .ar-md-lg{display:none!important}
+.ar-pr .ar-mds{margin-top:clamp(28px,3vw,48px)}
+.ar-pr .ar-md{aspect-ratio:4/3;overflow:hidden}
+.ar-pr .ar-md-bg .ar-md-p,.ar-pr .ar-md-bg .ar-md-v{filter:blur(6px) brightness(.6) saturate(1.1);transform:scale(1.12)}
+.ar-pr .ar-md:hover .ar-md-p,.ar-pr .ar-md:hover .ar-md-v{transform:scale(1.16)}
+.ar-pr .ar-md-logo .ar-md-l{display:block}
+.ar-pr .ar-md-logo .ar-md-k{top:16px;bottom:auto}
+.ar-pr .ar-ban-h{grid-template-columns:1fr}
+.ar-ban-p2{display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:clamp(24px,2.6vw,40px);text-align:center}
+.ar-ban-p2 p{justify-content:center}
+.ar-ban-p2>span{margin-top:0}
+@media (max-width:900px){.ar-pr .ar-mds{row-gap:10px;margin-top:24px}.ar-pr .ar-md{aspect-ratio:1/1}}

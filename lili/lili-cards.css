@@ -1,0 +1,157 @@
+/* Scene choreography extends the measured Noisy register. */
+.fx-status{max-width:1120px;margin:4px auto 0;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fx-status p{margin:0;color:#a4a4aa;font-size:14px}
+#fx-run,#fx-pause{display:inline-flex;gap:8px;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:1px solid #ffffff24;border-radius:980px;color:#eee;background:transparent;font:500 14px Manrope,sans-serif;cursor:pointer;white-space:nowrap}
+#fx-run:hover,#fx-pause:hover{background:#ffffff0d}#fx-run:focus-visible,#fx-pause:focus-visible{outline:2px solid #fff;outline-offset:4px}
+#fx-run:disabled{opacity:.4;cursor:default}
+.fx-replay{display:none}
+.fx-managed .st{perspective:1400px}
+.fx-managed .tx{transition:none!important;opacity:1;transform:none}
+.fx-managed .dv{transition:none!important}
+.fx-device-motion{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 60%}
+.fx-scene-art{position:absolute;inset:0;pointer-events:none;z-index:3}
+.fx-managed[data-i="0"]{background:radial-gradient(ellipse at 65% 70%,#36252e 0%,#242224 45%,#1c1b1e 100%)}
+.fx-share-clip{position:absolute;left:920px;top:215px;width:220px;height:280px;border:1px solid #ffffff33;border-radius:20px;overflow:hidden;box-shadow:0 24px 48px #0008;transform-origin:0 80%;background:#18171b}
+.fx-share-image{height:190px;background:url('vid/share-editor-v12.jpg') center 18.6%/245.45% auto}
+.fx-share-caption{padding:16px;display:grid;gap:8px}.fx-share-caption>span{font-size:14px;color:#aaa}
+.fx-share-caption b{font-size:15px;font-weight:600}.fx-share-caption b span{color:#ff5fc4;padding-left:12px}
+.fx-share-selection{position:absolute;left:703px;top:190px;width:212px;height:190px;border:2px solid #ff5fc4;border-radius:12px;transform-origin:50% 50%}
+.fx-share-selection>i{position:absolute;top:50%;width:6px;height:24px;background:#ff5fc4;border-radius:3px}.fx-share-selection>i:first-child{left:-4px}.fx-share-selection>i:nth-child(2){right:-4px}
+.fx-share-selection>span{position:absolute;top:-34px;left:0;white-space:nowrap;font-size:14px;color:#ffd2ed}
+.fx-share-line{position:absolute;left:540px;top:480px;width:520px;height:1px;background:#ffffff12}
+.fx-share-line b{position:absolute;inset:0;background:#e827ad;transform-origin:left center}
+.fx-share-line i{position:absolute;width:8px;height:8px;background:#ff5fc4;border-radius:980px;top:-4px}.fx-share-line i:last-child{right:0}
+.fx-managed[data-i="1"]{background:radial-gradient(ellipse at 72% 55%,#173039 0%,#192226 48%,#181b1d 100%)}
+.fx-managed[data-i="1"] .fx-device-motion{z-index:4}
+.fx-arena-field{position:absolute;left:530px;top:330px;width:680px;height:290px;border:1px solid #8ad6c133;transform-origin:center;box-shadow:inset 0 0 80px #63dcc80d}
+.fx-arena-field::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#8ad6c133}
+.fx-arena-circle{position:absolute;left:calc(50% - 85px);top:calc(50% - 85px);width:170px;height:170px;border:1px solid #8ad6c144;border-radius:50%}
+.fx-arena-box{position:absolute;top:25%;height:50%;width:16%;border:1px solid #8ad6c133}.fx-arena-box.left{left:0;border-left:0}.fx-arena-box.right{right:0;border-right:0}
+.fx-arena-lights{position:absolute;inset:0;z-index:-1;opacity:.75}
+.fx-arena-lights i{position:absolute;top:10px;width:520px;height:600px;background:conic-gradient(from 166deg at 50% 0%,transparent 0deg,#b4e8f214 14deg,transparent 29deg);transform-origin:50% 0}
+.fx-arena-lights i:first-child{left:470px;transform:rotate(-16deg)}.fx-arena-lights i:last-child{right:0;transform:rotate(16deg)}
+.fx-arena-ribbon{display:none!important;position:absolute;left:430px;top:550px;display:flex;align-items:center;gap:20px;font-size:16px}
+.fx-arena-ribbon>span{color:#94d1d0;display:flex;align-items:center;gap:8px}.fx-arena-ribbon i{width:6px;height:6px;border-radius:980px;background:#9bf2d8;box-shadow:0 0 12px #8cf0ce}
+.fx-arena-ribbon b{font-weight:500;color:#c8cecf}
+.fx-arena-pulse{position:absolute;left:560px;top:190px;width:640px;height:320px;border:1px solid #a9edf7;border-radius:50%;opacity:0}
+.fx-managed[data-i="2"]{background:radial-gradient(ellipse at 50% 45%,#34302e 0%,#242326 55%,#1b1b1d 100%)}
+/* Five real video previews, with product UI rendered as sharp text. */
+.fx-week-board{position:absolute;left:32px;right:32px;top:42px;height:332px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+.fx-week-tile{position:relative;min-width:0;height:332px;border-radius:12px;overflow:hidden;border:1px solid #ffffff26;background:#171719;box-shadow:0 16px 30px #0004}
+.fx-week-tile video{width:100%;height:100%;object-fit:cover;display:block}
+.fx-week-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0007,transparent 40%,#000e 100%)}
+.fx-week-heading,.fx-week-title,.fx-week-events{position:absolute;z-index:1;left:12px;right:12px}
+.fx-week-heading{top:12px;display:flex;gap:5px;align-items:center}.fx-week-heading strong{font-size:26px;line-height:1}.fx-week-heading>span{font-size:10px;line-height:1.15}.fx-week-heading small{display:block;font-size:10px;color:#ddd}
+.fx-week-heading em{margin-left:auto;font-size:10px;font-style:normal;padding:3px 8px;border-radius:980px;background:#ce13a8}
+.fx-week-title{top:54px;font-size:13px;line-height:1.3;font-weight:600;text-shadow:0 1px 12px #000}
+.fx-week-events{bottom:12px;display:grid;gap:5px}.fx-week-events span{font-size:11px;line-height:1.3;padding:9px 8px;background:#ffffff10;border-radius:4px;backdrop-filter:blur(12px)}
+.fx-week-line{position:absolute;left:40px;right:40px;top:416px;display:flex;justify-content:space-between;border-bottom:1px solid #ffffff20;padding-bottom:16px;color:#a6a2a0;font-size:16px}.fx-week-line b{font-weight:500;color:#eee}
+.fx-week-tabs{display:none}
+.fx-managed[data-i="3"]{background:radial-gradient(ellipse at 72% 50%,#34302e 0%,#242326 55%,#1b1b1d 100%)}
+.fx-cast-phone{border-radius:40px;background:#050506;padding:6px;box-shadow:inset 0 0 0 2px #8f9196,inset 0 0 0 3px #3a3b3f,0 26px 60px #0009;overflow:visible}
+.fx-cast-phone::before{content:"";position:absolute;left:-3px;top:98px;width:3px;height:22px;border-radius:2px 0 0 2px;background:#7d7f84;box-shadow:0 52px 0 #7d7f84,0 98px 0 #7d7f84}
+.fx-cast-phone::after{content:"";position:absolute;right:-3px;top:150px;width:3px;height:64px;border-radius:0 2px 2px 0;background:#7d7f84}
+.fx-cast-screen{width:100%;height:100%;border-radius:33px;overflow:hidden;background:#050506}
+.fx-cast-screen video{width:100%;height:100%;display:block;object-fit:cover}
+.fx-cast-speaker{position:absolute;width:74px;height:22px;left:calc(50% - 37px);top:14px;border-radius:980px;background:#000}
+.fx-managed[data-i="4"]{background:radial-gradient(ellipse at 20% 60%,#302228 0%,#232224 50%,#1b1b1d 100%)}
+.fx-moment-track{position:absolute;left:660px;top:460px;width:470px}
+.fx-moment-wire{position:absolute;left:24px;right:24px;top:24px;height:1px;background:#ffffff26}.fx-moment-wire b{display:block;width:100%;height:100%;background:#ff5fc4;transform-origin:left center}
+.fx-moment-nodes{display:flex;align-items:center;justify-content:space-between;position:relative;height:48px}.fx-moment-nodes button{font-size:22px;width:40px;height:40px;display:grid;place-items:center;background:#252128;border:1px solid #ffffff26;border-radius:980px;font-style:normal;transition:border-color .3s,box-shadow .3s}
+.fx-moment-nodes button.selected{width:56px;height:48px;background:#4b273f;border-color:#ff5fc4;box-shadow:0 0 24px #e327a92b}
+.fx-moment-caption{display:flex;justify-content:space-between;margin:16px 0 0;color:#ccc;font-size:16px}.fx-moment-caption b{font-weight:500}.fx-moment-caption>span{color:#ff93d7;font-variant-numeric:tabular-nums}
+.fx-managed[data-i="5"] .full{transform-origin:65% 50%}
+.fx-managed[data-i="5"] .full::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#111116eb 0%,#141419a8 40%,#11111612 75%),linear-gradient(0deg,#111116aa 0%,transparent 40%)}
+.fx-news-shutters{position:absolute;inset:0;display:flex;gap:0;z-index:6}.fx-news-shutters i{width:20%;height:100%;background:#1b1b1d;transform-origin:50% 0}
+.fx-news-edition{position:absolute;left:795px;top:96px;display:grid;gap:20px;width:330px}
+.fx-news-edition>span{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:#b6bec6}
+.fx-news-edition b{font-size:48px;line-height:1.12;letter-spacing:-.025em;font-weight:500}
+.fx-news-edition>i{width:56px;height:2px;background:#afdbf0;transform-origin:left center}
+.fx-news-signal{position:absolute;left:135px;top:484px;height:24px;display:flex;gap:5px;align-items:center}
+.fx-news-signal i{display:block;width:3px;height:12px;background:#c2dce9;transform-origin:center}.fx-news-signal i:nth-child(2),.fx-news-signal i:nth-child(4){height:20px}.fx-news-signal i:nth-child(3){height:28px}
+.fx-news-signal>span{font-size:15px;color:#bec7cf;margin-left:12px}
+@media(min-width:735px){.fx-managed .dv{transform:none!important}.fx-managed[data-i="2"] .tx{top:484px!important}}
+@media(max-width:734px){
+ .fx-status{padding:0 24px;gap:8px;align-items:center;flex-wrap:wrap}.fx-status p{font-size:15px}#fx-run,#fx-pause{font-size:15px;padding:0 12px}
+ .card{height:620px}.fx-dragon{height:580px}
+ .fx-managed[data-i="0"] .dv{transform:scale(.73)!important;top:190px!important;left:calc(50% - 112px)!important}
+ .fx-managed[data-i="1"] .dv{transform:scale(calc((100vw - 88px)/642px))!important;left:28px!important;top:290px!important}
+ .fx-share-clip{left:calc(50% + 6px);top:300px;width:160px;height:248px;border-radius:16px}
+ .fx-share-image{height:136px}.fx-share-caption{padding:12px;gap:6px}.fx-share-caption>span{font-size:15px}.fx-share-caption b{font-size:15px}.fx-share-caption b span{padding-left:2px}
+ .fx-share-line{left:30px;top:536px;width:calc(100% - 60px)}
+ .fx-share-selection{left:calc(50% - 98px);top:280px;width:155px;height:130px}.fx-share-selection>span{font-size:15px;top:-28px}
+ .fx-arena-field{left:24px;top:330px;width:calc(100% - 48px);height:260px}.fx-arena-circle{width:100px;height:100px;left:calc(50% - 50px);top:calc(50% - 50px)}
+ .fx-arena-lights i{top:150px;width:100%;height:420px}.fx-arena-lights i:first-child{left:-10%}.fx-arena-lights i:last-child{right:-10%}
+ .fx-arena-ribbon{left:24px;right:24px;top:505px;gap:12px;font-size:15px;justify-content:center}.fx-arena-ribbon b{font-size:15px}
+ .fx-arena-pulse{left:24px;top:300px;width:calc(100% - 48px);height:190px}
+ .fx-managed[data-i="2"] .tx p{font-size:22px!important}
+ .fx-week-board{top:267px;left:calc(50% - 112px);right:auto;width:224px;height:288px;display:block}
+ .fx-week-tile{position:absolute;inset:0;height:288px;visibility:hidden}.fx-week-tile.selected{visibility:visible}
+ .fx-week-heading strong{font-size:28px}.fx-week-heading>span,.fx-week-heading small{font-size:11px}.fx-week-title{font-size:15px}.fx-week-events span{font-size:13px}
+ .fx-week-tabs{position:absolute;display:flex;left:24px;right:24px;top:207px;gap:6px;z-index:5;justify-content:space-between}
+ .fx-week-tabs button{appearance:none;min-width:44px;height:48px;flex:1;border:1px solid #ffffff20;border-radius:12px;background:#ffffff05;color:#aaa;font:600 15px Manrope,sans-serif;cursor:pointer}
+ .fx-week-tabs button span{display:block;font-size:10px}.fx-week-tabs button[aria-pressed="true"]{color:#fff;background:#ce13a833;border-color:#ff5fc4}.fx-week-tabs button:focus-visible{outline:2px solid white;outline-offset:3px}
+ .fx-week-line{left:24px;right:24px;top:578px;font-size:15px;padding-bottom:12px}
+ .fx-managed[data-i="3"] .dv{left:calc(50% - 134px)!important;top:190px!important;transform:scale(.7)!important;transform-origin:50% 0;opacity:1}
+ .fx-managed[data-i="4"] .tx p{font-size:22px!important}.fx-managed[data-i="4"] .dv{top:204px!important;left:calc(50% - 94px)!important;transform:scale(.66)!important}
+ .fx-moment-track{left:24px;top:526px;width:calc(100% - 48px)}.fx-moment-nodes button{width:40px;height:40px;font-size:18px}.fx-moment-nodes button.selected{width:56px}.fx-moment-wire{top:20px;left:20px;right:20px}.fx-moment-caption{font-size:15px;margin-top:12px}
+ .fx-news-edition{left:24px;top:60px;width:calc(100% - 48px);gap:16px}.fx-news-edition b{font-size:40px}.fx-news-edition>span{display:none}
+ .fx-managed[data-i="5"] .tx{top:370px!important}.fx-managed[data-i="5"] .full video{object-position:65% center;filter:brightness(.7)}
+ .fx-managed[data-i="5"] .full::after{background:linear-gradient(0deg,#111116 0%,#111116b3 30%,#11111614 75%)}
+ .fx-news-signal{left:24px;top:550px}.fx-news-signal>span{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){.fx-moment-nodes button{transition:none}.ctl button{transition:none}}
+
+/* Timeline controls keep their physical size inside the scaled stage. */
+.fx-moment-track{--moment-scale:var(--k,1);z-index:5}
+.fx-moment-nodes{height:calc(48px / var(--moment-scale))}
+.fx-moment-nodes button{appearance:none;color:inherit;cursor:pointer;padding:0;width:calc(44px / var(--moment-scale));height:calc(44px / var(--moment-scale));font-size:calc(20px / var(--moment-scale));flex:none}
+.fx-moment-nodes button.selected{width:calc(56px / var(--moment-scale));height:calc(48px / var(--moment-scale))}
+.fx-moment-nodes button:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.fx-moment-wire{top:calc(24px / var(--moment-scale))}
+.fx-moment-caption{font-size:calc(15px / var(--moment-scale));margin-top:calc(12px / var(--moment-scale))}
+@media(min-width:735px) and (max-width:1023px){.fx-moment-track{top:420px}}
+@media(max-width:734px){.fx-moment-track{--moment-scale:1}}
+
+/* The screen and the foreground share a measured aperture, including fingertips. */
+@media(min-width:735px){.fx-managed[data-i="3"] .tx{left:80px!important;top:214px!important;width:450px!important}}
+@media(max-width:734px){.fx-managed[data-i="3"] .tx{top:32px!important}}
+
+/* The complete desktop week sequence is a real video, including its UI choreography. */
+.fx-week-film{position:absolute;left:0;top:0;width:1260px;height:446px}.fx-week-film video{display:block;width:100%;height:100%;object-fit:contain}
+.fx-week-film{display:none}
+/* Desktop week: live tiles over native 600x800 clips, so every pixel is sharp on retina. */
+@media(min-width:735px){
+ .fx-week-board{left:64px;right:64px;top:170px;height:398px;gap:18px}
+ .fx-week-tile{height:398px;border-radius:20px;border-color:#ffffff1f;box-shadow:0 22px 44px #0006,inset 0 0 0 1px #ffffff0d;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+ .fx-week-tile::after{background:linear-gradient(180deg,#000c,#0004 26%,transparent 46%,#000f 100%)}
+ .fx-week-heading{top:16px;left:16px;right:16px;gap:7px}.fx-week-heading strong{font-size:38px;font-weight:700;letter-spacing:-.03em}.fx-week-heading>span{font-size:12px;font-weight:600;letter-spacing:.04em}.fx-week-heading small{font-size:11px;font-weight:500;letter-spacing:.06em;color:#e4e4e8}
+ .fx-week-heading em{font-size:12px;font-weight:700;padding:4px 10px}
+ .fx-week-title{top:68px;left:16px;right:16px;font-size:17px;line-height:1.25;font-weight:650;letter-spacing:-.01em}
+ .fx-week-events{bottom:16px;left:14px;right:14px;gap:6px}.fx-week-events span{font-size:13px;font-weight:550;padding:10px 11px;border-radius:9px;background:#ffffff1c;box-shadow:inset 0 0 0 1px #ffffff14}
+ .fx-week-line{display:none}
+ .fx-managed[data-i="2"] .tx{top:36px!important;left:64px!important;width:1100px!important;gap:22px!important}
+ .fx-managed[data-i="2"] .tx p{font-size:32px!important;max-width:820px}
+}
+
+.fx-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){#fx-pause{display:none}}
+
+
+/* Fingertips overlap the right edge of the screen at touch-sized row heights; keep the times clear. */
+
+/* Newsroom: the edition line supports the headline instead of competing with it. */
+.fx-news-edition>span{display:none}
+.fx-news-edition b{font-size:34px}
+@media(max-width:734px){.fx-news-edition b{font-size:32px}}
+
+/* Arena: show the whole 16:9 broadcast like a real phone (pillarbox), island sits in the left bar. */
+
+
+/* Share: a soft light blooms behind the phone. */
+.fx-share-glow{position:absolute;left:549px;top:64px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,#ce13a85c 0,#ce13a824 42%,transparent 68%);filter:blur(10px);pointer-events:none}
+@media(max-width:734px){.fx-share-glow{left:calc(45% - 190px);top:215px;width:380px;height:380px}}
+.fx-managed[data-i="0"] .fx-device-motion{z-index:4}
+
+/* Моменти: чист телефон без ръка, екранът е същият като преди, мащабиран по рамката */
+.fx-managed[data-i="4"] .jpw{transform:scale(.858);transform-origin:0 0}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="bg"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NOISY - експерименти с хирото</title><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A090D;--p1:#8024B6;--p2:#CE13A8;--p3:#E5273E}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:#fff;font-family:Manrope,system-ui,sans-serif}
+img,video{display:block}a{color:inherit}
+.bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:12px clamp(16px,3vw,40px);background:rgba(10,9,13,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bar img{height:24px}.bar nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.bar nav a{padding:8px 14px;border-radius:999px;font:600 13px/1 Manrope,sans-serif;text-decoration:none;color:rgba(255,255,255,.65);background:rgba(255,255,255,.06)}
+.bar nav a:hover{color:#fff;background:rgba(255,255,255,.14)}
+.v{position:relative;min-height:min(100svh,860px);overflow:hidden;display:grid;place-items:center;padding:96px clamp(16px,3vw,40px) 72px;border-bottom:1px solid rgba(255,255,255,.08)}
+.tag{position:absolute;left:clamp(16px,3vw,40px);top:24px;z-index:5;display:inline-flex;gap:10px;align-items:center;font:700 12px/1 Manrope;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.tag b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:linear-gradient(90deg,var(--p1),var(--p2));color:#fff;letter-spacing:0}
+h1{margin:0;font:700 clamp(34px,5.4vw,84px)/1.04 Unbounded,Manrope,sans-serif;letter-spacing:-.04em;text-wrap:balance}
+h1 em{font-style:normal;background:linear-gradient(90deg,#B25CF0,var(--p2) 55%,var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin:18px 0 0;font:500 clamp(15px,1.4vw,20px)/1.5 Manrope;color:rgba(255,255,255,.75)}
+.cta{display:flex;gap:14px;align-items:center;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;border-radius:10px;font:700 16px/1 Manrope;text-decoration:none;background:linear-gradient(90deg,var(--p1),#B01E5C 60%,var(--p3));color:#fff}
+.fine{font:500 14px/1 Manrope;color:rgba(255,255,255,.6)}
+.c{position:relative;z-index:3;text-align:center;max-width:980px}
+.c .cta{justify-content:center}
+.note{position:absolute;right:clamp(16px,3vw,40px);top:24px;z-index:5;max-width:44ch;text-align:right;font:500 12px/1.4 Manrope;color:rgba(255,255,255,.5)}
+/* A: сцена */
+.a video,.a>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.a::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(70% 60% at 50% 50%,rgba(10,9,13,.35),rgba(10,9,13,.88)),linear-gradient(180deg,rgba(10,9,13,.5),transparent 30%,rgba(10,9,13,.95))}
+.a .chips{position:absolute;z-index:3;left:0;right:0;bottom:28px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:0 16px}
+.chip{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.1);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:600 14px/1 Manrope;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--p2)}
+/* B: две ленти */
+.b{background:radial-gradient(60% 50% at 50% 50%,#1b0c26,var(--bg))}
+.b .rows{position:absolute;inset:-6% -10%;z-index:1;display:flex;flex-direction:column;justify-content:center;gap:16px;transform:rotate(-6deg);opacity:.55}
+.b .row{display:flex;gap:16px;width:max-content;animation:mv 70s linear infinite}
+.b .row:nth-child(2){animation-direction:reverse;animation-duration:85s}.b .row:nth-child(3){animation-duration:95s}
+.b .row img{width:300px;height:170px;object-fit:cover;border-radius:12px}
+@keyframes mv{to{transform:translateX(-50%)}}
+.b::after{content:"";position:absolute;inset:0;z-index:2;background:radial-gradient(55% 55% at 50% 50%,rgba(10,9,13,.92),rgba(10,9,13,.35) 70%,rgba(10,9,13,.85))}
+/* C: една рамка */
+.cc{align-content:center}
+.cc .stage{position:relative;z-index:2;width:min(980px,100%);margin-top:40px}
+.cc .scr{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 40px 120px rgba(128,36,182,.35)}
+.cc .scr video{width:100%;height:100%;object-fit:cover}
+.cc .scr::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,9,13,.7))}
+.cc .tabs{position:absolute;z-index:3;left:18px;bottom:16px;display:flex;gap:8px;flex-wrap:wrap}
+.cc .glow{position:absolute;inset:20% 10% auto;height:60%;background:radial-gradient(closest-side,rgba(206,19,168,.28),transparent);filter:blur(30px)}
+/* D: подредена мозайка */
+.d{place-items:stretch}
+.d .grid{position:absolute;inset:0;z-index:1;overflow:hidden;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:12px;padding:12px;opacity:.85}
+.d .grid img{width:100%;height:100%;min-height:0;min-width:0;object-fit:cover;border-radius:16px}
+.d .grid img:nth-child(1){grid-column:1/3;grid-row:1/3}.d .grid img:nth-child(4){grid-column:5/7;grid-row:2/4}.d .grid img:nth-child(6){grid-column:3/5;grid-row:3}
+.d::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(10,9,13,.96) 20%,rgba(10,9,13,.55) 60%,rgba(10,9,13,.9))}
+.d .c{text-align:left;align-self:center;justify-self:start;margin-left:clamp(0px,4vw,60px)}
+.d .c .cta{justify-content:flex-start}
+@media(max-width:700px){.d .grid{grid-template-columns:repeat(3,1fr)}.d .grid img:nth-child(1){grid-column:1/3}.d .grid img:nth-child(4){grid-column:2/4}.d .grid img:nth-child(6){grid-column:1/2}.note{display:none}}
+@media(prefers-reduced-motion:reduce){.b .row{animation:none}}
+</style></head><body>
+<div class="bar"><img src="assets/logo.svg" alt="NOISY"><nav><a href="#a">А · Сцена</a><a href="#b">Б · Ленти</a><a href="#c">В · Една рамка</a><a href="#d">Г · Мозайка</a></nav></div>
+
+<section class="v a" id="a"><span class="tag"><b>А</b>Сцена</span><p class="note">Една голяма сцена на цял екран, без разхвърляни картинки. Видеото диша, отдолу са категориите.</p>
+<video autoplay muted loop playsinline poster="vid/trailer.jpg" src="vid/trailer.mp4"></video>
+<div class="c"><h1>Всичко за гледане <em>на едно място</em></h1><p class="sub">Стрийминг със сериали, реалити, спорт и новини.</p><div class="cta"><a class="btn" href="#" data-su>Пробвай NOISY</a><span class="fine">Без карта.</span></div></div>
+<div class="chips"><span class="chip"><i></i>Спорт на живо</span><span class="chip"><i></i>Филми и сериали</span><span class="chip"><i></i>Реалити</span><span class="chip"><i></i>Новини</span></div></section>
+
+<section class="v b" id="b"><span class="tag"><b>Б</b>Ленти</span><p class="note">Две бавни ленти под наклон зад текста, силно затъмнени към центъра. Спокойно движение, без хаос.</p>
+<div class="rows" aria-hidden="true">
+<div class="row" id="r1"></div><div class="row" id="r2"></div><div class="row" id="r3"></div></div>
+<div class="c"><h1>Всичко за гледане <em>на едно място</em></h1><p class="sub">Стрийминг със сериали, реалити, спорт и новини.</p><div class="cta"><a class="btn" href="#" data-su>Пробвай NOISY</a><span class="fine">Без карта.</span></div></div></section>
+
+<section class="v cc" id="c"><span class="tag"><b>В</b>Една рамка</span><p class="note">Заглавие отгоре, под него един голям екран с реално видео. Светлината идва от самия екран.</p><div class="glow"></div>
+<div class="c"><h1>Всичко за гледане <em>на едно място</em></h1><p class="sub">Стрийминг със сериали, реалити, спорт и новини.</p><div class="cta"><a class="btn" href="#" data-su>Пробвай NOISY</a><span class="fine">Без карта.</span></div>
+<div class="stage"><div class="scr"><video autoplay muted loop playsinline poster="vid/trailer.jpg" src="vid/trailer.mp4"></video><div class="tabs"><span class="chip"><i></i>Спорт</span><span class="chip"><i></i>Сериали</span><span class="chip"><i></i>Реалити</span><span class="chip"><i></i>Новини</span></div></div></div></div></section>
+
+<section class="v d" id="d"><span class="tag"><b>Г</b>Мозайка</span><p class="note">Подредена мрежа със заоблени плочки на една линия, текстът е отляво върху затъмнение. Като каталог, не като колаж.</p>
+<div class="grid" aria-hidden="true"><img src="img/the-last-of-us-back.jpg" alt=""><img src="vid/mu-city.jpg" alt=""><img src="img/igri-1.jpg" alt=""><img src="img/house-of-the-dragon-back.jpg" alt=""><img src="img/ar/s-f1-monaco.jpg" alt=""><img src="img/fermata-1.jpg" alt=""><img src="vid/newsroom.jpg" alt=""><img src="img/dune-2-back.jpg" alt=""></div>
+<div class="c"><h1>Всичко за гледане <em>на едно място</em></h1><p class="sub">Стрийминг със сериали, реалити, спорт и новини.</p><div class="cta"><a class="btn" href="#" data-su>Пробвай NOISY</a><span class="fine">Без карта.</span></div></div></section>
+<script>
+(function(){var P=['img/house-of-the-dragon-back.jpg','img/levski-kairat.jpg','img/igri-1.jpg','vid/newsroom.jpg','img/the-penguin-back.jpg','img/fermata-1.jpg','vid/mu-city.jpg','img/dune-2-back.jpg','img/ergenat-1.jpg','img/ar/s-f1-monaco.jpg','img/the-last-of-us-back.jpg','img/igri-2.jpg'];
+['r1','r2','r3'].forEach(function(id,k){var a=P.slice(k*3).concat(P.slice(0,k*3));var h=a.concat(a).concat(a).concat(a).map(function(s){return '<img src="'+s+'" alt="" loading="lazy">'}).join('');document.getElementById(id).innerHTML=h});})();
+</script></body></html>

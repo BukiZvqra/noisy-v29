@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="bg"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>NOISY · Хиро Гледай · Светове</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html{background:#0a090d}body{margin:0;background:#0a090d;font-family:'Manrope',sans-serif;color:#fff}
+.page{position:relative;width:100%;background:#0a090d;overflow:clip}
+.stage{position:relative;height:100vh;min-height:720px;overflow:hidden;isolation:isolate}
+.bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 51% 51%,#64102e 0%,#31091f 35%,#110b15 66%,#0a090d 90%)}
+.bleed{position:absolute;left:0;right:0;bottom:0;height:220px;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(10,9,13,0) 0%,#0a090d 100%)}
+.nap{position:absolute;left:50%;top:54%;width:min(54vw,64vh);aspect-ratio:99.63/104;transform:translate(-50%,-50%);z-index:1;pointer-events:none}
+.nap i{display:block;position:absolute;inset:0;pointer-events:none}
+.nap .rim{inset:-3px;background:linear-gradient(125deg,#cf80ac 0%,#39213c 25%,#140d1c 54%,#bd2851 80%,#562343);-webkit-mask:url(assets/symbol.svg) center/contain no-repeat;mask:url(assets/symbol.svg) center/contain no-repeat}
+.nap .solid{filter:drop-shadow(8px 14px 12px rgba(0,0,0,.6))}
+.nap .edge{background:linear-gradient(125deg,#24102c,#4f123b 48%,#691728);-webkit-mask:url(assets/symbol.svg) center/contain no-repeat;mask:url(assets/symbol.svg) center/contain no-repeat;transform:translate(9px,14px)}
+.nap .face{overflow:hidden;background:linear-gradient(140deg,#1b0a23 0%,#39102c 46%,#65172f 100%);-webkit-mask:url(assets/symbol.svg) center/contain no-repeat;mask:url(assets/symbol.svg) center/contain no-repeat}
+.nap .face video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:brightness(.5) saturate(.85)}
+.nap .face::after{content:"";position:absolute;inset:0;background:linear-gradient(130deg,rgba(255,255,255,.06),transparent 32%,rgba(0,0,0,.33) 67%,rgba(255,109,129,.18))}
+.nav{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;align-items:center;justify-content:space-between;padding:32px 96px;box-sizing:border-box}
+.logo{position:relative;flex:none;width:199px;height:48px;display:block}
+.logo .glow{position:absolute;left:-27px;top:-13px;width:253px;height:72px;border-radius:104px;background:rgba(0,0,0,.16);filter:blur(20px)}
+.logo img{position:relative;display:block;width:199px;height:48px}
+.menu{display:flex;align-items:center;gap:32px;padding:16px 32px;border-radius:16px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:linear-gradient(178.59deg,rgba(0,2,112,.1) 0%,rgba(0,2,112,.02) 50%,rgba(0,2,112,.06) 100%),rgba(0,0,0,.5)}
+.menu ul{display:flex;align-items:center;gap:60px;margin:0;padding:0 16px 0 0;list-style:none}
+.menu a{font-family:'Manrope',sans-serif;font-weight:400;font-size:16px;line-height:normal;letter-spacing:.25px;color:#fff;text-decoration:none;white-space:nowrap;opacity:.5;transition:opacity .2s ease}
+.menu a:hover,.menu a.on{opacity:1}
+.cta{display:flex;align-items:center;justify-content:center;width:149px;height:44px;border:0;border-radius:8px;padding:0;font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:#fff;cursor:pointer;background:linear-gradient(90deg,#8C18BE 0%,#A01076 33%,#C20406 100%)}
+.burger{display:none;width:44px;height:44px;border:0;padding:0;background:transparent;color:#fff;cursor:pointer;align-items:center;justify-content:center}
+.hero{position:absolute;left:0;right:0;top:120px;bottom:90px;z-index:4;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 20px;box-sizing:border-box;pointer-events:none}
+.copy{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%}
+.hero h1{margin:0;width:100%;font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(34px,6.4vw,96px);line-height:1.04;letter-spacing:-.025em;text-shadow:0 2px 28px rgba(10,9,13,.55)}
+.l1{display:block;animation:up 1.1s .2s cubic-bezier(.16,1,.3,1) both}
+.rot{position:relative;display:block;height:1.12em}
+.w{position:absolute;left:0;right:0;top:0;white-space:nowrap;opacity:0;animation:cyc 10s cubic-bezier(.16,1,.3,1) infinite both}
+.w>span{background:linear-gradient(90deg,#B61DFF 0%,#CE13A8 45%,#FF0000 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.w:nth-child(1){animation-delay:.4s}.w:nth-child(2){animation-delay:2.4s}.w:nth-child(3){animation-delay:4.4s}.w:nth-child(4){animation-delay:6.4s}.w:nth-child(5){animation-delay:8.4s}
+@keyframes cyc{0%{opacity:0;transform:translateY(.45em)}4%{opacity:1;transform:none}17%{opacity:1;transform:none}20%{opacity:0;transform:translateY(-.45em)}100%{opacity:0;transform:translateY(-.45em)}}
+.sub{margin:0;font-family:'Manrope',sans-serif;font-weight:400;font-size:19px;line-height:1.4;color:rgba(255,255,255,.85);animation:up 1s .6s cubic-bezier(.16,1,.3,1) both}
+.acts{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:20px;margin-top:20px;pointer-events:auto;animation:up 1s .75s cubic-bezier(.16,1,.3,1) both}
+.cta-hero{font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:#fff;border:0;border-radius:12px;padding:16px 28px;min-height:52px;background:linear-gradient(90deg,#B61DFF,#FF0000);cursor:pointer}
+.note{font-size:16px;color:rgba(255,255,255,.8)}
+@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.sec{position:relative;--cw:clamp(250px,25vw,360px);--p:calc(var(--cw) + 32px);padding:40px 0 110px;overflow:hidden}
+.sec::before{content:"";position:absolute;left:0;right:0;top:-160px;height:560px;pointer-events:none;background:radial-gradient(48% 60% at 50% 40%,rgba(206,19,168,.2),rgba(140,24,190,.08) 50%,transparent 80%)}
+.tabs{position:relative;z-index:2;display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:0 0 36px}
+.tabs button{appearance:none;border:0;background:none;cursor:pointer;position:relative;padding:12px 18px;min-height:44px;font:600 15px/1 'Manrope',sans-serif;color:rgba(255,255,255,.55);transition:color .25s}
+.tabs button:hover{color:#fff}
+.tabs button.on{color:#fff;font-weight:700}
+.tabs button::after{content:"";position:absolute;left:18px;right:18px;bottom:4px;height:2px;border-radius:2px;background:linear-gradient(90deg,#8024B6,#CE13A8);transform:scaleX(0);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.tabs button.on::after{transform:scaleX(1)}
+.rail{position:relative;height:calc(var(--cw)*.5625 + 70px)}
+.cd{position:absolute;left:50%;top:30px;width:var(--cw);margin-left:calc(var(--cw)/-2);aspect-ratio:16/9;padding:0;border:0;border-radius:12px;overflow:hidden;background:#17101C;cursor:pointer;color:#fff;font:inherit;text-align:left;box-shadow:0 18px 44px rgba(0,0,0,.6);transition:transform .9s cubic-bezier(.7,0,.2,1),filter .9s ease,opacity .6s ease}
+.cd video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cd::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.75));pointer-events:none}
+.tg{position:absolute;right:12px;top:10px;z-index:2;font-size:11px;font-weight:700;color:rgba(255,255,255,.92);text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.tt{position:absolute;left:14px;bottom:12px;right:14px;z-index:2;font-size:15px;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.9)}
+.pi{position:absolute;left:50%;top:50%;z-index:2;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:rgba(10,9,13,.55);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.85)}
+.pi::before{content:"";position:absolute;left:14px;top:10px;border-style:solid;border-width:7px 0 7px 10px;border-color:transparent transparent transparent #fff}
+.bl,.br{position:absolute;top:0;bottom:0;width:22%;z-index:3;pointer-events:none;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:linear-gradient(90deg,rgba(10,9,13,.8),rgba(10,9,13,0));-webkit-mask-image:linear-gradient(90deg,#000 20%,transparent);mask-image:linear-gradient(90deg,#000 20%,transparent)}
+.bl{left:0}
+.br{right:0;transform:scaleX(-1)}
+.nb{position:absolute;top:calc(30px + var(--cw)*.28 - 22px);z-index:5;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:rgba(10,9,13,.65);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.nb:hover{background:rgba(255,255,255,.18)}
+.nb.l{left:calc(50% - var(--cw)/2 - 64px)}
+.nb.r{right:calc(50% - var(--cw)/2 - 64px)}
+.cap{position:relative;z-index:2;text-align:center;margin-top:8px;min-height:48px}
+.cap .ct{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;color:#fff;padding:4px 12px;border-radius:999px;background:rgba(206,19,168,.22);box-shadow:inset 0 0 0 1px rgba(206,19,168,.55)}
+.cap b{display:block;margin-top:10px;font-family:'Unbounded',sans-serif;font-weight:600;font-size:clamp(16px,1.6vw,22px)}
+.end{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:20px;margin-top:40px}
+.nap .face video{opacity:0;animation:vcyc 10s ease-in-out infinite both}
+.nap .face video:nth-child(1){animation-delay:.4s}.nap .face video:nth-child(2){animation-delay:2.4s}.nap .face video:nth-child(3){animation-delay:4.4s}.nap .face video:nth-child(4){animation-delay:6.4s}.nap .face video:nth-child(5){animation-delay:8.4s}
+@keyframes vcyc{0%{opacity:0}3%,19%{opacity:1}24%,100%{opacity:0}}
+@supports (animation-timeline:view()){
+.nap{animation:napOut linear both;animation-timeline:view();animation-range:exit 0% exit 70%}
+@keyframes napOut{to{transform:translate(-50%,-50%) scale(.82);opacity:.2}}
+}
+@media (max-width:1180px){.nav{padding:24px 32px}.menu ul{gap:32px}}
+@media (max-width:900px){.nav{padding:16px}.menu{display:none}.burger{display:flex}.logo,.logo img{width:133px;height:32px}.logo .glow{left:-18px;top:-9px;width:169px;height:50px}.bl,.br{width:18%}}
+@media (max-width:700px){.sub{font-size:16px}.nap{width:84vw}}
+@media (prefers-reduced-motion:reduce){.page *{animation:none!important}.w:first-child{opacity:1}.cd{transform:none;filter:none}}
+
+.nforce .na-backdrop{position:absolute;inset:0;z-index:0;background:#08070b}
+.nf-canvas{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.n-aperture{position:absolute;left:50%;top:var(--ny);width:var(--nw);aspect-ratio:99.63/104;transform:translate(-50%,-50%);z-index:2;pointer-events:none;filter:drop-shadow(0 0 22px rgba(206,19,168,.28))}
+.nt-face{display:block;position:absolute;inset:0;overflow:hidden;background:#12060f;-webkit-mask:url(assets/symbol.svg) center/contain no-repeat;mask:url(assets/symbol.svg) center/contain no-repeat}
+.nt-face video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:brightness(.78) saturate(.95);opacity:0;animation:vcyc 10s ease-in-out infinite both}
+.nt-face video:nth-child(1){animation-delay:.4s}.nt-face video:nth-child(2){animation-delay:2.4s}.nt-face video:nth-child(3){animation-delay:4.4s}.nt-face video:nth-child(4){animation-delay:6.4s}.nt-face video:nth-child(5){animation-delay:8.4s}
+.nt-face::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(194,59,255,.16),transparent 45%,rgba(210,32,67,.2))}
+.nforce .hero{top:auto;bottom:7vh;height:auto;display:block}
+.nforce .hero h1{font-size:clamp(32px,5vw,72px)}
+.nforce .sub{font-size:clamp(16px,1.4vw,19px)}
+.nforce .acts{margin-top:18px}
+.nforce.nm-threshold{--nw:min(30vw,40vh);--ny:38%}
+.nforce.nm-pressure{--nw:min(32vw,42vh);--ny:39%}
+@media(max-width:900px){.nforce.nm-threshold,.nforce.nm-pressure{--nw:min(70vw,36vh);--ny:30%}}
+
+.exp{position:relative;padding:20px 24px 120px;max-width:1240px;margin:0 auto}
+.exp h2{margin:0 0 10px;text-align:center;font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(22px,3vw,34px);letter-spacing:-.02em}
+.exp .lead{margin:0 auto 28px;max-width:60ch;text-align:center;color:#A9A6B2}
+.exp .bar{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 24px;margin-bottom:18px}
+.exp .grp,.exp .src{display:flex;flex-wrap:wrap;gap:6px}
+.exp button.eb{appearance:none;cursor:pointer;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:#17161d;color:rgba(255,255,255,.7);font:600 14px/1 'Manrope',sans-serif}
+.exp button.eb:hover{color:#fff}
+.exp button.eb.on{color:#fff;background:linear-gradient(90deg,#8024B6,#8C238D,#B2261B);border-color:transparent}
+.exp .frame{width:100%;height:min(86vh,900px);border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#0A090D}
+
+.pin{position:relative;height:260vh}
+.pin .stage{position:sticky;top:0}
+.nt-open{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;background:#12060f;-webkit-mask:url(assets/symbol.svg) 0 0/0 0 no-repeat;mask:url(assets/symbol.svg) 0 0/0 0 no-repeat}
+.nt-open video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:brightness(.82) saturate(.95);opacity:0;animation:vcyc 10s ease-in-out infinite both}
+.nt-open video:nth-child(1){animation-delay:.4s}.nt-open video:nth-child(2){animation-delay:2.4s}.nt-open video:nth-child(3){animation-delay:4.4s}.nt-open video:nth-child(4){animation-delay:6.4s}.nt-open video:nth-child(5){animation-delay:8.4s}
+.nt-open::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(194,59,255,.14),transparent 45%,rgba(210,32,67,.18))}
+.pin .hero{will-change:opacity,transform}
+@media (prefers-reduced-motion:reduce){.pin{height:auto}.pin .stage{position:relative}.nt-open{display:none}.nt-face{background:#12060f}}
+
+.worlds{position:absolute;inset:0;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);opacity:0;pointer-events:none;background:#0a090d}
+.wp{position:relative;overflow:hidden;border-left:1px solid rgba(255,255,255,.1)}
+.wp:first-child{border-left:0}
+.wp video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.95)}
+.wp::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(8,7,11,.85))}
+.wl{position:absolute;left:clamp(14px,2vw,32px);bottom:clamp(40px,9vh,90px);z-index:2}
+.wl b{display:block;font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(16px,1.9vw,28px)}
+.wl span{display:block;margin-top:4px;color:rgba(255,255,255,.8);font-size:clamp(13px,1.2vw,17px)}
+@media(max-width:700px){.worlds{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr)}.wp{border-top:1px solid rgba(255,255,255,.1)}}
+</style></head><body>
+<div class="page">
+<div class="pin" id="pin"><section class="stage nforce nm-threshold" data-force="threshold" aria-label="Гледай спорт, реалити, филми, сериали, новини">
+<div class="na-backdrop" aria-hidden="true"></div>
+<div class="n-aperture" aria-hidden="true"><i class="nt-face"></i></div>
+<div class="worlds" id="worlds" aria-hidden="true"><div class="wp"><video src="vid/gl/hotd.mp4" muted loop autoplay playsinline preload="auto"></video><div class="wl"><b>Theatre</b><span>Филми и сериали</span></div></div><div class="wp"><video src="vid/gl/igri-b.mp4" muted loop autoplay playsinline preload="auto"></video><div class="wl"><b>Showtime</b><span>Реалити</span></div></div><div class="wp"><video src="vid/gl/lev-goal.mp4" muted loop autoplay playsinline preload="auto"></video><div class="wl"><b>Arena</b><span>Спорт</span></div></div><div class="wp"><video src="vid/gl/newsroom.mp4" muted loop autoplay playsinline preload="auto"></video><div class="wl"><b>Newsroom</b><span>Новини</span></div></div></div>
+<div class="nt-open" id="ntOpen" aria-hidden="true"><video src="vid/gl/lev-goal.mp4" muted="" loop="" autoplay="" playsinline="" preload="auto"></video><video src="vid/gl/igri-b.mp4" muted="" loop="" autoplay="" playsinline="" preload="auto"></video><video src="vid/gl/dune.mp4" muted="" loop="" autoplay="" playsinline="" preload="auto"></video><video src="vid/gl/hotd.mp4" muted="" loop="" autoplay="" playsinline="" preload="auto"></video><video src="vid/gl/newsroom.mp4" muted="" loop="" autoplay="" playsinline="" preload="auto"></video></div>
+<header class="nav">
+<a class="logo" href="#" aria-label="NOISY начало"><span class="glow" aria-hidden="true"></span><img src="assets/logo.svg" alt="NOISY"></a>
+<nav class="menu" aria-label="Основна навигация">
+<ul><li><a href="index.html" class="on" aria-current="page">Home</a></li><li><a href="theatre.html">Theatre</a></li><li><a href="arena.html">Arena</a></li><li><a href="theatre.html#newsroom">Newsroom</a></li><li><a href="theatre.html#showtime">Showtime</a></li></ul>
+<button class="cta" type="button">Пробвай NOISY</button>
+</nav>
+<button class="burger" type="button" aria-label="Отвори менюто"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"></path></svg></button>
+</header>
+<div class="hero"><div class="copy"><h1><span class="l1">Гледай</span><span class="rot"><span class="w"><span>спорт</span></span><span class="w"><span>реалити</span></span><span class="w"><span>филми</span></span><span class="w"><span>сериали</span></span><span class="w"><span>новини</span></span></span></h1><p class="sub">Стрийминг със сериали, реалити, спорт и новини.</p><div class="acts"><button class="cta-hero" type="button">Пробвай NOISY</button><span class="note">Без карта.</span></div></div></div>
+<div class="bleed" aria-hidden="true"></div>
+</section></div>
+<section class="sec" aria-label="Трейлъри и най-доброто от спорт, сериали, филми, реалити и новини">
+<div class="tabs" id="tabs"></div>
+<div class="rail" id="rail">
+<div id="cards"></div>
+<div class="bl" aria-hidden="true"></div><div class="br" aria-hidden="true"></div>
+<button type="button" class="nb l" id="prev" aria-label="Предишен трейлър"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l-6 6 6 6"></path></svg></button>
+<button type="button" class="nb r" id="next" aria-label="Следващ трейлър"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4l6 6-6 6"></path></svg></button>
+</div>
+<div class="cap" aria-live="polite"><span class="ct" id="capTag"></span><b id="capTitle"></b></div>
+<div class="end"><button class="cta-hero" type="button">Пробвай NOISY</button><span class="note">Без карта.</span></div>
+</section>
+<section class="exp" id="exp" aria-label="Опити за секциите">
+<h2>Опити за секциите</h2>
+<p class="lead">Живите варианти от v26: N в началото, каруселът, цените, гаранциите и къде се гледа. Избери група и избор.</p>
+<div class="bar"><div class="grp" id="egrp"></div><div class="src" id="esrc"></div></div>
+<iframe class="frame" id="eframe" title="Опити за секциите" loading="lazy"></iframe>
+</section>
+</div>
+<script>
+(function(){
+var ALL=[
+{src:"vid/gl/lev-goal.mp4",cat:"sport",tag:"Спорт",title:"Кайрат – Левски",pos:"50% 50%"},
+{src:"vid/gl/dune.mp4",cat:"film",tag:"Филм",title:"Дюн: Част втора",pos:"60% 50%"},
+{src:"vid/gl/hotd.mp4",cat:"serial",tag:"Сериал",title:"Домът на дракона",pos:"50% 35%"},
+{src:"vid/gl/igri-b.mp4",cat:"reality",tag:"Реалити",title:"Игри на волята",pos:"50% 50%"},
+{src:"vid/gl/newsroom.mp4",cat:"news",tag:"Новини",title:"Новините",pos:"50% 50%"},
+{src:"vid/gl/esp-fra.mp4",cat:"sport",tag:"Спорт",title:"Испания – Франция",pos:"40% 40%"},
+{src:"vid/gl/batman.mp4",cat:"film",tag:"Филм",title:"Батман",pos:"40% 50%"},
+{src:"vid/gl/euphoria.mp4",cat:"serial",tag:"Сериал",title:"Еуфория",pos:"40% 45%"},
+{src:"vid/gl/fermata.mp4",cat:"reality",tag:"Реалити",title:"Фермата",pos:"50% 40%"},
+{src:"vid/gl/studio.mp4",cat:"news",tag:"Новини",title:"Новинарско студио",pos:"50% 50%"},
+{src:"vid/gl/levski.mp4",cat:"sport",tag:"Спорт",title:"Левски",pos:"50% 50%"},
+{src:"vid/gl/barbie.mp4",cat:"film",tag:"Филм",title:"Барби",pos:"50% 50%"},
+{src:"vid/gl/lotus.mp4",cat:"serial",tag:"Сериал",title:"Белият лотос",pos:"40% 50%"},
+{src:"vid/gl/ergenat.mp4",cat:"reality",tag:"Реалити",title:"Ергенът",pos:"30% 40%"}
+];
+var TABS=[["all","Всичко"],["sport","Спорт"],["serial","Сериали"],["film","Филми"],["reality","Реалити"],["news","Новини"]];
+var tab="all",i=0,hold=false;
+var tabsEl=document.getElementById("tabs"),cardsEl=document.getElementById("cards"),capTag=document.getElementById("capTag"),capTitle=document.getElementById("capTitle");
+function list(){return tab==="all"?ALL:ALL.filter(function(c){return c.cat===tab})}
+function render(){
+ var l=list(),k=l.length,cur=((i%k)+k)%k;
+ tabsEl.innerHTML="";
+ TABS.forEach(function(t){var b=document.createElement("button");b.type="button";b.textContent=t[1];if(t[0]===tab)b.className="on";b.onclick=function(){tab=t[0];i=0;cardsEl.innerHTML="";render()};tabsEl.appendChild(b)});
+ if(cardsEl.children.length!==k){cardsEl.innerHTML="";l.forEach(function(c){var b=document.createElement("button");b.type="button";b.className="cd";b.setAttribute("aria-label",c.title);b.innerHTML='<video src="'+c.src+'" style="object-position:'+c.pos+'" muted loop autoplay playsinline preload="auto"></video><span class="tg">'+c.tag+'</span><b class="tt">'+c.title+'</b><i class="pi"></i>';cardsEl.appendChild(b)})}
+ l.forEach(function(c,n){
+  var off=(((n-cur)%k)+k)%k;if(off>k/2)off-=k;var a=Math.abs(off);
+  var f=a===0?"none":a===1?"brightness(.5) saturate(.8)":a===2?"brightness(.38) saturate(.75) blur(3px)":"brightness(.3) blur(7px)";
+  var b=cardsEl.children[n];
+  b.style.transform="translateX(calc(var(--p) * "+off+")) scale("+(a===0?1:.86)+")";b.style.filter=f;b.style.opacity=a>3?0:1;b.style.zIndex=10-a;b.style.pointerEvents=a>3?"none":"auto";
+  b.onclick=function(){i+=(off===0?1:off);render()};
+ });
+ capTag.textContent=l[cur].tag;capTitle.textContent=l[cur].title;
+}
+document.getElementById("prev").onclick=function(){i--;render()};
+document.getElementById("next").onclick=function(){i++;render()};
+var rail=document.getElementById("rail");
+rail.onmouseenter=function(){hold=true};rail.onmouseleave=function(){hold=false};
+render();
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches)setInterval(function(){if(!hold&&!document.hidden){i++;render()}},4500);
+})();
+</script><script>
+(function(){
+var G=[["g-n","N в началото"],["g-k","Каруселът"],["g-c","Цените"],["g-g","Гаранциите"],["g-p","Къде се гледа"]],F=[["izbor.html","Първи избор"],["izbor-2.html","Втори избор"]];
+var g="g-k",f="izbor.html",loaded=false,fr=document.getElementById("eframe"),eg=document.getElementById("egrp"),es=document.getElementById("esrc");
+function btn(box,list,cur,fn){box.innerHTML="";list.forEach(function(x){var b=document.createElement("button");b.type="button";b.className="eb"+(x[0]===cur?" on":"");b.textContent=x[1];b.onclick=function(){fn(x[0])};box.appendChild(b)})}
+function show(){btn(eg,G,g,function(v){g=v;load(true)});btn(es,F,f,function(v){f=v;load(true)})}
+function load(force){show();if(loaded||force){loaded=true;fr.src=f+"#"+g}}
+show();
+new IntersectionObserver(function(e){if(e[0].isIntersecting&&!loaded){load(false);loaded=true;fr.src=f+"#"+g}},{rootMargin:"400px"}).observe(fr);
+})();
+</script><script>
+(function(){
+var pin=document.getElementById("pin"),op=document.getElementById("ntOpen"),ap=document.querySelector(".n-aperture"),hero=document.querySelector(".pin .hero"),bleed=document.querySelector(".pin .bleed"),worlds=document.getElementById("worlds");
+if(!pin||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+var FX=.487,FY=.585,CL=.213,AR=104/99.63,g={};
+function geom(){var s=pin.querySelector(".stage").getBoundingClientRect(),a=ap.getBoundingClientRect();g.W=s.width;g.H=s.height;g.nw=a.width;g.sx=a.left-s.left+a.width*FX;g.sy=a.top-s.top+a.height*FY;g.K=.5*Math.hypot(g.W,g.H)/(g.nw*CL)*1.08}
+function clamp(v){return Math.max(0,Math.min(1,v))}
+function ease(x){return x*x*(3-2*x)}
+function update(){
+ var r=pin.getBoundingClientRect(),range=pin.offsetHeight-innerHeight,p=clamp(-r.top/range),q=clamp(p/.86),s=Math.pow(g.K,ease(q));
+ var mw=g.nw*s,mh=mw*AR,fx=g.sx+(g.W/2-g.sx)*ease(q),fy=g.sy+(g.H/2-g.sy)*ease(q);
+ if(p>=.97){op.style.webkitMask=op.style.mask="none"}
+ else{var v="url(assets/symbol.svg) "+(fx-FX*mw)+"px "+(fy-FY*mh)+"px/"+mw+"px "+mh+"px no-repeat";op.style.webkitMask=v;op.style.mask=v}
+ hero.style.opacity=clamp(1-p*5);hero.style.transform="translateY("+(-p*60)+"px)";
+ if(bleed)bleed.style.opacity=1-q;
+ if(worlds){worlds.style.opacity=clamp((p-.62)/.22);op.style.opacity=1-clamp((p-.8)/.14)}
+}
+var tick=0;function on(){if(!tick)tick=requestAnimationFrame(function(){tick=0;update()})}
+function init(){geom();update()}
+addEventListener("scroll",on,{passive:true});addEventListener("resize",function(){geom();update()});
+if(document.readyState==="complete")init();else addEventListener("load",init);
+setTimeout(init,300);
+})();
+</script><script src="hero-gledai-force.js"></script>
+</body></html>

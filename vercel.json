@@ -1,0 +1,30 @@
+{
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "framework": null,
+  "buildCommand": null,
+  "installCommand": null,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/showtime.html",
+      "destination": "/f/f-showtime.html",
+      "permanent": false
+    },
+    {
+      "source": "/newsroom.html",
+      "destination": "/f/f-newsroom.html",
+      "permanent": false
+    }
+  ]
+}

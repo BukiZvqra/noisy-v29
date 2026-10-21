@@ -1,0 +1,92 @@
+[hidden]{display:none!important}
+.rv,.rvk>*{filter:none;transform:translate3d(0,20px,0);transition-duration:.6s}
+.rv.in,.rvk.in>*{transform:none}
+.platform-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px;max-width:760px;margin-inline:auto}
+@media (min-width:768px){.platform-list{grid-template-columns:repeat(4,1fr)}}
+.platform-list .pl{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:150px;padding:20px 12px;border-radius:20px;border:1px solid #343139;background:#121016;color:#fff;text-decoration:none}
+.platform-list .pl b{font-size:22px}
+.platform-list .pl em{white-space:nowrap;text-align:center;font-style:normal;font-size:13px;font-weight:700;padding:5px 12px;border-radius:980px;background:rgba(255,255,255,.08);color:#b9b6c2}
+.platform-list .soon svg{opacity:.55}.platform-list .soon b{color:#cfccd6}
+.platform-list .live{border-color:rgba(255,255,255,.45);background:#1a1720}
+.platform-list .live em{background:#fff;color:#0A090D}
+.mobile-worlds{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:12px;padding:8px 12px max(8px,env(safe-area-inset-bottom));background:rgba(10,9,13,.97);border-top:1px solid #343139;z-index:52}
+.mobile-worlds a{display:flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:8px 2px;font-size:15px;font-weight:700}
+.mobile-worlds a:hover{color:#f58fdb}
+.fab{bottom:76px!important;font-size:15px}.bot{bottom:136px!important}
+.foot{padding-bottom:100px!important}
+.crumbs a{min-height:44px;font-size:15px}
+.k,.kick,.chip,.tags span,.addons,.trust span,.mp p,.ins small,.cap,.fine,.tag{font-size:15px!important}
+.ppl button,.jm{min-width:44px!important;min-height:44px!important}
+.jr{min-height:44px!important}.jhd span,.jtm,.jl .m,.jlb{font-size:15px!important}
+.hldots button,.d{min-height:44px;min-width:44px}
+.fine,.ins span,.add,.atag,.foot span,.foot a{font-size:15px!important}
+.hdr nav a,.hdr .login{min-width:44px;min-height:44px}
+.hcard .atv{display:block!important;width:100%;max-width:620px;margin-top:24px}
+.hcard .atv .sc{aspect-ratio:16/9;background:#000}
+.hcard .atv video{width:100%;height:100%;object-fit:contain}
+.hcard .phone.arn{display:none!important}
+.atl{gap:8px;flex-wrap:wrap;margin-top:20px}
+.atl span{font-size:15px!important;line-height:1.2;padding:8px}
+.su .pn .tr,.su .pn .or,.su .sp2,.mp,.note{font-size:15px}
+.bot small,.bot .note,.bot .log .msg,.bot .sug button{font-size:15px!important}
+.bot{transform:translateY(18px);visibility:hidden}.bot.on{transform:none;visibility:visible}
+.bot .sug button{min-height:44px!important}
+.bot header button,.bot form button,.su .x{min-width:44px!important;min-height:44px!important}
+.tsbtn,.tlrow,.n60b,.timeline button{min-height:44px!important;font-size:15px!important}
+.timeline span,.timeline small,.smallhint,.trl b,.tld small{font-size:15px!important}
+.mp .add,.others small,.oth small,.tl span,.events span{font-size:15px!important}
+.pt-k,.pt-sub,.pt-note,.pt-foot{font-size:15px!important}
+.su .pn{opacity:0;visibility:hidden}.su.on .pn{opacity:1;visibility:visible;transition-delay:0s}
+.su .pn .ok p{font-size:16px}
+.ag-preview-top h3{line-height:1.25}
+.ag-preview-actions a:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.plans .pl .t{font-size:18px}.plans .pl .d,.addons span{font-size:15px}
+.ppl::before{content:"Ориентир за цена при брой хора:";display:block;width:100%;font-size:15px;color:#b9b6c2;margin-bottom:8px}
+@media(min-width:1024px){.mobile-worlds{display:none}.fab{bottom:16px!important}.bot{bottom:82px!important}.foot{padding-bottom:32px!important}}
+@media(max-width:1023px){body .hero{height:calc(80svh - 120px)}}
+@media(prefers-reduced-motion:reduce){.rv,.rvk>*,.rv.in,.rvk.in>*{opacity:1!important;transform:none!important;transition:none!important}.ag-slide{transition:none!important}}
+
+.mp .ad,.oth small,.tl .vbox span,.platforms small{font-size:15px!important}
+/* v12: естествен преход хиро -> галерия (лилавото сияние се стича в сцената) и центрирани заглавия */
+.ag-root{background:linear-gradient(180deg,var(--bg,#0A090D) 0,#000 520px)}
+.ag-root::before{content:"";position:absolute;left:-20%;right:-20%;top:-60px;height:520px;z-index:0;pointer-events:none;background:radial-gradient(45% 55% at 30% 20%,rgba(206,19,168,.30),transparent 72%),radial-gradient(45% 55% at 72% 24%,rgba(160,10,50,.28),transparent 72%);filter:blur(60px)}
+.ag-scene{position:relative;z-index:1}
+@media(min-width:735px){.ag-root .ag-name{text-align:center}.ag-root .ag-info{align-items:center;justify-content:center;text-align:center}}
+.ag-scene::before{content:"";position:absolute;left:0;right:0;top:0;height:200px;z-index:6;pointer-events:none;background:linear-gradient(180deg,var(--bg,#0A090D) 0,rgba(10,9,13,.6) 45%,transparent 100%)}
+/* v12: „Повече от гледане“ - центриран заглавен блок, по-живи цветове в картите, телефонът избледнява вместо да се реже */
+#hl>header,#hl .sec-h,#hl header>div{text-align:center;justify-content:center}
+#hl header .kick,#hl header .h2{text-align:center;margin-inline:auto}
+.hcard::before{filter:blur(34px) saturate(1.6) brightness(.62)}
+.hcard:not(.full)::after{background:radial-gradient(120% 70% at 50% 0%,rgba(0,0,0,0) 0%,rgba(10,9,13,.4) 75%),linear-gradient(180deg,rgba(10,9,13,.05),rgba(10,9,13,.5))}
+.hcard .phone,.hcard .atv{-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 78%,transparent 100%)}
+
+/* платформи по Figma „Apps Module“: бутони за магазините с „Очаквай скоро“ + Web */
+.platform-list .pl.store{align-items:flex-start;text-align:left;justify-content:center;gap:4px;min-height:92px;padding:16px 18px;border-radius:16px;background:#000;border:1px solid #5a5760}
+.platform-list .pl.store small{font-size:12px;font-weight:700;color:#b9b6c2;letter-spacing:.02em}
+.platform-list .pl.store b{font-size:22px;line-height:1.1}
+.platform-list .pl.store span{font-size:13px;color:#9a97a3}
+.platform-list .pl.store.live{background:#fff;border-color:#fff;color:#0A090D}
+.platform-list .pl.store.live small,.platform-list .pl.store.live span{color:#4a4752}
+.platform-list .pl.store.soon{opacity:.8}
+/* v12: Showtime recap - екранът е по-голям и излиза от долния ръб на картата, като при футболния клип */
+.hcard .rcard{width:min(292px,calc(100% - 4px));border-radius:26px 26px 0 0;margin-top:20px;box-shadow:0 -10px 50px rgba(0,0,0,.45)}
+.hcard .rcard video{object-fit:cover!important;object-position:top}
+@media (min-width:1024px){.hcard .rcard{width:380px}}
+/* кадрите се центрират по героя, не по средата на 16:9 */
+/* оригиналните промо материали вече носят логото/заглавието си: не го дублираме */
+.ag-slide:nth-of-type(1) .ag-name,.ag-slide:nth-of-type(4) .ag-name{display:none}
+
+/* Final v12 review: readable captions and uncropped landscape Arena. */
+#hl .hcard .cap{font-size:18px!important;line-height:1.4;max-width:30ch}
+#hl .hcard .cap span{font-weight:600}
+#hl .hcard .atv{mask-image:none;-webkit-mask-image:none}
+#hl .hcard .atv .sc{aspect-ratio:16/9}
+#hl .hcard .atv video{transform:none!important;object-fit:contain}
+#hl .hlrail:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+.pts .pt span,label{font-size:15px}
+@media(min-width:1024px){#hl .hcard .cap{font-size:28px!important;line-height:1.3}}
+
+/* Hidden assistant cannot obscure mobile links or retain focusable hit areas. */
+.fab{visibility:hidden;pointer-events:none}
+.fab.on{visibility:visible;pointer-events:auto}
+.vslot .ctl{object-fit:contain}

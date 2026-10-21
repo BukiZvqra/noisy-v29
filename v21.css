@@ -1,0 +1,99 @@
+/* NOISY v21 (Коста, 14.10): ефекти около N, редовете на стъпки, „Всеки ден ново съдържание“, въпросите като на noisy.net.
+   Вариантите се сменят с ?fx=A..F (около N) и ?rows=A..F (редовете); 0 = както във v20. */
+
+/* ===== около N: на всички екрани (Коста, 14.10: „и на телефон, за да го покажа“); размерът на N на телефон е без промяна ===== */
+.hfx{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:var(--fxo,1)}
+@media (prefers-reduced-motion:reduce){.hfx{display:none!important}}
+.hfx>*{position:absolute}
+
+/* A · Слоеве на N */
+.fxl{left:0;top:0;will-change:transform,filter}
+.fxl img{display:block;width:100%;height:auto}
+/* F · Частици */
+.fxp{left:0;top:0}
+
+/* B · Светлина от видеото (ambilight) */
+.fxamb{inset:-12%;width:124%;height:124%;filter:blur(70px) saturate(1.6) brightness(.7);opacity:.42;will-change:transform}
+.hfx-B::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 42%,rgba(7,6,10,.15) 20%,rgba(7,6,10,.75) 100%)}
+
+/* C · Движещи се градиенти (като старата noisy.net) */
+.fxg{width:var(--s);height:var(--s);left:var(--x);top:var(--y);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);will-change:transform}
+.fxg i{position:absolute;inset:0;border-radius:50%;background:radial-gradient(closest-side,var(--c),transparent 72%);filter:blur(40px);opacity:.55;animation:fxorb var(--t) linear infinite,fxhue calc(var(--t)*.7) ease-in-out infinite alternate;transform-origin:var(--o)}
+@keyframes fxorb{to{transform:rotate(360deg)}}
+@keyframes fxhue{from{filter:blur(40px) hue-rotate(0deg)}to{filter:blur(40px) hue-rotate(-38deg)}}
+
+/* D · Ехо на N */
+.fxe2{left:0;top:0;width:var(--w);will-change:transform;-webkit-mask-image:linear-gradient(180deg,transparent 4%,#000 30%,#000 70%,transparent 96%);mask-image:linear-gradient(180deg,transparent 4%,#000 30%,#000 70%,transparent 96%)}
+.fxe2 img{display:block;width:100%;height:auto;animation:fxbr 6s ease-in-out infinite alternate;animation-delay:var(--fd,0s)}
+@keyframes fxbr{from{transform:scale(.985)}to{transform:scale(1.025)}}
+
+/* E · Светлинни лъчи под ъгъла на N */
+.fxb{left:var(--x);top:var(--y);width:var(--w);height:150%;margin-left:calc(var(--w)/-2);will-change:transform}
+.fxb i{position:absolute;inset:0;background:linear-gradient(180deg,transparent,var(--c) 45%,transparent 90%);filter:blur(28px);opacity:.38;transform:rotate(-34deg);animation:fxbeam var(--t) ease-in-out infinite alternate;animation-delay:var(--fd)}
+@keyframes fxbeam{from{transform:rotate(-34deg) translateY(-14%);opacity:.18}to{transform:rotate(-30deg) translateY(10%);opacity:.5}}
+
+/* ===== редовете: „Всеки ден ново съдържание.“ под тях, като пояснение ===== */
+.agdaily{margin:28px 0 0;padding:0 20px;text-align:center;font:600 clamp(19px,2.1vw,30px)/1.2 Unbounded,Manrope,system-ui,sans-serif;letter-spacing:-.02em;color:#fff;text-wrap:balance}
+.agdaily span{background:linear-gradient(90deg,#B61DFF,#CE13A8 45%,#FF3B3B);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* стъпките: движението е в JS, CSS лентата спира */
+html[data-rows]:not([data-rows="0"]):not([data-rows="F"]) .ag-flow{animation:none!important}
+html[data-rows="F"] .ag-row:nth-child(2) .ag-flow{animation-name:ag-right}
+.ag-flow.stp{transition:transform var(--sd,900ms) var(--se,cubic-bezier(.22,1,.36,1))}
+html[data-rows="C"] .ag-row.mv .ag-tile{transform:translateX(calc(var(--ag-i) * (var(--ag-tile-w) + var(--ag-tile-gap)))) skewX(var(--sk,0deg));transition:transform .45s cubic-bezier(.3,1.4,.5,1)}
+html[data-rows="D"] .ag-tile{transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s,filter .5s}
+html[data-rows="D"] .ag-rows.fz .ag-tile:not(.fo){filter:brightness(.62)}
+html[data-rows="D"] .ag-tile.fo{z-index:2;box-shadow:0 0 0 2px #CE13A8,0 14px 40px rgba(206,19,168,.35)}
+html[data-rows="D"] .ag-tile.fo video{opacity:1!important}
+html[data-rows="D"] .ag-row{overflow:visible;overflow-x:clip}
+html[data-rows="E"] .ag-rows{transform:perspective(1400px) rotateX(12deg) rotateZ(-2.5deg) scale(1.05);transform-origin:50% 30%}
+html[data-rows="E"] .agdaily{margin-top:44px}
+html[data-rows="E"] .ag-shelves{overflow:visible}
+
+/* ===== въпросите: като на noisy.net (карти #2D2D2D, радиус 16, отстъп 32, розова стрелка) ===== */
+.nfaq{padding:64px 0 96px}
+.nfaq-h{margin:0 0 32px;font:500 24px/32px Manrope,system-ui,sans-serif!important;letter-spacing:0!important;color:#fff;text-transform:none}
+.nfaq-l{display:flex;flex-direction:column;gap:16px}
+.nq{border-radius:16px;background:#2D2D2D;transition:background-color .15s}
+.nq:hover{background:#3A3A3A}
+.nq-b{appearance:none;display:flex;align-items:center;gap:16px;width:100%;margin:0;padding:32px;border:0;border-radius:16px;background:none;color:#fff;font:500 16px/24px Manrope,system-ui,sans-serif;text-align:left;cursor:pointer;transition:padding .3s ease-in-out}
+.nq-b span{flex:1}
+.nq-b svg{flex:none;width:24px;height:24px;fill:none;stroke:#CE13A8;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.nq.open .nq-b{padding-bottom:16px}
+.nq.open .nq-b svg{transform:rotate(180deg)}
+.nq-b:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+.nq-a{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .3s ease-in-out,opacity .3s ease-in-out}
+.nq-a>div{min-height:0;overflow:hidden}
+.nq.open .nq-a{grid-template-rows:1fr;opacity:1}
+.nq-a p{margin:0;padding:0 32px 32px;font:400 14px/20px Manrope,system-ui,sans-serif;color:rgba(255,255,255,.6);max-width:none}
+.nfaq-all{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:24px;color:#fff;font:600 16px Manrope,system-ui,sans-serif;text-decoration:none;opacity:.85}
+.nfaq-all:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+@media (min-width:768px){.nfaq-h{font-size:36px!important;line-height:40px!important}.nq-b{font-size:20px;line-height:28px}.nq-a p{font-size:16px;line-height:24px}}
+@media (prefers-reduced-motion:reduce){.nq-a,.nq-b,.nq-b svg{transition:none}}
+
+/* ===== гаранциите под цените: три малки карти с ясен текст (Коста, 14.10) ===== */
+.trust21{display:grid;grid-template-columns:1fr;gap:12px;margin:40px auto 0;max-width:864px}
+.t21{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:20px 18px;border-radius:12px;background:#141319;border:1px solid rgba(255,255,255,.08)}
+.t21 i{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(128,36,182,.35),rgba(206,19,168,.25) 55%,rgba(178,38,27,.3));box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);color:#fff}
+.t21 svg{width:22px;height:22px}
+.t21 b{display:block;font:600 16px/1.3 Manrope,system-ui,sans-serif;color:#fff}
+.t21 span{display:block;margin-top:2px;font:400 14px/1.4 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.62)}
+@media (min-width:768px){.trust21{grid-template-columns:repeat(3,1fr);gap:16px}.t21{gap:12px;padding:24px 20px}}
+
+/* ===== v22: вариантите 1-8 около N (страницата за избор), върху слоевете ===== */
+.fxh,.fxau,.fxct,.fxsh,.fxsd,.fxbk,.fxbig,.fxrf{left:0;top:0;will-change:transform}
+.fxh{border-radius:50%;background:radial-gradient(closest-side,rgba(206,19,168,.55),rgba(128,36,182,.25) 55%,transparent 75%);filter:blur(40px);animation:fxbreathe 9s ease-in-out infinite alternate}
+@keyframes fxbreathe{from{opacity:.55}to{opacity:.95}}
+.fxau{border-radius:50%;background:conic-gradient(from 0deg,#8024B6,#CE13A8,#B2261B,#5B1BA0,#8024B6);filter:blur(64px);opacity:.55;animation:fxspin 28s linear infinite}
+.fxct img{display:block;width:100%;height:auto;opacity:.6}
+.fxct .sw{position:absolute;inset:0;-webkit-mask:linear-gradient(115deg,transparent 42%,#000 50%,transparent 58%) 0 0/300% 100% no-repeat;mask:linear-gradient(115deg,transparent 42%,#000 50%,transparent 58%) 0 0/300% 100% no-repeat;animation:fxsweep 7s ease-in-out infinite}
+.fxct .sw img{opacity:1;filter:brightness(1.8) drop-shadow(0 0 6px #CE13A8)}
+@keyframes fxsweep{0%,45%{-webkit-mask-position:100% 0;mask-position:100% 0}90%,100%{-webkit-mask-position:0 0;mask-position:0 0}}
+.fxsh,.fxsd,.fxbig{-webkit-mask:url(assets/symbol.svg) center/100% 100% no-repeat;mask:url(assets/symbol.svg) center/100% 100% no-repeat;background:linear-gradient(135deg,#8024B6,#CE13A8 55%,#B2261B)}
+.fxsh{filter:blur(18px);opacity:.6}
+.fxsd{opacity:.5}
+.fxbig{opacity:.09;filter:blur(2px)}
+.fxbk i{position:absolute;inset:0;border-radius:50%;background:radial-gradient(closest-side,var(--c),transparent);filter:blur(6px);opacity:.45;animation:fxdrift var(--t) ease-in-out infinite alternate}
+@keyframes fxdrift{to{transform:translate(var(--dx),var(--dy))}}
+.fxrf{overflow:hidden;opacity:.55;-webkit-mask-image:linear-gradient(#000 10%,transparent 95%);mask-image:linear-gradient(#000 10%,transparent 95%)}
+.fxrf canvas{display:block;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+@keyframes fxspin{to{transform:rotate(360deg)}}

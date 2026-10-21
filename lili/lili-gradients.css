@@ -1,0 +1,144 @@
+/* About v27's soft light treatment, with a different palette for each scene. */
+.fx-scene-art > :not(.fx-week-board):not(.fx-week-line){display:none!important}
+html,body{background:#0a090d}
+.sec{
+ background:
+  radial-gradient(ellipse 52% 48% at 94% 58%,rgba(90,115,140,.025),transparent 72%),
+  radial-gradient(ellipse 48% 40% at 4% 68%,rgba(140,95,80,.025),transparent 72%);
+}
+.card.fx-managed{
+ --light-a:255,104,76;--light-b:229,46,128;--light-c:238,168,83;
+ --light-x:88%;--light-y:24%;
+ --blend-x:52%;--blend-y:88%;
+ --warm-x:2%;--warm-y:80%;
+ background:
+  radial-gradient(ellipse 64% 100% at var(--light-x) var(--light-y),rgba(var(--light-a),.28),transparent 72%),
+  radial-gradient(ellipse 76% 86% at var(--blend-x) var(--blend-y),rgba(var(--light-b),.20),transparent 72%),
+  radial-gradient(ellipse 52% 90% at var(--warm-x) var(--warm-y),rgba(var(--light-c),.10),transparent 72%),
+  #0d0e11;
+ border-color:rgba(255,255,255,.045);
+ box-shadow:none;
+}
+/* Coral / rose, teal / green, amber / copper, violet / blue,
+   blue / cyan, and sage / steel. Light follows each device. */
+.card.fx-managed[data-i="1"]{--light-a:49,202,186;--light-b:86,156,68;--light-c:64,123,174;--light-x:96%;--light-y:60%;--blend-x:62%;--blend-y:100%;--warm-x:0%;--warm-y:18%}
+.card.fx-managed[data-i="2"]{--light-a:229,173,71;--light-b:200,94,50;--light-c:197,76,108;--light-x:92%;--light-y:8%;--blend-x:42%;--blend-y:100%;--warm-x:0%;--warm-y:45%}
+.card.fx-managed[data-i="3"]{--light-a:149,120,229;--light-b:69,117,186;--light-c:216,117,105;--light-x:8%;--light-y:28%;--blend-x:42%;--blend-y:100%;--warm-x:100%;--warm-y:58%}
+.card.fx-managed[data-i="4"]{--light-a:80,140,255;--light-b:72,191,206;--light-c:198,93,135;--light-x:8%;--light-y:38%;--blend-x:38%;--blend-y:100%;--warm-x:100%;--warm-y:10%}
+.card.fx-managed[data-i="5"]{--light-a:97,173,145;--light-b:77,128,189;--light-c:200,160,87;--light-x:94%;--light-y:28%;--blend-x:62%;--blend-y:100%;--warm-x:0%;--warm-y:70%}
+@media(max-width:734px){
+ .card.fx-managed[data-i]{
+  --light-x:96%;--light-y:62%;
+  --blend-x:48%;--blend-y:100%;
+  --warm-x:0%;--warm-y:38%;
+ }
+}
+@media(min-width:735px){
+ .fx-managed[data-i="3"] .dv{
+  left:20px!important;top:70px!important;
+  transform:none!important;
+  transform-origin:50% 50%;
+ }
+ .fx-managed[data-i="3"] .tx{left:880px!important;width:340px!important}
+ .fx-managed[data-i="2"] .tx img{flex-shrink:0}
+ .fx-managed[data-i="2"] .tx p{font-size:32px!important;max-width:none;white-space:normal}
+}
+
+/* Frontal thin laptop, without a wordmark. Screen remains native 16:9.
+   At 820px: 754px lid, ~6px bezel, 8px metal base. */
+.fx-cast-macbook{isolation:isolate;filter:drop-shadow(0 20px 22px #0005)}
+.fx-cast-lid{position:absolute;left:4%;top:0;width:92%;height:96.54%;border:1px solid #777b80;border-radius:2% 2% 1% 1% / 3.5% 3.5% 2% 2%;background:#101113;box-shadow:inset 0 0 0 1px #303236}
+.fx-cast-macbook .fx-cast-screen{position:absolute;left:.8%;right:.8%;top:1.4%;bottom:1.4%;width:auto;height:auto;border-radius:1.1% / 1.9%;overflow:hidden;background:#000}
+.fx-cast-macbook .fx-cast-screen video{display:block;width:100%;height:100%;object-fit:contain}
+.fx-cast-base{position:absolute;left:0;bottom:1.7%;width:100%;height:1.8%;border-radius:1px 1px 8% 8% / 1px 1px 90% 90%;background:linear-gradient(#b8bcc2 0%,#989da4 35%,#555b62 80%,#373c42);box-shadow:0 1px 0 #25292e}
+.fx-cast-base::after{content:"";position:absolute;left:44%;top:0;width:12%;height:25%;border-radius:0 0 6px 6px;background:#757a81}
+.fx-managed[data-i="3"] .fx-device-motion{transform:none!important}
+@media(min-width:735px){.fx-managed[data-i="3"] .tx p{font-size:34px}}
+/* The current day is the primary entry in the weekly view. */
+@media(min-width:735px){.fx-week-board{grid-template-columns:1.28fr repeat(4,minmax(0,1fr))}}
+
+
+/* Mobile cards follow their content; previews and controls have separate space. */
+@media(max-width:734px){
+ .fx-gradients .rail{align-items:flex-start;overflow-y:hidden}
+ .fx-managed[data-i="2"],.fx-managed[data-i="3"],.fx-managed[data-i="4"]{height:auto;align-self:flex-start}
+ .fx-managed[data-i="2"] .st,.fx-managed[data-i="3"] .st,.fx-managed[data-i="4"] .st{position:relative;display:flex;flex-direction:column;height:auto;padding:32px 24px 24px;gap:24px}
+ .fx-managed[data-i="2"] .tx,.fx-managed[data-i="3"] .tx,.fx-managed[data-i="4"] .tx{position:relative;left:0!important;top:0!important;width:100%!important;flex:none;order:0}
+ .fx-managed[data-i="2"] .tx p,.fx-managed[data-i="3"] .tx p,.fx-managed[data-i="4"] .tx p{font-size:22px!important;line-height:1.25}
+ .fx-managed[data-i="4"] .fx-device-motion{position:relative;inset:auto;height:353px;flex:none;order:1;transform:none!important}
+ .fx-managed[data-i="4"] .dv{left:calc(50% - 88.04px)!important;top:0!important;transform:scale(.62)!important;transform-origin:0 0}
+ .fx-managed[data-i="4"] .fx-scene-art{display:none}
+ .fx-managed[data-i="4"] .fx-moment-track{position:relative;left:0;top:0;width:100%;flex:none;order:2;transform:none!important}
+ .fx-managed[data-i="3"] .st{padding-left:16px;padding-right:16px}
+ .fx-managed[data-i="3"] .tx{margin:0 8px;width:calc(100% - 16px)!important}
+ .fx-managed[data-i="3"] .fx-device-motion{position:relative;inset:auto;width:100%;aspect-ratio:820/445;flex:none;order:1}
+ .fx-managed[data-i="3"] .dv{left:0!important;top:0!important;width:100%!important;height:100%!important;transform:none!important;transform-origin:0 0}
+ .fx-managed[data-i="3"] .fx-scene-art{display:none}
+ .fx-managed[data-i="2"] .st{gap:20px}
+ .fx-managed[data-i="2"] .fx-device-motion{display:none}
+ .fx-managed[data-i="2"] .fx-week-tabs{position:relative;inset:auto;order:1;flex:none;width:100%;gap:4px}
+ .fx-managed[data-i="2"] .fx-week-tabs button{border-radius:10px;min-width:40px;height:48px}
+ .fx-managed[data-i="2"] .fx-scene-art{position:relative;inset:auto;order:2;height:364px;flex:none}
+ .fx-managed[data-i="2"] .fx-week-board{inset:0;width:100%;height:100%}
+ .fx-managed[data-i="2"] .fx-week-tile{height:100%;border-radius:16px;background:#111217;box-shadow:none}
+ .fx-managed[data-i="2"] .fx-week-tile video{height:238px;object-position:center 38%}
+ .fx-managed[data-i="2"] .fx-week-tile::after{bottom:auto;height:238px;background:linear-gradient(#0008,transparent 55%,#111217)}
+ .fx-managed[data-i="2"] .fx-week-heading{left:16px;right:16px;top:16px}
+ .fx-managed[data-i="2"] .fx-week-title{top:254px;left:16px;right:16px;font-size:18px;line-height:1.25}
+ .fx-managed[data-i="2"] .fx-week-events{left:16px;right:16px;bottom:20px;gap:6px}
+ .fx-managed[data-i="2"] .fx-week-events span{background:none;padding:0;font-size:14px;line-height:1.4;backdrop-filter:none;color:#ccc}
+ .fx-managed[data-i="2"] .fx-week-line{display:none!important}
+}
+
+/* Mobile Arena: the same product demo, inside a frontal portrait phone. */
+@media(max-width:734px){
+ .fx-gradients .fx-managed[data-i="1"]{height:auto;align-self:flex-start}
+ .fx-gradients .fx-managed[data-i="1"] .st{position:relative;display:flex;flex-direction:column;height:auto;padding:32px 24px 24px;gap:24px}
+ .fx-gradients .fx-managed[data-i="1"] .tx{position:relative;left:0!important;top:0!important;width:100%!important}
+ .fx-gradients .fx-managed[data-i="1"] .tx p{font-size:22px;line-height:1.25}
+ .fx-gradients .fx-managed[data-i="1"] .fx-device-motion,.fx-gradients .fx-managed[data-i="1"] .fx-scene-art{display:none}
+ .fx-arena-phone{position:relative;align-self:center;width:min(268px,100%);aspect-ratio:284/569;flex:none}
+ .fx-arena-phone>img{position:absolute;inset:0;width:100%;height:100%}
+ .fx-arena-screen{position:absolute;left:4.58%;top:2.28%;width:90.5%;height:95.25%;border-radius:13% / 6.2%;overflow:hidden;background:#0d0e11}
+ .fx-arena-screen video{display:block;width:100%;height:100%;object-fit:cover}
+ .fx-arena-island{position:absolute;left:36.27%;top:2.46%;width:27.1%;height:3.16%;border-radius:20px;background:#000}
+}
+.fx-gradients .fx-status{display:none}
+
+/* Apple iPhone 18 Pro highlights geometry, measured at 320–734px:
+   480px height, 20px gap, 28px radius; 321.25px width at 390px. */
+@media(max-width:734px){
+ .fx-gradients .sec{--W:min(calc(clamp(280px,87.5vw,420px) - 20px),420px);--m:max(6.25vw,calc((100vw - 420px)/2))}
+ .fx-gradients .rail{gap:20px;padding-left:var(--m);padding-right:var(--m);scroll-padding-left:var(--m);scroll-padding-right:var(--m)}
+ .fx-gradients .rail::after{content:"";flex:0 0 0}
+ .fx-gradients .card.fx-managed[data-i]{height:480px;align-self:flex-start;border-radius:28px}
+ .fx-gradients .card.fx-managed[data-i] .st{position:relative;display:flex;flex-direction:column;width:100%;height:100%;padding:24px;gap:16px}
+ .fx-gradients .card.fx-managed[data-i] .tx{position:relative;left:0!important;top:0!important;width:100%!important;margin:0;min-height:87px;flex:none;order:0}
+ .fx-gradients .card.fx-managed[data-i] .tx p{font-size:22px!important;line-height:1.25}
+ .fx-gradients .card.fx-managed[data-i] .tx img{height:20px;margin:0 0 12px!important}
+ .fx-gradients .card.fx-managed[data-i="0"] .fx-device-motion{position:relative;inset:auto;flex:1;min-height:0;order:1;transform:none!important}
+ .fx-gradients .card.fx-managed[data-i="0"] .dv{left:calc(50% - 82.04px)!important;top:0!important;transform:scale(.636)!important}
+ .fx-gradients .card.fx-managed[data-i="1"] .fx-arena-phone{height:calc(100% - 103px);width:auto;max-width:100%;aspect-ratio:284/569;order:1}
+ .fx-gradients .card.fx-managed[data-i="2"] .st{gap:16px}
+ .fx-gradients .card.fx-managed[data-i="2"] .fx-week-tabs{gap:3px}
+ .fx-gradients .card.fx-managed[data-i="2"] .fx-week-tabs button{min-width:0;height:44px}
+ .fx-gradients .card.fx-managed[data-i="2"] .fx-scene-art{height:auto;min-height:0;flex:1}
+ .fx-gradients .card.fx-managed[data-i="2"] .fx-week-tile video,.fx-gradients .card.fx-managed[data-i="2"] .fx-week-tile::after{height:calc(100% - 118px)}
+ .fx-gradients .card.fx-managed[data-i="2"] .fx-week-title{top:auto;bottom:85px;font-size:16px}
+ .fx-gradients .card.fx-managed[data-i="2"] .fx-week-events{left:12px;right:12px;bottom:16px}
+ .fx-gradients .card.fx-managed[data-i="2"] .fx-week-events span{font-size:13px;line-height:1.4}
+ .fx-gradients .card.fx-managed[data-i="3"] .st{padding-left:12px;padding-right:12px}
+ .fx-gradients .card.fx-managed[data-i="3"] .tx{margin:0 12px;width:calc(100% - 24px)!important}
+ .fx-gradients .card.fx-managed[data-i="3"] .fx-device-motion{flex:1;min-height:0;width:100%;aspect-ratio:auto;display:flex;align-items:center}
+ .fx-gradients .card.fx-managed[data-i="3"] .dv{position:relative;left:0!important;top:0!important;width:100%!important;height:auto!important;aspect-ratio:820/445}
+ .fx-gradients .card.fx-managed[data-i="4"] .st{gap:16px}
+ .fx-gradients .card.fx-managed[data-i="4"] .fx-device-motion{height:236px}
+ .fx-gradients .card.fx-managed[data-i="4"] .dv{left:calc(50% - 58.93px)!important;transform:scale(.415)!important}
+ .fx-gradients .card.fx-managed[data-i="4"] .fx-moment-track{margin-top:auto}
+ .fx-gradients .card.fx-managed[data-i="4"] .fx-moment-caption{font-size:14px;line-height:20px;margin-top:8px}
+ /* News uses the entire card as its video canvas, with the headline above it. */
+ .fx-gradients .card.fx-managed[data-i="5"] .full{position:absolute;inset:0;width:100%;height:100%;border-radius:0;overflow:hidden}
+ .fx-gradients .card.fx-managed[data-i="5"] .full::after{display:none}
+ .fx-gradients .card.fx-managed[data-i="5"] .full video{width:100%;height:100%;object-fit:cover;filter:brightness(.62)}
+ .fx-gradients .card.fx-managed[data-i="5"] .tx{z-index:2}
+}

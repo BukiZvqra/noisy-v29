@@ -1,0 +1,127 @@
+/* „За нас“ v6 (15.10.2026): структурата на noisy.net/about_us, по-добрата наша версия. Генерира се от _tools/build-about6.py */
+.z6{--z6-bg:#0A090D;--z6-card:#131218;--z6-line:rgba(255,255,255,.08);--z6-mut:rgba(255,255,255,.64);--z6-grad:linear-gradient(90deg,#B61DFF,#CE13A8 55%,#FF3B3B);background:var(--z6-bg)}
+.z6 h1,.z6 h2,.z6 h3{text-wrap:balance}
+.z6 h1 span,.z6 h2 span,.z6 h3 span,.z6-mft span{background:var(--z6-grad);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.z6-w{max-width:1200px;margin:0 auto;padding:0 20px}
+.z6-sec{padding:96px 0}
+@media (min-width:1024px){.z6-w{padding:0 40px}.z6-sec{padding:136px 0}}
+
+/* ---------- 1 · хиро ---------- */
+.z6-hero{position:relative;height:100svh;min-height:600px;margin-top:-60px;overflow:hidden;isolation:isolate;display:flex;align-items:flex-end}
+@media (min-width:1024px){.z6-hero{margin-top:-88px;min-height:680px}}
+.z6-hvs{position:absolute;inset:0;z-index:0;background:#000}
+.z6-hv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.1s ease,transform 6s linear}
+.z6-hv.on{opacity:1;transform:scale(1)}
+.z6-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,13,.55) 0,rgba(10,9,13,0) 22%,rgba(10,9,13,.15) 45%,rgba(10,9,13,.86) 78%,#0A090D 100%)}
+.z6-hc{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 20px 56px;display:flex;flex-direction:column;align-items:flex-start}
+@media (min-width:1024px){.z6-hc{padding:0 40px 80px}}
+.z6-eyebrow{margin:0 0 14px;font:600 13px/1 Manrope,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.z6-hls{display:grid;width:100%}
+.z6-hl{grid-area:1/1;margin:0;max-width:16ch;font:700 clamp(34px,6vw,84px)/1.04 Unbounded,Manrope,sans-serif;letter-spacing:-.035em;color:#fff;opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.z6-hl.on{opacity:1;transform:none;transition-delay:.15s}
+.z6-chips{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 30px}
+.z6-chip{position:relative;display:inline-flex;align-items:center;height:50px;padding:0 16px 4px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(10,9,13,.45);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);cursor:pointer;opacity:.6;transition:opacity .3s,border-color .3s}
+.z6-chip img{display:block;height:24px;width:auto}
+.z6-chip:hover,.z6-chip.on{opacity:1}
+.z6-chip.on{border-color:rgba(255,255,255,.28)}
+.z6-chip i{position:absolute;left:14px;right:14px;bottom:7px;height:2px;border-radius:2px;background:rgba(255,255,255,.14);overflow:hidden;opacity:0}
+.z6-chip.on i{opacity:1}
+.z6-chip b{display:block;height:100%;width:100%;background:var(--z6-grad);transform-origin:0 50%;transform:scaleX(0)}
+.z6-chip.on b{animation:z6bar var(--z6-dur,4.5s) linear forwards}
+@keyframes z6bar{to{transform:scaleX(1)}}
+.z6-cta{min-height:52px;padding:0 28px}
+
+/* ---------- 2 · какво е NOISY ---------- */
+.z6-introg{display:grid;gap:28px}
+.z6-intro h2{margin:0;font:700 clamp(28px,3.4vw,48px)/1.12 Unbounded,Manrope,sans-serif;letter-spacing:-.03em;color:#fff}
+.z6-introc p{margin:0 0 16px;font:400 18px/1.6 Manrope,system-ui,sans-serif;color:var(--z6-mut)}
+.z6-introc p:first-child{color:#fff;font-size:20px}
+@media (min-width:1024px){.z6-introg{grid-template-columns:1.6fr 1fr;gap:72px;align-items:end}.z6-introc p{font-size:19px}.z6-introc p:first-child{font-size:22px}}
+
+/* ---------- 3 · четирите свята ---------- */
+.z6-worlds{padding-top:0}
+.z6-wh{display:grid;gap:14px;margin-bottom:40px}
+.z6-wh h2{margin:0;font:700 clamp(30px,4.2vw,60px)/1.05 Unbounded,Manrope,sans-serif;letter-spacing:-.035em;color:#fff}
+.z6-wh p{margin:0;max-width:40ch;font:400 17px/1.55 Manrope,system-ui,sans-serif;color:var(--z6-mut)}
+@media (min-width:1024px){.z6-wh{grid-template-columns:1fr auto;align-items:end;margin-bottom:56px}.z6-wh p{text-align:right;max-width:34ch}}
+.z6-grid{display:grid;gap:16px}
+@media (min-width:860px){.z6-grid{grid-template-columns:1fr 1fr}}
+.z6-card{--p:0;position:relative;display:flex;flex-direction:column;min-height:600px;padding:28px 24px 0;border-radius:28px;background:var(--z6-card);overflow:hidden;isolation:isolate}
+.z6-card::after{content:"";position:absolute;inset:0;border-radius:inherit;border:1px solid var(--z6-line);pointer-events:none}
+.z6-card::before{content:"";position:absolute;left:50%;bottom:-30%;width:120%;height:70%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(182,29,255,.28),rgba(206,19,168,.12) 55%,transparent);opacity:calc(.35 + var(--p)*.65);z-index:-1;pointer-events:none}
+.z6-card[data-w="arena"]::before{background:radial-gradient(closest-side,rgba(46,95,255,.26),rgba(206,19,168,.1) 55%,transparent)}
+@media (min-width:1024px){.z6-card{min-height:640px;padding:40px 40px 0}}
+.z6-ct{position:relative;z-index:2}
+.z6-tag{display:block;height:26px;width:auto;margin-bottom:22px}
+.z6-ct h3{margin:0 0 12px;max-width:17ch;font:700 clamp(24px,2.3vw,32px)/1.12 Unbounded,Manrope,sans-serif;letter-spacing:-.03em;color:#fff}
+.z6-ct p{margin:0 0 20px;max-width:36ch;font:400 16px/1.5 Manrope,system-ui,sans-serif;color:var(--z6-mut)}
+.z6-go{display:inline-flex;align-items:center;gap:12px;font:700 15px/1 Manrope,system-ui,sans-serif;color:#fff;text-decoration:none}
+.z6-go svg{width:40px;height:40px;padding:11px;border-radius:50%;border:1px solid rgba(255,255,255,.18);fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:background .3s,border-color .3s,transform .3s}
+.z6-go:hover svg{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4);transform:translateX(3px)}
+
+/* телефонът и елементът, който излиза от екрана (--p: 0 вътре в екрана, 1 навън) */
+.z6-dev{position:relative;margin-top:auto;height:340px;display:flex;justify-content:center;align-items:flex-start;padding-top:36px}
+@media (min-width:1024px){.z6-dev{height:380px;padding-top:44px}}
+.z6-phone{position:relative;width:236px;height:480px;border-radius:40px;padding:9px;background:linear-gradient(160deg,#2a2930,#121116 40%,#1c1b21);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 30px 60px rgba(0,0,0,.55);transform:translateY(calc((1 - var(--p))*26px))}
+.z6-isl{position:absolute;top:18px;left:50%;width:72px;height:20px;margin-left:-36px;border-radius:12px;background:#000;z-index:3}
+.z6-screen{position:relative;width:100%;height:100%;border-radius:32px;overflow:hidden;background:#000}
+.z6-scr{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.z6-pop{position:absolute;z-index:4;display:block;border-radius:14px;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 28px 60px rgba(0,0,0,.6);opacity:calc(.15 + var(--p)*.85);will-change:transform}
+/* Theatre: съставът излиза наляво от екрана */
+.z6-card[data-w="theatre"] .z6-pop{width:290px;top:170px;left:50%;margin-left:-145px;transform:translate3d(calc(var(--p)*-34%),calc(var(--p)*-14px),0) scale(calc(.82 + var(--p)*.18)) rotate(calc(var(--p)*-3deg))}
+/* Arena: статистиката излиза надясно */
+.z6-card[data-w="arena"] .z6-pop{width:270px;top:190px;left:50%;margin-left:-135px;transform:translate3d(calc(var(--p)*36%),calc(var(--p)*-20px),0) scale(calc(.84 + var(--p)*.16)) rotate(calc(var(--p)*3deg))}
+/* Showtime: изборът на капитани излиза наляво */
+.z6-card[data-w="showtime"] .z6-pop{width:300px;top:180px;left:50%;margin-left:-150px;transform:translate3d(calc(var(--p)*-32%),calc(var(--p)*-12px),0) scale(calc(.8 + var(--p)*.2)) rotate(calc(var(--p)*-2.5deg))}
+/* Newsroom: три новини се разтварят като ветрило */
+.z6-fan{width:300px;height:170px;top:150px;left:50%;margin-left:-150px;box-shadow:none;border-radius:0}
+.z6-fan img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 24px 50px rgba(0,0,0,.6)}
+.z6-fan img:nth-child(1){transform:translate3d(calc(var(--p)*-30%),calc(var(--p)*30px),0) scale(calc(.6 + var(--p)*.22)) rotate(calc(var(--p)*-8deg))}
+.z6-fan img:nth-child(2){transform:translate3d(calc(var(--p)*30%),calc(var(--p)*44px),0) scale(calc(.6 + var(--p)*.22)) rotate(calc(var(--p)*7deg))}
+.z6-fan img:nth-child(3){transform:translate3d(0,calc(var(--p)*-22px),0) scale(calc(.62 + var(--p)*.3))}
+@media (max-width:420px){
+  .z6-phone{width:212px;height:432px}
+  .z6-card[data-w="theatre"] .z6-pop,.z6-card[data-w="showtime"] .z6-pop{width:258px;margin-left:-129px}
+  .z6-card[data-w="arena"] .z6-pop{width:240px;margin-left:-120px}
+  .z6-fan{width:260px;height:146px;margin-left:-130px}
+}
+
+/* ---------- 4 · манифест ---------- */
+.z6-mf{text-align:center;padding-top:40px}
+.z6-mf .z6-w{display:flex;flex-direction:column;align-items:center}
+.z6-sym{width:56px;height:auto;margin-bottom:28px}
+.z6-mfk{margin:0 0 6px;font:600 clamp(18px,2vw,24px)/1.3 Manrope,system-ui,sans-serif;color:var(--z6-mut)}
+.z6-mft{margin:0;font:700 clamp(40px,8vw,120px)/1 Unbounded,Manrope,sans-serif;letter-spacing:-.045em;color:#fff}
+.z6-mft span{display:inline-block}
+
+/* ---------- 5 · създатели ---------- */
+.z6-cr{padding-top:0}
+.z6-crc{position:relative;display:grid;gap:28px;padding:36px 28px;border-radius:28px;overflow:hidden;background:linear-gradient(110deg,#8024B6 0%,#A21C8F 38%,#7A1530 72%,#2A0D16 100%);color:#fff}
+.z6-crc::after{content:"";position:absolute;right:-60px;top:-40px;width:340px;height:360px;background:url(assets/symbol-outline.svg) no-repeat center/contain;opacity:.16;pointer-events:none}
+.z6-crc h2{margin:0 0 10px;font:700 clamp(26px,3vw,40px)/1.1 Unbounded,Manrope,sans-serif;letter-spacing:-.03em}
+.z6-crc p{margin:0;max-width:40ch;font:400 18px/1.5 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.86)}
+.z6-cra{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}
+.z6-crb{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 24px;border-radius:980px;background:#fff;color:#0A090D;font:800 16px/1 Manrope,system-ui,sans-serif;text-decoration:none;transition:transform .3s}
+.z6-crb svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.z6-crb:hover{transform:translateY(-2px)}
+.z6-crl{font:600 15px/1.4 Manrope,system-ui,sans-serif;color:#fff;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(255,255,255,.4)}
+@media (min-width:1024px){.z6-crc{grid-template-columns:1fr auto;align-items:center;padding:56px 64px}}
+
+/* ---------- 6 · технологиите ---------- */
+.z6-tech{padding-top:0;text-align:center}
+.z6-tech h2{margin:0 0 28px;font:500 15px/1.4 Manrope,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.z6-tl{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 56px;margin:0;padding:0;list-style:none}
+.z6-tl li{font:700 clamp(22px,2.4vw,30px)/1 Manrope,system-ui,sans-serif;letter-spacing:-.02em;color:rgba(255,255,255,.78)}
+
+@media (prefers-reduced-motion:reduce){
+  .z6-hv,.z6-hl{transition:none}.z6-chip.on b{animation:none;transform:scaleX(1)}
+  .z6-card{--p:1!important}
+}
+@media (max-width:600px){
+  .z6-chips{flex-wrap:nowrap;width:100%;gap:6px;margin:22px 0 24px}
+  .z6-chip{flex:1 1 0;min-width:0;justify-content:center;height:42px;padding:0 6px 4px}
+  .z6-chip img{height:15px;max-width:100%}
+  .z6-chip i{left:8px;right:8px;bottom:6px}
+  .z6-tl{gap:12px 26px}
+  .z6-tl li{font-size:20px}
+}

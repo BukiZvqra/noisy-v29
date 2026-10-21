@@ -1,0 +1,129 @@
+/* „За нас“ v7 по Figma на Лили (16.10.2026). Генерира се с _tools/build-about7.py */
+.a7{background:#232323}
+.a7-w{max-width:1656px;margin:0 auto;padding:0 clamp(20px,6.9vw,132px)}
+.a7 h1,.a7 h2{text-wrap:balance}
+/* 1 · хиро */
+.a7-hero{position:relative;margin-top:-60px;padding-top:clamp(60px,6vw,96px);height:clamp(520px,37.5vw,720px);background:#000;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+@media (min-width:1024px){.a7-hero{margin-top:-88px}}
+.a7-hero-bg{position:absolute;inset:0 0 auto 0;height:70%}
+.a7-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.a7-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,#000 100%)}
+.a7-hero h1{position:relative;margin:0 0 clamp(70px,7vw,120px);text-align:center;font:700 clamp(34px,3.6vw,70px)/1.12 Unbounded,Manrope,sans-serif;letter-spacing:-.02em;color:#fff}
+/* 2 · какво е NOISY */
+.a7-intro{padding:clamp(56px,6.6vw,124px) 0 clamp(56px,6vw,110px);text-align:center}
+.a7-intro h2{max-width:1250px;margin:0 auto 26px;font:700 clamp(24px,2vw,38px)/1.3 Unbounded,Manrope,sans-serif;letter-spacing:-.01em;color:#fff}
+.a7-lead{max-width:1250px;margin:0 auto;font:400 clamp(16px,1.15vw,22px)/1.55 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.62)}
+.a7-mods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.7vw,32px);margin-top:clamp(70px,8vw,150px)}
+.a7-mod{position:relative;display:flex;flex-direction:column;align-items:center;padding:0 22px 30px;border-radius:24px;background:linear-gradient(180deg,#2b2b2b 0%,#1a1a1a 100%);color:#fff;text-decoration:none;transition:transform .5s cubic-bezier(.2,.7,.2,1),background .4s}
+.a7-ico{width:clamp(110px,9.4vw,180px);height:auto;margin-top:calc(clamp(110px,9.4vw,180px) * -.32);filter:drop-shadow(0 20px 30px rgba(0,0,0,.45));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.a7-mod:hover{transform:translateY(-6px)}
+.a7-mod:hover .a7-ico{transform:translateY(-10px) rotate(-6deg) scale(1.06)}
+.a7-chip{display:inline-flex;align-items:center;height:clamp(40px,3vw,58px);margin:18px 0 22px;padding:0 clamp(20px,2vw,40px);background:#2f2f2f;clip-path:polygon(0 10%,100% 0,100% 90%,0 100%);font:500 clamp(15px,1.25vw,24px)/1 Unbounded,Manrope,sans-serif;letter-spacing:.06em}
+.a7-mod p{margin:0;max-width:22ch;font:400 clamp(14px,1.05vw,20px)/1.45 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.88)}
+.a7-mood{margin:clamp(56px,6vw,110px) 0 0;font:700 clamp(22px,1.9vw,36px)/1.2 Unbounded,Manrope,sans-serif;color:#fff}
+.a7-mood span{background:linear-gradient(90deg,#B61DFF,#CE13A8 45%,#FF3B3B);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:900px){.a7-mods{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:64px}}
+/* 3 · технологично развитие */
+.a7-tech{padding:clamp(56px,6.6vw,124px) 0;background:#1b1b1b}
+.a7-tech h2,.a7-newsw h2,.a7-lic h2,.a7-tk h2{margin:0;font:700 clamp(24px,2.1vw,40px)/1.2 Unbounded,Manrope,sans-serif;letter-spacing:-.01em;color:#fff}
+.a7-tabs{display:flex;gap:clamp(18px,2.5vw,40px);margin:clamp(28px,3vw,56px) 0 clamp(28px,3vw,56px)}
+.a7-tab{appearance:none;border:0;background:none;padding:6px clamp(10px,1.2vw,22px) 12px;font:400 clamp(15px,1.05vw,20px)/1 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.55);cursor:pointer;border-bottom:2px solid transparent}
+.a7-tab.on{color:#fff;border-bottom-color:#CE13A8}
+.a7-card{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:end;min-height:clamp(380px,39vw,760px);padding:clamp(28px,5vw,96px) 0 0 clamp(28px,5vw,96px);border-radius:24px;overflow:hidden;background:radial-gradient(60% 70% at 100% 0%,rgba(206,19,168,.35),rgba(206,19,168,0) 70%),linear-gradient(160deg,#2c2c2c,#1d1d1d)}
+.a7-panes{align-self:start}
+.a7-pane{display:none;flex-direction:column;align-items:flex-start;gap:clamp(14px,1.6vw,30px)}
+.a7-pane.on{display:flex;animation:a7in .5s ease}
+@keyframes a7in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.a7-box{max-width:400px;padding:clamp(18px,1.7vw,32px);border-radius:24px;background:#353535}
+.a7-box b{display:block;margin-bottom:12px;font:600 clamp(15px,1.05vw,20px)/1.3 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.85)}
+.a7-box p{margin:0;font:400 clamp(14px,1vw,19px)/1.45 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.6)}
+.a7-pill{display:inline-flex;align-items:center;gap:10px;height:clamp(40px,3vw,58px);padding:0 clamp(18px,1.6vw,30px);border-radius:999px;background:#353535;font:600 clamp(14px,1vw,19px)/1 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.85);text-decoration:none}
+.a7-pill::before{content:"";width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 2px #CE13A8}
+.a7-phones{display:block;width:100%;height:auto;align-self:end}
+@media (max-width:900px){.a7-card{grid-template-columns:1fr;padding:28px 20px 0}.a7-phones{margin-top:28px}}
+/* 4 · новини */
+.a7-newsw{padding:clamp(56px,6.6vw,124px) 0 clamp(40px,4vw,80px);text-align:center}
+.a7-newsg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.7vw,32px);margin-top:clamp(28px,3.5vw,64px);text-align:left}
+.a7-news img{display:block;width:100%;height:auto;border-radius:16px}
+.a7-news p{margin:14px 0 0;font:500 clamp(15px,1.1vw,21px)/1.4 Manrope,system-ui,sans-serif;color:#fff}
+@media (max-width:900px){.a7-newsg{grid-template-columns:1fr}}
+/* 5 · лицензирано съдържание */
+.a7-lic{padding:clamp(40px,5vw,96px) 0 clamp(56px,6.6vw,124px)}
+.a7-licg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:40px;max-width:1300px}
+.a7-lic p{margin:22px 0 26px;max-width:36ch;font:400 clamp(15px,1.15vw,22px)/1.5 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.62)}
+.a7-lic img{width:100%;max-width:620px;height:auto;justify-self:end}
+.a7-more{display:inline-flex;align-items:center;gap:6px;font:700 clamp(15px,1.1vw,21px)/1 Manrope,system-ui,sans-serif;color:#fff;text-decoration:none}
+.a7-more svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
+.a7-more:hover svg{transform:translateX(3px)}
+@media (max-width:900px){.a7-licg{grid-template-columns:1fr}.a7-lic img{justify-self:start}}
+/* 6 · създатели */
+.a7-cr-in{position:relative;display:flex;align-items:center;min-height:clamp(280px,31vw,600px);overflow:hidden;background:linear-gradient(90deg,#7A1FB0 0%,#A5138A 30%,#C1123F 60%,#8E1730 100%)}
+.a7-cr-img{position:absolute;right:0;top:0;height:100%;width:60%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 40%);mask-image:linear-gradient(90deg,transparent 0,#000 40%);opacity:.9}
+.a7-cr-t{position:relative;z-index:1;padding:0 clamp(20px,6.9vw,132px)}
+.a7-cr h2{margin:0 0 20px;font:700 clamp(26px,2.4vw,46px)/1.15 Unbounded,Manrope,sans-serif;color:#fff}
+.a7-cr p{margin:0 0 24px;font:400 clamp(16px,1.2vw,23px)/1.4 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.9)}
+/* 7 · технологиите */
+.a7-tk{padding:clamp(70px,8vw,150px) 0;background:#181818;text-align:center}
+.a7-tk img{display:block;width:min(960px,100%);height:auto;margin:clamp(30px,4vw,70px) auto 0}
+/* поправки 16.10: еднаква височина на иконите, телефоните без кутия, хирото по-високо */
+.a7-ico{height:clamp(110px,9.4vw,180px);width:clamp(110px,9.4vw,180px);object-fit:contain;object-position:50% 100%}
+.a7-phones{width:88%;justify-self:center;-webkit-mask-image:radial-gradient(75% 85% at 50% 60%,#000 62%,transparent 100%);mask-image:radial-gradient(75% 85% at 50% 60%,#000 62%,transparent 100%)}
+.a7-hero{height:clamp(560px,41vw,800px)}
+.a7-hero-bg{height:66%}
+@media (max-width:734px){.a7-hero{height:auto;padding-top:96px}.a7-hero-bg{position:relative;inset:auto;height:auto;width:100%;margin-bottom:-30px}.a7-hero-bg img{height:auto;aspect-ratio:1920/500;object-fit:cover;width:220%;max-width:none;margin-left:-60%}.a7-hero h1{margin-bottom:56px}}
+@media (max-width:734px){.a7-intro h2{font-size:21px}.a7-hero-bg{margin-bottom:-12px}}
+
+/* ===== 16.10 (Коста): ново хиро с видео, картите на модулите с новия бранд и изскачащ герой ===== */
+.a7-hero{height:100svh;min-height:600px;padding:0;justify-content:flex-end;align-items:stretch;background:#000}
+.a7-hero-bg{display:none}
+.a7-hv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.1)}
+.a7-hs{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,13,.55) 0,rgba(10,9,13,0) 25%,rgba(10,9,13,.2) 50%,rgba(10,9,13,.88) 82%,#232323 100%)}
+.a7-hc{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 20px clamp(80px,12vh,140px)}
+.a7-eb{margin:0 0 16px;font:600 13px/1 Manrope,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.a7-hero h1{margin:0;font:700 clamp(40px,6.4vw,104px)/1.02 Unbounded,Manrope,sans-serif;letter-spacing:-.035em}
+.a7-hero h1 span,.a7-intro h2 span{background:linear-gradient(90deg,#B61DFF,#CE13A8 45%,#FF3B3B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.a7-hsub{margin:20px 0 28px;max-width:52ch;font:400 clamp(16px,1.3vw,20px)/1.5 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.85)}
+.a7-cta{min-height:52px;padding:0 30px}
+.a7-scr{position:absolute;left:50%;bottom:28px;z-index:1;width:22px;height:34px;margin-left:-11px;border:2px solid rgba(255,255,255,.5);border-radius:12px}
+.a7-scr::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:7px;margin-left:-2px;border-radius:2px;background:#fff;animation:a7s 1.6s ease-in-out infinite}
+@keyframes a7s{0%{transform:translateY(0);opacity:1}70%{transform:translateY(9px);opacity:0}100%{opacity:0}}
+@media (max-width:734px){.a7-hero{margin-top:-60px}.a7-hero h1{font-size:40px}}
+.a7-intro h2{font-size:clamp(28px,3vw,56px)}
+/* карти */
+.a7-mods{perspective:1300px;margin-top:clamp(110px,11vw,190px);gap:clamp(12px,1.4vw,24px)}
+.a7-mod{display:block;aspect-ratio:4/5;padding:0;border-radius:24px;background:none;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.7,.2,1);text-align:left}
+.a7-mbg{position:absolute;inset:0;overflow:hidden;border-radius:inherit;background:#0d0c11;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.a7-mbg img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(1.1);transform:scale(1.08);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.a7-mbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,13,0) 40%,rgba(10,9,13,.85) 75%,rgba(10,9,13,.97) 100%)}
+.a7-hero-c{position:absolute;z-index:1;left:50%;bottom:24%;height:108%;width:auto;max-width:116%;object-fit:contain;object-position:50% 100%;pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,#000 80%,transparent 100%);filter:drop-shadow(0 20px 32px rgba(0,0,0,.55));
+  transform:translateX(-50%) translateY(26%) scale(.82);opacity:0;transform-origin:50% 100%;transition:transform 1.1s cubic-bezier(.34,1.45,.5,1) var(--d,0s),opacity .6s ease var(--d,0s)}
+.a7-mod[data-w=showtime] .a7-hero-c{height:84%;max-width:132%}
+.a7-mod[data-w=newsroom] .a7-hero-c{height:90%;max-width:96%}
+.a7-mods.in .a7-hero-c{transform:translateX(-50%) translateZ(40px);opacity:1}
+.a7-mt{position:absolute;z-index:2;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:clamp(18px,1.6vw,28px)}
+.a7-ml{display:block;height:clamp(26px,2vw,34px);width:auto}
+.a7-mt p{margin:0;max-width:none;font:500 clamp(14px,1.05vw,18px)/1.4 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.9)}
+.a7-go{display:inline-flex;align-items:center;gap:6px;font:700 14px/1 Manrope,system-ui,sans-serif;color:#fff;opacity:.0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.a7-go svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.a7-mod:hover{transform:rotateX(4deg) rotateY(-5deg) translateY(-6px)}
+.a7-mod:hover .a7-mbg img{transform:scale(1.14)}
+.a7-mods.in .a7-mod:hover .a7-hero-c{transform:translateX(-50%) translateY(-7%) translateZ(70px) scale(1.06);transition-delay:0s}
+.a7-mod:hover .a7-go{opacity:1;transform:none}
+@media (hover:none){.a7-go{opacity:.85;transform:none}}
+@media (max-width:900px){.a7-mods{row-gap:90px;margin-top:90px}.a7-mod{aspect-ratio:3/4}}
+@media (prefers-reduced-motion:reduce){.a7-hero-c{transition:none;opacity:1;transform:translateX(-50%)}}
+/* „Гледай навсякъде“ от главната */
+.a7 #platforms{padding:clamp(40px,5vw,96px) 0}
+@media (max-width:600px){.a7-mods{grid-template-columns:1fr;row-gap:96px;margin-top:110px}.a7-mod{aspect-ratio:5/4}.a7-hero-c{height:112%}.a7-hero h1{line-height:1.12}.a7-ml{height:28px}.a7-mt p{font-size:15px}}
+@media (max-width:600px){.a7-mods{margin-top:150px;row-gap:120px}}
+/* 16.10 вечер (Коста): картите в „За нас“ без изскачащи герои и без 3D - като банера в Arena (размазан кадър, лого, текст) */
+.a7-hero-c{display:none!important}
+.a7-mods{margin-top:clamp(40px,4vw,64px);perspective:none}
+.a7-mod,.a7-mod:hover{transform:none!important}
+.a7-mod{aspect-ratio:4/3}
+.a7-mbg img{filter:blur(6px) brightness(.6) saturate(1.1);transform:scale(1.12)}
+.a7-mod:hover .a7-mbg img{transform:scale(1.16)}
+@media (max-width:900px){.a7-mods{row-gap:12px;margin-top:32px}}
+@media (max-width:600px){.a7-mods{row-gap:12px;margin-top:32px}.a7-mod{aspect-ratio:16/9}}
+.a7 #vuprosi{padding:clamp(56px,6vw,110px) 0}

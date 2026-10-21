@@ -1,0 +1,88 @@
+/* ===== Бранд: шрифтове и бутони на едно място =====
+   13.10.2026: по Noisy Design System от Лили (Button/Web: Default, Primary, Branded) и шрифтовете Unbounded (заглавия) + Manrope (всичко останало).
+   Когато Лили даде финалните шрифтове и бутони, се сменят само стойностите тук.
+   Сега стойностите са същите като досега, затова страницата не се променя. */
+:root{
+  --font-body:Manrope,system-ui,-apple-system,sans-serif;
+  --font-head:Unbounded,Manrope,system-ui,sans-serif;
+  --font-num:Unbounded,Manrope,sans-serif;
+
+  --btn-h:48px;
+  --btn-pad:0 24px;
+  --btn-weight:800;
+  --btn-size:17px;
+  --btn-radius:8px;
+  --btn-cut:0px;                  /* бутоните на Лили са заоблени, без скос */
+  --btn-p-bg:linear-gradient(90deg,#8024B6 0%,#8C238D 45%,#B2261B 100%);   /* Branded */
+  --btn-p-fg:#fff;
+  --btn-s-bg:#323232;               /* Default */
+  --btn-s-fg:#fff;
+  --btn-s-line:rgba(255,255,255,.12);
+  --btn-w-bg:#FBFBFB;               /* Primary */
+  --btn-w-fg:#0E0E0E;
+}
+body{font-family:var(--font-body)}
+h1,h2,h3,.h2{font-family:var(--font-head)}
+.num{font-family:var(--font-num)}
+.btn{min-height:var(--btn-h);padding:var(--btn-pad);font-weight:var(--btn-weight);border-radius:var(--btn-radius)!important}
+.btn-p{background:var(--btn-p-bg);color:var(--btn-p-fg);clip-path:polygon(0 0,calc(100% - var(--btn-cut)) 0,100% var(--btn-cut),100% 100%,var(--btn-cut) 100%,0 calc(100% - var(--btn-cut)))}
+.btn-s{background:var(--btn-s-bg);color:var(--btn-s-fg);box-shadow:inset 0 0 0 1px var(--btn-s-line)}
+
+.btn-w{background:var(--btn-w-bg);color:var(--btn-w-fg)}
+.btn-p:hover{box-shadow:0 10px 30px rgba(140,35,141,.45)}
+.btn-s:hover{background:#3d3d3d}
+/* Unbounded е по-широк: заглавията са с малко по-малък размер и по-плътен ред */
+h1,h2,.h2{letter-spacing:-.02em}
+.nhero .ntext h1{font-size:clamp(28px,min(5.6vw,8svh),74px)!important;line-height:1.12}
+@media(max-width:760px){.nhero .ntext h1{font-size:clamp(24px,6.6vw,34px)!important}}
+.h2{font-size:28px}@media(min-width:1024px){.h2{font-size:44px}}
+/* бележки на Лили: по-леко заглавие на въпросите; „Избери“ в цените като бутоните Default/Branded */
+.faq2 .h2{font-size:30px;max-width:14ch;line-height:1.12}
+@media(min-width:1024px){.faq2 .h2{font-size:40px}}
+.go2{border-radius:14px!important;background:#323232!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)!important;color:#fff!important}
+.go2.picked{background:linear-gradient(90deg,#8024B6 0%,#8C238D 45%,#B2261B 100%)!important;box-shadow:none!important}
+
+/* бележки на Лили (13.10, 15:33): всички бутони с еднакво заобляне 8px; без малките надписи над заглавията */
+.btn,.btn-p,.btn-s,.btn-w,.go2,.go2.picked,.fab,.ag-more,.hdr .cta,.hdr .btn,.ppl2 button,.faqf button,.plans .pl,.bot form button{border-radius:8px!important}
+.kick{display:none!important}
+/* „Повече от гледане“: заглавието започва точно от левия край на картите */
+@media(min-width:1024px){#hl header{max-width:none!important;margin-left:0!important;margin-right:0!important}}
+
+/* ===== Менюто за компютър по Figma на Лили (mPage Noisy, node 10480:46782) ===== */
+.pnav{display:none}
+@media(min-width:1024px){
+ .hdr .w{max-width:none!important;padding:0 5vw!important;height:88px!important;gap:24px}
+ .hdr .logo img{height:30px!important;width:auto}
+ .hdr nav:not(.pnav),.hdr .login,.hdr .cta,.hdr .sp{display:none!important}
+ .pnav{display:flex!important;align-items:center;gap:4px;margin-left:auto;padding:8px 8px 8px 12px;border-radius:16px;
+  background:linear-gradient(180deg,rgba(0,2,112,.10),rgba(0,2,112,.02) 50%,rgba(0,2,112,.06)),rgba(0,0,0,.5);
+  -webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+ .pnav a:not(.btn){display:inline-flex;align-items:center;min-height:44px;padding:0 18px;font-size:16px;font-weight:500;color:#868688;box-shadow:none!important;transition:color .2s}
+ .pnav a:not(.btn):hover,.pnav a.on{color:#fff}
+ .pnav a:not(.btn)::after{display:none!important}
+ .pnav .pcta{display:inline-flex!important;min-height:44px!important;height:44px;padding:0 24px!important;margin-left:8px;font-size:16px!important;font-weight:700!important;border-radius:8px!important;opacity:1!important;visibility:visible!important;max-width:none!important;transform:none!important;pointer-events:auto!important}
+}
+/* по-високото меню: героят и картите се изместват с толкова */
+@media(min-width:1024px){
+ html{scroll-padding-top:96px}
+ .ag-root.nstart{margin-top:-88px!important}
+ .nh{margin-top:-88px!important}
+ .ag-slide{top:calc(50% - var(--ag-lift) * var(--ag-p,1) + 10px * var(--ag-p,1))}
+ .ag-side{top:calc(50% - var(--ag-lift) * var(--ag-p,1) + 10px * var(--ag-p,1))}
+ .ag-stick .ag-shelves{top:calc(50% - var(--ag-lift) + var(--ag-h) / 2 + var(--ag-gap) + 10px)}
+}
+@media(min-width:1024px){.hdr .pnav{gap:22px!important}}
+
+/* Лили (13.10, 16:16): без фон под менюто; остават само логото и капсулата */
+@media(min-width:1024px){.hdr,.hdr.solid{background:transparent!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-bottom:0!important}}
+/* Лили 13.10: без подчертаване при hover в менюто и без „нойз“ ефект върху логото */
+.hdr nav a::after,.pnav a::after{content:none!important;display:none!important}
+.hdr .logo img,.hdr .logo:hover img,.hdr .logo:focus-visible img,.foot .logo img{animation:none!important;filter:none!important}
+/* 13.10 (Лили): на телефон и таблет при скрол логото се свива плавно само до символа N */
+@media(max-width:1023px){.hdr .logo{display:block;overflow:hidden;width:99.5px;flex:none;transition:width .4s cubic-bezier(.4,0,.2,1)}.hdr .logo img{max-width:none!important;width:99.5px!important;height:24px!important}.hdr.mini .logo{width:23px}}
+@media(max-width:1023px) and (prefers-reduced-motion:reduce){.hdr .logo{transition:none}}
+/* 15.10 (Коста): и на компютър при скрол надписът изчезва и остава само символът N */
+@media(min-width:1024px){.hdr .logo{display:block;overflow:hidden;width:124.4px;flex:none;transition:width .4s cubic-bezier(.4,0,.2,1)}.hdr .logo img{max-width:none!important;width:124.4px!important;height:30px!important}.hdr.mini .logo{width:28.8px}}
+@media(min-width:1024px) and (prefers-reduced-motion:reduce){.hdr .logo{transition:none}}
+/* 16.10 (Коста): иконата „мишка/скролни“ се маха отвсякъде */
+.nhint,.a7-scr,.sc-scr,.ar-scroll,.z6-scr,.sc-ov .sc-scr{display:none!important}

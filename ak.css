@@ -1,0 +1,167 @@
+/* NOISY · Apple „Get the highlights“ карусел, 1:1 геометрия.
+   Измерено на apple.com/iphone-18-pro (секция .section-highlights):
+   desktop  >=1069: карта min(1260, 100vw-160) x 612, радиус 28, разстояние 20, заглавие 48/52 600, отгоре 144, отдолу 224
+   tablet   735-1068: карта 100vw-112 x 576, заглавие 40, отгоре 120
+   mobile   <=734: карта 100vw-69 x 480, ляв отстъп 24, заглавие 32, отгоре 112
+   Текстът е в центъра-ляво (отстъп 210, ширина 400, 28/32 600); при tablet/mobile е отгоре в центъра.
+   Телефонът е центриран на 50% + 197px и е отрязан от долния ръб на картата. */
+
+.akpage{background:#222222}
+.akback{position:fixed;left:16px;top:12px;z-index:20;padding:8px 14px;min-height:44px;display:inline-flex;align-items:center;border-radius:980px;background:rgba(0,0,0,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:14px;font-weight:600;color:#f5f5f7}
+
+.ak{--akW:min(1260px,calc(100vw - 160px));--akH:612px;--akM:calc((100vw - var(--akW)) / 2);--akGap:20px;--akpw:420px;--akds:.97;--akids:.75;--akpt:62px;
+  background:#222222;color:#f5f5f7;position:relative;overflow:clip;padding:144px 0 120px;min-height:100vh}
+.ak *{box-sizing:border-box}
+
+.akh{margin:0 0 48px;padding:0 var(--akM);font:600 48px/52px Manrope,system-ui,sans-serif;letter-spacing:-.144px;color:#f5f5f7;
+  opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.28,.11,.32,1),transform 1s cubic-bezier(.28,.11,.32,1)}
+.ak.in .akh{opacity:1;transform:none}
+
+/* ===== релсата ===== */
+.akg{display:flex;gap:var(--akGap);overflow-x:auto;overflow-y:hidden;padding:0 var(--akM);scroll-padding:0 var(--akM);scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;outline:none}
+.akg::-webkit-scrollbar{display:none}
+.akg.anim{scroll-snap-type:none}
+.akg:focus-visible{outline:2px solid #fff;outline-offset:-4px;border-radius:28px}
+
+/* ===== картата ===== */
+.ak .hcard{position:relative;flex:none;display:block;width:var(--akW);height:var(--akH);padding:0;margin:0;border-radius:28px;overflow:hidden;isolation:isolate;
+  scroll-snap-align:start;scroll-snap-stop:always;
+  background:linear-gradient(180deg,#2D2D2D 1%,#131313 68%,#131313 100%);
+  opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.28,.11,.32,1) calc(.3s + var(--i,0) * .15s),transform 1s cubic-bezier(.28,.11,.32,1) calc(.3s + var(--i,0) * .15s)}
+.ak.in .hcard{opacity:1;transform:none}
+.ak .hcard::before{display:none!important}
+.ak .hcard:not(.full)::after{display:none!important}
+.ak .hcard.full::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 75%)}
+.ak .hcard.full>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+
+/* ===== текстът ===== */
+.akcap{position:absolute;left:210px;top:50%;width:400px;z-index:3;transform:translate3d(var(--cx,0px),-50%,0);will-change:transform}
+.ak .hcard .tag{display:block;margin:0 0 16px}
+.ak .hcard .tag img{height:22px;width:auto}
+.ak .hcard .cap{position:static!important;margin:0!important;max-width:none!important;width:auto!important;padding:0;text-align:left;font:600 28px/32px Manrope,system-ui,sans-serif!important;letter-spacing:.196px;color:#f5f5f7}
+.ak .hcard .cap span{display:inline!important;color:#f5f5f7!important;font:inherit!important;letter-spacing:inherit!important}
+
+/* ===== устройствата ===== */
+.ak .hcard .shc{position:static;display:contents}
+.ak .hcard .phone,.ak .hcard .atv{-webkit-mask-image:none;mask-image:none}
+
+.ak .hcard .phone.dvc{--pw:var(--akpw)!important;--ds:var(--akds)!important;position:absolute;left:calc(50% + 197px - var(--akpw) / 2);top:var(--akpt);margin:0;width:var(--akpw)!important;height:calc(var(--akpw) * 882 / 433)!important}
+.ak .hcard .ipadw{--iw2:var(--akpw)!important;--ids:var(--akids)!important;position:absolute;left:calc(50% + 197px - var(--akpw) / 2);top:var(--akpt);margin:0!important;width:var(--akpw)!important;height:calc(var(--akpw) * 778 / 560)!important;align-self:auto!important}
+.ak .hcard .atv{position:absolute;left:calc(50% + 260px);top:50%;transform:translate(-50%,-50%);width:560px!important;max-width:none!important;margin:0!important;display:block!important}
+/* ===== хореографии по карти (измерени във видеата на Apple; пускат се от ak.js през WAAPI) =====
+   battery : телефонът започва ~1,6x, задържа ~0,5 s, отдалечава се към 1,085x до 1,1 s, после уталожва до 1x (5 s)
+   chip    : мъгла 0,9-2,4 s (пик 1,4 s), призрачно устройство 1,28x -> 1x между 1,2 и 2,4 s
+   colors  : 1,11x -> 1x около долния ръб + светлина .3 -> 1 за ~1 s (общо 2 s)
+   camera  : бавно отдалечаване 1,28x -> 1x за 2,5 s със светлина .5 -> 1
+   siri    : статично ветрило от три телефона (без движение) */
+.ak .hcard .phone,.ak .hcard .phone.dvc{transform:none!important;transition:none!important;opacity:1;transform-origin:50% 45%}
+.ak .hcard .phone.dvc{--zs:1;scale:var(--zs)}
+.ak .hcard .ipadw{scale:var(--zs,1);transform-origin:50% 45%}
+.ak .hcard .atv{scale:var(--zs,1);transform-origin:50% 50%}
+.ak .hcard[data-fx="battery"] .phone.dvc{--zs:1.61}
+.ak .hcard[data-fx="chip"] .atv{--zs:1.28;opacity:0}
+.ak .hcard[data-fx="colors"] .phone.dvc{--zs:1.11;opacity:.3;transform-origin:50% 48%}
+.ak .hcard[data-fx="camera"] .ipadw{--zs:1.28;opacity:.5;transform-origin:32% 38%}
+.ak .hcard[data-fx="news"]>video{scale:1.1;opacity:.4;transform-origin:42% 45%}
+
+/* разположение: само при „battery“ текстът е в центъра-ляво, при всички останали е горе в центъра (както при Apple) */
+.ak .hcard:not([data-fx="battery"]) .akcap{left:50%;top:48px;width:min(584px,calc(100% - 80px));margin-left:calc(min(584px,calc(100% - 80px)) / -2);transform:translate3d(var(--cx,0px),0,0);text-align:center}
+.ak .hcard:not([data-fx="battery"]) .cap{text-align:center}
+.ak .hcard:not([data-fx="battery"]) .tag{display:flex;justify-content:center}
+.ak .hcard:not([data-fx="battery"]) .phone.dvc,.ak .hcard:not([data-fx="battery"]) .ipadw{left:calc(50% - var(--akpw) / 2);top:214px}
+.ak .hcard[data-fx="chip"] .atv{left:50%;top:206px;transform:translateX(-50%);width:min(660px,56%)!important}
+.ak .hcard[data-fx="camera"] .ipadw{--akpw:440px;--akids:.7857}
+
+/* мъглата и отблясъкът при „chip“ */
+.akfog,.akgleam{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;opacity:0;z-index:1}
+.akfog{background:radial-gradient(52% 46% at 28% 58%,rgba(205,218,240,.62),transparent 70%),radial-gradient(48% 50% at 72% 46%,rgba(190,206,232,.55),transparent 70%),radial-gradient(80% 62% at 50% 64%,rgba(150,166,198,.5),transparent 76%);filter:blur(26px);mix-blend-mode:screen}
+.akgleam{background:linear-gradient(100deg,transparent 32%,rgba(255,255,255,.1) 50%,transparent 68%);top:46%;height:54%}
+
+/* ветрилото от три телефона при „siri“ */
+.akfan{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+.akfan .fp{--fpw:330px;position:absolute;top:262px;width:var(--fpw);aspect-ratio:393/852;border-radius:calc(var(--fpw) * .12);background:#0e0e10;border:calc(var(--fpw) * .024) solid #2a2a2f;box-shadow:inset 0 0 0 1px #46464d,0 34px 60px rgba(0,0,0,.55);overflow:hidden;filter:brightness(.82)}
+.akfan .fp img{width:100%;height:100%;object-fit:cover;object-position:top}
+.akfan .fp.l{left:calc(50% - 330px - var(--fpw) / 2);transform:perspective(1500px) rotateY(24deg) rotateZ(-5deg);transform-origin:70% 60%}
+.akfan .fp.r{left:calc(50% + 330px - var(--fpw) / 2);transform:perspective(1500px) rotateY(-24deg) rotateZ(5deg);transform-origin:30% 60%}
+.ak .hcard[data-fx="siri"] .phone.dvc{--akpw:380px;--akds:.8776;top:196px;z-index:2}
+@media (prefers-reduced-motion:reduce){.ak .hcard .phone.dvc,.ak .hcard .ipadw,.ak .hcard .atv,.ak .hcard>video{scale:1!important;opacity:1!important}}
+
+/* ===== контролите ===== */
+.akctl{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:48px;opacity:0;transition:opacity .15s 1s}
+.ak.in .akctl{opacity:1}
+.akpill,.akpp{background:rgba(66,66,69,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.akpill{display:flex;align-items:center;gap:0;height:56px;padding:0 18px;border-radius:980px}
+.akd{appearance:none;border:0;background:none;padding:0;height:56px;width:24px;display:grid;place-items:center;cursor:pointer;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.akd i{display:block;width:8px;height:8px;border-radius:980px;background:rgba(245,245,247,.55);position:relative;overflow:hidden;transition:width .4s cubic-bezier(.4,0,.2,1),background .3s}
+.akd:hover i{background:#f5f5f7}
+.akd.on{width:56px}
+.akd.on i{width:48px;background:rgba(245,245,247,.35)}
+.akd.on i::after{content:"";position:absolute;inset:0;background:#f5f5f7;transform-origin:left;transform:scaleX(0);animation:akfill var(--ms,7000ms) linear forwards}
+.akctl.paused .akd.on i::after,.akctl.off .akd.on i::after{animation-play-state:paused}
+.akctl.done .akd.on i::after{animation:none;transform:scaleX(1)}
+@keyframes akfill{to{transform:scaleX(1)}}
+.akpp{appearance:none;border:0;width:56px;height:56px;border-radius:50%;cursor:pointer;position:relative;color:#f5f5f7}
+.akpp::before{content:"";position:absolute;left:50%;top:50%;width:14px;height:16px;transform:translate(-40%,-50%);background:currentColor;clip-path:polygon(0 0,100% 50%,0 100%)}
+.akpp[aria-pressed="false"]::before{clip-path:polygon(0 0,32% 0,32% 100%,0 100%,0 0,68% 0,100% 0,100% 100%,68% 100%,68% 0);width:14px;transform:translate(-50%,-50%)}
+.akpp:hover{background:rgba(90,90,94,.85)}
+.akpp:focus-visible,.akd:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+@media (max-width:1068px){
+  .ak{--akW:calc(100vw - 112px);--akH:576px;--akpw:360px;--akds:.8314;--akids:.6429;--akpt:230px;padding:120px 0 100px}
+  .akh{font-size:40px;line-height:44px;margin-bottom:40px}
+  .akcap{left:116px;right:116px;top:44px;width:auto;transform:translate3d(var(--cx,0px),0,0);text-align:center}
+  .ak .hcard .tag{display:flex;justify-content:center}
+  .ak .hcard .cap{font-size:24px!important;line-height:28px!important;text-align:center}
+  .ak .hcard .phone.dvc,.ak .hcard .ipadw{left:calc(50% - var(--akpw) / 2)}
+  .ak .hcard .atv{left:50%;top:auto;bottom:40px;transform:translateX(-50%);width:min(620px,80%)!important}
+}
+@media (max-width:734px){
+  .ak{--akW:calc(100vw - 69px);--akH:480px;--akM:24px;--akpw:250px;--akds:.5774;--akids:.4464;--akpt:200px;padding:112px 0 80px}
+  .akh{font-size:32px;line-height:36px;margin-bottom:66px}
+  .akcap{left:32px;right:32px;top:32px}
+  .ak .hcard .cap{font-size:17px!important;line-height:21px!important}
+  .ak .hcard .tag img{height:18px}
+  .ak .hcard .atv{bottom:28px;width:calc(100% - 40px)!important}
+}
+@media (max-width:1068px){.akfan .fp{--fpw:230px;top:300px}.akfan .fp.l{left:calc(50% - 235px - var(--fpw) / 2)}.akfan .fp.r{left:calc(50% + 235px - var(--fpw) / 2)}.ak .hcard[data-fx="siri"] .phone.dvc{--akpw:300px;--akds:.6928;top:250px}.ak .hcard:not([data-fx="battery"]) .phone.dvc,.ak .hcard:not([data-fx="battery"]) .ipadw{top:230px}.ak .hcard[data-fx="chip"] .atv{top:auto;bottom:40px}}
+@media (max-width:734px){.akfan{display:none}.ak .hcard[data-fx="siri"] .phone.dvc{--akpw:250px;--akds:.5774;top:200px}.ak .hcard:not([data-fx="battery"]) .akcap{width:auto;left:32px;right:32px;margin-left:0}}
+@media (prefers-reduced-motion:reduce){
+  .akh,.ak .hcard,.akctl{opacity:1;transform:none;transition:none}
+  .akcap{transform:translate3d(0,-50%,0)}
+}
+
+/* ===== клиповете: начален кадър -> видео -> краен кадър (като при Apple) ===== */
+.akm{position:absolute;left:50%;top:0;height:100%;transform:translateX(-50%);z-index:0;pointer-events:none}
+.akm img.st{position:relative;display:block;height:100%;width:auto;max-width:none}
+.akm video,.akm img.en{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;display:block}
+.akm video{opacity:0}
+.hcard.clip-on .akm video{opacity:1}
+.hcard.clip-on .akm img.st{visibility:hidden}
+.akm img.en{opacity:0;transition:opacity .2s ease-out}
+.hcard.clip-end .akm img.en{opacity:1}
+.hcard.hasclip .akcap{z-index:3}
+
+/* The clip itself owns device motion; the rail only moves the captions. */
+.akg{cursor:grab;touch-action:pan-x pan-y}
+.akg.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.ak .hcard[data-fx="news"]>video{scale:1;opacity:1}
+.akm img.st,.akm img.en{user-select:none;-webkit-user-drag:none}
+@media(prefers-reduced-motion:reduce){
+ .akcap{transform:translate3d(0,-50%,0)}
+ .ak .hcard:not([data-fx="battery"]) .akcap{transform:none}
+ .akd.on i::after{animation:none;transform:scaleX(1)}
+}
+@media(prefers-reduced-motion:reduce) and (max-width:1068px){.akcap{transform:none}}
+
+/* 16.10 (Коста): картата „Какво се случи?“ е мокъпът на Лили от Figma (седмицата на „Игри на волята“); текстът е отдолу */
+.hcard[data-fx=week]{background:linear-gradient(180deg,#2b2b2b,#1e1e1e)}
+.hcard[data-fx=week] .lw{position:absolute;left:0;top:0;width:100%;height:auto;z-index:1;pointer-events:none}
+.hcard[data-fx=week] .akcap{top:auto!important;bottom:7%;left:14%;right:8%;width:auto;margin-left:0;transform:translate3d(var(--cx,0px),0,0);display:flex;align-items:center;gap:28px;text-align:left}
+.hcard[data-fx=week] .akcap .tag{margin:0;flex:none}
+.hcard[data-fx=week] .akcap .cap{text-align:left}
+@media (max-width:734px){.hcard[data-fx=week] .akcap{flex-direction:column;align-items:flex-start;gap:10px;left:24px;right:24px;bottom:28px}}
+.hcard[data-fx=week] .akcap .cap{max-width:none;flex:1}
+@media (min-width:735px){.hcard[data-fx=week] .akcap{left:20%;right:10%;bottom:6%}}
+@media (max-width:734px){.hcard[data-fx=week] .lw{width:auto;height:64%;max-width:none;left:0;top:0}}
+.hcard[data-fx=week] .akcap .cap{max-width:none!important;width:auto!important}
+.hcard[data-fx=week] .akcap{width:auto!important;margin-left:0!important;left:18%!important;right:8%!important}@media (max-width:734px){.hcard[data-fx=week] .akcap{left:24px!important;right:24px!important}}

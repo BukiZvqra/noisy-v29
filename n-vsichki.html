@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NOISY · Всички N</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A090D;--line:rgba(255,255,255,.1);--mute:#A9A6B2;--grad:linear-gradient(90deg,#8024B6,#8C238D,#B2261B)}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:#F7F5FA;font:400 16px/1.5 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;padding:10px 16px;background:rgba(10,9,13,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .home{color:var(--mute);text-decoration:none;display:inline-flex;align-items:center;min-height:40px;white-space:nowrap}
+.top b{white-space:nowrap}
+.top nav{margin-left:auto;display:flex;gap:6px;overflow-x:auto}
+.top nav a{flex:none;display:grid;place-items:center;min-width:40px;height:40px;padding:0 8px;border-radius:8px;border:1px solid var(--line);background:#1C1B22;text-decoration:none;font-weight:700;font-size:14px}
+.top nav a.on{background:var(--grad);border-color:transparent}
+@media (max-width:760px){.top{flex-wrap:wrap}.top nav{margin-left:0;width:100%}}
+.intro{max-width:820px;margin:0 auto;padding:48px 16px 24px;text-align:center}
+.intro h1{margin:0 0 12px;font:700 clamp(28px,4.4vw,46px)/1.1 Unbounded,Manrope,sans-serif;letter-spacing:-.02em}
+.intro p{margin:0 auto;color:var(--mute);max-width:64ch}
+.part{max-width:1280px;margin:0 auto;padding:40px 16px 8px}
+.part h2{margin:0;font:700 clamp(22px,3vw,32px)/1.15 Unbounded,Manrope,sans-serif;letter-spacing:-.02em}
+.part>p{margin:8px 0 0;color:var(--mute);max-width:70ch}
+.v{max-width:1280px;margin:0 auto;padding:28px 16px 20px}
+.v .hd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.v .no{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--grad);font:700 18px Unbounded,sans-serif;align-self:center}
+.v h3{margin:0;font:700 clamp(18px,2.2vw,24px)/1.2 Unbounded,Manrope,sans-serif;letter-spacing:-.01em}
+.v .now{padding:3px 9px;border-radius:6px;background:#fff;color:#111;font:700 12px Manrope,sans-serif}
+.v p{flex-basis:100%;margin:0;color:var(--mute)}
+.fr{position:relative;width:100%;height:min(86svh,820px);border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#07060A}
+.fr iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.fr .ld{position:absolute;inset:0;display:grid;place-items:center;color:var(--mute);font-size:14px}
+.fr .tip{position:absolute;right:12px;bottom:12px;z-index:2;padding:6px 10px;border-radius:8px;background:rgba(0,0,0,.6);font-size:12px;color:#ddd;pointer-events:none}
+.go{display:flex;justify-content:center;padding:28px 16px 8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:8px;background:var(--grad);color:#fff;text-decoration:none;font:700 16px Manrope,sans-serif}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-top:18px}
+.list a{display:flex;gap:12px;align-items:center;padding:14px;border-radius:12px;border:1px solid var(--line);background:#141319;text-decoration:none}
+.list a b{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:10px;background:#25232c;font:700 15px Unbounded,sans-serif}
+.list a span{font-weight:600}
+.end{padding:56px 16px 96px;text-align:center;color:var(--mute);border-top:1px solid var(--line);margin-top:40px}
+</style>
+</head>
+<body>
+<header class="top"><a class="home" href="index.html">NOISY v22</a><span style="color:var(--mute)">/</span><b>Всички N</b><nav id="nav" aria-label="Варианти"></nav></header>
+<div class="intro"><h1>Всички ефекти на N</h1><p>Две групи, за да не се бъркат. <b>Част 1:</b> какво се случва около N в началото, докато още не скролваш (буквите A-F). <b>Част 2:</b> какъв е преходът, когато скролнеш и N стане видеото (номера 1-8). Всичко е със същото заглавие, текст и бутон като на сайта.</p></div>
+
+<section class="part" id="p1"><h2>Част 1 · Около N в началото</h2><p>Всеки прозорец е самата главна на v22 с този ефект. Може да скролнеш вътре в прозореца и да видиш и прехода, и картите отдолу.</p></section>
+<div id="around"></div>
+
+<section class="part" id="p2"><h2>Част 2 · Преходът при скрол</h2><p>Тук всеки вариант е цялата сцена: заглавието с N → видеото на цял екран → картата с модулите. Отваря се на отделна страница, защото се гледа със скрол на целия екран.</p>
+ <div class="list" id="trlist"></div>
+ <div class="go"><a class="btn" href="n-efekti.html">Отвори преходите 1-8 →</a></div></section>
+
+<div class="end">Кажи буква от Част 1 и номер от Част 2, например „A и 2“.</div>
+<script>
+(function(){
+var A=[['A','Слоеве на N','Зад N има още копия на различна дълбочина, които мърдат с мишката и се разделят при скрол.',1],
+ ['B','Светлина от видеото','Цветовете от видеото в N се разливат тъмно около него, като Ambilight.'],
+ ['C','Движещи се градиенти','Петна в цветовете на NOISY бавно обикалят около логото.'],
+ ['D','Ехо на N','Контури на N се повтарят около него и се местят с мишката.'],
+ ['E','Светлинни лъчи','Лъчи под ъгъла на чертите на N бавно се движат отстрани.'],
+ ['F','Частици','Светли точки обикалят около N и излитат навън при скрол.'],
+ ['0','Без ефект','Само N с видеото, без нищо около него. За сравнение.']];
+var T=['Растящо N (както е сега)','3D полет','Отваряне','Рисуван контур','Завъртане','Щори','Мозайка от N','Разтапяне'];
+var box=document.getElementById('around'),nav=document.getElementById('nav'),F=[];
+A.forEach(function(a){var id='a'+a[0],d=document.createElement('section');d.className='v';d.id=id;
+ d.innerHTML='<div class="hd"><span class="no">'+a[0]+'</span><h3>'+a[1]+'</h3>'+(a[3]?'<span class="now">Сега във v22</span>':'')+'<p>'+a[2]+'</p></div><div class="fr" data-src="index.html?fx='+a[0]+'"><div class="ld">Зарежда се…</div><span class="tip">Мръдни мишката върху прозореца</span></div>';
+ box.appendChild(d);var l=document.createElement('a');l.href='#'+id;l.textContent=a[0];nav.appendChild(l);F.push({el:d.querySelector('.fr'),a:l})});
+var p2=document.createElement('a');p2.href='#p2';p2.textContent='1-8';nav.appendChild(p2);
+document.getElementById('trlist').innerHTML=T.map(function(t,i){return '<a href="n-efekti.html#e'+(i+1)+'"><b>'+(i+1)+'</b><span>'+t+'</span></a>'}).join('');
+/* прозорците се зареждат, когато стигнеш до тях, и се спират, когато са далеч (за да не тежи) */
+function chk(){F.forEach(function(f){var r=f.el.getBoundingClientRect(),near=r.bottom>-innerHeight*.6&&r.top<innerHeight*1.6,ifr=f.el.querySelector('iframe');
+ if(near&&!ifr){ifr=document.createElement('iframe');ifr.title='Главната с ефект';ifr.loading='eager';ifr.src=f.el.dataset.src;ifr.addEventListener('load',function(){try{var s=ifr.contentDocument.getElementById('skip');if(s)s.click()}catch(e){}});f.el.appendChild(ifr)}
+ else if(!near&&ifr){ifr.remove()}
+ f.a.classList.toggle('on',r.top<innerHeight/2&&r.bottom>innerHeight/2)})}
+addEventListener('scroll',chk,{passive:true});addEventListener('resize',chk);chk();
+})();
+</script>
+</body>
+</html>

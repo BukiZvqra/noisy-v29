@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Повече от гледане · мокъпите на Лили, вариант Б · NOISY</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/symbol.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Карусел „Повече от гледане“ с мокъпите от Figma (страница mPage, Frame 4 → Frame 14 на Лили).
+   Всяка карта е 1260×612 в мерките на Figma; устройството тръгва от позицията във Frame 4 и се свива до Frame 14 (Apple ефектът). */
+:root{--bg:#222222}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:#f5f5f7;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.back{position:fixed;left:16px;top:12px;z-index:20;display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:980px;background:rgba(0,0,0,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:14px;font-weight:600;color:#f5f5f7;text-decoration:none}
+.sec{padding:110px 0 90px}
+.h{margin:0 0 36px;padding:0 var(--m);font:600 clamp(28px,3.4vw,48px)/1.1 Unbounded,Manrope,sans-serif;letter-spacing:-.02em}
+.sec{--W:min(1260px,calc(100vw - 160px));--m:calc((100vw - var(--W)) / 2)}
+@media (max-width:734px){.sec{--W:calc(100vw - 40px)}}
+.rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--m) 8px;scrollbar-width:none;scroll-padding:0 var(--m)}
+.rail::-webkit-scrollbar{display:none}
+.card{position:relative;flex:none;width:var(--W);aspect-ratio:1260/612;border-radius:28px;overflow:hidden;scroll-snap-align:start;background:linear-gradient(180deg,#2b2b2b 0%,#1e1e1e 100%)}
+.st{position:absolute;left:0;top:0;width:1260px;height:612px;transform-origin:0 0;transform:scale(var(--k,1))}
+/* текстът: значката на модула + изречението, на мястото от Figma */
+.tx{position:absolute;z-index:4;opacity:0;transform:translateY(30px);transition:opacity 1s ease .25s,transform 1s cubic-bezier(.25,.1,.25,1) .25s}
+.card.on .tx{opacity:1;transform:none}
+.tx img{display:block;height:40px;width:auto;margin-bottom:14px}
+.tx p{margin:0;font:600 36px/1.17 Manrope,system-ui,sans-serif;letter-spacing:-.01em;color:#fff}
+/* устройството: крайната позиция е Frame 14; началната (Frame 4) е в --s, --dx, --dy */
+.dv{position:absolute;z-index:2;transform-origin:0 0;--q:calc(1 - var(--p,0));transform:translate(calc(var(--dx) * var(--q)),calc(var(--dy) * var(--q))) scale(calc(1 + (var(--s) - 1) * var(--q)));will-change:transform}
+/* Б: устройството се свива от Frame 4 до Frame 14 точно докато картата влиза в центъра (следва пръста/скрола) */
+.dv>img{display:block;width:100%;height:100%}
+.scr{position:absolute;overflow:hidden;background:#000}
+.scr video,.scr img{display:block;width:100%;height:100%;object-fit:cover}
+.isl{position:absolute;z-index:2;background:#000;border-radius:20px}
+.full{position:absolute;inset:0}
+.full video{width:100%;height:100%;object-fit:cover;filter:brightness(.6)}
+.ctl{display:flex;justify-content:center;gap:10px;margin-top:28px}
+.ctl button{width:44px;height:44px;border-radius:50%;border:0;background:#3a3a3c;color:#fff;font-size:20px;cursor:pointer}
+.ctl button:disabled{opacity:.35;cursor:default}
+.dots{display:flex;align-items:center;gap:8px;padding:0 16px;border-radius:980px;background:#3a3a3c}
+.dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);transition:width .3s,background .3s}
+.dots i.on{width:28px;border-radius:4px;background:#fff}
+@media (prefers-reduced-motion:reduce){.dv,.tx{transition:none}}
+/* „Прескочи до момента“ от v23 (същият фийчър), в екрана на телефона в ръката */
+.jp{--out:cubic-bezier(.16,1,.3,1);--mute:rgba(255,255,255,.6);background:#141317}
+.jpw{position:absolute;left:0;top:0;width:300px;height:632px;transform:scale(.847);transform-origin:0 0;display:flex;flex-direction:column;color:#fff;font-family:Manrope,system-ui,sans-serif}
+/* Прескочи до момента: маркерите по лентата на плейъра (емоджи) и списъкът с моментите; подсказката е като „Time hints“ от Figma */
+.jpw{background:#141317;display:flex;flex-direction:column}
+.jv{position:relative;margin-top:12%;aspect-ratio:16/9;background:#000;flex:none}
+.jv video{width:100%;height:100%;object-fit:cover;display:block}
+.jsb{position:absolute;left:6%;right:6%;bottom:12px;height:4px;border-radius:4px;background:rgba(255,255,255,.3)}
+.jfill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:4px;background:#fff}
+.jm{appearance:none;border:0;position:absolute;top:50%;width:36px;height:36px;margin:-18px 0 0 -18px;line-height:36px!important;padding:0;border-radius:50%;background:rgba(10,9,13,.75);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5);font-size:14px;line-height:30px;cursor:pointer;transition:transform .3s var(--out),box-shadow .3s}
+.jm.on{transform:scale(1.25);box-shadow:inset 0 0 0 2px #fff,0 0 0 4px rgba(206,19,168,.5)}
+.jtm{position:absolute;bottom:22px;transform:translateX(-50%);padding:4px 8px;border-radius:7px;background:#fff;color:#111;font-size:11px;font-weight:700;white-space:nowrap;transition:left .5s cubic-bezier(.16,1,.3,1)}
+.jtm::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:8px;background:#fff}
+.jhd{display:flex;align-items:center;justify-content:center;gap:12px;padding:8px 10px 0;font-size:13px}
+.jhd .num{font-size:22px}
+.jhd b{font-size:17px}
+.jhd span{color:var(--mute);font-size:13px}
+.jlb{margin:8px 12px 6px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.jl{display:flex;flex-direction:column;gap:4px;padding:0 8px}
+.jr{appearance:none;border:0;display:flex;align-items:center;gap:10px;min-height:38px;padding:0 10px;border-radius:10px;background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:13px;text-align:left;cursor:pointer;transition:background .3s}
+.jr .e{font-size:16px}
+.jr .n{flex:1}
+.jr .m{font-weight:800;color:var(--mute)}
+.jr.on{background:rgba(206,19,168,.2);box-shadow:inset 0 0 0 1px rgba(206,19,168,.6)}
+.jr.on .m{color:#FF5FC4}
+/* devices.css слага display:block на всичко в рамката; връщаме разположението на екрана „Моментите“ */
+.phone.dvc .jhd{display:flex}
+.phone.dvc .jl{display:flex}
+.phone.dvc .jr{display:flex}
+.phone.dvc .jr .e,.phone.dvc .jr .n,.phone.dvc .jr .m{display:block}
+.phone.dvc .jv{display:block}
+.phone.dvc .jsb{display:block}
+.phone.dvc .jm{display:flex;align-items:center;justify-content:center}
+.ppl button,.jm{min-width:44px!important;min-height:44px!important}
+.jr{min-height:44px!important}
+.jhd span,.jtm,.jl .m,.jlb{font-size:15px!important}
+.jm{width:44px!important;height:44px!important}
+</style>
+</head>
+<body>
+<a class="back" href="index.html">← NOISY</a>
+<section class="sec" aria-labelledby="h">
+ <h2 class="h" id="h">Повече от гледане.</h2><p style="margin:-20px 0 30px;padding:0 var(--m);color:rgba(255,255,255,.55);font-size:15px">Вариант Б: устройството се свива, докато плъзгаш картата към центъра.</p>
+ <div class="rail" id="rail" role="region" aria-roledescription="карусел" aria-label="Повече от гледане" tabindex="0">
+
+  <!-- 1 · Изрежи и сподели: iPhone, Frame 4 (512,35, 594 ш.) → Frame 14 (680,66, 258 ш.) -->
+  <article class="card" data-i="0">
+   <div class="st">
+    <div class="tx" style="left:111px;top:212px;width:330px"><img src="assets/Showtime.svg" alt="Showtime"><p>Изрежи и сподели момента.</p></div>
+    <div class="dv" style="left:680px;top:66px;width:258px;height:517px;--s:2.302;--dx:-168px;--dy:-31px">
+     <div class="scr" style="left:12px;top:12px;width:234px;height:493px;border-radius:30px"><video muted loop playsinline preload="none" data-src="vid/share-editor-v12.mp4"></video></div>
+     <i class="isl" style="left:94px;top:13px;width:70px;height:16px"></i>
+    </div>
+   </div>
+  </article>
+
+  <!-- 2 · Arena: хоризонтален телефон, Frame 4 (едър, долу) → Frame 14 (294,215, 642 ш.) -->
+  <article class="card" data-i="1">
+   <div class="st">
+    <div class="tx" style="left:394px;top:26px;width:473px;text-align:center"><img src="assets/Arena.svg" alt="Arena" style="margin:0 auto 14px"><p>Мачът и всичко за него, както никога досега.</p></div>
+    <div class="dv" style="left:294px;top:215px;width:642px;height:326px;--s:1.9;--dx:-275px;--dy:60px">
+     <div class="scr" style="left:22px;top:22px;width:582px;height:281px;border-radius:26px"><video muted loop playsinline preload="none" data-src="vid/arena-tv2.mp4"></video></div>
+    </div>
+   </div>
+  </article>
+
+  <!-- 3 · Showtime: седмицата на „Игри на волята“ (записът от Figma) -->
+  <article class="card" data-i="2">
+   <div class="st">
+    <div class="dv" style="left:0;top:0;width:1260px;height:446px;--s:1.05;--dx:-30px;--dy:-24px"><img src="img/lili/show-week.png" alt="Седмицата на „Игри на волята“ в NOISY"></div>
+    <div class="tx" style="left:179px;top:476px;width:960px;display:flex;align-items:center;gap:24px"><img src="assets/Showtime.svg" alt="Showtime" style="margin:0"><p style="font-size:30px">Какво се случи? Кой победи? Шоуто, за което всички говорят, събрано на пръв поглед.</p></div>
+   </div>
+  </article>
+
+  <!-- 4 · Theatre: iPad с актьорите, Frame 4 (малък, 350,206) → Frame 14 (447,0, отрязан от картата) -->
+  <article class="card" data-i="3">
+   <div class="st">
+    <div class="tx" style="left:56px;top:76px;width:380px"><img src="assets/Theatre.svg" alt="Theatre"><p>Разбери кой е в любимата ти сцена.</p></div>
+    <div class="dv" style="left:447px;top:0;width:813px;height:612px;--s:.448;--dx:-97px;--dy:231px"><img src="img/lili/ipad-cast.png" alt="Актьорите от „Генезис“ в NOISY"></div>
+   </div>
+  </article>
+
+  <!-- 5 · Showtime: телефон в ръка, Frame 4 (едър) → Frame 14 (0,29) -->
+  <article class="card" data-i="4">
+   <div class="st">
+    <div class="tx" style="left:641px;top:245px;width:560px"><img src="assets/Showtime.svg" alt="Showtime"><p style="font-size:30px">Намери точния момент без лутане и без реклами, отбелязан предварително за теб.</p></div>
+    <div class="dv" style="left:0;top:29px;width:560px;height:583px;--s:1.275;--dx:-111px;--dy:12px">
+     <img src="img/lili/hand.png" alt="">
+     <div class="scr jp" style="left:252px;top:4px;width:256px;height:531px;border-radius:37px"><div class="jpw"><div class="jv"><video id="jvv" muted playsinline preload="none" data-src="vid/fm.mp4" poster="vid/fm.jpg"></video><div class="jsb"><span class="jtm" id="jtm">12:40</span><i class="jfill"></i><button type="button" class="jm on" data-t="4" style="left:3.9%" aria-label="Признанието 12:40">😢</button><button type="button" class="jm" data-t="44" style="left:42.4%" aria-label="Розата 27:15">🌹</button><button type="button" class="jm" data-t="59" style="left:56.9%" aria-label="Кавгата 31:05">🔥</button><button type="button" class="jm" data-t="87" style="left:83.9%" aria-label="Седянката 48:20">💃</button></div></div>
+        <div class="jhd"><b>Фермата</b><span>· Еп. 27 · снощи</span></div><p class="jlb">Моментите</p><div class="jl"><button type="button" class="jr on" data-t="4"><span class="e">😢</span><span class="n">Признанието</span><span class="m">12:40</span></button><button type="button" class="jr" data-t="44"><span class="e">🌹</span><span class="n">Розата</span><span class="m">27:15</span></button><button type="button" class="jr" data-t="59"><span class="e">🔥</span><span class="n">Кавгата</span><span class="m">31:05</span></button><button type="button" class="jr" data-t="87"><span class="e">💃</span><span class="n">Седянката</span><span class="m">48:20</span></button></div></div></div>
+     <i class="isl" style="left:345px;top:20px;width:70px;height:18px"></i>
+    </div>
+   </div>
+  </article>
+
+  <!-- 6 · Newsroom -->
+  <article class="card" data-i="5">
+   <div class="full"><video muted loop playsinline preload="none" data-src="vid/newsroom.mp4" poster="vid/newsroom.jpg"></video></div>
+   <div class="st">
+    <div class="tx" style="left:135px;top:251px;width:600px"><img src="assets/Newsroom.svg" alt="Newsroom"><p>Новините. Важното от деня, за 60 секунди.</p></div>
+   </div>
+  </article>
+
+ </div>
+ <div class="ctl"><button type="button" id="pv" aria-label="Предишна">‹</button><div class="dots" id="dots"></div><button type="button" id="nx" aria-label="Следваща">›</button></div>
+</section>
+<script>
+(function(){
+ var rail=document.getElementById('rail'),cards=[].slice.call(rail.querySelectorAll('.card')),dots=document.getElementById('dots'),cur=-1;
+ dots.innerHTML=cards.map(function(){return '<i></i>'}).join('');var D=[].slice.call(dots.children);
+ /* мокъпът на първата карта: екранът е видеото, рамката е от Figma */
+ var p1=cards[0].querySelector('.dv');p1.insertAdjacentHTML('afterbegin','<img src="img/lili/phone-p.png" alt="" aria-hidden="true">');
+ var p2=cards[1].querySelector('.dv');p2.insertAdjacentHTML('afterbegin','<img src="img/lili/phone-l.png" alt="" aria-hidden="true">');
+ [p1,p2].forEach(function(d){d.firstChild.style.cssText='position:absolute;inset:0;width:100%;height:100%'});
+ function fit(){var w=cards[0].getBoundingClientRect().width;cards.forEach(function(c){c.querySelector('.st').style.setProperty('--k',w/1260)})}
+ function play(c,on){c.querySelectorAll('video').forEach(function(v){if(on){if(!v.src)v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})}
+ function set(i){if(i===cur)return;cur=i;cards.forEach(function(c,k){var on=k===i;if(on){c.classList.remove('on');void c.offsetWidth;c.classList.add('on')}play(c,on)});
+  D.forEach(function(d,k){d.classList.toggle('on',k===i)});document.getElementById('pv').disabled=i<=0;document.getElementById('nx').disabled=i>=cards.length-1}
+ function idx(){var st=cards[1].offsetLeft-cards[0].offsetLeft;return Math.max(0,Math.min(cards.length-1,Math.round(rail.scrollLeft/st)))}
+ function go(i){rail.scrollTo({left:cards[i].offsetLeft-cards[0].offsetLeft,behavior:'smooth'})}
+ function prog(){var st=cards[1].offsetLeft-cards[0].offsetLeft;cards.forEach(function(c,k){var d=Math.abs(rail.scrollLeft-k*st)/st;var p=Math.max(0,Math.min(1,1-d));p=p*p*(3-2*p);c.style.setProperty('--p',p.toFixed(3))})}
+ rail.addEventListener('scroll',function(){requestAnimationFrame(prog)},{passive:true});addEventListener('resize',prog);setTimeout(prog,50);
+ var t=0;rail.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function(){set(idx())},90)},{passive:true});
+ document.getElementById('pv').onclick=function(){go(Math.max(0,cur-1))};document.getElementById('nx').onclick=function(){go(Math.min(cards.length-1,cur+1))};
+ addEventListener('resize',fit);fit();
+ new IntersectionObserver(function(es){if(es[0].isIntersecting&&cur<0)setTimeout(function(){set(0)},700)},{threshold:.5}).observe(rail);
+})();
+</script>
+<script>
+/* Прескочи до момента: натискаш маркер или ред и видеото отива там; без докосване сменя сам */
+(function(){const v=document.getElementById('jvv');if(!v)return;const card=v.closest('.card'),ms=[...card.querySelectorAll('.jm')],rs=[...card.querySelectorAll('.jr')],tm=document.getElementById('jtm'),fill=card.querySelector('.jfill');let k=0,user=0;
+ const LBL=['12:40','27:15','31:05','48:20'];
+ function go(i,byUser){k=i;const t=+ms[i].dataset.t;if(!v.src)v.src=v.dataset.src;const seek=()=>{try{v.currentTime=t}catch(_){}v.play().catch(()=>{})};if(v.readyState<1)v.addEventListener('loadedmetadata',seek,{once:true});else seek();ms.forEach((m,j)=>m.classList.toggle('on',j===i));rs.forEach((r,j)=>r.classList.toggle('on',j===i));tm.style.left=ms[i].style.left;tm.textContent=LBL[i];if(byUser)user=Date.now()}
+ ms.forEach((m,i)=>m.addEventListener('click',e=>{e.stopPropagation();go(i,1)}));rs.forEach((r,i)=>r.addEventListener('click',e=>{e.stopPropagation();go(i,1)}));
+ v.addEventListener('timeupdate',()=>{fill.style.width=(v.currentTime/(v.duration||103.72)*100)+'%'});
+ setInterval(()=>{if(!card.classList.contains('on')||Date.now()-user<8000)return;go((k+1)%ms.length)},3100);
+ new MutationObserver(()=>{if(card.classList.contains('on'))go(k)}).observe(card,{attributes:true,attributeFilter:['class']});
+ tm.style.left=ms[0].style.left;})();
+</script>
+<script src="nav-lock.js?v=2"></script>
+</body>
+</html>

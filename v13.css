@@ -1,0 +1,200 @@
+/* v13: структурата на Лили (хиро, видео, галерия, функции, светове, цени, устройства, ЧЗВ, финален CTA)
+   Геометрия: остра, 2-6px. Подпис: контурният символ + Spectrum чертичка. Преходи: ъглово "сканиране", не Apple плъзгане. */
+:root{--r:4px;--r-s:2px;--snap:cubic-bezier(.77,0,.18,1)}
+/* ---------- геометрия ---------- */
+.btn{border-radius:var(--r)!important}
+.btn-p{clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+.ag-root{--ag-radius:4px}
+.ag-info .btn,.ag-footer .btn{border-radius:var(--r)!important}
+.ag-tile{border-radius:var(--r-s)}
+.ag-pause,.ag-preview-button span{border-radius:var(--r)!important}
+.hcard{border-radius:6px}
+.plans .pl,.platform-list .pl,.platform-list .pl.store,details,.addons,.ppl button,.chip,.tag{border-radius:var(--r)!important}
+.platform-list .pl em{border-radius:var(--r-s)}
+.trust span{border-radius:var(--r-s)!important}
+:focus-visible{border-radius:var(--r-s)}
+/* ---------- подпис: символът и чертичката ---------- */
+.hero{position:relative;overflow:clip}
+.sig{position:absolute;left:50%;top:50%;height:min(78%,440px);width:auto;transform:translate(-50%,-50%);opacity:.14;pointer-events:none;z-index:0}
+.hero .hin{position:relative;z-index:1}
+.kick{display:inline-flex;align-items:center;gap:8px}
+.kick::before{content:"";width:12px;height:13px;flex:none;background:url(assets/symbol.svg) center/contain no-repeat}
+.sec{position:relative}
+.sec::before{content:"";position:absolute;left:var(--g);top:0;width:56px;height:3px;background:var(--spectrum)}
+@media(min-width:1240px){.sec::before{left:calc((100vw - 1200px)/2 + var(--g))}}
+.end{position:relative;overflow:clip}
+.end .sig{height:min(100%,340px);opacity:.3;z-index:0}
+.end>*:not(.sig){position:relative;z-index:1}
+/* ---------- видео ---------- */
+.vid13{padding:40px 0 8px}
+.vf{position:relative;max-width:960px;margin:0 auto;aspect-ratio:16/9;background:#000;border:1px solid var(--line2);border-radius:6px;overflow:hidden}
+.vf::before{content:"";position:absolute;left:0;top:0;width:56px;height:3px;background:var(--spectrum);z-index:2}
+.vf video{width:100%;height:100%;object-fit:cover}
+.vpp{position:absolute;right:12px;bottom:12px;width:44px;height:44px;border:1px solid rgba(255,255,255,.7);border-radius:var(--r);background:rgba(0,0,0,.5);color:#fff;cursor:pointer;font-size:15px}
+/* ---------- светове ---------- */
+.zg{display:grid;grid-template-columns:1fr;gap:12px;margin-top:28px}
+@media(min-width:768px){.zg{grid-template-columns:repeat(4,1fr);gap:16px}}
+.zc{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-height:150px;padding:18px;border-radius:6px;overflow:hidden;background:#111013;isolation:isolate;transition:transform .35s var(--snap)}
+@media(min-width:768px){.zc{min-height:300px}}
+.zc::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--z) center/cover;transition:transform .6s var(--snap)}
+.zc::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,13,.1) 0,rgba(10,9,13,.88) 100%)}
+.zc img{height:20px;width:auto;margin-bottom:8px;align-self:flex-start}
+.zc b{font-family:Unbounded,Manrope,sans-serif;font-size:17px;line-height:1.25}
+.zc span{font-size:15px;font-weight:700;color:var(--mute)}
+.zc span::after{content:" →"}
+.zc:hover{transform:translateY(-4px)}.zc:hover::before{transform:scale(1.06)}
+.zc:hover span{color:#fff}
+
+/* довършване */
+.end .sig{opacity:.14!important}
+.vf{max-width:840px}
+.ppl::before{flex:0 0 100%}
+.ppl{flex-wrap:wrap}
+/* премиум добавки: две ясни карти вместо абзац */
+.addx{margin-top:20px}
+.addx-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin:0 0 12px}
+.addx-h b{font-family:Unbounded,Manrope,sans-serif;font-size:18px}
+.addx-h span{font-size:15px;color:var(--mute)}
+.addx-g{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:768px){.addx-g{grid-template-columns:repeat(2,1fr);max-width:752px}}
+.ax{position:relative;display:flex;flex-direction:column;gap:6px;padding:18px 20px;background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.ax::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:linear-gradient(180deg,#B61DFF,#CE13A8 50%,#FF0000)}
+.ax img{height:18px;width:auto;align-self:flex-start;margin-bottom:4px}
+.ax>b{font-size:17px}
+.axp{display:flex;align-items:baseline;gap:8px}
+.axp .num{font-size:28px}
+.axp small{font-size:15px;color:var(--mute)}
+.axf{font-size:15px;color:var(--mute);padding-top:8px;border-top:1px solid var(--line)}
+.axf b{color:var(--ink)}
+/* добавки: цената е по-тиха, ползата води */
+.addx-h b{font-size:17px}
+.axp .num{font-size:20px;font-weight:700}
+.ax>b{font-size:18px}
+.axf b{font-weight:700}
+.addx-h span{flex-basis:100%}
+.ax-tag{position:absolute;top:14px;right:14px;font-style:normal;font-size:13px;font-weight:800;letter-spacing:.02em;padding:4px 10px;border-radius:var(--r-s);background:var(--spectrum);color:#fff}
+.addx-h b{font-size:18px}
+.addx-g{position:relative}
+.ax>b{padding-right:0}
+/* ---------- платформи: лога в бранда на NOISY ---------- */
+.platforms{padding-bottom:88px}
+.plt{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px}
+@media(min-width:900px){.plt{grid-template-columns:repeat(4,1fr);gap:16px}}
+.pt{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:18px 16px 16px;min-height:200px;background:#101015;border:1px solid var(--line);border-radius:6px;overflow:hidden;isolation:isolate;transition:transform .35s var(--snap),border-color .3s}
+.pt::before{content:"";position:absolute;left:0;top:0;width:44px;height:3px;background:var(--spectrum)}
+.pt .pi{display:grid;place-items:center;width:56px;height:56px;margin-bottom:12px;border-radius:4px;background:#17161d;border:1px solid rgba(255,255,255,.16);color:#fff;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%)}
+.pt .pi svg{width:28px;height:28px}
+.pt .pn{font-family:Unbounded,Manrope,sans-serif;font-weight:700;font-size:19px;line-height:1.2}
+.pt .pn i{font-style:normal;margin-left:4px}
+.pt .ps{font-size:15px;color:var(--mute)}
+.pt .pb{margin-top:auto;font-style:normal;font-size:13px;font-weight:800;letter-spacing:.02em;padding:5px 10px;border-radius:2px;border:1px solid rgba(255,255,255,.3);color:#d9d6e0}
+.pt.soon .pi{opacity:.85}
+.pt.soon .pn{color:#e7e4ee}
+.pt.live{background:linear-gradient(160deg,rgba(182,29,255,.22),rgba(206,19,168,.14) 45%,rgba(255,0,0,.12));border-color:rgba(206,19,168,.7)}
+.pt.live .pi{background:var(--spectrum);border-color:transparent}
+.pt.live .pb{background:#fff;color:#0A090D;border-color:#fff}
+.pt.live:hover{transform:translateY(-4px)}
+/* временна бележка върху видеото (маха се, когато влезе финалното) */
+.vnote{position:absolute;left:12px;bottom:12px;z-index:3;max-width:calc(100% - 84px);padding:8px 12px;border-radius:2px;background:rgba(10,9,13,.82);border:1px solid rgba(255,255,255,.25);font-size:14px;font-weight:700;line-height:1.35}
+.vnote::before{content:"";display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--spectrum);vertical-align:middle}
+/* ---------- цени: избор на план, после добавки ---------- */
+.pgrid{display:grid;gap:12px;grid-template-columns:minmax(0,1fr);margin-top:26px}
+@media(min-width:768px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+.pc3{position:relative;padding:20px 22px;background:var(--card);border:1px solid var(--line);border-radius:4px;display:flex;flex-direction:column;transition:border-color .25s}
+.pc3.sel{border-color:#CE13A8;box-shadow:inset 0 0 0 1px #CE13A8}
+.pc3 .t{color:#ff7ad9;font-weight:800;font-size:16px}
+.pc3 .p{font-size:30px;margin:4px 0}.pc3 .p small{font:600 15px Manrope,sans-serif;color:var(--mute)}
+.pc3 .d{font-size:15px;color:var(--mute)}
+.lb2{margin-top:14px;font-weight:700;font-size:15px}
+.ppl2{display:flex;gap:8px;margin-top:8px}
+.ppl2 button{appearance:none;border:0;cursor:pointer;width:44px;height:44px;border-radius:3px;background:#fff;color:#0A090D;font:800 15px Manrope,sans-serif}
+.ppl2 button.on{background:var(--spectrum);color:#fff}
+.lb3{margin-top:10px;font-size:15px;background:#111016;border:1px dashed var(--line2);border-radius:3px;padding:9px 12px}
+.inc{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:5px}
+.inc li{font-size:15px;color:var(--mute);padding-left:22px;position:relative}
+.inc li::before{content:"✓";position:absolute;left:0;color:#ff7ad9;font-weight:800}
+.go2{appearance:none;border:0;cursor:pointer;margin-top:auto;padding:0 12px;min-height:50px;width:100%;border-radius:4px;background:#2a2930;color:#fff;font:800 17px Manrope,sans-serif;transition:background .25s}
+.pc3 .inc+.go2{margin-top:18px}
+.go2.picked{background:var(--spectrum)}
+.hint2{margin:16px 0 0;padding:12px 16px;border:1px dashed var(--line2);border-radius:4px;color:var(--mute);font-size:15px}
+.adh{margin:34px 0 12px}.adh b{display:block;font-family:Unbounded,Manrope,sans-serif;font-size:19px}.adh span{color:var(--mute);font-size:15px}
+.pz-hs{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--g) * -1);padding:0 var(--g);scrollbar-width:none}
+.pz-hs::-webkit-scrollbar{display:none}
+.pz-hs>*{flex:0 0 80%;scroll-snap-align:start}
+@media(min-width:768px){.pz-hs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;overflow:visible;margin:0;padding:0}.pz-hs>*{flex:none}}
+.pcard{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;min-height:230px;padding:18px 20px;border-radius:4px;overflow:hidden;isolation:isolate;border:1px solid transparent}
+.pcard::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--z) center/cover}
+.pcard::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,13,.2),rgba(10,9,13,.92))}
+.pcard.is-on{border-color:#CE13A8;box-shadow:inset 0 0 0 1px #CE13A8}
+.pcard img{height:18px;width:auto;align-self:flex-start;margin-bottom:6px}
+.pcard b{font-family:Unbounded,Manrope,sans-serif;font-size:20px}
+.pcard small{color:#d9d6e0;font-size:15px}
+.pcard .tg{position:absolute;top:14px;right:14px;font-style:normal;font-size:13px;font-weight:800;padding:4px 10px;border-radius:2px;background:var(--spectrum)}
+.pcard .bt{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-top:12px}
+.pcard .pr{font-family:Unbounded,Manrope,sans-serif;font-weight:700;font-size:16px}
+.pcard .pr small{font:600 14px Manrope,sans-serif;color:#d9d6e0}
+.pcard .add{appearance:none;cursor:pointer;flex:none;white-space:nowrap;min-height:44px;padding:0 16px;border:1px solid #fff;border-radius:4px;background:rgba(0,0,0,.35);color:#fff;font:800 15px Manrope,sans-serif}
+.pcard.is-on .add{background:var(--spectrum);border-color:transparent}
+.sumb{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-top:22px;padding:18px 22px;background:#14131a;border:1px solid var(--line);border-top:3px solid #CE13A8;border-radius:4px}
+.sumb small{display:block;color:var(--mute);font-size:14px}.sumb .s1 b{font-size:17px}
+.sumb .s2{text-align:right}.sumb .s2 b{display:block;font-size:28px}
+.sumb .btn{min-width:180px}
+@media(max-width:640px){.sumb .s2{text-align:left}.sumb .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.pc3,.go2{transition:none}}
+.trust{margin-top:22px;font-size:15px}
+.sumb .s3{margin-top:4px;color:var(--ink)}.sumb .s3 strong{font-family:Unbounded,Manrope,sans-serif}
+.jmp{display:block;margin-top:10px;text-align:center;font-weight:700;font-size:15px;color:#ff7ad9;min-height:44px;line-height:44px}
+.adh{scroll-margin-top:90px}
+/* добавките се появяват веднага под избрания план (без скрол) */
+.pgrid>.pc3:nth-child(1){order:1}.pgrid>.pc3:nth-child(2){order:3}
+.pzaddwrap{grid-column:1/-1;margin-top:8px}.pzaddwrap.after-fr{order:2}.pzaddwrap.after-ind{order:4}
+.pzaddwrap .adh{margin-top:10px}
+@media(min-width:768px){.pgrid>.pc3:nth-child(1){order:1}.pgrid>.pc3:nth-child(2){order:2}.pzaddwrap.after-fr,.pzaddwrap.after-ind{order:3}.pzaddwrap{margin-top:20px}}
+.pzaddwrap{animation:pzin .45s var(--out,cubic-bezier(.2,.7,.2,1)) both}
+@keyframes pzin{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.adnote{margin:6px 0 0;padding:12px 16px;border:1px dashed var(--line2);border-radius:4px;color:var(--mute);font-size:15px}
+@media(prefers-reduced-motion:reduce){.pzaddwrap{animation:none}}
+/* гаранции: малки чипове с икона */
+.trust.tr8{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:0}
+.trust.tr8 span{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 14px 0 10px;border:1px solid var(--line);border-radius:4px;background:var(--card);font-size:14px;font-weight:700;color:var(--ink)}
+.trust.tr8 span::before{content:none}
+.trust.tr8 svg{width:17px;height:17px;flex:none}
+/* поток хиро -> видео: символът се стопява, видеото излиза от сиянието */
+.hero .sig{-webkit-mask-image:linear-gradient(180deg,#000 38%,transparent 92%);mask-image:linear-gradient(180deg,#000 38%,transparent 92%)}
+.vid13{position:relative;margin-top:-84px;padding-top:0;z-index:1}
+.vid13::before{content:"";position:absolute;left:50%;top:-40px;width:min(110%,1100px);height:70%;transform:translateX(-50%);background:radial-gradient(50% 55% at 50% 45%,rgba(206,19,168,.42),rgba(182,29,255,.18) 55%,transparent 75%);filter:blur(50px);pointer-events:none;z-index:-1}
+.vf{box-shadow:0 40px 120px -40px rgba(206,19,168,.55),0 0 0 1px rgba(255,255,255,.06)}
+@media(min-width:1024px){.vid13{margin-top:-110px}}
+/* поток видео -> галерия: снимката излиза от тъмното, преливането изчезва при свиване */
+.ag-slide.is-current .ag-surface{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 var(--ag-top,0px));mask-image:linear-gradient(180deg,transparent 0,#000 var(--ag-top,0px))}
+.vid13{padding-bottom:20px}
+.ag-root{padding-top:0}
+.trust.tr8{justify-content:center;margin-top:28px}
+/* сумата и „Продължи“ са най-долу, под двата плана */
+.pzsum{grid-column:1/-1;order:5;margin-top:6px}
+@media(min-width:768px){.pzsum{order:4}}
+.pzaddwrap{margin-top:4px}
+/* гаранции на телефон: три равни плочки по цялата ширина */
+@media(max-width:640px){.trust.tr8{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:24px}
+.trust.tr8 span{flex-direction:column;justify-content:center;gap:8px;min-height:88px;padding:12px 6px;text-align:center;font-size:13px;line-height:1.25}
+.trust.tr8 svg{width:22px;height:22px}}
+.pzgo{display:flex;justify-content:center}.pzgo .btn{width:100%;max-width:520px;min-height:54px}
+.pzgo{flex-direction:column;align-items:center;gap:8px}.pzgo small{color:var(--mute);font-size:14px}
+/* добавките и „Продължи“ са най-отдолу, след двата плана */
+.pgrid>.pc3:nth-child(1){order:1}.pgrid>.pc3:nth-child(2){order:2}
+.pzaddwrap.after-fr,.pzaddwrap.after-ind{order:4}
+.pzsum{order:5}
+@media(min-width:768px){.pzaddwrap.after-fr,.pzaddwrap.after-ind{order:3}.pzsum{order:4}}
+/* сума: плавно разгъване, без скокове; анимация само при първо появяване */
+.pzaddwrap{animation:none}.pzaddwrap.fresh,.pzsum.fresh{animation:pzin .45s cubic-bezier(.2,.7,.2,1) both}
+.pzsum{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:6px}
+.pzsum .sdet{width:100%;display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.2,.7,.2,1)}
+.pzsum .sdet.open{grid-template-rows:1fr}.pzsum .sdet>div{overflow:hidden;min-height:0}
+.pzsum .sbox{margin:0 0 4px;padding:16px 20px;background:#14131a;border:1px solid var(--line);border-top:3px solid #CE13A8;border-radius:4px;text-align:center}
+.pzsum .sbox .s2{text-align:center}.pzsum .sbox .s2 b{display:block;font-size:30px}.pzsum .sbox small{display:block;color:var(--mute);font-size:14px}.pzsum .sbox .s3{margin-top:4px;color:var(--ink)}
+.pzsum .selabel{color:var(--mute);font-size:14px;text-align:center}
+.pzsum .btn{width:100%;max-width:520px;min-height:54px}
+@media(prefers-reduced-motion:reduce){.pzsum .sdet{transition:none}.pzaddwrap.fresh,.pzsum.fresh{animation:none}}
+/* лентата следва реалния напредък (--p), без CSS анимация с таймер */
+.hlctl .d.on i{background:rgba(255,255,255,.28)}
+.hlctl .d.on i::after{animation:none!important;transform:scaleX(var(--p,0));transform-origin:left}

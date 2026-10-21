@@ -1,0 +1,14 @@
+/* v25 · гаранциите под цените: редове с розови тикчета по Figma на Лили, вместо трите карти */
+.ticks25{margin:32px auto 0;max-width:880px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.ticks25 .tk-r{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px}
+.ticks25 [role=listitem]{display:flex;align-items:center;gap:10px;font:400 16px/1.4 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.9)}
+.ticks25 svg{flex:none;width:16px;height:16px;fill:none;stroke:#CE13A8;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:767px){
+  .ticks25{align-items:stretch;width:fit-content;max-width:100%;gap:12px;margin-top:28px}
+  .ticks25 .tk-r{flex-direction:column;align-items:flex-start;gap:12px}
+  .ticks25 [role=listitem]{font-size:15px;align-items:flex-start}
+  .ticks25 svg{margin-top:3px}
+}
+/* 16.10 Лили: повече въздух между лентите, 64 -> 80 */
+#platforms.platforms{padding-top:80px}
+.nfaq{padding-top:80px}

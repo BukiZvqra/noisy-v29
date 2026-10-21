@@ -1,0 +1,182 @@
+/* ===== N = екранът ===== */
+.nh{position:relative;height:260vh}
+.nh .pin{position:sticky;top:0;height:100svh;overflow:hidden;background:#07060a}
+.nh .stage{position:absolute;inset:0;display:grid;place-items:center}
+.nwin{position:absolute;left:50%;top:50%;width:min(78vw,560px);aspect-ratio:99.63/104;transform:translate(-50%,-52%) scale(var(--s,1));transform-origin:50% 50%;clip-path:url(#nclip);will-change:transform;background:#000}
+.nwin video{width:100%;height:100%;object-fit:cover;filter:saturate(1.15) contrast(1.05)}
+.nwin::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(182,29,255,.35),rgba(255,0,0,.18));mix-blend-mode:color;opacity:calc(1 - var(--p,0)*1.6)}
+.nfull{position:absolute;inset:0;opacity:var(--f,0)}.nfull video{width:100%;height:100%;object-fit:cover}
+.ngrain{position:absolute;inset:0;pointer-events:none;background:var(--grain);mix-blend-mode:screen;opacity:calc(.5*(1 - var(--p,0)*1.4));animation:grainMove .9s steps(6,end) infinite}
+@keyframes grainMove{0%{background-position:0 0}20%{background-position:-60px 40px}40%{background-position:50px -30px}60%{background-position:-20px -60px}80%{background-position:30px 20px}100%{background-position:0 0}}
+.nglow{position:absolute;inset:-20% -10%;background:radial-gradient(40% 40% at 50% 50%,rgba(206,19,168,.45),transparent 70%);filter:blur(60px);opacity:calc(1 - var(--p,0))}
+.ntext{position:absolute;left:0;right:0;bottom:7svh;text-align:center;padding:0 var(--g);z-index:3;opacity:calc(1 - var(--p,0)*2.2);transform:translateY(calc(var(--p,0)*-30px))}
+.ntext h1{font-size:clamp(34px,7.2vw,92px);line-height:1.04;letter-spacing:-.03em;margin:0;text-shadow:0 8px 40px rgba(0,0,0,.7)}
+.ntext .sub{color:rgba(247,245,250,.82);margin:12px auto 0;max-width:40ch;font-size:18px}
+.ntext .ctas{margin-top:22px}
+.nhint{position:absolute;left:50%;bottom:2.2svh;transform:translateX(-50%);z-index:3;font-size:13px;color:var(--mute);letter-spacing:.08em;text-transform:uppercase;opacity:calc(1 - var(--p,0)*6)}
+.nhint::after{content:"";display:block;width:2px;height:18px;margin:6px auto 0;background:var(--spectrum);animation:hint 1.4s ease-in-out infinite}
+@keyframes hint{0%,100%{transform:scaleY(.3);transform-origin:top}50%{transform:scaleY(1)}}
+.nhead{position:absolute;left:0;right:0;top:0;z-index:5}
+.ncap{position:absolute;left:0;top:70px;z-index:4;padding:6px 12px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:rgba(10,9,13,.85);border-radius:0 4px 4px 0}
+.nlab{max-width:min(520px,calc(100vw - 24px))}
+@media(prefers-reduced-motion:reduce){.ngrain{animation:none}}
+
+
+/* ===== v15: детайли ===== */
+html{scroll-padding-top:72px}
+:focus-visible{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 5px rgba(206,19,168,.55)}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;padding:12px 16px;background:#fff;color:#0A090D;font-weight:800;border-radius:4px;transition:top .2s}.skip:focus{top:12px}
+.nh{height:200vh}
+@media(max-width:760px){.nh{height:175vh}.nwin{width:min(88vw,440px)}.ntext{bottom:5svh}.ntext .sub{font-size:16px}}
+.ntext h1{background:linear-gradient(180deg,#fff 55%,#eadcf6);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 8px 30px rgba(0,0,0,.65))}
+.ncap{top:76px;left:0;font-size:11px}
+.foot .w{flex-wrap:wrap;gap:8px 18px}
+.foot .tagline{width:100%;margin:0 0 6px;color:var(--mute);font-size:14px}
+.foot .tagline b{color:#fff}
+@media(prefers-reduced-motion:reduce){.nh{height:auto}.nh .pin{position:relative;height:auto;min-height:100svh}.nwin{transform:translate(-50%,-52%) scale(1)}.nfull,.ngrain,.nhint{display:none}.ntext{opacity:1;position:relative;transform:none;margin-top:62vh}}
+
+/* N се отваря в целия екран, без разтегнат кадър */
+.nwin{opacity:calc(1 - var(--f,0))}
+.nh .pin::before{content:"";position:absolute;left:0;right:0;bottom:0;height:55%;z-index:2;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(7,6,10,.88));opacity:calc(1 - var(--f,0))}
+.nh .pin::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34%;z-index:2;pointer-events:none;background:linear-gradient(180deg,transparent,#0A090D 96%);opacity:var(--f,0)}
+.nfull{z-index:0}.nfull video{filter:saturate(1.1) contrast(1.04) brightness(.92)}
+@media(max-width:760px){.ntext{bottom:calc(76px + 2svh)}.nwin{top:44%}.nhint{display:none}.ntext h1{font-size:clamp(30px,8.4vw,40px)}}
+/* хедърът остава върху героя, затова героят започва от самия връх на екрана */
+.nh{margin-top:-60px}@media(min-width:1024px){.nh{margin-top:-72px}}
+.nh .pin{top:0}
+@media(min-width:761px){.ntext{bottom:10svh}}
+
+/* ===== N -> цял екран -> картата на галерията: един непрекъснат скрол ===== */
+.nh .pin::after{display:none}
+.nh{height:210vh}
+@media(max-width:760px){.nh{height:185vh}}
+.ag-scene{height:calc(100svh + 760px)}
+.ag-scene::before,.ag-root::before{display:none}
+.ag-root{background:#000;padding-top:0}
+.ag-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:calc(1 - var(--ag-p,1)*1.25);pointer-events:none}
+.ag-slide.is-current .ag-surface::after{opacity:var(--ag-p,1)}
+.ag-slide.is-current .ag-art{opacity:calc(var(--ag-p,1)*1.25 - .25)}
+.ag-slide.is-current .ag-surface{-webkit-mask-image:none;mask-image:none}
+.ag-slide:nth-of-type(1) .ag-name{display:block}
+.ag-slide.is-current .ag-name{opacity:clamp(0,calc(var(--ag-p,1)*2 - .6),1)}
+/* ===== героят се побира във всяка височина: N се смалява, текстът никога не се реже ===== */
+.nwin{width:min(78vw,560px,calc((100svh - 500px) * .958));min-width:240px;top:calc((100svh - 330px) / 2 + 24px);transform:translate(-50%,-50%) scale(var(--s,1))}
+.ntext{bottom:max(4svh,24px)}
+.ntext h1{font-size:clamp(30px,min(7vw,9.5svh),88px)}
+.ntext .sub{font-size:clamp(15px,2.2svh,19px)}
+@media(max-width:760px){
+ .nwin{width:min(88vw,440px,calc((100svh - 410px) * .958));min-width:200px;top:calc((100svh - 360px) / 2 + 30px)}
+ .ntext{bottom:calc(60px + max(1.5svh,10px))}
+ .ntext h1{font-size:clamp(28px,8vw,40px)}
+}
+@media(max-height:620px){.ntext .sub{display:none}}
+
+/* ===== v15 финал: един кадър, една структура ===== */
+.ag-root.nstart{margin-top:-60px}@media(min-width:1024px){.ag-root.nstart{margin-top:-72px}}
+.ag-scene{height:calc(100svh + var(--ag-nlen,900px) + 760px)}
+.ag-stick{background:#07060a}
+.nhero{position:absolute;inset:0;z-index:7;pointer-events:none}
+.nhero .nglow{position:absolute;inset:-20% -10%;background:radial-gradient(40% 40% at 50% 46%,rgba(206,19,168,.42),transparent 70%);filter:blur(60px);opacity:calc(1 - var(--np,0)*1.5);z-index:-1}
+.nhero .ngrain{position:absolute;inset:0;background:var(--grain);mix-blend-mode:screen;opacity:calc(.5*(1 - var(--np,0)*2));animation:grainMove .9s steps(6,end) infinite}
+.nhero .ntext{position:absolute;left:0;right:0;bottom:max(4svh,24px);text-align:center;padding:0 var(--g);opacity:calc(1 - var(--np,0)*2.4);transform:translateY(calc(var(--np,0)*-26px));pointer-events:auto}
+.nhero .nhint{position:absolute;left:50%;bottom:2.2svh;transform:translateX(-50%);opacity:calc(1 - var(--np,0)*8)}
+.nhero .ntext h1{font-size:clamp(30px,min(7vw,9.5svh),88px)}
+.nhero .ntext .sub{font-size:clamp(15px,2.2svh,19px)}
+@media(max-width:760px){.nhero .ntext{bottom:calc(60px + max(1.5svh,10px))}.nhero .ntext h1{font-size:clamp(28px,8vw,40px)}.nhero .nhint{display:none}}
+@media(max-height:620px){.nhero .ntext .sub{display:none}}
+/* N-маска върху същото видео */
+.ag-root:not(.nfree) .ag-vid{-webkit-mask-image:url(assets/symbol.svg);mask-image:url(assets/symbol.svg);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:var(--nms,500px) auto;mask-size:var(--nms,500px) auto;-webkit-mask-position:var(--nml,0) var(--nmt,0);mask-position:var(--nml,0) var(--nmt,0)}
+.ag-root:not(.nfree) .ag-slide.is-current .ag-surface{background:transparent}
+.ag-root:not(.nfree) .ag-slide.is-current .ag-surface::after{opacity:0}
+.ag-root .ag-vid{opacity:calc(1 - var(--ag-p,1)*1.25)}
+.ag-root:not(.nfree) .ag-shelves,.ag-root:not(.nfree) .ag-side,.ag-root:not(.nfree) .ag-footer{visibility:hidden}
+@media(prefers-reduced-motion:reduce){.nhero{display:none}}
+.nhero .nhint{display:none}.ag-root:not(.nfree) .ag-vid{filter:saturate(1.2) contrast(1.08)}
+
+.ag-root .ag-vid{opacity:clamp(0,calc(1 - (var(--ag-p,1) - .6)*6.5),1)}
+.ag-slide.is-current .ag-art{opacity:clamp(0,calc((var(--ag-p,1) - .6)*6.5),1)}
+.ag-slide.is-current .ag-surface::after{opacity:clamp(0,calc((var(--ag-p,1) - .5)*3),1)}
+
+/* ===== „Повече от гледане“ на компютър: една карта на екран, наляво, 10-20% от следващата се подава и е затъмнена ===== */
+@media(min-width:1024px){
+ .hlrail{grid-auto-columns:calc(100vw - 90px - 17vw);gap:18px;padding:0 90px;scroll-padding:0 90px}
+ .hl header{padding:0 90px;text-align:left}
+ #hl header,#hl .sec-h,#hl header>div{text-align:left;justify-content:flex-start}
+ #hl header .kick,#hl header .h2{text-align:left;margin-inline:0}
+ .hcard{height:620px;padding:0 56px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);grid-template-rows:1fr auto auto 1fr;column-gap:40px;align-items:center;justify-items:start;text-align:left;transition:filter .5s,opacity .5s,transform .5s}
+ .hcard:not(.vis){filter:brightness(.38) saturate(.7)}
+ .hcard .tag{grid-column:1;grid-row:2;margin:0 0 18px}
+ .hcard .cap{grid-column:1;grid-row:3;text-align:left;font-size:clamp(26px,2.5vw,40px);line-height:1.12;max-width:16ch}
+ .hcard .cap span{display:block;margin-top:14px;font-size:clamp(16px,1.3vw,19px);line-height:1.45;font-weight:500;max-width:34ch}
+ .hcard>:not(.tag):not(.cap):not(video):not(.mask){grid-column:2;grid-row:1/-1;justify-self:center;align-self:end;margin-top:0}
+ .hcard .phone,.hcard .rcard{width:min(300px,100%)}
+ .hcard .atv{max-width:none;width:100%;align-self:center;margin:0}
+ .hcard .shc{align-self:end}
+ .hcard.full{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:0 56px 56px}
+ .hcard.full .tag,.hcard.full .cap{grid-column:auto;grid-row:auto}
+ .hlctl{padding-left:90px;justify-content:flex-start}
+}
+
+/* заглавието не реже дългите букви (д, у, р): място под реда + разстояние между бутона и текста */
+.nhero .ntext h1,.h16t h1{line-height:1.1;padding-bottom:.16em;margin-bottom:-.04em}
+.nhero .ntext .ctas{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 22px;margin-top:22px}
+.nhero .ntext .ctas .fine{margin:0}
+@media(max-width:760px){.nhero .ntext .ctas{flex-direction:column;gap:12px}.nhero .ntext .ctas .btn{width:100%;max-width:320px}}
+
+/* „Повече от гледане“: съдържанието е центрирано горе-долу, телефонът не се реже */
+@media(min-width:1024px){
+ .hcard>:not(.tag):not(.cap):not(video):not(.mask){align-self:center!important}
+ .hcard .phone,.hcard .rcard{width:min(232px,100%);-webkit-mask-image:none!important;mask-image:none!important}
+ .hcard .phone.jp,.hcard .phone{border-radius:30px}
+ .hcard .rcard{border-radius:26px}
+ .hcard .atv{width:100%}
+ .hcard{padding:0 56px}
+ .hlrail{scroll-snap-type:x mandatory;overscroll-behavior-x:contain}
+}
+
+/* докато видеото е в героя и се свива, нищо в галерията не се натиска */
+.ag-root.is-shrinking .ag-slide,.ag-root.is-shrinking .ag-preview-button,.ag-root.is-shrinking .ag-surface{pointer-events:none!important}
+
+/* „Повече от гледане“: равни подавания отляво и отдясно */
+@media(min-width:1024px){
+ .hlrail{grid-auto-columns:calc(100vw - 24vw);padding:0 12vw;scroll-padding:0 12vw;gap:18px;scroll-snap-type:x mandatory}
+ .hl header{padding:0 12vw}
+ .hlctl{padding-left:12vw}
+}
+
+/* контролите под „Повече от гледане“ са по средата, със стрелки */
+@media(min-width:1024px){.hlctl{padding-left:0!important;justify-content:center!important;gap:10px}}
+.hlarr{appearance:none;flex:none;width:56px;height:56px;border:0;border-radius:980px;background:rgba(42,41,48,.8);backdrop-filter:blur(10px);color:#fff;font-size:22px;cursor:pointer;display:none;align-items:center;justify-content:center;transition:background .2s}
+.hlarr:hover{background:rgba(70,68,78,.9)}.hlarr:disabled{opacity:.35;cursor:default}
+@media(min-width:1024px){.hlarr{display:inline-flex}}
+
+/* ===== Въпроси: заглавие вляво, подредени отговори вдясно, филтър по теми ===== */
+#platforms .h2{margin-bottom:30px}
+.faq2{padding-top:80px}
+.faqw{display:grid;grid-template-columns:1fr;gap:30px}
+@media(min-width:960px){.faqw{grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}.faql{position:sticky;top:110px}}
+.faq2 .h2{margin:0;max-width:12ch}
+.faqlead{color:var(--mute);margin:16px 0 0;max-width:34ch}
+.faqask{margin-top:22px}
+.faqf{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.faqf button{appearance:none;min-height:44px;padding:0 16px;border:1px solid var(--line2);background:#17161d;color:#fff;font:700 15px Manrope,sans-serif;border-radius:3px;cursor:pointer;transition:background .2s}
+.faqf button:hover{background:#22212a}.faqf button[aria-selected=true]{background:var(--spectrum);border-color:transparent}
+.faqs{counter-reset:q;display:grid;gap:0;border-top:1px solid var(--line2)}
+.faq2 details{counter-increment:q;position:relative;background:transparent;border:0;border-bottom:1px solid var(--line2);border-radius:0!important;transition:background .3s}
+.faq2 details[hidden]{display:none}
+.faq2 summary{display:grid;grid-template-columns:42px 1fr 36px;align-items:center;gap:6px;min-height:76px;padding:12px 6px;cursor:pointer;list-style:none;font-size:clamp(17px,1.5vw,21px);font-weight:700}
+.faq2 summary::-webkit-details-marker{display:none}
+.faq2 summary::before{content:counter(q,decimal-leading-zero);font-family:Unbounded,Manrope,sans-serif;font-size:14px;color:var(--mute);transition:color .25s}
+.faq2 summary i{position:relative;width:28px;height:28px;border:1px solid var(--line2);border-radius:3px;transition:background .25s,transform .35s cubic-bezier(.77,0,.18,1)}
+.faq2 summary i::before,.faq2 summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:#fff;transform:translate(-50%,-50%);transition:transform .35s cubic-bezier(.77,0,.18,1)}
+.faq2 summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq2 details[open]{background:linear-gradient(90deg,rgba(206,19,168,.14),transparent 70%)}
+.faq2 details[open]::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#B61DFF,#CE13A8,#FF0000)}
+.faq2 details[open] summary::before{color:#ff7ad9}
+.faq2 details[open] summary i{background:var(--spectrum);border-color:transparent}.faq2 details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.faq2 details p{margin:0;padding:0 48px 22px 48px;color:rgba(247,245,250,.78);font-size:17px;max-width:56ch;animation:faqin .35s ease-out}
+@keyframes faqin{from{opacity:0;transform:translateY(-6px)}}
+.faq2 summary:hover .q{color:#fff}
+@media(max-width:640px){.faq2 summary{grid-template-columns:32px 1fr 32px}.faq2 details p{padding:0 8px 20px 38px}}
+@media(prefers-reduced-motion:reduce){.faq2 details p{animation:none}}
+.faq2 summary::after,.faq2 details[open] summary::after{content:none!important;display:none!important}.faq2 summary{background:transparent!important}

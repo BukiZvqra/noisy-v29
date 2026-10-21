@@ -1,0 +1,26 @@
+/* A: хирото от v20 (N с видео, текст най-долу) върху останалата v26 */
+.ag-root:not(.nfree) .ag-vid{opacity:clamp(0,calc(1 - (var(--ag-p,1) - .6)*6.5),1)!important}
+.nhero .ntext{bottom:max(4svh,24px)!important;top:auto!important;transform:translateY(calc(var(--np,0)*-26px))!important}
+@media(max-width:760px){.nhero .ntext{bottom:calc(60px + max(1.5svh,10px))!important}}
+/* v27: странични градиенти - основата е фината версия (по краищата, не под символа);
+   анимацията е по Figma „Glow Green“ (mPage, node 10571:46814): мек розов център, лилавото и червеното си разменят местата,
+   Smart animate, linear, 2500 ms във всяка посока (1 → 2 → 3 → обратно), безкраен цикъл */
+@property --gt{syntax:"<number>";inherits:false;initial-value:0}
+.nhero .nglow{opacity:calc(.55 - var(--np,0)*1.5)!important}
+.nhero::before,.nhero::after{content:"";position:absolute;top:0;bottom:0;width:30%;pointer-events:none;z-index:0;opacity:calc(1 - var(--np,0)*1.6);animation:ghSwap 2.5s linear infinite alternate}
+.nhero::before{left:0;background:
+ radial-gradient(80% 55% at calc(6% + 30%*var(--gt)) 70%,rgba(112,30,160,.34),rgba(80,20,120,.12) 55%,transparent 84%),
+ radial-gradient(60% 46% at calc(40% - 28%*var(--gt)) 80%,rgba(160,20,130,.20),transparent 80%),
+ radial-gradient(50% 36% at 12% 30%,rgba(90,24,140,.14),transparent 78%)}
+.nhero::after{right:0;background:
+ radial-gradient(80% 55% at calc(94% - 30%*var(--gt)) 24%,rgba(120,34,170,.32),rgba(84,22,128,.12) 55%,transparent 84%),
+ radial-gradient(60% 46% at calc(60% + 28%*var(--gt)) 18%,rgba(170,24,140,.18),transparent 80%),
+ radial-gradient(40% 30% at 88% 78%,rgba(120,26,60,.10),transparent 78%)}
+@keyframes ghSwap{from{--gt:0}to{--gt:1}}
+@media(max-width:760px){
+ .nhero::before,.nhero::after{width:36%;opacity:calc(.55 - var(--np,0)*1.2);animation-duration:3.6s}
+ .nhero::before{background:radial-gradient(90% 40% at calc(0% + 22%*var(--gt)) 68%,rgba(112,30,160,.28),transparent 82%),radial-gradient(70% 34% at calc(34% - 22%*var(--gt)) 78%,rgba(160,20,130,.16),transparent 82%)}
+ .nhero::after{background:radial-gradient(90% 40% at calc(100% - 22%*var(--gt)) 26%,rgba(120,34,170,.26),transparent 82%),radial-gradient(70% 34% at calc(66% + 22%*var(--gt)) 20%,rgba(170,24,140,.15),transparent 82%)}
+ .nhero .nglow{opacity:calc(.3 - var(--np,0)*1.2)!important}
+}
+@media(prefers-reduced-motion:reduce){.nhero::before,.nhero::after{animation:none}}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="bg">
+<head><script>/* ако браузърът не пуска H.264 (напр. Chromium), видеата се зареждат като WebM */(function(){var t=document.createElement('video');if(t.canPlayType('video/mp4; codecs="avc1.42E01E"'))return;var sw=function(u){return typeof u=='string'?u.replace(/\.mp4(\?|#|$)/,'.webm$1'):u};var P=HTMLMediaElement.prototype,d=Object.getOwnPropertyDescriptor(P,'src');Object.defineProperty(P,'src',{get:d.get,set:function(u){d.set.call(this,sw(u))},configurable:true});var sa=Element.prototype.setAttribute;P.setAttribute=function(n,v){return sa.call(this,n,n==='src'?sw(v):v)};function fix(){[].forEach.call(document.querySelectorAll('video[src],video source[src]'),function(x){var s=x.getAttribute('src');if(/\.mp4/.test(s)){sa.call(x,'src',sw(s));var v=x.closest?x.closest('video'):x;if(v){v.load();if(v.autoplay){var p=v.play();if(p&&p.catch)p.catch(function(){})}}}})}document.addEventListener('DOMContentLoaded',fix)})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Експлейнър · NOISY</title>
+<meta name="description" content="Отговорите на най-честите въпроси за NOISY и Arena.">
+<meta name="theme-color" content="#0A090D"><meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="assets/symbol.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site23.css?v=1"><link rel="stylesheet" href="v12.css"><link rel="stylesheet" href="v13.css"><link rel="stylesheet" href="v14.css"><link rel="stylesheet" href="v15.css"><link rel="stylesheet" href="v19.css?v=15"><link rel="stylesheet" href="brand.css?v=20"><link rel="stylesheet" href="v21.css?v=7"><link rel="stylesheet" href="v22.css?v=11"><link rel="stylesheet" href="v23.css?v=24">
+<link rel="stylesheet" href="faq.css?v=2">
+<style id="pv-css">
+.pv{padding:clamp(88px,9vw,132px) 0 clamp(40px,5vw,72px)}
+.pv .w{max-width:1120px}
+.pv h1{font-family:var(--font-head);font-weight:700;font-size:clamp(32px,4.6vw,64px);line-height:1.06;letter-spacing:-.03em;margin:0 0 14px;color:#fff}
+.pv h1 span{background:linear-gradient(90deg,#B61DFF,#CE13A8 45%,#FF0000);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pv .lead{margin:0 0 clamp(22px,3vw,36px);max-width:56ch;color:rgba(255,255,255,.78);font-size:clamp(16px,1.5vw,19px);line-height:1.5}
+.pv-frame{position:relative;aspect-ratio:16/9;border-radius:clamp(14px,2vw,24px);overflow:hidden;background:#0d0b11;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.1),0 0 120px rgba(182,29,255,.16)}
+.pv-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.pv-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(64px,8vw,96px);aspect-ratio:1;border-radius:50%;border:0;cursor:pointer;color:#fff;background:linear-gradient(135deg,#8024B6,#CE13A8 55%,#B2261B);box-shadow:0 12px 40px rgba(206,19,168,.45);display:grid;place-items:center;transition:transform .25s,opacity .25s}
+.pv-play:hover{transform:translate(-50%,-50%) scale(1.07)}
+.pv-play svg{width:38%;height:38%;margin-left:6%}
+.pv-frame.on .pv-play{opacity:0;pointer-events:none}
+.pv-frame.on video{cursor:pointer}
+.pv-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin:18px 0 0;color:rgba(255,255,255,.7);font-size:15px}
+.pv-meta b{color:#fff;font-weight:700}
+.pv-note{margin:14px 0 0;padding:10px 14px;border:1px dashed rgba(255,255,255,.28);border-radius:10px;color:rgba(255,255,255,.62);font-size:14px;line-height:1.45;max-width:78ch}
+.pv-mods{display:grid;gap:12px;margin-top:clamp(34px,5vw,60px);grid-template-columns:repeat(2,1fr)}
+@media(min-width:900px){.pv-mods{grid-template-columns:repeat(4,1fr)}}
+.pv-mods a{display:flex;flex-direction:column;gap:6px;padding:18px;border-radius:16px;text-decoration:none;color:#fff;background:#15141a;border:1px solid rgba(255,255,255,.1);transition:border-color .2s,transform .2s}
+.pv-mods a:hover{border-color:#CE13A8;transform:translateY(-2px)}
+.pv-mods b{font-size:18px}.pv-mods span{font-size:14px;color:rgba(255,255,255,.66);line-height:1.4}
+.pv-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:clamp(28px,4vw,44px)}
+.pv-cta .fine{margin:0;color:rgba(255,255,255,.75);font-size:16px}
+@media(max-width:700px){.pv{padding-top:84px}.pv-note{font-size:13px}}
+.pv-feat{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(2,1fr)}@media(min-width:900px){.pv-feat{grid-template-columns:repeat(5,1fr)}}.pv-feat li{padding:14px 16px;border-radius:14px;background:#15141a;border:1px solid rgba(255,255,255,.1)}.pv-feat b{display:block;font-size:16px;margin-bottom:4px}.pv-feat span{font-size:14px;color:rgba(255,255,255,.66);line-height:1.4}</style></head>
+<body class="clean fqp">
+<script>document.documentElement.classList.add("nonotes")</script>
+<div class="progress" id="prog"></div>
+<header class="hdr" id="hdr"><div class="w"><a class="logo" href="index.html" aria-label="NOISY"><img src="assets/logo.svg" alt="NOISY" width="100" height="24"></a><nav class="pnav" aria-label="Модули"><a href="index.html">Home</a><a href="theatre.html">Theatre</a><a href="arena.html">Arena</a><a href="f/f-newsroom.html">Newsroom</a><a href="f/f-showtime.html">Showtime</a><a class="btn btn-p pcta" href="ceni.html" data-su="">Пробвай NOISY</a></nav><span class="sp"></span><a class="login" href="#">Вход</a><a class="btn btn-p cta" href="ceni.html" data-su="">Пробвай NOISY</a></div></header>
+<main class="pv" id="abHero"><div class="w">
+ <h1>Виж какво може <span>NOISY.</span></h1>
+ <p class="lead">Кратък експлейнър на функциите: как изрязваш и споделяш момент, как намираш точния кадър, какво е седмицата, кои са актьорите в сцената и какво носят добавките.</p>
+ <div class="pv-frame" id="pvFrame">
+  <video id="pvVideo" playsinline preload="metadata" poster="vid/product/product.jpg" controlslist="nodownload"><source src="vid/product/product.mp4" type="video/mp4"><source src="vid/trailer.mp4" type="video/mp4"></video>
+  <button class="pv-play" id="pvPlay" type="button" aria-label="Пусни експлейнър видеото"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15l13-7.5z"/></svg></button>
+ </div>
+ <div class="pv-meta"><span><b>Експлейнър на функциите</b></span><span>Със субтитри на български</span><span>Без реклами</span></div>
+ <!-- ВНУТРЕШНА БЕЛЕЖКА: изтрий този абзац, когато качиш истинското видео. Видеото е vid/product/product.mp4 (постер: vid/product/product.jpg), 16:9, H.264. Ако файлът липсва, плейърът показва трейлъра vid/trailer.mp4. -->
+ <p class="pv-note" id="pvNote">Вътрешна бележка: тук ще е експлейнър видеото за функциите. Сега се пуска трейлърът. За да го смениш: сложи файла в <code>vid/product/product.mp4</code> (постер <code>product.jpg</code>) и изтрий тази бележка.</p>
+ <ul class="pv-feat" aria-label="Какво показва видеото"><li><b>Изрежи и сподели</b><span>Момент от Showtime или Arena, в история или чат.</span></li><li><b>Моментите</b><span>Намираш точния кадър без лутане и без реклами.</span></li><li><b>Седмицата</b><span>Какво се случи в Showtime на един поглед.</span></li><li><b>Актьорите</b><span>Кой е в любимата ти сцена в Theatre.</span></li><li><b>Добавките</b><span>Premium Sports и Premium Films по желание.</span></li></ul><div class="pv-cta"><a class="btn btn-p" href="index.html#ceni" data-su="">Пробвай NOISY</a><span class="fine">Без карта.</span></div>
+ <div class="pv-mods" aria-label="Модули">
+  <a href="theatre.html"><b>Theatre</b><span>Филми и сериали, като на кино.</span></a>
+  <a href="arena.html"><b>Arena</b><span>Спорт на живо и на запис.</span></a>
+  <a href="ceni.html"><b>Цени</b><span>Solo и Together, с добавки по желание.</span></a>
+  <a href="faq.html"><b>Въпроси</b><span>Всичко за абонамента на едно място.</span></a>
+ </div>
+</div></main>
+<script>(function(){var f=document.getElementById('pvFrame'),v=document.getElementById('pvVideo'),b=document.getElementById('pvPlay');if(!f||!v)return;
+function go(){var p=v.play();if(p&&p.catch)p.catch(function(){});f.classList.add('on');v.setAttribute('controls','')}
+b.addEventListener('click',go);v.addEventListener('click',function(){if(!f.classList.contains('on'))go()});
+v.addEventListener('ended',function(){f.classList.remove('on');v.removeAttribute('controls');v.currentTime=0})})();</script>
+<section class="anchor"><div class="end ap za-end"><img class="sig" src="assets/symbol.svg" alt="" aria-hidden="true"><h2 class="h2">Всичко за гледане<br>На едно място</h2><a class="btn btn-p" href="#" data-su="">Пробвай NOISY</a></div></section>
+<footer class="foot foot22"><div class="w">
+ <div class="f-top">
+  <div class="f-brand"><a class="f-logo" href="index.html" aria-label="NOISY"><img src="assets/logo.svg" alt="NOISY" width="120" height="29"></a><p>Всичко за гледане. На едно място.</p></div>
+  <nav class="f-col" aria-label="Модули"><b>Модули</b><a href="index.html">Home</a><a href="theatre.html">Theatre</a><a href="arena.html">Arena</a><a href="f/f-newsroom.html">Newsroom</a><a href="f/f-showtime.html">Showtime</a></nav>
+  <nav class="f-col" aria-label="NOISY"><b>NOISY</b><a href="ceni.html">Цени</a><a href="faq.html">Въпроси</a><a href="about.html" aria-current="page">За нас</a><a href="partnyori.html">За партньори</a></nav>
+  <nav class="f-col" aria-label="Помощ"><b>Помощ</b><a href="https://noisy.net/faq" target="_blank" rel="noopener">Помощен център</a><a href="https://noisy.net/contact_us" target="_blank" rel="noopener">Свържи се с нас</a><a href="mailto:contact@noisy.net">contact@noisy.net</a></nav>
+ </div>
+ <div class="f-legal"><nav aria-label="Правна информация"><a href="https://noisy.net/cookie_policy" target="_blank" rel="noopener">Политика за бисквитките</a><a href="https://noisy.net/privacy_policy" target="_blank" rel="noopener">Политика за поверителност</a><a href="https://noisy.net/faq" target="_blank" rel="noopener">Помощен център</a><a href="https://noisy.net/terms" target="_blank" rel="noopener">Общи условия</a><a href="https://noisy.net/discount_policy" target="_blank" rel="noopener">Общи условия "Регистрирай се и вземи отстъпка"</a></nav>
+ <p>© 2026 Нойзи.нет АД, ЕИК: 208639571. Всички права запазени. Седалище: гр. София 1303, ул. Овче поле 122, ет. 4, офис EMC2. Имейл: <a href="mailto:contact@noisy.net">contact@noisy.net</a></p></div>
+</div></footer>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gsp" x1="0" x2="1"><stop offset="0" stop-color="#B61DFF"/><stop offset=".45" stop-color="#CE13A8"/><stop offset="1" stop-color="#FF0000"/></linearGradient></defs></svg>
+
+<button class="fab" id="fab" type="button" aria-label="Питай NOISY"><svg viewBox="0 0 24 24"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg>Питай NOISY</button>
+<div class="bot" id="bot" role="dialog" aria-label="Асистент на NOISY"><header><span class="av"><svg viewBox="0 0 24 24"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg></span><div><b>Асистентът на NOISY</b><small>● Отговаря веднага</small></div><button type="button" id="botx" aria-label="Затвори">×</button></header>
+ <div class="log" id="blog"></div><div class="sug" id="bsug"></div><form id="bform"><input id="bin" placeholder="Питай каквото искаш" autocomplete="off" aria-label="Въпрос"><button type="submit" aria-label="Изпрати">↑</button></form><p class="note">Мокъп. На живо тук ще е Fin от Intercom.</p></div>
+<div class="su" id="su" role="dialog" aria-modal="true" aria-labelledby="suh"><div class="scrim" data-x></div><div class="pn"><i class="grab"></i><button class="x" type="button" data-x aria-label="Затвори">×</button>
+ <div class="st1"><h3 id="suh">Започни с NOISY</h3><p class="sp2">Създай профил и разгледай. Абонаментът избираш отделно.</p><p class="plan" id="suplan"></p>
+  <button class="ob g" type="button" data-ok>G&nbsp; Продължи с Google</button><button class="ob a" type="button" data-ok> Продължи с Apple</button>
+  <p class="or">или с имейл</p><form id="suf"><input type="email" placeholder="имейл" autocomplete="email" aria-label="Имейл" required><button type="submit">Напред</button></form>
+  <div class="tr"><span>Без карта</span><span>Спираш с един бутон</span><span>Плащаш, само ако решиш</span></div></div>
+ <div class="ok"><div style="font-size:44px">🎬</div><b>Следващата стъпка е приложението</b><p>Мокъп: тук човекът влиза в приложението.</p><a class="btn btn-p" href="#" data-x>Към NOISY</a></div></div></div>
+<script>
+/* ===== v10 · всеки „Пробвай безплатно“ / „Избери“ отваря листа; планът се помни ===== */
+(function(){const su=document.getElementById('su'),pl=document.getElementById('suplan');let last=null;
+ function open(plan,from){last=from;su.classList.remove('done');pl.classList.toggle('on',!!plan);pl.textContent=plan?'Избран план: '+plan+'. Плащаш едва след като пробваш.':'';su.classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>su.querySelector('.ob.g').focus({preventScroll:true}),350)}
+ function close(){su.classList.remove('on');document.body.style.overflow='';if(last)last.focus({preventScroll:true})}
+ document.addEventListener('click',e=>{const a=e.target.closest('[data-su]');if(!a)return;e.preventDefault();open(a.dataset.su||'',a)});
+ su.addEventListener('click',e=>{if(e.target.closest('[data-x]')){e.preventDefault();close()}if(e.target.closest('[data-ok]'))su.classList.add('done')});
+ document.getElementById('suf').addEventListener('submit',e=>{e.preventDefault();su.classList.add('done')});
+ addEventListener('keydown',e=>{if(e.key==='Escape'&&su.classList.contains('on'))close()});
+ window.openSignup=open;})();
+</script>
+<script>document.querySelectorAll(".login").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();window.openSignup("",a)}));document.querySelectorAll("[data-assistant]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();document.getElementById("fab").click()}));</script>
+<script>/* ===== v9 · асистентът: бутонът излиза след хирото; отговорите са от проверените факти (ЧЗВ) ===== */
+(function(){const fab=document.getElementById('fab'),bot=document.getElementById('bot'),log=document.getElementById('blog'),sug=document.getElementById('bsug'),form=document.getElementById('bform'),inp=document.getElementById('bin');
+ new IntersectionObserver(es=>es.forEach(e=>fab.classList.toggle('on',!e.isIntersecting)),{threshold:0}).observe(document.getElementById('abHero'));
+ const A=[
+  [/довечера|какво да гледам|препоръч|гледам/i,'Ако искаш нещо за довечера:','showtime'],
+  [/цен|струва|колко|евр|€|плащ/i,'Solo е 14,90 € на месец. Together е 24,90 € за до петима, тоест 4,98 € на човек. За 3 месеца е с 10% по-малко, за 12 месеца с 15%.'],
+  [/приятел|семейств|петима|делим/i,'Избираш Together и каниш до четирима след плащането. Плаща един, всеки има свой профил и свой списък.'],
+  [/телевиз|tv|лаптоп|телефон|устройств/i,'Web версията е достъпна в noisy.net. Приложенията за iPhone, Android и Smart TV са обозначени като „Очаквай скоро“.'],
+  [/спр|откаж|абонамент|прекрат/i,'Спираш с един бутон в профила, без обаждания и имейли. За платените планове има 14 дни гаранция.'],
+  [/реклам/i,'Няма реклами. Нито преди, нито по време на гледането.'],
+  [/мач|спорт|левски|arena|футбол/i,'Спортът е в Arena: футбол, баскетбол, тенис, Формула 1 и още, на живо, със статистиката и ивентите до мача. Премиум спортът е добавка към плана.'],
+  [/безплат|карта/i,'Регистрацията е отделна от абонамента. Разглеждаш преди да избереш план. Няма постоянен безплатен план.'],
+  [/изреж|сподел|клип|момент|share/i,'Натискаш ивента от епизода, изрязваш откъс до 20 секунди, слагаш стикер и го пращаш в Instagram, WhatsApp или групата.']];
+ const S=['Какво да гледам довечера?','Колко струва с приятели?','Къде мога да гледам?','Как да спра абонамента?','Има ли мачове на живо?'];
+ function add(cls,html){const d=document.createElement('div');d.className=cls;d.innerHTML=html;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+ function answer(q){add('q',q.replace(/</g,'&lt;'));const dots=add('dots','<i></i><i></i><i></i>');
+  const hit=A.find(a=>a[0].test(q));setTimeout(()=>{dots.remove();
+   if(hit&&hit[2]==='showtime'){const a=add('a',hit[1]+'<div class="rec" data-go="showtime"><img src="vid/kap.jpg" alt=""><div><b>Игри на волята</b><small>Капитанската битка от снощи · 31:05</small></div></div><div class="rec" data-go="theatre"><img src="img/the-penguin-poster.jpg" alt=""><div><b>Пингвинът</b><small>HBO · Нов епизод</small></div></div>')}
+   else add('a',hit?hit[1]:'Мога да помогна с цените, устройствата, съдържанието и споделянето. Пробвай някой от въпросите отдолу.')},900)}
+ sug.innerHTML=S.map(x=>'<button type="button">'+x+'</button>').join('');
+ sug.addEventListener('click',e=>{const b=e.target.closest('button');if(b)answer(b.textContent)});
+ form.addEventListener('submit',e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;inp.value='';answer(v)});
+ log.addEventListener('click',e=>{const r=e.target.closest('[data-go]');if(!r)return;location.href={showtime:'f/f-showtime.html',theatre:'theatre.html'}[r.dataset.go]||'index.html'});
+ let first=true;fab.addEventListener('click',()=>{bot.classList.toggle('on');if(first){first=false;add('a','Здрасти! Аз съм асистентът на NOISY. Питай ме за цени, какво да гледаш или как да пратиш момент на приятели.')}setTimeout(()=>inp.focus({preventScroll:true}),300)});
+ document.getElementById('botx').addEventListener('click',()=>bot.classList.remove('on'));
+ addEventListener('keydown',e=>{if(e.key==='Escape')bot.classList.remove('on')});})();
+
+</script>
+<script>(function(){var qs=[].slice.call(document.querySelectorAll('.nq'));qs.forEach(function(q){var b=q.querySelector('.nq-b');b.addEventListener('click',function(){var on=!q.classList.contains('open');qs.forEach(function(o){o.classList.remove('open');o.querySelector('.nq-b').setAttribute('aria-expanded','false')});if(on){q.classList.add('open');b.setAttribute('aria-expanded','true')}})})})();document.querySelectorAll('.ap').forEach(function(e){e.classList.add('in')});</script>
+<script>(function(){var hd=document.querySelector('.hdr'),mn=false;addEventListener('scroll',function(){var m=scrollY>40;if(hd&&m!==mn){mn=m;hd.classList.toggle('mini',m)}},{passive:true})})();</script>
+<nav class="mobile-worlds" aria-label="Световете на NOISY"><a href="theatre.html">Theatre</a><a href="f/f-showtime.html">Showtime</a><a href="arena.html">Arena</a><a href="f/f-newsroom.html">Newsroom</a></nav>
+</body>
+</html>

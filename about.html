@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="bg">
+<head><script>/* ако браузърът не пуска H.264 (напр. Chromium), видеата се зареждат като WebM */(function(){var t=document.createElement('video');if(t.canPlayType('video/mp4; codecs="avc1.42E01E"'))return;var sw=function(u){return typeof u=='string'?u.replace(/\.mp4(\?|#|$)/,'.webm$1'):u};var P=HTMLMediaElement.prototype,d=Object.getOwnPropertyDescriptor(P,'src');Object.defineProperty(P,'src',{get:d.get,set:function(u){d.set.call(this,sw(u))},configurable:true});var sa=Element.prototype.setAttribute;P.setAttribute=function(n,v){return sa.call(this,n,n==='src'?sw(v):v)};function fix(){[].forEach.call(document.querySelectorAll('video[src],video source[src]'),function(x){var s=x.getAttribute('src');if(/\.mp4/.test(s)){sa.call(x,'src',sw(s));var v=x.closest?x.closest('video'):x;if(v){v.load();if(v.autoplay){var p=v.play();if(p&&p.catch)p.catch(function(){})}}}})}document.addEventListener('DOMContentLoaded',fix)})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>За нас · NOISY</title>
+<meta name="description" content="NOISY е български стрийминг от ново поколение: филми и сериали, реалити, спорт и новини на едно място.">
+<meta name="theme-color" content="#0A090D"><meta name="robots" content="noindex,nofollow">
+<meta property="og:title" content="За NOISY"><meta property="og:description" content="Български стрийминг от ново поколение."><meta property="og:image" content="vid/kap.jpg">
+<link rel="icon" type="image/svg+xml" href="assets/symbol.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-bg.jpg">
+<link rel="stylesheet" href="site23.css?v=1"><link rel="stylesheet" href="v12.css"><link rel="stylesheet" href="v13.css"><link rel="stylesheet" href="v14.css"><link rel="stylesheet" href="v15.css"><link rel="stylesheet" href="v19.css?v=15"><link rel="stylesheet" href="brand.css?v=18"><link rel="stylesheet" href="v21.css?v=7"><link rel="stylesheet" href="v22.css?v=11"><link rel="stylesheet" href="v23.css?v=24"><link rel="stylesheet" href="about23.css?v=11"><link rel="stylesheet" href="about-flow.css?v=27">
+</head>
+<body class="clean za">
+<script>document.documentElement.classList.add("nonotes")</script>
+<div class="progress" id="prog"></div>
+<header class="hdr" id="hdr"><div class="w"><a class="logo" href="index.html" aria-label="NOISY"><img src="assets/logo.svg" alt="NOISY" width="100" height="24"></a><nav class="pnav" aria-label="Модули"><a href="index.html">Home</a><a href="theatre.html">Theatre</a><a href="arena.html">Arena</a><a href="f/f-newsroom.html">Newsroom</a><a href="f/f-showtime.html">Showtime</a><a class="btn btn-p pcta" href="index.html#ceni" data-su="">Пробвай NOISY</a></nav><span class="sp"></span><a class="login" href="#">Вход</a><a class="btn btn-p cta" href="index.html#ceni" data-su="">Пробвай NOISY</a></div></header>
+
+<main>
+<!-- ===== хиро ===== -->
+<section class="za-hero" id="abHero">
+ <div class="za-bg" id="abBg" aria-hidden="true"></div>
+ <div class="w"><h1 class="za-in">Български стрийминг <br class="za-br">от ново поколение</h1></div>
+</section>
+
+
+<!-- ===== обяснението: болката и решението, после мисията ===== -->
+<section class="za-sec za-ex" aria-labelledby="abEx">
+ <div class="w">
+  <div class="za-top ap"><h2 class="h2" id="abEx">Безкрайно превъртане.<br>Нула избор.</h2><p>Затова събрахме всичко на едно място.</p></div>
+  <p class="za-mis-p" id="abMis">Събираме на едно място филми и сериали, реалити, спорт и новини, подредени по интереси и теми. Гледаш това, което те вълнува, и споделяш любимите си моменти с твоите хора.</p>
+ </div>
+</section>
+
+<!-- ===== четирите свята ===== -->
+<section class="za-sec" aria-labelledby="abW">
+ <div class="w">
+  <div class="za-top ap"><h2 class="h2" id="abW">Четири свята.<br>Едно място.</h2></div>
+  <div class="za-wp ap" id="abWp">
+   <article class="za-p on"><img class="za-ph" src="img/the-penguin-back.jpg" alt="" loading="lazy" decoding="async"><img class="za-lg" src="assets/Theatre.svg" alt="Theatre" width="234" height="61"><div class="za-pc"><p>Филми и сериали с класации и лицата зад всеки кадър.</p><a class="za-more" href="theatre.html">Разгледай Theatre<span class="za-go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></article>
+   <article class="za-p"><img class="za-ph" src="img/levski-goal.jpg" alt="" loading="lazy" decoding="async"><img class="za-lg" src="assets/Arena.svg" alt="Arena" width="234" height="61"><div class="za-pc"><p>Спорт със статистики на живо, направо в плейъра.</p><a class="za-more" href="arena.html">Разгледай Arena<span class="za-go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></article>
+   <article class="za-p"><img class="za-ph" src="img/nr-1.jpg" alt="" loading="lazy" decoding="async"><img class="za-lg" src="assets/Newsroom.svg" alt="Newsroom" width="234" height="61"><div class="za-pc"><p>Новините на деня в кратки клипове и публицистика по теми.</p><a class="za-more" href="f/f-newsroom.html">Разгледай Newsroom<span class="za-go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></article>
+   <article class="za-p"><img class="za-ph" src="vid/kap.jpg" alt="" loading="lazy" decoding="async"><img class="za-lg" src="assets/Showtime.svg" alt="Showtime" width="234" height="61"><div class="za-pc"><p>Реалити предавания с акцентите от участниците.</p><a class="za-more" href="f/f-showtime.html">Разгледай Showtime<span class="za-go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></article>
+  </div>
+ </div>
+</section>
+
+<div class="za-flow">
+<section class="za-creator" aria-labelledby="abCreator"><div class="w za-creator-in"><div class="za-creator-copy"><h2 id="abCreator" class="h2">Твоето съдържание. Нова публика.</h2><p>Създаваш видеа, стриймваш, снимаш филми или развиваш собствен канал?</p><p>В NOISY търсим интересни истории, нови формати и хора с идеи. Независимо дали вече имаш своя публика, или тепърва я изграждаш, искаме да чуем какво създаваш.</p><p>Разкажи ни за своя проект.</p><a class="za-creator-cta" href="mailto:contact@noisy.net">Свържи се с нас</a></div><div class="za-creator-art"><img src="img/about/creator-cutout.webp" alt="Портрет на жена с поглед нагоре в цветовете на NOISY" width="860" height="1260" loading="lazy"></div></div></section>
+
+<section aria-labelledby="a7k" class="a7-tk">
+<div class="w ap"><h2 id="a7k">NOISY използва технологиите на</h2><img alt="MediaHub, mediapress, Enetpulse" height="180" loading="lazy" src="img/about/tech.webp" width="960"/></div>
+</section>
+
+<section aria-labelledby="a7l" class="a7-lic">
+<div class="a7-w a7-licg">
+<div class="ap"><h2 id="a7l">Лицензирано съдържание</h2><p>Изцяло лицензирано съдържание от български и световни продуценти.</p></div>
+<img alt="NOVA, bTV, БНТ, MediaZ, Warner Bros. Discovery, A1" class="ap" height="240" loading="lazy" src="img/about/licensed.webp" width="520"/>
+</div>
+</section>
+
+<section aria-labelledby="about-questions" class="a7-questions"><div class="w"><div><h2 id="about-questions">Имаш въпрос?</h2><p>Виж отговорите на най-често задаваните въпроси за NOISY.</p></div><a class="a7-more" href="faq.html">Към въпросите<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></svg></a></div></section>
+
+</div>
+<section class="anchor">
+  <div class="end ap za-end"><img class="sig" src="assets/symbol.svg" alt="" aria-hidden="true"><h2 class="h2">Всичко за гледане<br>На едно място</h2><a class="btn btn-p" href="#" data-su="">Пробвай NOISY</a><div class="end-soc"><span>Следвай NOISY</span><div class="f-soc" role="group" aria-label="NOISY в социалните мрежи"><a class="soc" data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="NOISY в Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a class="soc" data-social="facebook" href="#" target="_blank" rel="noopener" aria-label="NOISY в Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg></a><a class="soc" data-social="tiktok" href="#" target="_blank" rel="noopener" aria-label="NOISY в TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2.2 1.8 3.6 4 3.8v3c-1.5 0-2.8-.4-4-1.2v6.3c0 3.4-2.7 5.9-6 5.9a5.9 5.9 0 0 1-1-11.8v3.1a2.9 2.9 0 1 0 2 2.8V3z"/></svg></a><a class="soc" data-social="youtube" href="#" target="_blank" rel="noopener" aria-label="NOISY в YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1c.3-1.2.4-2.5.4-3.8s-.1-2.6-.4-3.8zM10 15V9l5.2 3z"/></svg></a></div></div></div>
+</section>
+</main>
+
+<footer class="foot foot22"><div class="w">
+ <div class="f-top">
+  <div class="f-brand"><a class="f-logo" href="index.html" aria-label="NOISY"><img src="assets/logo.svg" alt="NOISY" width="120" height="29"></a><p>Всичко за гледане. На едно място.</p><div class="f-soc" role="group" aria-label="NOISY в социалните мрежи"><a class="soc" data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="NOISY в Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a class="soc" data-social="facebook" href="#" target="_blank" rel="noopener" aria-label="NOISY в Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg></a><a class="soc" data-social="tiktok" href="#" target="_blank" rel="noopener" aria-label="NOISY в TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2.2 1.8 3.6 4 3.8v3c-1.5 0-2.8-.4-4-1.2v6.3c0 3.4-2.7 5.9-6 5.9a5.9 5.9 0 0 1-1-11.8v3.1a2.9 2.9 0 1 0 2 2.8V3z"/></svg></a><a class="soc" data-social="youtube" href="#" target="_blank" rel="noopener" aria-label="NOISY в YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1c.3-1.2.4-2.5.4-3.8s-.1-2.6-.4-3.8zM10 15V9l5.2 3z"/></svg></a></div></div>
+  <nav class="f-col" aria-label="Модули"><b>Модули</b><a href="index.html">Home</a><a href="theatre.html">Theatre</a><a href="arena.html">Arena</a><a href="f/f-newsroom.html">Newsroom</a><a href="f/f-showtime.html">Showtime</a></nav>
+  <nav class="f-col" aria-label="NOISY"><b>NOISY</b><a href="index.html#ceni">Цени</a><a href="index.html#vuprosi">Въпроси</a><a href="about.html" aria-current="page">За нас</a><a href="partnyori.html">За партньори</a></nav>
+  <nav class="f-col" aria-label="Помощ"><b>Помощ</b><a href="https://noisy.net/faq" target="_blank" rel="noopener">Помощен център</a><a href="https://noisy.net/contact_us" target="_blank" rel="noopener">Свържи се с нас</a><a href="mailto:contact@noisy.net">contact@noisy.net</a></nav>
+ </div>
+ <div class="f-legal"><nav aria-label="Правна информация"><a href="https://noisy.net/cookie_policy" target="_blank" rel="noopener">Политика за бисквитките</a><a href="https://noisy.net/privacy_policy" target="_blank" rel="noopener">Политика за поверителност</a><a href="https://noisy.net/faq" target="_blank" rel="noopener">Помощен център</a><a href="https://noisy.net/terms" target="_blank" rel="noopener">Общи условия</a><a href="https://noisy.net/discount_policy" target="_blank" rel="noopener">Общи условия "Регистрирай се и вземи отстъпка"</a></nav>
+ <p>© 2026 Нойзи.нет АД, ЕИК: 208639571. Всички права запазени. Седалище: гр. София 1303, ул. Овче поле 122, ет. 4, офис EMC2. Имейл: <a href="mailto:contact@noisy.net">contact@noisy.net</a></p></div>
+</div></footer>
+
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gsp" x1="0" x2="1"><stop offset="0" stop-color="#B61DFF"/><stop offset=".45" stop-color="#CE13A8"/><stop offset="1" stop-color="#FF0000"/></linearGradient></defs></svg>
+
+<button class="fab" id="fab" type="button" aria-label="Питай NOISY"><svg viewBox="0 0 24 24"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg>Питай NOISY</button>
+<div class="bot" id="bot" role="dialog" aria-label="Асистент на NOISY"><header><span class="av"><svg viewBox="0 0 24 24"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg></span><div><b>Асистентът на NOISY</b><small>● Отговаря веднага</small></div><button type="button" id="botx" aria-label="Затвори">×</button></header>
+ <div class="log" id="blog"></div><div class="sug" id="bsug"></div><form id="bform"><input id="bin" placeholder="Питай каквото искаш" autocomplete="off" aria-label="Въпрос"><button type="submit" aria-label="Изпрати">↑</button></form><p class="note">Мокъп. На живо тук ще е Fin от Intercom.</p></div>
+<div class="su" id="su" role="dialog" aria-modal="true" aria-labelledby="suh"><div class="scrim" data-x></div><div class="pn"><i class="grab"></i><button class="x" type="button" data-x aria-label="Затвори">×</button>
+ <div class="st1"><h3 id="suh">Започни с NOISY</h3><p class="sp2">Създай профил и разгледай. Абонаментът избираш отделно.</p><p class="plan" id="suplan"></p>
+  <button class="ob g" type="button" data-ok>G&nbsp; Продължи с Google</button><button class="ob a" type="button" data-ok> Продължи с Apple</button>
+  <p class="or">или с имейл</p><form id="suf"><input type="email" placeholder="имейл" autocomplete="email" aria-label="Имейл" required><button type="submit">Напред</button></form>
+  <div class="tr"><span>Без карта</span><span>Спираш с един бутон</span><span>Плащаш, само ако решиш</span></div></div>
+ <div class="ok"><div style="font-size:44px">🎬</div><b>Следващата стъпка е приложението</b><p>Мокъп: тук човекът влиза в приложението.</p><a class="btn btn-p" href="#" data-x>Към NOISY</a></div></div></div>
+<script>
+/* ===== v10 · всеки „Пробвай безплатно“ / „Избери“ отваря листа; планът се помни ===== */
+(function(){const su=document.getElementById('su'),pl=document.getElementById('suplan');let last=null;
+ function open(plan,from){last=from;su.classList.remove('done');pl.classList.toggle('on',!!plan);pl.textContent=plan?'Избран план: '+plan+'. Плащаш едва след като пробваш.':'';su.classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>su.querySelector('.ob.g').focus({preventScroll:true}),350)}
+ function close(){su.classList.remove('on');document.body.style.overflow='';if(last)last.focus({preventScroll:true})}
+ document.addEventListener('click',e=>{const a=e.target.closest('[data-su]');if(!a)return;e.preventDefault();open(a.dataset.su||'',a)});
+ su.addEventListener('click',e=>{if(e.target.closest('[data-x]')){e.preventDefault();close()}if(e.target.closest('[data-ok]'))su.classList.add('done')});
+ document.getElementById('suf').addEventListener('submit',e=>{e.preventDefault();su.classList.add('done')});
+ addEventListener('keydown',e=>{if(e.key==='Escape'&&su.classList.contains('on'))close()});
+ window.openSignup=open;})();
+</script>
+<script>document.querySelectorAll(".login").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();window.openSignup("",a)}));document.querySelectorAll("[data-assistant]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();document.getElementById("fab").click()}));</script>
+<script>/* ===== v9 · асистентът: бутонът излиза след хирото; отговорите са от проверените факти (ЧЗВ) ===== */
+(function(){const fab=document.getElementById('fab'),bot=document.getElementById('bot'),log=document.getElementById('blog'),sug=document.getElementById('bsug'),form=document.getElementById('bform'),inp=document.getElementById('bin');
+ new IntersectionObserver(es=>es.forEach(e=>fab.classList.toggle('on',!e.isIntersecting)),{threshold:0}).observe(document.getElementById('abHero'));
+ const A=[
+  [/довечера|какво да гледам|препоръч|гледам/i,'Ако искаш нещо за довечера:','showtime'],
+  [/цен|струва|колко|евр|€|плащ/i,'Solo е 14,90 € на месец. Together е 24,90 € за до петима, тоест 4,98 € на човек. За 3 месеца е с 10% по-малко, за 12 месеца с 15%.'],
+  [/приятел|семейств|петима|делим/i,'Избираш Together и каниш до четирима след плащането. Плаща един, всеки има свой профил и свой списък.'],
+  [/телевиз|tv|лаптоп|телефон|устройств/i,'Web версията е достъпна в noisy.net. Приложенията за iPhone, Android и Smart TV са обозначени като „Очаквай скоро“.'],
+  [/спр|откаж|абонамент|прекрат/i,'Спираш с един бутон в профила, без обаждания и имейли. За платените планове има 14 дни гаранция.'],
+  [/реклам/i,'Няма реклами. Нито преди, нито по време на гледането.'],
+  [/мач|спорт|левски|arena|футбол/i,'Мачовете са в Arena: на живо, със статистиката и ивентите до мача. Премиум спортът е добавка към плана.'],
+  [/безплат|карта/i,'Регистрацията е отделна от абонамента. Разглеждаш преди да избереш план. Няма постоянен безплатен план.'],
+  [/изреж|сподел|клип|момент|share/i,'Натискаш ивента от епизода, изрязваш откъс до 20 секунди, слагаш стикер и го пращаш в Instagram, WhatsApp или групата.']];
+ const S=['Какво да гледам довечера?','Колко струва с приятели?','Къде мога да гледам?','Как да спра абонамента?','Има ли мачове на живо?'];
+ function add(cls,html){const d=document.createElement('div');d.className=cls;d.innerHTML=html;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+ function answer(q){add('q',q.replace(/</g,'&lt;'));const dots=add('dots','<i></i><i></i><i></i>');
+  const hit=A.find(a=>a[0].test(q));setTimeout(()=>{dots.remove();
+   if(hit&&hit[2]==='showtime'){const a=add('a',hit[1]+'<div class="rec" data-go="showtime"><img src="vid/kap.jpg" alt=""><div><b>Игри на волята</b><small>Капитанската битка от снощи · 31:05</small></div></div><div class="rec" data-go="theatre"><img src="img/the-penguin-poster.jpg" alt=""><div><b>Пингвинът</b><small>HBO · Нов епизод</small></div></div>')}
+   else add('a',hit?hit[1]:'Мога да помогна с цените, устройствата, съдържанието и споделянето. Пробвай някой от въпросите отдолу.')},900)}
+ sug.innerHTML=S.map(x=>'<button type="button">'+x+'</button>').join('');
+ sug.addEventListener('click',e=>{const b=e.target.closest('button');if(b)answer(b.textContent)});
+ form.addEventListener('submit',e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;inp.value='';answer(v)});
+ log.addEventListener('click',e=>{const r=e.target.closest('[data-go]');if(!r)return;location.href={showtime:'f/f-showtime.html',theatre:'theatre.html'}[r.dataset.go]||'index.html'});
+ let first=true;fab.addEventListener('click',()=>{bot.classList.toggle('on');if(first){first=false;add('a','Здрасти! Аз съм асистентът на NOISY. Питай ме за цени, какво да гледаш или как да пратиш момент на приятели.')}setTimeout(()=>inp.focus({preventScroll:true}),300)});
+ document.getElementById('botx').addEventListener('click',()=>bot.classList.remove('on'));
+ addEventListener('keydown',e=>{if(e.key==='Escape')bot.classList.remove('on')});})();
+
+</script>
+<script>
+/* ===== „За нас“: хедърът и лентата отгоре, плавното появяване, думите на мисията, фонът на хирото ===== */
+(function(){var hdr=document.getElementById('hdr'),prog=document.getElementById('prog'),bg=document.getElementById('abBg'),mis=document.getElementById('abMis');
+ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ mis.innerHTML=mis.textContent.split(' ').map(function(w){return '<span class="za-wd">'+w+'</span>'}).join(' ');
+ var wds=[].slice.call(mis.querySelectorAll('.za-wd'));
+ var raf=0;function upd(){raf=0;var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.transform='scaleX('+(h>0?y/h:0)+')';prog.classList.toggle('on',y>60);hdr.classList.toggle('solid',y>20);
+  if(!reduce&&y<innerHeight*1.2)bg.style.transform='translate3d(0,'+(y*.25)+'px,0)';
+  var r=mis.getBoundingClientRect(),vh=innerHeight,a=vh*.85,b=vh*.4,t=Math.min(1,Math.max(0,(a-r.top)/(a-b+r.height*.6)));
+  var n=wds.length,on=t*(n+4);for(var i=0;i<n;i++)wds[i].style.setProperty('--o',reduce?1:Math.min(1,Math.max(.2,.2+.8*(on-i)/4)).toFixed(3))}
+ addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(upd)},{passive:true});addEventListener('resize',upd);upd();
+ var els=[].slice.call(document.querySelectorAll('.ap'));
+ if(!('IntersectionObserver' in window)||reduce){els.forEach(function(e){e.classList.add('in')})}
+ else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});els.forEach(function(e){io.observe(e)})}
+ /* четирите свята: панелът, върху който сочиш, се разгръща */
+ var ps=[].slice.call(document.querySelectorAll('.za-p'));
+ ps.forEach(function(p){function on(){ps.forEach(function(q){q.classList.toggle('on',q===p)})}p.addEventListener('mouseenter',on);p.addEventListener('focusin',on);p.addEventListener('click',on)});
+ /* социалните мрежи и магазините: истинските адреси още ги няма */
+ [].forEach.call(document.querySelectorAll('[data-store],[data-social]'),function(a){a.removeAttribute('target');a.addEventListener('click',function(e){e.preventDefault()})});
+})();
+</script>
+<nav class="mobile-worlds" aria-label="Световете на NOISY"><a href="theatre.html">Theatre</a><a href="f/f-showtime.html">Showtime</a><a href="arena.html">Arena</a><a href="f/f-newsroom.html">Newsroom</a></nav>
+</body>
+</html>

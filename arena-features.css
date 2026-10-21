@@ -1,0 +1,62 @@
+/* Arena v24: продуктови екрани по Figma, цветове и размери от съществуващия NOISY бранд. */
+.af-wide{grid-template-columns:minmax(0,1fr);gap:0}
+.af-wide .ar-sl-t{padding:40px 56px 24px;display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:12px 32px}
+.af-wide .ar-bdg{grid-column:1/-1;height:28px;width:auto}
+.af-wide .ar-sl-t h3{margin:0;max-width:16ch;font-size:32px}
+.af-wide .ar-sl-t p{margin:0;max-width:38ch;font-size:16px}
+.af-wide .ar-sl-m{display:block;padding:0 56px 32px;perspective:none;min-width:0}
+.af-player{width:100%;font-family:Manrope,system-ui,sans-serif;color:#fff}
+.af-screen{position:relative;width:100%;aspect-ratio:16/9;min-height:460px;overflow:hidden;border:8px solid #19181d;border-radius:12px;background:#171c15}
+.af-screen>video,.af-shade{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.af-shade{background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.35) 26%,rgba(0,0,0,.88) 58%,#101111)}
+.af-score{position:relative;text-align:center;padding:24px 160px 0}
+.af-score small{display:block;color:#d0d0d0;font-size:12px}
+.af-score strong{display:flex;justify-content:center;align-items:center;gap:24px;font-size:18px;white-space:nowrap;margin-top:4px}
+.af-score strong b{font-size:36px;letter-spacing:.04em}
+.af-score>span{color:#b1e061;font-size:12px}
+.af-share,.af-open-share{appearance:none;cursor:pointer;min-height:44px;border:1px solid #ffffff40;border-radius:8px;color:#fff;background:#202023;font:600 14px Manrope,sans-serif;padding:10px 16px}
+.af-share{position:absolute;right:16px;top:24px;font-size:18px}.af-share span{font-size:13px}
+.af-open-share{margin-top:24px;display:inline-flex;align-items:center;gap:12px}
+.af-console{position:relative;margin:20px 24px 0}
+.af-tabs{display:flex;justify-content:center;gap:8px;border-bottom:1px solid #ffffff30;overflow:auto;scrollbar-width:none}
+.af-tabs button{position:relative;flex:0 0 auto;background:none;border:0;border-radius:0;color:#aaa;font:600 14px Manrope,sans-serif;padding:12px;min-height:48px;cursor:pointer}
+.af-tabs button[aria-selected=true]{color:white}.af-tabs button[aria-selected=true]::after{content:"";position:absolute;bottom:0;left:12px;right:12px;height:3px;background:#ce13a8}
+.af-panels{max-width:740px;margin:auto;min-height:236px;padding:16px 0}
+.af-panel[hidden]{display:none}.af-panel{animation:af-in .32s ease both}
+.af-half{text-align:center;font-size:12px;color:#aaa;padding:0 0 12px}
+.af-event{display:flex;align-items:center;gap:12px;margin-bottom:6px;padding:10px 16px;background:#ffffff0d;min-height:44px;color:white;font:400 14px Manrope,sans-serif;width:100%;border:0;border-radius:4px;text-align:left}
+button.af-event{cursor:pointer}.af-event b{font-weight:500;flex:1}.af-event time{font-variant-numeric:tabular-nums}.af-event em{font-style:normal;color:#eebbe2;font-size:12px}.af-yellow{color:#efc343}
+.af-match{display:grid;grid-template-columns:1fr 72px 1fr 40px;gap:12px;align-items:center;padding:12px 16px;background:#ffffff0a;margin-bottom:6px;font-size:14px;text-align:center}.af-match small{color:#b1e061}.af-match b{font-size:18px}
+.af-lineup{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;max-width:600px;margin:auto}
+.af-pitch{position:relative;height:204px;border:1px solid #ffffff50;background:repeating-linear-gradient(0deg,#27402f70 0 24px,#35503b70 24px 48px);overflow:hidden}
+.af-pitch::before{content:"";position:absolute;top:50%;left:0;right:0;border-top:1px solid #ffffff40}.af-pitch::after{content:"";position:absolute;left:calc(50% - 24px);top:calc(50% - 24px);width:48px;height:48px;border:1px solid #ffffff40;border-radius:50%}
+.af-pitch span{position:absolute;z-index:1;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;font-size:10px;font-weight:700;background:#fff;color:#111;transform:translate(-50%,-50%)}
+.af-bench{font-size:13px}.af-bench>b,.af-bench>span,.af-bench>small{display:block;margin-bottom:8px}.af-bench>small{color:#b5b5b5;line-height:1.5}.af-bench>div{font-size:12px;color:#ccc;line-height:1.7}
+.af-stat{margin:0 auto 16px;max-width:600px}.af-stat>div{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}.af-stat span{color:#ccc}.af-stat i{display:block;height:4px;background:linear-gradient(to right,#f1c857 var(--af-stat),#718ec0 var(--af-stat))}
+.af-h2h{display:flex;justify-content:center;gap:64px;margin:0 0 16px}.af-h2h div{text-align:center}.af-h2h b{display:block;font-size:32px}.af-h2h span{font-size:12px;color:#bbb}
+.af-caption{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;padding:12px 0 0;color:#ddd}.af-caption small{font-size:12px;color:#aaa}
+.af-dialog{border:1px solid #ffffff30;border-radius:16px;padding:0;width:min(920px,calc(100vw - 32px));max-height:calc(100svh - 32px);background:#19191b;color:#fff;font-family:Manrope,sans-serif;overflow:auto}
+.af-dialog::backdrop{background:#000c;backdrop-filter:blur(12px)}
+.af-dhead{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid #ffffff20}.af-dhead h2{font:700 20px Manrope,sans-serif;margin:0}.af-close{background:#333;border:0;color:white;width:44px;height:44px;border-radius:50%;font-size:24px;cursor:pointer}
+.af-editor{display:grid;gap:32px;padding:24px}.af-preview{position:relative;width:230px;aspect-ratio:9/16;max-width:100%;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:space-between;background:var(--af-color,#29331c);border-radius:8px;overflow:hidden;padding:20px 0}
+.af-preview>img{width:88px;align-self:flex-start;margin-left:16px}.af-preview video{width:100%;aspect-ratio:16/9;object-fit:cover}.af-preview p{font-size:18px;font-weight:700;text-align:center;max-width:90%;margin:0}.af-preview small{display:block;font-size:11px;font-weight:500;margin-top:8px}
+.af-controls label{display:block;font-size:14px;color:#ccc;margin:0 0 8px}.af-controls select,.af-controls input{background:#29292c;border:1px solid #ffffff30;color:white;border-radius:8px;font:400 16px Manrope,sans-serif;min-height:44px;padding:10px;width:100%;margin-bottom:16px}
+.af-choice{display:flex;gap:8px;margin:0 0 20px;flex-wrap:wrap}.af-choice button{flex:1;min-width:44px;min-height:44px;border:1px solid #ffffff30;border-radius:8px;color:white;background:#29292c;font:500 14px Manrope,sans-serif;cursor:pointer}.af-choice button[aria-pressed=true]{background:#fff;color:#161616}
+.af-trim{display:flex;height:48px;background:center/cover url('img/levski-kairat.jpg');border-radius:8px;border:2px solid #fff;margin-bottom:8px}.af-trim span{width:65%;border-right:3px solid #fff;background:#ffffff18}.af-hint{font:400 12px/1.5 Manrope,sans-serif;color:#aaa;margin:8px 0 20px}
+.af-colors{display:flex;gap:12px;margin-bottom:20px}.af-colors button{width:44px;height:44px;flex:none;border:3px solid transparent;border-radius:50%;background:var(--af-swatch);cursor:pointer}.af-colors button[aria-pressed=true]{border-color:#fff}
+.af-story-btn{width:100%;min-height:48px;border:0;border-radius:8px;background:linear-gradient(110deg,#8024b6,#8c238d,#b2261b);color:white;font:600 16px Manrope,sans-serif;cursor:pointer}.af-story-status{min-height:24px;font-size:14px;color:#eebbe2;margin-top:12px}
+.af-player button:focus-visible,.af-open-share:focus-visible,.af-dialog button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@keyframes af-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(min-width:700px){.af-editor{grid-template-columns:1fr 1fr}.af-preview{width:260px}}
+@media(max-width:899px){.af-wide .ar-sl-t{display:block;padding:28px 24px 20px}.af-wide .ar-sl-t h3{font-size:28px;margin-top:16px}.af-wide .ar-sl-t p{margin-top:12px}.af-wide .ar-sl-m{padding:0 12px 24px}.af-screen{aspect-ratio:auto;min-height:520px;border-width:4px}.af-screen>video{height:180px}.af-shade{background:linear-gradient(180deg,#0007,#101111 180px)}.af-score{padding:64px 4px 0}.af-score strong{gap:12px;font-size:16px}.af-score strong b{font-size:28px}.af-share{top:8px;right:8px;padding:8px 12px}.af-console{margin:16px 12px 0}.af-tabs{justify-content:flex-start;gap:0}.af-tabs button{padding:10px;font-size:13px}.af-panels{min-height:272px}.af-event{padding:10px 8px;font-size:13px;gap:8px}.af-event em{font-size:11px}.af-match{gap:6px;grid-template-columns:1fr 56px 1fr 28px;padding:12px 4px;font-size:12px}.af-match b{font-size:16px}.af-lineup{grid-template-columns:1fr 1fr;gap:12px}.af-pitch{height:220px}.af-bench{font-size:12px}.af-h2h{gap:24px}.af-caption{font-size:13px}.af-dialog .af-dhead{padding:12px 16px}.af-dialog .af-dhead h2{font-size:18px}.af-editor{padding:20px;gap:24px}}
+/* Карта-точките запазват вида си, но имат достатъчна площ за докосване. */
+.ar-dots{gap:0;padding:0 8px}.ar-dots button,.ar-dots button.on{width:36px;height:44px;background:transparent;border-radius:0}.ar-dots button::before{content:"";position:absolute;width:8px;height:8px;left:14px;top:18px;border-radius:8px;background:#ffffff60}.ar-dots button.on::before{left:4px;width:28px;background:#ffffff40}.ar-dots button i{inset:18px 4px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){.af-panel{animation:none}}
+
+/* Котви и контроли под съществуващия фиксиран хедър. */
+#kak,.af-wide{scroll-margin-top:100px}.af-player button{scroll-margin-top:120px}.ar-all{display:inline-flex;min-height:44px;align-items:center}.af-trim span{width:16.667%}
+/* Нейтрален фон на съществуващата таблица, без допълнителен цветен воал. */
+.ar-tt{background:linear-gradient(180deg,#ffffff0d,#ffffff00)}
+.foot a[href^="mailto:"]{display:inline-flex;align-items:center;min-height:44px}
+.af-team-tabs{display:flex;justify-content:center;gap:8px;margin:0 0 12px}.af-team-tabs button{min-height:44px;padding:8px 20px;border:1px solid #ffffff30;border-radius:8px;background:#ffffff0a;color:#fff;font:500 14px Manrope,sans-serif;cursor:pointer}.af-team-tabs button[aria-pressed=true]{background:#fff;color:#111}.af-pitch.af-away span{background:#75a1df;color:#101114}.af-lineup .af-bench>div{max-height:156px;overflow:auto}.af-lineup .af-pitch{height:188px}
+.foot.foot22 .f-legal p a[href^="mailto:"]{display:inline-flex!important;min-height:44px!important;align-items:center}

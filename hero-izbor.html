@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="bg"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>NOISY · Избор на хиро</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A090D;--line:rgba(255,255,255,.1);--mute:#A9A6B2;--grad:linear-gradient(90deg,#8024B6,#8C238D,#B2261B)}
+*{box-sizing:border-box}html{background:var(--bg);scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:#F7F5FA;font:400 16px/1.5 Manrope,system-ui,sans-serif}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:rgba(10,9,13,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top a{color:var(--mute);text-decoration:none}.top b{font-weight:700}
+.top nav{margin-left:auto;display:flex;gap:6px}.top nav a{display:grid;place-items:center;width:40px;height:40px;border-radius:8px;border:1px solid var(--line);background:#1C1B22;color:#fff;font-weight:700}
+.top nav a.on{background:var(--grad);border-color:transparent}
+.wd{display:flex;gap:6px}.wd button{height:40px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:#1C1B22;color:#fff;font:600 14px Manrope,sans-serif;cursor:pointer}.wd button.on{background:var(--grad);border-color:transparent}
+.intro{max-width:760px;margin:0 auto;padding:36px 16px 8px;text-align:center}.intro h1{margin:0 0 8px;font:700 clamp(26px,4vw,40px)/1.15 Unbounded,sans-serif}.intro p{margin:0;color:var(--mute)}
+.v{max-width:1360px;margin:0 auto;padding:36px 16px 8px}
+.v .hd{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.no{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--grad);font:700 18px Unbounded,sans-serif}
+.v h2{margin:0;font:700 clamp(18px,2.2vw,24px) Unbounded,sans-serif}.v p{flex-basis:100%;margin:0;color:var(--mute)}
+.rec{padding:2px 8px;border-radius:6px;background:var(--grad);font:700 12px Manrope,sans-serif}
+.fr{position:relative;margin:0 auto;width:100%;height:min(86svh,860px);border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#07060A}
+body.mob .fr{width:390px;max-width:100%;height:min(86svh,780px)}
+.fr iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.end{padding:48px 16px 80px;text-align:center;color:var(--mute)}
+</style></head><body>
+<header class="top"><a href="index.html">NOISY v23</a><span>/</span><b>Избор на хиро</b><div class="wd"><button id="bd" class="on">Компютър</button><button id="bm">Телефон</button></div><nav id="nav"></nav></header>
+<div class="intro"><h1>Хиро: 6 дизайна</h1><p>Всички са с едни и същи кадри и текст, различни са фонът и подредбата (1 разцепено N, 2 по-ярък фон, 3 кино, 4 тъмно сияние, 5 стъкло, 6 чисто). Мръдни мишката върху прозореца, за да видиш движението. Превключи на „Телефон“, за да видиш мобилния вид.</p></div>
+<div id="L"></div><div class="end">Кажи номера, който ти харесва.</div>
+<script>
+var V=[['Фигма: разцепено N','Червено-магента фон с N с мълния от Фигма, кадри около заглавието.'],['Фигма: светъл фон','Втората картинка от Фигма: по-ярко и по-светло, по-малко тъмно по краищата.'],['Кино','Същият фон, но силно затъмнен: кадрите светят, текстът е най-четим.',1],['Тъмно със сияние','Без картинка, само меко розово сияние. Най-спокойният вариант.'],['Стъкло','Текстът е в матова стъклена карта над фона от Фигма. Кадрите се виждат зад нея.'],['Чисто','Само най-големите кадри, повече въздух, светлият фон.']];
+var L=document.getElementById('L'),nav=document.getElementById('nav'),F=[];
+V.forEach(function(v,i){var n=i+1,d=document.createElement('section');d.className='v';d.id='h'+n;d.innerHTML='<div class="hd"><span class="no">'+n+'</span><h2>'+v[0]+'</h2>'+(v[2]?'<span class="rec">Препоръка</span>':'')+'<p>'+v[1]+'</p></div><div class="fr" data-src="index.html?h='+n+'&nointro=1"></div>';L.appendChild(d);var a=document.createElement('a');a.href='#h'+n;a.textContent=n;nav.appendChild(a);F.push({el:d.querySelector('.fr'),a:a})});
+function chk(){F.forEach(function(f){var r=f.el.getBoundingClientRect(),near=r.bottom>-innerHeight*.5&&r.top<innerHeight*1.5,i=f.el.querySelector('iframe');if(near&&!i){i=document.createElement('iframe');i.title='Хиро';i.src=f.el.dataset.src;f.el.appendChild(i)}else if(!near&&i)i.remove();f.a.classList.toggle('on',r.top<innerHeight/2&&r.bottom>innerHeight/2)})}
+addEventListener('scroll',chk,{passive:true});addEventListener('resize',chk);chk();
+function mode(m){document.body.classList.toggle('mob',m);document.getElementById('bd').classList.toggle('on',!m);document.getElementById('bm').classList.toggle('on',m);F.forEach(function(f){var i=f.el.querySelector('iframe');if(i)i.remove()});chk()}
+document.getElementById('bd').onclick=function(){mode(false)};document.getElementById('bm').onclick=function(){mode(true)};
+</script></body></html>

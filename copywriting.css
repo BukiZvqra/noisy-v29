@@ -1,0 +1,21 @@
+/* Scoped copy proposal: reuse v26 layout and its existing type scale. */
+.ntext .sub{max-width:660px;text-wrap:pretty}
+.ntext h1{text-wrap:balance}
+#hl>header .h2{text-wrap:balance}
+.copy-review{display:flex;justify-content:center;gap:24px;align-items:center;flex-wrap:wrap;margin:0;padding:24px;font:500 12px/1.5 Manrope,sans-serif;color:var(--mute,#aaa)}
+.copy-review a{min-height:44px;display:inline-flex;align-items:center;gap:8px;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:734px){.ntext .fine{max-width:250px;line-height:1.5}.copy-review{gap:8px}}
+
+/* Keep proposal copy readable and links easy to tap on phones. */
+.tl,.f-legal a{min-height:44px;display:inline-flex;align-items:center}
+@media(max-width:734px){
+ .ft,.nq-a p,.f-soc span,.f-legal a,.f-legal p,.gk,.gother{font-size:15px!important}
+}
+
+body .foot.foot22 .f-legal a{min-height:44px!important;display:inline-flex!important;align-items:center}
+@media(max-width:734px){
+ body .foot.foot22 .f-legal a,body .end-soc span{font-size:15px!important}
+}
+
+body .foot.foot22 .f-col a{min-height:44px!important;display:flex;align-items:center}
+@media(max-width:734px){.jm{min-height:48px!important}.gbtns .btn{min-height:50px!important}}

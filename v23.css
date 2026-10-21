@@ -1,0 +1,180 @@
+/* NOISY v23: сцена с лек стоп за „Повече от гледане“, айфон мокъпи, рийлове по дизайна на Лили */
+
+/* ===== 1 · сцена: заглавието се закача, после каруселът излиза ===== */
+.hlscene{position:relative;height:var(--scn-h,auto)}
+.hlscene #hl{position:sticky;top:var(--scn-top,64px)}
+.hlscene.on #hl header{opacity:0;transform:translateY(48px);transition:opacity 1s cubic-bezier(.25,.1,.25,1),transform 1.1s cubic-bezier(.25,.1,.25,1)}
+.hlscene.on.h-in #hl header{opacity:1;transform:none}
+.hlscene.on #hlrail{transform-origin:50% 0;opacity:0;transform:perspective(1500px) translateY(120px) rotateX(14deg) scale(.9);transition:opacity 1.1s cubic-bezier(.2,.8,.2,1),transform 1.3s cubic-bezier(.2,.8,.2,1)}
+.hlscene.on .hlctl{opacity:0;transform:translateY(30px);transition:opacity 1s ease .25s,transform 1.1s cubic-bezier(.2,.8,.2,1) .25s}
+.hlscene.on.c-in #hlrail{opacity:1;transform:none}
+.hlscene.on.c-in .hlctl{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.hlscene{height:auto}.hlscene #hl{position:static}.hlscene.on #hlrail,.hlscene.on .hlctl{transform:none;opacity:1}.hlscene.on .hcard{translate:none}}
+
+/* ===== 2 · айфон мокъпи (devices.css, MIT) вместо нарисуваните телефони ===== */
+.hcard .phone.dvc{width:var(--pw,280px)!important;height:calc(var(--pw,280px) * 882 / 433);aspect-ratio:auto!important;padding:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;filter:drop-shadow(0 34px 50px rgba(0,0,0,.6)) drop-shadow(0 8px 14px rgba(0,0,0,.35))}
+.phone.dvc .device{position:absolute;left:0;top:0;transform-origin:0 0;transform:scale(var(--ds,.6))}
+.phone.dvc .device-screen{overflow:hidden;position:relative;background:#0E0E10}
+.phone.dvc .scr{position:absolute;left:0;top:0;transform-origin:0 0;border-radius:0!important;width:var(--iw,264px)!important;height:calc(var(--iw,264px) * 852 / 393)!important;transform:scale(var(--is,1.49))}
+.phone.dvc .island{display:none}
+
+/* ===== 3 · рийлове по дизайна на Лили („Clip it. Share it.“) ===== */
+.rlx{padding:96px 0 72px;overflow:hidden}
+.rlx-h{text-align:center;max-width:760px;margin:0 auto}
+.rlx-k{margin:0 0 10px;font:600 15px Manrope,sans-serif;letter-spacing:.04em;text-transform:uppercase;background:linear-gradient(90deg,#B61DFF,#CE13A8,#FF3B3B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rlx-t{margin:0;font:700 clamp(32px,4.6vw,64px)/1.08 Unbounded,Manrope,sans-serif!important;letter-spacing:-.03em!important}
+.rlx-s{margin:18px auto 0;max-width:46ch;font:400 clamp(15px,1.3vw,18px)/1.55 Manrope,sans-serif;color:rgba(255,255,255,.6)}
+.rlx-st{position:relative;display:flex;justify-content:center;align-items:center;gap:clamp(8px,1.4vw,22px);margin:64px auto 56px;perspective:1600px}
+.rlc{position:relative;flex:none;overflow:hidden;width:clamp(150px,19vw,290px);aspect-ratio:9/16;border-radius:28px;background:#14121a;box-shadow:0 36px 70px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.07);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.rlc video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rlc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),transparent 30%,transparent 55%,rgba(0,0,0,.78))}
+.rlc.c0{width:clamp(170px,22vw,336px);z-index:3;box-shadow:0 44px 90px rgba(0,0,0,.65),0 0 60px rgba(140,24,190,.25),0 0 0 1px rgba(255,255,255,.12)}
+.rlc.l2{transform:rotate(-4deg) translateY(26px)}.rlc.l1{transform:rotate(-2deg) translateY(10px)}.rlc.r1{transform:rotate(2.5deg) translateY(10px)}
+.rlc.l1,.rlc.r1,.rlc.l2{filter:brightness(.7)}
+.rlx-st:hover .rlc.l1,.rlx-st:hover .rlc.r1,.rlx-st:hover .rlc.l2{filter:brightness(.9)}
+.rlc .bd{position:absolute;left:14px;top:14px;z-index:2;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;font:600 12px Manrope,sans-serif;color:#fff}
+.rlc .bd i{width:8px;height:8px;border-radius:2px;background:#fff}
+.rlc .bd.yt{background:#C41414}.rlc .bd.tt{background:rgba(0,0,0,.65);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}.rlc .bd.rl{background:#A3205C}
+.rlc .sh{position:absolute;right:14px;top:14px;z-index:2;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);font:600 12px Manrope,sans-serif;color:#fff}
+.rlc .sh svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.rlc .cp{position:absolute;left:16px;right:16px;bottom:18px;z-index:2}
+.rlc .cp b{display:block;font:600 15px Manrope,sans-serif;color:#fff}.rlc .cp small{display:block;margin-top:2px;font:400 12px Manrope,sans-serif;color:rgba(255,255,255,.65)}
+.rlx-b{text-align:center}
+@media (max-width:760px){.rlx{padding:64px 0 48px}.rlx-st{margin:40px auto 36px}.rlc{width:30vw;border-radius:18px}.rlc.c0{width:38vw}.rlc.l2{display:none}.rlc .sh{display:none}.rlc .bd{left:8px;top:8px;height:22px;padding:0 8px;font-size:10px}.rlc .cp{left:9px;right:9px;bottom:10px}.rlc .cp b{font-size:11px}.rlc .cp small{font-size:9px}}
+
+/* ===== v23: хирото е с рийловете на Лили (Фигма 17:2529); N е само преход ===== */
+.nhero .hfan{position:absolute;left:0;right:0;top:calc(var(--hdr-h,96px) + 8px);bottom:calc(var(--ntext-h,300px) + 18px);margin:0;display:flex;justify-content:center;align-items:flex-start;perspective:1600px;z-index:1;pointer-events:none;opacity:calc(1 - var(--np,0) * 3.4);transform:translateY(calc(var(--np,0) * -70px)) scale(calc(1 + var(--np,0) * .15))}
+.nhero .hfan .rlc{--rh:calc(100% - 0px);height:100%;width:auto;aspect-ratio:9/16;max-height:calc(100svh - var(--hdr-h,96px) - var(--ntext-h,300px) - 26px)}
+.nhero .hfan .rlc.c0{height:104%;margin-top:-1%}
+.nhero .hfan .rlc.l2{margin-right:-2%}
+.nhero .ntext{z-index:3}
+.nhero .nglow{opacity:calc(.9 - var(--np,0)*1.2)}
+/* N се появява чак при скрол: от хирото идва рийлът, който става картата */
+.ag-root:not(.nfree) .ag-vid{opacity:clamp(0,calc(var(--np,0) * 6 - .1),1)!important}
+@media (max-width:760px){.nhero .hfan .rlc.l2{display:none}.nhero .hfan .rlc{max-height:none}}
+
+/* ===== айпад за „Какво стана снощи“ (devices.css iPad Pro, space gray) ===== */
+#rcard{display:none!important}
+.ipd{color:#fff;padding:26px 22px 0;background:#141318;text-align:left}
+.ipd .ihd{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.ipd .ihd img{height:18px;width:auto}.ipd .ihd span{font-size:15px;font-weight:700;color:#C9C7D0}
+.ipd .days{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+.ipd .days span{display:grid;place-items:center;padding:8px 0;border-radius:10px;background:#24232A;font-size:12px;color:#A7A5AE;font-weight:600;line-height:1.25}
+.ipd .days b{font-size:17px;color:#fff}
+.ipd .days span.on{background:#CE13A8;color:#fff}
+.ipd h4{margin:20px 0 12px;font-size:21px;font-weight:800}
+.ipd .rw{display:grid;gap:10px}
+.ipd .rm{position:relative;height:150px;border-radius:12px;overflow:hidden;box-shadow:0 0 0 0 transparent;transition:box-shadow .35s}
+.ipd .rm.on{box-shadow:0 0 0 3px #CE13A8,0 0 22px rgba(206,19,168,.45)}
+.ipd .rm video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ipd .rm::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.75))}
+.ipd .rm .go{position:absolute;right:10px;top:10px;z-index:2;padding:5px 9px;border-radius:6px;background:#fff;color:#0E0E10;font-size:12px;font-weight:800}
+.ipd .rm b{position:absolute;left:14px;bottom:12px;z-index:2;font-size:17px;font-weight:800}
+.ipd .rm em{position:absolute;right:14px;bottom:13px;z-index:2;font-style:normal;font-size:13px;color:#F28BD9;font-weight:700}
+.ipd .ft{margin:14px 0 0;font-size:13.5px;line-height:1.45;color:#C9C7D0}
+.ipadw{position:relative;flex:none;width:var(--iw2,560px);height:calc(var(--iw2,560px) * 778 / 560);margin-top:22px;filter:drop-shadow(0 34px 50px rgba(0,0,0,.6)) drop-shadow(0 8px 14px rgba(0,0,0,.35))}
+.ipadw .device{position:absolute;left:0;top:0;transform-origin:0 0;transform:scale(var(--ids,.6))}
+.ipadw .device-screen{overflow:hidden;position:relative;background:#0E0E10}
+.hcard>.ipadw{align-self:center!important}
+@media (max-width:1023px){.hcard>.ipadw{margin-top:18px}}
+
+/* ===== v23: хиро с плаващи кадри (идеята на Лили/Ралева: снимки около заглавието, паралакс) ===== */
+.hfl{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;opacity:calc(1 - var(--np,0) * 3.4);transform:translateY(calc(var(--np,0) * -90px)) scale(calc(1 + var(--np,0) * .2))}
+.hfi{position:absolute;left:var(--x);top:var(--y);width:var(--w);aspect-ratio:var(--ar,16/10);margin:0;will-change:transform;opacity:0;animation:flin 1.2s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--dl,0s)}
+.hfi>i{display:block;width:100%;height:100%;border-radius:calc(var(--w) * .05 + 3px);overflow:hidden;background:#16141b;box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.07);animation:flbob var(--t,9s) ease-in-out infinite alternate;animation-delay:var(--db,0s);transform:rotate(var(--r,0deg));filter:blur(var(--b,0px)) brightness(var(--br,1))}
+.hfi img{display:block;width:100%;height:100%;object-fit:cover}
+@keyframes flin{from{opacity:0;margin-top:34px}to{opacity:var(--o,1);margin-top:0}}
+@keyframes flbob{from{translate:0 -8px}to{translate:0 8px}}
+.hkick{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 0 14px;font:600 12px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.hkick i{width:5px;height:5px;border-radius:50%;background:#CE13A8}
+.hkick i:first-child{display:none}
+html:not(.hero-fan) .nhero .hfan{display:none}
+html.hero-fan .hfl{display:none}
+@media (prefers-reduced-motion:reduce){.hfi{animation:none;opacity:var(--o,1)}.hfi>i{animation:none}}
+
+/* хирото на v23: без слоевете на N от v21 */
+.hfx{display:none!important}
+
+/* ===== хиро: текстът е по средата; фонът е разцепено N със сияние (Фигма „hero image“ 135:3033) ===== */
+.nhero .ntext{bottom:auto!important;top:50%;transform:translateY(calc(-50% + var(--np,0) * -26px))!important}
+.hbg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:calc(1 - var(--np,0) * 3)}
+.hbg .g{position:absolute;inset:0;background:radial-gradient(52% 60% at 50% 50%,rgba(224,36,80,.62),rgba(150,22,110,.42) 42%,rgba(60,10,70,.18) 68%,transparent 82%),radial-gradient(40% 50% at 22% 28%,rgba(128,36,182,.28),transparent 70%),radial-gradient(40% 50% at 80% 70%,rgba(178,38,27,.28),transparent 70%)}
+.hbg .n{position:absolute;left:50%;top:50%;width:min(150vh,128vw);aspect-ratio:99.63/104;-webkit-mask:url(assets/symbol.svg) center/100% 100% no-repeat;mask:url(assets/symbol.svg) center/100% 100% no-repeat;background:linear-gradient(135deg,#7A1FA8,#CE13A8 48%,#E5233B);opacity:.5;will-change:transform}
+.hbg .n.a{clip-path:polygon(0 0,58% 0,44% 100%,0 100%);transform:translate(calc(-50% - 2.2vw),-50%) rotate(-1.5deg)}
+.hbg .n.b{clip-path:polygon(58% 0,100% 0,100% 100%,44% 100%);transform:translate(calc(-50% + 2.2vw),-47%) rotate(1.5deg);opacity:.42}
+.hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,7,12,.55),transparent 22%,transparent 70%,rgba(9,7,12,.75))}
+
+/* ===== фонът е картинката от Фигма (разцепено N), по-тъмна по краищата, за да се слива със страницата ===== */
+.hbg{background:#09070c url(img/hero-bg.jpg) 50% 45%/cover no-repeat}
+html.bg2 .hbg{background-image:url(img/hero-bg2.jpg)}
+.hbg .n{display:none}
+.hbg .g{background:radial-gradient(70% 70% at 50% 50%,transparent 45%,rgba(9,7,12,.55) 100%);mix-blend-mode:normal}
+.hbg::after{background:linear-gradient(180deg,rgba(9,7,12,.7),transparent 20%,transparent 62%,#0A090D 98%)}
+@media (max-width:760px){.hbg{background-position:46% 40%;background-size:auto 100%}}
+/* когато каруселът е оформен, хирото не пречи на кликовете */
+.ag-root.nfree .nhero,.ag-root.nfree .nhero *{visibility:hidden!important;pointer-events:none!important}
+.nhero .ntext{pointer-events:auto}
+
+/* ===== шест дизайна на хирото (?h=1..6) ===== */
+/* 1 Фигма: разцепено N (по подразбиране) */
+/* 2 Фигма: втората картинка, по-светла */
+.hv2 .hbg{background-image:url(img/hero-bg2.jpg);filter:saturate(1.15) brightness(1.12)}
+.hv2 .hbg .g{display:none}
+.hv2 .hbg::after{background:linear-gradient(180deg,rgba(9,7,12,.3),transparent 25%,transparent 78%,#0A090D)}
+/* 3 Кино: Фигма фон, силно затъмнен, кадрите изпъкват */
+.hv3 .hbg{background-blend-mode:multiply;background-color:#2a0d1c}
+.hv3 .hbg .g{background:radial-gradient(60% 65% at 50% 50%,rgba(9,7,12,.35),rgba(9,7,12,.8) 100%)}
+.hv3 .hfi>i{box-shadow:0 22px 60px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.12)}
+/* 4 Тъмно: без картинка, само розово сияние (предишният вариант) */
+.hv4 .hbg{background:#09070c}
+.hv4 .hbg .g{background:radial-gradient(50% 60% at 50% 50%,rgba(206,19,168,.38),rgba(128,36,182,.18) 50%,transparent 75%)}
+.hv4 .hbg::after{background:none}
+/* 5 Стъкло: текстът е в матова карта върху Фигма фон */
+.hv5 .nhero .ntext{width:min(900px,calc(100% - 32px));left:50%;right:auto;margin-left:calc(min(900px,100% - 32px) / -2);padding:34px 28px 30px!important;border-radius:28px;background:rgba(14,8,18,.42);backdrop-filter:blur(22px) saturate(1.3);-webkit-backdrop-filter:blur(22px) saturate(1.3);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 30px 80px rgba(0,0,0,.35)}
+/* 6 Чисто: само големите кадри, повече въздух */
+.hv6 .hfi:not(.big){display:none}
+.hv6 .hbg{background-image:url(img/hero-bg2.jpg)}
+.hv6 .hbg .g{background:radial-gradient(70% 70% at 50% 50%,transparent 35%,rgba(9,7,12,.65) 100%)}
+
+/* екранът вътре в айфона е с фиксиран дизайн-размер (264 px), мащабиран до 393 px */
+.phone.dvc{--iw:264px;--is:1.4886}
+
+/* ===== фон от Фигма (тъмночервени отломки, готова виньетка) - по подразбиране ===== */
+.hbg{background:#0c070b url(img/hero-bg3.jpg) 50% 45%/cover no-repeat}
+.hbg .g{display:none}
+.hbg::after{background:linear-gradient(180deg,rgba(9,7,12,.25),transparent 18%,transparent 70%,#0A090D 99%)}
+.hv1 .hbg{background-image:url(img/hero-bg3.jpg)}
+/* devices.css слага display:block на всичко в рамката; връщаме разположението на екрана „Моментите“ */
+.phone.dvc .jhd{display:flex}
+.phone.dvc .jl{display:flex}
+.phone.dvc .jr{display:flex}
+.phone.dvc .jr .e,.phone.dvc .jr .n,.phone.dvc .jr .m{display:block}
+.phone.dvc .jv{display:block}
+.phone.dvc .jsb{display:block}
+.phone.dvc .jm{display:flex;align-items:center;justify-content:center}
+
+/* ===== хайдинг: съдържанието на неактивните карти е скрито и излиза, когато станат активни ===== */
+.hlscene .hcard .tag,.hlscene .hcard .cap,.hlscene .hcard>:not(.tag):not(.cap):not(video):not(.mask){transition:opacity .7s cubic-bezier(.25,.1,.25,1),translate .9s cubic-bezier(.2,.8,.2,1),filter .7s ease,transform 1s var(--out,ease)}
+.hlscene .hcard.vis .tag{transition-delay:.1s}
+.hlscene .hcard.vis .cap{transition-delay:.22s}
+.hlscene .hcard.vis>:not(.tag):not(.cap):not(video):not(.mask){transition-delay:.4s}
+.hlscene .hcard:not(.vis) .tag,.hlscene .hcard:not(.vis) .cap,.hlscene .hcard:not(.vis)>:not(.tag):not(.cap):not(video):not(.mask){opacity:0!important;translate:0 40px;filter:blur(8px)}
+@media (prefers-reduced-motion:reduce){.hlscene .hcard:not(.vis) .tag,.hlscene .hcard:not(.vis) .cap,.hlscene .hcard:not(.vis)>:not(.tag):not(.cap):not(video):not(.mask){opacity:1!important;translate:none;filter:none}}
+
+/* „Питай NOISY“ на компютър: не е залепен в ъгъла */
+@media (min-width:1024px){html body .fab{right:40px!important;bottom:40px!important;top:auto!important}html body .bot{right:40px!important;bottom:112px!important}}
+
+/* сцената покрива всичко над себе си и не оставя да се подава „Ново съдържание всеки ден“ */
+.hlscene{background:#0A090D;z-index:6;padding-top:96px}
+.hlscene #hl{background:#0A090D}
+/* редът „Ново съдържание всеки ден“ е под долния ръб на закачената сцена и се отрязваше наполовина */
+.ag-root.nfree .ag-stick{overflow:visible}
+.ag-root.nfree .agdaily{padding-bottom:6px}
+
+/* по-малко размазване: фонът на картите е по-ясен, съседните карти не са толкова тъмни */
+.hlscene .hcard::before{filter:blur(16px) saturate(1.2) brightness(.55);inset:-30px;transform:scale(1.06)}
+.hlscene .hcard:not(.vis){filter:brightness(.62) saturate(.85)!important}
+.hlscene .hcard:not(.full)::after{background:radial-gradient(120% 70% at 50% 0%,rgba(0,0,0,0) 0%,rgba(10,9,13,.35) 75%),linear-gradient(180deg,rgba(10,9,13,.08),rgba(10,9,13,.5))}
+/* твърдо отстояние над сцената (надделява над изчисленото от v19.js), без покриване на реда „Ново съдържание всеки ден“ */
+.hlscene{background:none!important;z-index:auto!important;padding-top:0!important;margin-top:40px!important}
+.hlscene #hl{background:none!important}

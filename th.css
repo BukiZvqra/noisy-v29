@@ -1,0 +1,123 @@
+/* Theatre (16.10.2026): разлики спрямо Arena */
+#mods .th-st{display:flex;justify-content:center}
+#mods .th-st img{height:clamp(30px,2.6vw,44px);width:auto;opacity:.9}
+.ag-tile .ag-tt0[data-w=films]{background:radial-gradient(120% 90% at 50% 0%,#33203a 0%,#15111a 60%,#0f0d13 100%)}
+.ag-tile .ag-tt0[data-w=series]{background:radial-gradient(120% 90% at 50% 0%,#3a1d2a 0%,#170f14 60%,#100c0f 100%)}
+.ag-tile .ag-tt0[data-w=scifi]{background:radial-gradient(120% 90% at 50% 0%,#16273a 0%,#0e1218 60%,#0b0e12 100%)}
+.ag-tile .ag-tt0[data-w=drama]{background:radial-gradient(120% 90% at 50% 0%,#3a2a16 0%,#17120d 60%,#100d0b 100%)}
+#mods .th-st{flex-direction:column;align-items:center}
+/* споделянето с футболните примери е само за Arena */
+.th-page .af-open-share{display:none!important}
+/* 16.10: студиата (Premium) и каналите (в плана), като лигите в Arena */
+#mods .th-lgs{display:flex;flex-wrap:nowrap;justify-content:center;gap:0 clamp(10px,1.4vw,22px);margin:0;padding:6px 0 14px;list-style:none}
+#mods .th-lg{position:relative;flex:none;width:clamp(52px,5.4vw,84px);height:clamp(52px,5.4vw,84px)}
+#mods .th-lg span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:50%;background:#1d1c22;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 10px 26px rgba(0,0,0,.45)}
+#mods .th-lg img{width:58%;height:58%;object-fit:contain}
+#mods .th-lg .ar-pm{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);box-shadow:0 0 0 3px #0A090D}
+@media (max-width:734px){#mods .th-lgs{flex-wrap:wrap;gap:18px 10px}#mods .th-lg .ar-pm{height:16px;font-size:8px;padding:0 5px}}
+/* 16.10: Топ 10 в България тази седмица (големи номера, постерът е до номера) */
+.t10s{padding:clamp(56px,6vw,110px) 0 clamp(40px,4vw,70px)}
+.t10-hd h2{margin:0;font:700 clamp(26px,2.8vw,44px)/1.15 Unbounded,Manrope,sans-serif;letter-spacing:-.025em;color:#fff}
+.t10-hd h2 span{background:linear-gradient(90deg,#B61DFF,#CE13A8 45%,#FF3B3B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.t10-hd p{margin:10px 0 0;font:400 clamp(15px,1.1vw,18px)/1.5 Manrope,system-ui,sans-serif;color:rgba(255,255,255,.6)}
+.t10-wr{overflow-x:auto;scrollbar-width:none;margin-top:clamp(24px,2.6vw,40px);padding:6px 0 18px}
+.t10-wr::-webkit-scrollbar{display:none}
+.t10-row{display:flex;gap:clamp(8px,1vw,18px);margin:0;padding:0 max(20px,calc((100vw - 1200px)/2));list-style:none;width:max-content}
+.t10{position:relative;display:flex;align-items:flex-end;flex:none}
+.t10-n{position:relative;z-index:0;margin-right:clamp(-34px,-2.4vw,-18px);font:800 clamp(120px,12vw,210px)/.78 Unbounded,Manrope,sans-serif;letter-spacing:-.06em;color:#0A090D;-webkit-text-stroke:3px rgba(255,255,255,.55);paint-order:stroke;user-select:none}
+.t10:nth-child(10) .t10-n{letter-spacing:-.1em}
+.t10-p{position:relative;z-index:1;display:block;width:clamp(120px,11vw,190px);aspect-ratio:2/3;border-radius:10px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.55);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.t10-p img{width:100%;height:100%;object-fit:cover}
+.t10-p .ar-pm{position:absolute;right:8px;top:8px}
+.t10:hover .t10-p{transform:translateY(-6px) scale(1.03)}
+.t10:hover .t10-n{-webkit-text-stroke-color:#CE13A8}
+.t10-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.t10-note{margin:10px auto 0;text-align:center}
+.t10-c{position:absolute;left:0;right:0;bottom:0;padding:34px 10px 12px;font:800 clamp(15px,1.3vw,20px)/1.1 Unbounded,Manrope,sans-serif;font-style:normal;text-align:center;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.85))}
+.t10-box{position:relative}
+.t10-b{position:absolute;top:50%;z-index:3;width:44px;height:44px;margin-top:-30px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(10,9,13,.7);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.t10-b.l{left:clamp(8px,2vw,32px)}.t10-b.r{right:clamp(8px,2vw,32px)}
+@media (hover:none){.t10-b{display:none}}
+.ag-tile .ag-tt0[data-w=fantasy]{background:radial-gradient(120% 90% at 50% 0%,#2c1d3a 0%,#120f18 60%,#0d0b12 100%)}
+.ag-tile .ag-tt0[data-w=crime]{background:radial-gradient(120% 90% at 50% 0%,#3a1616 0%,#170d0d 60%,#100b0b 100%)}
+/* Theatre: геометрията и приближаването от apple-karusel-lili.html. */
+#kak.tf-section{--tf-width:min(1260px,calc(100vw - 160px));--tf-margin:calc((100vw - var(--tf-width))/2);padding-bottom:80px}
+#kak #arMore{margin-bottom:32px}
+#kak .tf-rail{display:flex;gap:20px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:var(--tf-margin);padding:0 var(--tf-margin) 8px;scrollbar-width:none;outline-offset:6px}
+#kak .tf-rail::-webkit-scrollbar{display:none}
+#kak .tf-card{position:relative;flex:none;width:var(--tf-width);aspect-ratio:1260/612;border-radius:28px;overflow:hidden;scroll-snap-align:start;background:linear-gradient(180deg,#2b2b2b,#1e1e1e);isolation:isolate}
+#kak .tf-stage{position:absolute;left:0;top:0;width:1260px;height:612px;transform-origin:0 0;transform:scale(var(--tf-scale,1))}
+#kak .tf-copy{position:absolute;z-index:3;left:64px;top:166px;width:350px;opacity:0;transform:translateY(30px);transition:opacity 1s ease .25s,transform 1s cubic-bezier(.25,.1,.25,1) .25s}
+#kak .on .tf-copy{opacity:1;transform:none}
+#kak .tf-copy>img{display:block;height:36px;width:auto;margin-bottom:24px}
+#kak .tf-copy h3{margin:0 0 20px;font:700 36px/1.17 Manrope,system-ui,sans-serif;letter-spacing:-.02em;color:#fff}
+#kak .tf-copy p{margin:0;font:500 18px/1.6 Manrope,system-ui,sans-serif;color:#c8c8cc;text-wrap:pretty}
+#kak .tf-device{position:absolute;z-index:2;transform-origin:50% 40%;transform:translate(-180px,40px) scale(1.65);transition:transform 1.8s cubic-bezier(.33,0,.15,1);box-shadow:0 38px 60px #0008,inset 0 0 0 1px #ffffff60;background:#0a0a0c}
+#kak .on .tf-device{transform:none}
+#kak .tf-phone{left:718px;top:40px;width:258px;height:558px;border:6px solid #434347;border-radius:44px;padding:6px}
+#kak .tf-phone:before{content:"";position:absolute;z-index:3;top:12px;left:50%;transform:translateX(-50%);width:72px;height:19px;background:#09090a;border-radius:20px}
+#kak .tf-phone:after{content:"";position:absolute;z-index:3;bottom:11px;left:50%;transform:translateX(-50%);width:86px;height:4px;background:#ffffffa0;border-radius:9px}
+#kak .tf-screen{height:100%;width:100%;overflow:hidden;border-radius:32px;background:#111113}
+#kak .tf-screen video{display:block;width:100%;height:100%;object-fit:cover}
+#kak .tf-tablet{left:500px;top:104px;width:790px;height:596px;border:6px solid #505054;border-radius:28px;padding:11px;transform:translate(-210px,-80px) scale(1.55)}
+#kak .tf-tablet .tf-screen{border-radius:12px}
+#kak .tf-tablet:before{content:"";position:absolute;top:5px;left:50%;width:4px;height:4px;border-radius:50%;background:#777}
+#kak .tf-cast .tf-copy{left:650px;width:440px;top:178px}
+#kak .tf-cast .tf-phone{left:220px;transform:translate(220px,40px) scale(1.6)}
+#kak .tf-cast.on .tf-phone{transform:none}
+#kak .tf-controls{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:28px}
+#kak .tf-controls button{display:grid;place-items:center;flex:none;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:#333336;color:#fff;cursor:pointer;transition:background .2s,opacity .2s}
+#kak .tf-controls button:hover{background:#4a4a4e}
+#kak .tf-controls button:focus-visible{outline:2px solid #fff;outline-offset:4px}
+#kak .tf-controls button:disabled{opacity:.35;cursor:default}
+#kak .tf-controls svg{height:20px;width:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#kak .tf-dots{display:flex;align-items:center;padding:0 4px;border-radius:32px;background:#333336}
+#kak .tf-dots button{width:36px;min-width:36px;border-radius:0;background:transparent}
+#kak .tf-dots button:first-child{border-radius:32px 0 0 32px}
+#kak .tf-dots button:last-child{border-radius:0 32px 32px 0}
+#kak .tf-dots i{display:block;width:7px;height:7px;border-radius:8px;background:#8c8c91;transition:width .3s,background .3s}
+#kak .tf-dots [aria-current=true] i{position:relative;width:24px;background:#77777c;overflow:hidden}
+#kak .tf-dots [aria-current=true] i:after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(var(--tf-progress,0));border-radius:8px}
+@media(max-width:734px){
+ #kak.tf-section{--tf-width:calc(100vw - 40px);padding-bottom:56px}
+ #kak .tf-card{aspect-ratio:auto;height:812px;border-radius:24px}
+ #kak .tf-stage{width:100%;height:100%;transform:none}
+ #kak .tf-copy,#kak .tf-cast .tf-copy{left:28px;right:28px;top:32px;width:auto}
+ #kak .tf-copy>img{height:28px;margin-bottom:20px}
+ #kak .tf-copy h3{font-size:28px;line-height:1.15;margin-bottom:16px}
+ #kak .tf-copy p{font-size:16px;line-height:1.5}
+ #kak .tf-phone,#kak .tf-cast .tf-phone{left:calc(50% - 108px);top:292px;width:216px;height:468px;border-width:5px;border-radius:38px;padding:5px;transform:translate(0,70px) scale(1.25)}
+ #kak .on .tf-phone,#kak .tf-cast.on .tf-phone{transform:none}
+ #kak .tf-phone .tf-screen{border-radius:27px}
+ #kak .tf-phone:before{top:10px;width:60px;height:16px}
+ #kak .tf-cont .tf-phone{top:320px}
+ #kak .tf-tablet,#kak .tf-prem .tf-tablet{left:calc(50% - 108px);top:320px;width:216px;height:468px;border:5px solid #434347;border-radius:38px;padding:5px;transform:translate(0,70px) scale(1.25)}
+ #kak .tf-tablet .tf-screen{border-radius:27px}
+ #kak .tf-tablet:before{top:10px;left:50%;transform:translateX(-50%);width:60px;height:16px;background:#09090a;border-radius:20px;z-index:3}
+ #kak .tf-tablet:after{content:"";position:absolute;z-index:3;bottom:11px;left:50%;transform:translateX(-50%);width:86px;height:4px;background:#ffffffa0;border-radius:9px}
+ #kak .on .tf-tablet{transform:none}
+ #kak .tf-controls{gap:7px;margin-top:24px}
+ #kak .tf-dots{padding:0 2px}
+ #kak .tf-dots button{width:32px;min-width:32px}
+}
+@media(prefers-reduced-motion:reduce){#kak .tf-device,#kak .tf-copy{transition:none}}
+.thf-cast{max-width:470px;overflow:hidden;border-radius:18px}
+
+/* 20.10 (Коста): на телефон картите на модулите са по-ниски (812 -> 690px), телефонът е малко по-малък и по-близо до текста */
+@media(max-width:734px){
+ #kak .tf-card{height:690px}
+ #kak .tf-phone,#kak .tf-cast .tf-phone{left:calc(50% - 98px);top:236px;width:196px;height:424px}
+ #kak .tf-cont .tf-phone{top:236px}
+ #kak .tf-tablet,#kak .tf-prem .tf-tablet{left:calc(50% - 98px);top:236px;width:196px;height:424px}
+ #kak.tf-section{padding-bottom:40px}
+}
+
+/* 20.10 (Коста, пак): на телефон между карусела с филмите/спортовете и „Повече от гледането/мача“ беше ~250px празно */
+@media(max-width:734px){
+ #mods{padding-bottom:0!important}
+ #kak.tf-section,#kak.ar-sec{padding-top:36px!important;margin-top:-70px}
+}
+
+/* 20.10 (Коста): разстоянието между бележката под модулите и „Повече от гледането/мача“ е ~15% по-малко */
+@media(min-width:735px){#kak.tf-section,#kak.ar-sec{padding-top:64px!important}}
+@media(max-width:734px){#kak.tf-section,#kak.ar-sec{margin-top:-92px!important}}

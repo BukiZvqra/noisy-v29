@@ -1,0 +1,35 @@
+.cnp #ceni{padding-top:48px}
+.pricing-review{max-width:864px;margin:24px auto 0;padding:0 16px}
+.pricing-review-controls{display:flex;align-items:stretch;border-bottom:1px solid rgba(255,255,255,.16);gap:24px;flex-wrap:wrap}
+.pricing-review button{font:500 14px/1.4 Manrope,sans-serif;min-height:48px;border:0;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:#aaa;padding:8px 0 12px;cursor:pointer;display:flex;align-items:center;gap:8px;text-align:left}
+.pricing-review button b{font-size:12px;font-weight:700;color:#aaa}
+.pricing-review button[aria-pressed=true]{border-color:#CE13A8;color:#fff}
+.pricing-review button[aria-pressed=true] b{color:#DF34BD}
+.pricing-review button:hover{color:#fff}
+.pricing-review button:focus-visible{outline:2px solid #DF34BD;outline-offset:3px}
+.pricing-review .review-all{margin-left:auto;font-size:13px;color:#ccc}
+.pzv[hidden]{display:none!important}
+.cnp .pzv{scroll-margin-top:104px;margin-top:24px}
+.cnp .pzv-tag{max-width:864px;margin:0 auto 16px;padding:0 16px;font-size:15px;line-height:1.5}
+.cnp .pzv:not(.is-comparison) .pzv-tag{display:none}
+.cnp .pzv-tag b{width:auto;height:auto;background:none;color:#DF34BD;font-size:13px}
+.cnp .pzv-tag span{display:none}
+.cnp .nfaq-s .tl,.cnp a[href^="mailto:"]{display:inline-flex;align-items:center;min-height:44px}
+.cnp a[href^="mailto:"]{display:inline-flex!important;min-height:44px!important}
+@media(max-width:639px){.pricing-review-controls{gap:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.pricing-review button{min-height:64px;padding:8px 0;font-size:13px;align-items:flex-start}.pricing-review button b{padding-top:2px}.pricing-review .review-all{margin:0;justify-content:center;grid-column:1/-1;min-height:44px}.cnp #ceni{padding-top:48px}}
+
+.review-previous{margin-top:8px}.review-previous summary{font:400 13px/1.5 Manrope,sans-serif;color:#aaa;cursor:pointer;min-height:44px;display:flex;align-items:center}.review-previous summary::after{content:" +";margin-left:8px}.review-previous[open] summary::after{content:" −"}.review-previous .pricing-review-controls{margin-bottom:8px}.pricing-review>.review-all{margin-left:0;min-height:44px}.pricing-review>.pricing-review-controls{justify-content:flex-start}.pricing-review>.pricing-review-controls button{font-size:15px}.review-previous summary:focus-visible{outline:2px solid #DF34BD;outline-offset:3px}
+/* Keep the comparison page on the same black base through the FAQ. */
+.cnp .nq{background:transparent;border:1px solid rgba(255,255,255,.16)}
+
+/* Keep the review utilities together beneath the three version tabs. */
+.pricing-review{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;row-gap:4px}
+.pricing-review>.pricing-review-controls{grid-column:1/-1}
+.review-previous{margin-top:0;min-width:0}
+.pricing-review>.review-all{align-self:start;justify-self:end;font-size:13px}
+@media(max-width:639px){.pricing-review{column-gap:12px}.pricing-review>.review-all{grid-column:auto;font-size:12px}.review-previous summary{font-size:12px}.pricing-review>.pricing-review-controls button{font-size:13px}}
+/* The review shell follows the same open content grid as the pricing. */
+.cnp #ceni>.w{max-width:992px;padding-left:16px;padding-right:16px}
+.pricing-review{max-width:992px;margin-top:32px;margin-bottom:32px}
+.pricing-review button[aria-pressed=true]{border-image:linear-gradient(90deg,#B61DFF,#CE13A8 33%,#FF0000) 1}
+@media(max-width:639px){.cnp #ceni{padding-top:24px}.pricing-review{margin-top:24px;margin-bottom:24px}.cnp .pzv{margin-top:0}.cnp #ceni>.w .h2{font-size:28px}}

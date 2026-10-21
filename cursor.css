@@ -1,0 +1,36 @@
+/* ===== NOISY курсор и детайли за компютър ===== */
+@media (hover:hover) and (pointer:fine){
+ html.nc,html.nc *{cursor:none!important}
+ .nc-dot,.nc-ring{position:fixed;left:0;top:0;z-index:2000;pointer-events:none;will-change:transform;opacity:0;transition:opacity .25s}
+ html.nc-on .nc-dot,html.nc-on .nc-ring{opacity:1}
+ .nc-dot{width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--spectrum)}
+ .nc-ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1.5px solid rgba(255,255,255,.7);border-radius:50%;display:grid;place-items:center;transition:width .25s,height .25s,margin .25s,border-color .25s,background .25s,opacity .25s,border-radius .25s;mix-blend-mode:difference}
+ .nc-ring span{font:800 11px Manrope,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .2s;white-space:nowrap}
+ html.nc-link .nc-ring{width:58px;height:58px;margin:-29px 0 0 -29px;background:rgba(255,255,255,.12)}
+ html.nc-label .nc-ring{width:84px;height:84px;margin:-42px 0 0 -42px;background:rgba(10,9,13,.55);mix-blend-mode:normal;border-color:rgba(206,19,168,.9)}
+ html.nc-label .nc-ring span{opacity:1}
+ html.nc-down .nc-ring{width:28px;height:28px;margin:-14px 0 0 -14px}
+ html.nc-text .nc-ring{width:4px;height:30px;margin:-15px 0 0 -2px;border-radius:2px;background:#fff;border-color:#fff}
+ html.nc-text .nc-dot{opacity:0}
+}
+@media (hover:none),(pointer:coarse){.nc-dot,.nc-ring{display:none}}
+/* лого: разтърсване при посочване (същият сигнал като в ефектите) */
+.hdr .logo img,.foot .logo img{transition:filter .2s}
+.hdr .logo:hover img,.hdr .logo:focus-visible img{animation:logoShake .55s steps(1,end) both}
+@keyframes logoShake{
+ 0%{transform:translate(-3px,1px) skewX(-6deg);filter:drop-shadow(3px 0 0 #B61DFF) drop-shadow(-3px 0 0 #FF0000)}
+ 14%{transform:translate(3px,-1px) skewX(5deg);filter:drop-shadow(-3px 0 0 #B61DFF) drop-shadow(3px 0 0 #FF0000)}
+ 28%{transform:translate(-2px,0) skewX(-3deg);filter:drop-shadow(2px 0 0 #B61DFF) drop-shadow(-2px 0 0 #FF0000)}
+ 42%{transform:translate(2px,1px) skewX(2deg);filter:drop-shadow(-2px 0 0 #CE13A8)}
+ 58%{transform:translate(-1px,0);filter:drop-shadow(1px 0 0 #CE13A8)}
+ 100%{transform:none;filter:none}}
+/* навигация: линия, която се чертае */
+.hdr nav a{position:relative}.hdr nav a::after{content:"";position:absolute;left:8px;right:8px;bottom:8px;height:2px;background:var(--spectrum);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.77,0,.18,1)}.hdr nav a:hover::after{transform:scaleX(1)}
+/* магнитни бутони */
+.btn-p{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+/* галерия: без бутон за пауза */
+.ag-pause{display:none!important}.ag-footer{justify-content:center}
+@media(prefers-reduced-motion:reduce){.hdr .logo:hover img{animation:none}.nc-ring{transition:none}}
+
+html.nc,html.nc *{cursor:auto!important}.nc-dot,.nc-ring{display:none!important}
+.ag-preview-button span{display:none!important}

@@ -1,0 +1,72 @@
+/* Атмосфера зад всяка карта: лек мистериозен фон „като в мача“. Седи под .st (устройствата и текстът), над видеото на Newsroom. */
+.atmo{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:0;transition:opacity 1.6s ease;border-radius:inherit}
+.card.on .atmo{opacity:1}
+.atmo *{position:absolute;pointer-events:none}
+.atmo i,.atmo b,.atmo span{display:block}
+.atmo .atmo-dust,.atmo .atmo-bokeh,.atmo .atmo-flood{inset:0}
+.card:not(.on) .atmo *,.fx-paused .atmo *{animation-play-state:paused!important}
+
+/* вигнетка, която затваря кадъра */
+.atmo-vig{inset:0;background:radial-gradient(ellipse 90% 85% at 50% 50%,transparent 55%,#0000009e 100%)}
+
+/* мъгла: две бавно движещи се петна */
+.atmo-haze{inset:-20%;background:radial-gradient(ellipse 40% 36% at var(--hx,30%) 62%,var(--hc,#ffffff0d),transparent 70%),radial-gradient(ellipse 34% 30% at calc(100% - var(--hx,30%)) 40%,var(--hc,#ffffff0a),transparent 70%);filter:blur(18px);animation:atmo-drift 22s ease-in-out infinite alternate}
+@keyframes atmo-drift{from{transform:translate3d(-3%,2%,0) scale(1)}to{transform:translate3d(4%,-3%,0) scale(1.08)}}
+
+/* лъчи от прожектори */
+.atmo-beam{top:-8%;width:var(--w,44%);height:130%;left:calc(var(--x) - var(--w,44%) / 2);transform-origin:50% 0;transform:rotate(var(--r,0deg));background:conic-gradient(from 166deg at 50% 0%,transparent 0deg,var(--c,#ffffff18) 14deg,transparent 29deg);-webkit-mask-image:linear-gradient(#000 0,#000 35%,transparent 88%);mask-image:linear-gradient(#000 0,#000 35%,transparent 88%);animation:atmo-sway var(--t,9s) ease-in-out var(--dl,0s) infinite alternate}
+@keyframes atmo-sway{from{transform:rotate(calc(var(--r,0deg) - 2.2deg));opacity:.6}to{transform:rotate(calc(var(--r,0deg) + 2.2deg));opacity:1}}
+
+/* прах и искри в лъча */
+.atmo-dust i{left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:var(--c);filter:blur(var(--b,0));opacity:0;animation:atmo-float var(--d) linear var(--dl) infinite}
+@keyframes atmo-float{0%{transform:translate3d(0,0,0);opacity:0}15%{opacity:var(--o,.7)}80%{opacity:calc(var(--o,.7) * .6)}100%{transform:translate3d(var(--dx),var(--dy),0);opacity:0}}
+
+/* размит светещ кръг (bokeh) */
+.atmo-bokeh i{left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(circle,var(--c) 0,transparent 68%);filter:blur(var(--b,3px));opacity:var(--o,.5);animation:atmo-bokeh var(--d,8s) ease-in-out var(--dl,0s) infinite alternate}
+@keyframes atmo-bokeh{from{transform:translate3d(0,0,0) scale(.9);opacity:calc(var(--o,.5) * .45)}to{transform:translate3d(var(--dx,0),var(--dy,-14px),0) scale(1.1);opacity:var(--o,.5)}}
+
+/* линия на времето с деления, плъзга се бавно */
+.atmo-ticks{left:-4%;right:-4%;height:9px;bottom:var(--by,13%);background:repeating-linear-gradient(90deg,#ffffff2b 0 1px,transparent 1px 16px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);animation:atmo-ticks 14s linear infinite}
+.atmo-ticks::before{content:"";position:absolute;left:0;right:0;top:4px;height:1px;background:#ffffff1f}
+@keyframes atmo-ticks{to{background-position:-160px 0}}
+
+/* фигура за изрязване: ъгли на рамка */
+.atmo-crop{left:var(--x);top:var(--y);width:var(--w);height:var(--h);--l:#ff5fc477;background:linear-gradient(var(--l),var(--l)) 0 0/18px 1px,linear-gradient(var(--l),var(--l)) 0 0/1px 18px,linear-gradient(var(--l),var(--l)) 100% 0/18px 1px,linear-gradient(var(--l),var(--l)) 100% 0/1px 18px,linear-gradient(var(--l),var(--l)) 0 100%/18px 1px,linear-gradient(var(--l),var(--l)) 0 100%/1px 18px,linear-gradient(var(--l),var(--l)) 100% 100%/18px 1px,linear-gradient(var(--l),var(--l)) 100% 100%/1px 18px;background-repeat:no-repeat;animation:atmo-crop 7s ease-in-out var(--dl,0s) infinite}
+@keyframes atmo-crop{0%,100%{transform:scale(1);opacity:.35}50%{transform:scale(.94);opacity:.9}}
+
+/* Плейхед, който минава през кадъра (Моменти) */
+.atmo-playhead{top:0;bottom:0;width:1px;left:0;background:linear-gradient(transparent,#ff5fc477 30%,#ff5fc477 70%,transparent);box-shadow:0 0 14px #ff5fc466;animation:atmo-play 12s linear infinite}
+@keyframes atmo-play{0%{left:0;opacity:0}10%,90%{opacity:.8}100%{left:100%;opacity:0}}
+
+/* завеси на Theatre */
+.atmo-curtain{top:0;bottom:0;width:15%;background:repeating-linear-gradient(90deg,#4a121b 0 7%,#1a080b 7% 14%,#37101a 14% 20%);opacity:.5;-webkit-mask-image:linear-gradient(90deg,#000,transparent);mask-image:linear-gradient(90deg,#000,transparent);animation:atmo-curtain 11s ease-in-out infinite alternate}
+.atmo-curtain.l{left:0}
+.atmo-curtain.r{right:0;transform:scaleX(-1)}
+@keyframes atmo-curtain{from{opacity:.38}to{opacity:.6}}
+.atmo-foot{left:10%;right:10%;bottom:-18%;height:46%;background:radial-gradient(ellipse 50% 60% at 50% 100%,#ffb86b30,transparent 70%);animation:atmo-foot 6s ease-in-out infinite alternate}
+@keyframes atmo-foot{from{opacity:.55}to{opacity:1}}
+
+/* LED плочки зад студиото (Showtime) */
+.atmo-slats{left:0;right:0;bottom:0;height:34%;background:repeating-linear-gradient(90deg,#ffd9a014 0 2px,transparent 2px 22px);-webkit-mask-image:linear-gradient(transparent,#000);mask-image:linear-gradient(transparent,#000);animation:atmo-slats 8s ease-in-out infinite alternate}
+@keyframes atmo-slats{from{opacity:.4}to{opacity:1}}
+
+/* Newsroom: подов растер, светлинна лента, сканиране */
+.atmo-grid{left:-20%;right:-20%;bottom:-6%;height:62%;background:repeating-linear-gradient(90deg,#9fd0ff22 0 1px,transparent 1px 56px),repeating-linear-gradient(0deg,#9fd0ff22 0 1px,transparent 1px 44px);transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(transparent,#000 45%,transparent);mask-image:linear-gradient(transparent,#000 45%,transparent);animation:atmo-grid 6s linear infinite}
+@keyframes atmo-grid{to{background-position:0 0,0 44px}}
+.atmo-sweep{top:-10%;bottom:-10%;width:26%;left:-30%;background:linear-gradient(90deg,transparent,#9fd0ff1f 45%,#cfe8ff2e 50%,#9fd0ff1f 55%,transparent);transform:skewX(-14deg);animation:atmo-sweep 9s ease-in-out infinite}
+@keyframes atmo-sweep{0%{transform:translateX(0) skewX(-14deg);opacity:0}15%,70%{opacity:1}100%{transform:translateX(560%) skewX(-14deg);opacity:0}}
+.atmo-scan{inset:0;background:repeating-linear-gradient(0deg,#00000014 0 1px,transparent 1px 4px);opacity:.55}
+
+/* Arena: добавяме само лъчите с прах и светлините на стадиона над съществуващия терен */
+.atmo-flood i{top:-3%;left:var(--x);width:var(--s,26px);height:var(--s,26px);border-radius:50%;background:radial-gradient(circle,#e6fbffcc 0,#b4e8f255 35%,transparent 70%);filter:blur(1.5px);animation:atmo-bokeh var(--d,7s) ease-in-out var(--dl,0s) infinite alternate;--o:.8;--dy:4px}
+
+@media(max-width:734px){
+ .atmo-beam{--w:90%}
+ .atmo-curtain{width:10%}
+ .atmo-crop{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .atmo,.atmo *{animation:none!important;transition:none!important}
+ .atmo-dust i{opacity:.35}
+ .atmo-playhead,.atmo-sweep{display:none}
+}

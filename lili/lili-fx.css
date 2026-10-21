@@ -1,0 +1,107 @@
+/* NOISY / Lili FX. Existing Noisy typography and geometry; cinematic depth is intentional. */
+:root{--bg:#171719;--fx-ease:cubic-bezier(.16,1,.3,1)}
+.sec{padding-top:112px;padding-bottom:48px}
+.h{margin-bottom:32px}
+.edition{display:block;margin-top:16px;color:#a4a4aa;font:500 16px/1.5 Manrope,sans-serif;letter-spacing:0}
+.rail{padding-top:16px;padding-bottom:24px;gap:24px}
+.card{background:#242426;isolation:isolate;box-shadow:0 24px 64px #0003}
+.card::after{content:"";position:absolute;inset:0;border:1px solid #ffffff0d;border-radius:inherit;pointer-events:none;z-index:12}
+.card .dv{transition:transform 1.8s var(--fx-ease);filter:drop-shadow(0 24px 28px #0007)}
+.card .tx{transition:opacity .8s ease .3s,transform 1.2s var(--fx-ease) .3s}
+.ctl{margin-top:8px;align-items:center}
+.ctl button{width:48px;height:48px;background:#333336;transition:background .2s,transform .2s}
+.ctl button:hover:enabled{background:#4b4b50;transform:scale(1.06)}
+.ctl button:focus-visible,.fx-replay:focus-visible,.rail:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.dots{padding:0;gap:4px;background:none}
+.dots button{width:36px;height:44px;background:none;border-radius:0;display:grid;place-items:center}
+.dots button::after{content:"";width:6px;height:6px;border-radius:8px;background:#737378;transition:width .4s,background .4s}
+.dots button.on::after{width:24px;background:#fff}
+.fx-dragon{background:#1b1a19}
+.fx-dragon .st{overflow:visible}
+.fx-copy{position:absolute;z-index:8;left:80px;top:164px;width:400px;pointer-events:none}
+.fx-copy>img{height:40px;width:auto;display:block;margin-bottom:24px}
+.fx-copy h3{font:600 48px/1.12 Manrope,sans-serif;letter-spacing:-.035em;margin:0}
+.fx-copy p{font-size:18px;line-height:1.5;color:#b3adab;margin:24px 0 0;max-width:300px}
+.fx-copy>*{opacity:0;transform:translateY(24px);transition:transform 1.2s var(--fx-ease),opacity .8s ease}
+.on .fx-copy>*{opacity:1;transform:none;transition-delay:.3s}
+.on .fx-copy h3{transition-delay:.45s}.on .fx-copy p{transition-delay:.65s}
+/* The phone and creature now share one projected scene. */
+.fx-world{position:absolute;left:440px;top:-16px;width:820px;height:660px;pointer-events:none}
+.fx-world canvas{display:block;width:100%;height:100%;opacity:0;transition:opacity .6s}
+.fx-world.ready canvas{opacity:1}.fx-world.ready .fx-static{display:none}
+.fx-static{position:absolute;inset:70px 0 40px}.fx-static img{width:100%;height:100%;object-fit:contain}
+.fx-copy{top:156px;width:420px}.fx-copy h3{font-size:48px}
+.fx-replay{position:absolute;left:80px;bottom:48px;z-index:10;display:inline-flex;gap:10px;align-items:center;min-height:44px;padding:0 16px;border:1px solid #ffffff30;border-radius:24px;background:#1e1c1b;color:#f5f5f7;font:600 14px/1 Manrope,sans-serif;cursor:pointer;transition:background .2s}
+.fx-replay:hover{background:#3a3128}
+.replaying .fx-creature,.replaying .fx-phone,.replaying .fx-copy>*,.replaying .fx-halo,.replaying .fx-shadow,.replaying .fx-embers{transition:none!important}
+@keyframes fx-breathe{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(-5px,-8px) rotate(-.6deg)}}
+@keyframes fx-ember{from{transform:translate3d(0,0,0);opacity:0}12%{opacity:1}80%{opacity:.6}to{transform:translate3d(-90px,-320px,0);opacity:0}}
+/* Portrait composition: readable copy above the visual, controls below it. */
+@media(max-width:734px){
+ .sec{padding-top:96px;padding-bottom:32px;--W:calc(100vw - 32px)}
+ .h{font-size:28px;line-height:1.2;padding:0 24px;margin-bottom:16px;max-width:360px}
+ .edition{font-size:15px;margin-top:12px}
+ .rail{gap:16px;padding-top:8px;padding-bottom:16px}
+ .card{aspect-ratio:auto;height:580px;border-radius:24px}
+ .card .st{width:100%;height:100%;transform:none!important}
+ .card:not(.fx-dragon) .tx{left:24px!important;top:32px!important;width:calc(100% - 48px)!important;text-align:left!important}
+ .card:not(.fx-dragon) .tx img{height:28px;margin:0 0 16px!important}
+ .card:not(.fx-dragon) .tx p{font-size:24px!important;line-height:1.25}
+ .card:not(.fx-dragon) .dv{transform-origin:top left;transition:transform 1.6s var(--fx-ease)}
+ .card[data-i="0"] .dv{left:calc(50% - 94px)!important;top:180px!important;transform:translateY(80px) scale(.92)}
+ .card[data-i="0"].on .dv{transform:scale(.73)}
+ .card[data-i="1"] .tx{top:40px!important}.card[data-i="1"] .tx img{margin:0 0 16px!important}
+ .card[data-i="1"] .dv{left:20px!important;top:255px!important;transform:translateX(80px) scale(.65)}
+ .card[data-i="1"].on .dv{transform:scale(calc((100vw - 72px)/642px))}
+ .card[data-i="2"] .dv{left:0!important;top:215px!important;transform:translateY(60px) scale(.48)}
+ .card[data-i="2"].on .dv{transform:scale(calc((100vw - 32px)/1260px))}
+ .card[data-i="2"] .tx{display:block!important;top:32px!important}
+ .card[data-i="2"] .tx p{font-size:22px!important}
+ .card[data-i="3"] .dv{left:24px!important;top:225px!important;transform:translateX(60px) scale(.5)}
+ .card[data-i="3"].on .dv{transform:scale(.48)}
+ .card[data-i="4"] .dv{left:calc(50% - 230px)!important;top:222px!important;transform:translateY(60px) scale(.74)}
+ .card[data-i="4"].on .dv{transform:scale(.64)}
+ .card[data-i="4"] .tx p{font-size:22px!important}
+ .card[data-i="5"] .tx{top:360px!important}.card[data-i="5"] .full video{object-position:55% center;filter:brightness(.45)}
+ .fx-copy{left:24px;top:32px;width:calc(100% - 48px)}
+ .fx-copy>img{height:28px;margin-bottom:16px}
+ .fx-copy h3{font-size:32px;line-height:1.12;max-width:285px}
+ .fx-copy p{font-size:16px;line-height:1.5;margin-top:16px;max-width:280px}
+ .fx-world{left:-12px;top:246px;width:calc(100% + 24px);height:308px;transform:none}
+ .fx-replay{left:24px;bottom:24px;font-size:14px}
+ .ctl{gap:4px;margin-top:8px}.dots{gap:0}.dots button{width:30px}
+}
+@media(prefers-reduced-motion:reduce){
+ .card .dv,.card .tx,.fx-copy>*,.fx-phone,.fx-creature,.fx-halo,.fx-shadow,.fx-embers{transition:none!important}
+ .fx-creature>img,.fx-embers i{animation:none!important}.fx-world{transition:none}
+ .rail{scroll-behavior:auto!important}
+}
+/* Native Noisy radii; scaled UI controls retain a physical touch target. */
+.card,.card::after{border-radius:20px}
+.ctl button,.dots button,.fx-replay,.fx-shadow,.fx-embers i,.jm{border-radius:980px}
+.dots button::after{border-radius:8px}
+.scr{border-radius:20px!important}
+.back{min-height:44px}
+.jp .jm.on{transform:none}
+.jp .jm,.jp .jm.on{background:transparent;box-shadow:none;isolation:isolate}
+.jp .jm::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:40px;height:40px;transform:translate(-50%,-50%);border:2px solid #ffffff80;background:#0a090dbb;border-radius:980px}
+.jp .jm.on::before{border-color:#ff5fc4}
+.jmarkers{position:absolute;inset:0}
+.jp .jm{width:58px!important;height:58px!important;margin:-29px 0 0 -29px;min-width:58px!important;min-height:58px!important;display:flex;align-items:center;justify-content:center}
+.jp .jm::after{content:attr(data-emoji);font-size:26px;line-height:1}
+.jp .jr{min-height:64px!important}
+@media(max-width:734px){
+ .dots button{width:36px}
+ .jp .jm{width:84px!important;height:84px!important;margin:-42px 0 0 -42px;min-width:84px!important;min-height:84px!important}
+ .jp .jr{min-height:84px!important}
+}
+
+/* Keep replay legible and tappable inside the scaled desktop stage. */
+@media(min-width:735px){.fx-replay{transform:scale(calc(1 / var(--k,1)));transform-origin:left bottom}}
+
+.fx-dragon{background:radial-gradient(ellipse at 80% 65%,#252422 0%,#1b1b1d 55%,#1b1b1d 100%)}
+.fx-replay:disabled{opacity:.65;cursor:wait}
+.fx-copy>*{transition:none;opacity:1;transform:none}
+@media(max-width:734px){.fx-copy{top:32px;width:calc(100% - 48px)}.fx-copy h3{font-size:32px;line-height:1.12}.fx-copy p{margin-top:16px}}
+
+@media(min-width:735px){.h{font-size:56px}}

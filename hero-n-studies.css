@@ -1,0 +1,93 @@
+/* Existing NOISY type, CTA and artwork. The N is the source of the composition. */
+.nhero.n-study{--arrive:0;--drift-x:0px;--drift-y:0px;overflow:hidden}
+.n-study .hfl,.n-study .hfan,.n-study .nglow,.n-study .ngrain{display:none!important}
+.n-study .na-backdrop{background:#0a090d}
+.n-study .hbg{background:radial-gradient(ellipse at 51% 51%,#64102e 0%,#31091f 35%,#110b15 66%,#0a090d 90%)}
+.n-study .hbg .g,.n-study .hbg .n,.n-study .hbg::after{display:none}
+.n-study .n-aperture{--nw:min(56vw,66svh);--nx:50%;--ny:53%;z-index:1}
+.n-study .na-solid{transform:translate(calc(var(--lift)*-8px + var(--px)),calc(var(--lift)*-12px + var(--py)));filter:drop-shadow(8px 14px 12px #0009)}
+.n-study .na-rim{background:linear-gradient(125deg,#cf80ac 0%,#39213c 25%,#140d1c 54%,#bd2851 80%,#562343)}
+.n-study .na-face{background:linear-gradient(140deg,#1b0a23 0%,#39102c 46%,#65172f 100%)}
+.n-study .na-face::after{background:linear-gradient(130deg,#ffffff0f,transparent 32%,#0005 67%,#ff6d812e)}
+.n-study .na-edge{background:linear-gradient(125deg,#24102c,#4f123b 48%,#691728);transform:translate(calc(var(--lift)*var(--d)*.8px),calc(var(--lift)*var(--d)*1.2px))}
+.nhero.n-study .ntext{position:absolute!important;left:0!important;right:0!important;top:42%!important;bottom:auto!important;margin:0!important;transform:translateY(calc(-50% + var(--np,0)*-26px))!important;text-align:center!important;z-index:5}
+.nhero.n-study .ntext h1{font-size:clamp(32px,4.45vw,64px)!important;line-height:1.08!important;letter-spacing:-.035em!important}
+.nhero.n-study .ntext .sub{font-size:clamp(16px,1.4vw,18px);margin:20px auto 0!important;max-width:48ch}
+.nhero.n-study .ntext .ctas{justify-content:center!important;margin-top:24px}
+.n-study .nhint{font-size:13px;letter-spacing:.02em}
+.n-scenes{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:clamp(0,calc(1 - var(--np,0)*1.6),1)}
+.n-study .n-scenes{opacity:clamp(0,calc(1 - var(--np,0)*3),1);transform:translateY(calc(var(--np,0)*60px))}
+.n-scene{position:absolute;margin:0;width:var(--cw);height:var(--ch,auto);aspect-ratio:var(--ratio,2/3);left:var(--cx);top:var(--cy);transform:translate(-50%,-50%) rotate(var(--angle,0deg));z-index:var(--z,1)}
+.n-scene .ns-card{position:absolute;inset:0;border-radius:12px;overflow:hidden;box-shadow:0 24px 40px -16px #000b,inset 0 0 0 1px #ffffff18;transform:translate(calc(var(--from-x,0px)*var(--arrive) + var(--drift-x)*var(--depth,.5)),calc(var(--from-y,0px)*var(--arrive) + var(--drift-y)*var(--depth,.5)));will-change:transform}
+.n-scene img{width:100%;height:100%;object-fit:cover;display:block}
+.n-scene .ns-card::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px #ffffff18}
+/* A1: a frame around one clear message, with the carved mark at its centre. */
+.nhero.n-study.n-frame .ntext{top:47.5%!important}
+.n-frame .n-scene:nth-child(1){--cx:10%;--cy:32%;--cw:12%;--angle:-7deg;--from-x:48px;--from-y:22px;--depth:.8}
+.n-frame .n-scene:nth-child(2){--cx:27%;--cy:20%;--cw:17%;--ratio:16/10;--angle:4deg;--from-x:24px;--from-y:36px;--depth:.35}
+.n-frame .n-scene:nth-child(3){--cx:73%;--cy:21%;--cw:17%;--ratio:16/10;--angle:-4deg;--from-x:-24px;--from-y:36px;--depth:.35}
+.n-frame .n-scene:nth-child(4){--cx:90%;--cy:35%;--cw:12%;--angle:6deg;--from-x:-48px;--from-y:22px;--depth:.8}
+.n-frame .n-scene:nth-child(5){--cx:12%;--cy:73%;--cw:17%;--ratio:16/10;--angle:5deg;--from-x:40px;--from-y:-20px;--depth:.5}
+.n-frame .n-scene:nth-child(6){--cx:31%;--cy:88%;--cw:13%;--angle:-5deg;--from-x:16px;--from-y:-40px;--depth:.85}
+.n-frame .n-scene:nth-child(7){--cx:71%;--cy:89%;--cw:13%;--angle:5deg;--from-x:-16px;--from-y:-40px;--depth:.85}
+.n-frame .n-scene:nth-child(8){--cx:90%;--cy:74%;--cw:17%;--ratio:16/10;--angle:-5deg;--from-x:-40px;--from-y:-20px;--depth:.5}
+/* A3: the fan opens from the same notch that becomes the scroll aperture. */
+.nhero.n-study.n-fan .ntext{top:31%!important}
+.n-fan .n-aperture{--nw:min(40vw,410px);--ny:73%}
+.n-fan .n-scene{--cy:93%;--cw:min(22vw,290px);--from-y:42px}
+.n-fan .n-scene:nth-child(1){--cx:20%;--angle:-16deg;--from-x:36px;--z:1;--depth:.35}
+.n-fan .n-scene:nth-child(2){--cx:35%;--cy:87%;--angle:-8deg;--from-x:20px;--z:2;--depth:.6}
+.n-fan .n-scene:nth-child(3){--cx:50%;--cy:84%;--angle:0deg;--z:5;--depth:1}
+.n-fan .n-scene:nth-child(4){--cx:65%;--cy:87%;--angle:8deg;--from-x:-20px;--z:3;--depth:.6}
+.n-fan .n-scene:nth-child(5){--cx:80%;--angle:16deg;--from-x:-36px;--z:1;--depth:.35}
+.n-fan .n-scenes{z-index:3}
+/* v20 keeps its N-over-message silhouette. Content gives the mark a purpose. */
+.n-v20 .hbg{background:radial-gradient(ellipse at 50% 36%,#3d0c38 0%,#170a1c 34%,#0a090d 70%)}
+.n-v20 .n-aperture{--nw:min(26vw,35svh);--ny:35%;z-index:3}
+.nhero.n-study.n-v20 .ntext{top:auto!important;bottom:7svh!important;transform:translateY(calc(var(--np,0)*-26px))!important}
+.nhero.n-study.n-v20 .ntext h1{font-size:clamp(32px,5vw,72px)!important}
+.n-v20 .n-scene{--cw:min(13vw,170px);--cy:35%;--ratio:16/10;--from-y:12px}
+.n-v20 .n-scene:nth-child(1){--cx:30%;--cy:28%;--angle:-6deg;--from-x:48px;--depth:.5}
+.n-v20 .n-scene:nth-child(2){--cx:27%;--cy:44%;--angle:4deg;--from-x:56px;--depth:.8}
+.n-v20 .n-scene:nth-child(3){--cx:70%;--cy:28%;--angle:6deg;--from-x:-48px;--depth:.5}
+.n-v20 .n-scene:nth-child(4){--cx:73%;--cy:44%;--angle:-4deg;--from-x:-56px;--depth:.8}
+.n-v20 .na-face .ns-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;filter:brightness(.78) saturate(.8)}
+.n-v20 .na-face .ns-film:nth-child(2){animation:ns-worlds 12s ease-in-out infinite}
+.n-v20 .na-face::after{background:linear-gradient(135deg,#c23bff30,transparent 45%,#d2204344)}
+@keyframes ns-worlds{0%,35%,100%{opacity:0}45%,85%{opacity:1}}
+@media(max-width:760px){
+ .nhero.n-study .ntext h1{font-size:clamp(27px,7.5vw,40px)!important}
+ .nhero.n-study .ntext .sub{font-size:16px;line-height:1.5;max-width:30ch;margin-top:16px!important}
+ .nhero.n-study .ntext .ctas{margin-top:20px}
+ .n-study .n-aperture{--nw:min(84vw,400px);--ny:55%}
+ .n-scene .ns-card{border-radius:10px}
+ .nhero.n-study.n-frame .ntext{top:47%!important;padding:0 20px}
+ .n-frame .n-scene:nth-child(1){--cx:7%;--cy:23%;--cw:23%}
+ .n-frame .n-scene:nth-child(2){--cx:38%;--cy:19%;--cw:29%}
+ .n-frame .n-scene:nth-child(3){--cx:75%;--cy:20%;--cw:28%}
+ .n-frame .n-scene:nth-child(4){display:none}
+ .n-frame .n-scene:nth-child(5){--cx:5%;--cy:78%;--cw:30%}
+ .n-frame .n-scene:nth-child(6){--cx:35%;--cy:90%;--cw:26%}
+ .n-frame .n-scene:nth-child(7){--cx:68%;--cy:88%;--cw:26%}
+ .n-frame .n-scene:nth-child(8){--cx:98%;--cy:78%;--cw:30%}
+ .nhero.n-study.n-fan .ntext{top:32%!important;padding:0 20px}
+ .n-fan .n-aperture{--nw:72vw;--ny:73%}
+ .n-fan .n-scene{--cw:39vw;--cy:85%}
+ .n-fan .n-scene:nth-child(1){--cx:-4%;--cy:88%}
+ .n-fan .n-scene:nth-child(2){--cx:23%;--cy:82%}
+ .n-fan .n-scene:nth-child(3){--cx:50%;--cy:80%}
+ .n-fan .n-scene:nth-child(4){--cx:77%;--cy:82%}
+ .n-fan .n-scene:nth-child(5){--cx:104%;--cy:88%}
+ .n-v20 .n-aperture{--nw:min(45vw,220px);--ny:33%}
+ .nhero.n-study.n-v20 .ntext{bottom:11svh!important;padding:0 20px}
+ .nhero.n-study.n-v20 .ntext h1{font-size:clamp(27px,7.5vw,40px)!important}
+ .n-v20 .n-scene{--cw:25vw}
+ .n-v20 .n-scene:nth-child(1){--cx:10%;--cy:26%}
+ .n-v20 .n-scene:nth-child(2){--cx:8%;--cy:42%}
+ .n-v20 .n-scene:nth-child(3){--cx:90%;--cy:26%}
+ .n-v20 .n-scene:nth-child(4){--cx:92%;--cy:42%}
+}
+@media(prefers-reduced-motion:reduce){
+ .n-study{--arrive:0!important;--drift-x:0px!important;--drift-y:0px!important}
+ .n-v20 .na-face .ns-film:nth-child(2){display:none}
+}
