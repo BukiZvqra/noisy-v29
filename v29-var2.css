@@ -1,0 +1,199 @@
+/* v29 варианти, втора партида (21.10.2026): модули D-F, цени D-H, край D-F */
+.ava{display:flex;align-items:center}
+.ava i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex:none;box-shadow:0 0 0 3px #16141a;background:var(--c,#8024B6)}
+.ava i+i{margin-left:-10px}
+.ava i svg{width:18px;height:18px;fill:#fff;opacity:.92}
+
+/* ============ МОДУЛИ D: широки ленти една под друга ============ */
+.md{display:flex;flex-direction:column;gap:10px}
+.md a{position:relative;isolation:isolate;display:flex;align-items:center;gap:24px;height:150px;padding:0 clamp(20px,3vw,40px);border-radius:18px;overflow:hidden;color:#fff;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);transition:height .6s cubic-bezier(.2,.8,.2,1)}
+.md a>img:first-child,.md a>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s cubic-bezier(.2,.8,.2,1),opacity .5s}
+.md a>video{opacity:0}.md a.pl>video{opacity:1}
+.md a::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,9,13,.94) 0%,rgba(10,9,13,.7) 45%,rgba(10,9,13,.2))}
+.md .tx{flex:1;min-width:0}
+.md .tx img{display:block;height:26px;width:auto;margin-bottom:10px}
+.md .tx b{display:block;font:800 clamp(22px,2.6vw,34px)/1.1 Manrope,sans-serif;letter-spacing:-.02em}
+.md .tx span{display:block;max-width:52ch;margin-top:8px;font:500 15px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.72);opacity:0;transform:translateY(8px);transition:opacity .4s,transform .5s}
+.md .go{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:background .3s,transform .3s}
+.md .go svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(hover:hover){.md a:hover{height:230px}.md a:hover>img:first-child,.md a:hover>video{transform:scale(1.04)}.md a:hover .tx span{opacity:1;transform:none}.md a:hover .go{background:#fff}.md a:hover .go svg{stroke:#0E0E0E}}
+@media(hover:none){.md a{height:180px}.md .tx span{opacity:1;transform:none}}
+@media(max-width:599px){.md a{height:170px;gap:14px}.md .go{width:40px;height:40px}.md .tx span{font-size:14px}}
+
+/* ============ МОДУЛИ E: бенто ============ */
+.me{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:260px 260px;gap:14px}
+.me .m29-c{aspect-ratio:auto!important;min-height:0}
+.me .m29-c:nth-child(1){grid-column:1/3;grid-row:1/3}
+.me .m29-c:nth-child(2){grid-column:3/5}
+.me .m29-c:nth-child(1) h3{font-size:34px}
+.me .m29-c:nth-child(1) p{font-size:17px;max-width:36ch}
+@media(max-width:899px){.me{grid-template-columns:1fr 1fr;grid-template-rows:380px 240px 240px}.me .m29-c:nth-child(1){grid-column:1/3;grid-row:1}.me .m29-c:nth-child(2){grid-column:1/3}}
+@media(max-width:599px){.me{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:auto}.me .m29-c,.me .m29-c:nth-child(n){grid-column:auto;grid-row:auto;min-height:300px}.me .m29-c:nth-child(1){min-height:420px}.me .m29-c:nth-child(1) h3{font-size:26px}}
+
+/* ============ МОДУЛИ F: високи вертикални карти (като Stories), плъзгат се ============ */
+.mf{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px max(20px,calc((100vw - var(--x29))/2));margin:0 calc((100vw - var(--x29))/-2)}
+.mf::-webkit-scrollbar{display:none}
+.mf .m29-c{flex:0 0 clamp(260px,24vw,320px);aspect-ratio:9/15!important;scroll-snap-align:center}
+.mf .m29-c::before{content:"";position:absolute;left:14px;right:14px;top:12px;height:3px;border-radius:3px;background:rgba(255,255,255,.25);z-index:2}
+.mf .m29-c.pl::before{background:linear-gradient(90deg,#fff var(--pr,40%),rgba(255,255,255,.25) 0)}
+.mf-hint{margin:14px 0 0;font:600 13px/1 Manrope,sans-serif;color:rgba(255,255,255,.45)}
+@media(min-width:1300px){.mf{justify-content:flex-start}}
+
+/* ============ ЦЕНИ D: карти с постери ============ */
+.pd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:980px;margin:0 auto}
+.pd-c{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:480px;padding:30px;border-radius:26px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.pd-art{position:absolute;inset:0;z-index:-2;display:flex;gap:10px;justify-content:center;padding-top:28px;perspective:900px}
+.pd-art img{width:42%;aspect-ratio:2/3;object-fit:cover;border-radius:14px;box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.pd-c--s .pd-art img{width:48%;transform:rotate(-4deg)}
+.pd-c--t .pd-art img{width:30%}
+.pd-c--t .pd-art img:nth-child(1){transform:translateY(34px) rotate(-8deg)}
+.pd-c--t .pd-art img:nth-child(2){transform:translateY(0);z-index:1}
+.pd-c--t .pd-art img:nth-child(3){transform:translateY(34px) rotate(8deg)}
+.pd-c::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,12,18,.15) 0%,rgba(14,12,18,.6) 38%,#0E0C12 64%)}
+.pd-c--t::before{content:"";position:absolute;inset:0;z-index:-3;background:radial-gradient(70% 60% at 50% 20%,rgba(182,29,255,.45),transparent 70%),#141218}
+.pd-c--s::before{content:"";position:absolute;inset:0;z-index:-3;background:radial-gradient(70% 60% at 50% 20%,rgba(255,255,255,.12),transparent 70%),#141218}
+.pd-c h3{margin:14px 0 0;font:800 26px/1.15 Manrope,sans-serif;letter-spacing:-.02em}
+.pd-c>p{margin:8px 0 0;font:500 15px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.7)}
+.pd-c .t29-p{padding-top:20px}
+.pd-c .btn{margin-top:20px;min-height:52px;width:100%}
+@media(max-width:767px){.pd{grid-template-columns:1fr}.pd-c{min-height:440px;padding:24px}}
+
+/* ============ ЦЕНИ E: сравнение като Apple ============ */
+.pe{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:900px;margin:0 auto}
+.pe-c{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px clamp(16px,4vw,56px) 0}
+.pe-c+.pe-c{border-left:1px solid rgba(255,255,255,.1)}
+.pe-c .ava{height:64px}
+.pe-c .ava i{width:56px;height:56px}
+.pe-c .ava i svg{width:26px;height:26px}
+.pe-c .ava i+i{margin-left:-16px}
+.pe-c h3{margin:22px 0 0;font:800 clamp(30px,3.4vw,40px)/1 Manrope,sans-serif;letter-spacing:-.03em}
+.pe-c>p{margin:10px 0 0;min-height:3em;font:500 16px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.68)}
+.pe-c .t29-p{justify-content:center;padding-top:18px}
+.pe-c .btn{margin-top:22px;min-height:48px;padding:0 26px}
+.pe-c .lnk{margin-top:14px;font:700 14px/1 Manrope,sans-serif;color:#d58cff;text-decoration:none}
+.pe-c .lnk:hover{text-decoration:underline}
+.pe-ul{list-style:none;margin:28px 0 0;padding:24px 0 0;border-top:1px solid rgba(255,255,255,.1);width:100%;display:grid;gap:16px}
+.pe-ul li{font:500 15px/1.45 Manrope,sans-serif;color:rgba(255,255,255,.75)}
+.pe-ul li b{display:block;font:800 17px/1.2 Manrope,sans-serif;color:#fff;margin-bottom:2px}
+@media(max-width:767px){.pe{grid-template-columns:1fr;gap:44px}.pe-c+.pe-c{border-left:0;border-top:1px solid rgba(255,255,255,.1);padding-top:44px}}
+
+/* ============ ЦЕНИ F: „Колко сте?“ - цената на човек се сменя ============ */
+.pf{max-width:820px;margin:0 auto;padding:clamp(26px,4vw,48px);border-radius:28px;text-align:center;
+  background:radial-gradient(80% 70% at 50% 0%,rgba(182,29,255,.22),transparent 60%),radial-gradient(60% 60% at 100% 100%,rgba(255,0,0,.1),transparent 60%),#141218;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.pf-q{margin:0;font:700 15px/1 Manrope,sans-serif;color:rgba(255,255,255,.65)}
+.pf-n{display:inline-flex;gap:8px;margin-top:16px;padding:6px;border-radius:999px;background:rgba(255,255,255,.06)}
+.pf-n button{appearance:none;border:0;width:52px;height:52px;border-radius:50%;background:none;color:rgba(255,255,255,.7);font:800 18px/1 Manrope,sans-serif;cursor:pointer;transition:background .25s,color .25s,transform .2s}
+.pf-n button:hover{background:rgba(255,255,255,.08);color:#fff}
+.pf-n button.on{background:#fff;color:#0E0E0E}
+.pf .ava{justify-content:center;margin-top:26px;height:44px}
+.pf .ava i{transition:transform .4s cubic-bezier(.2,.8,.2,1),opacity .3s}
+.pf .ava i.off{opacity:.18;transform:scale(.8)}
+.pf-plan{margin-top:20px}
+.pf-plan .l29{align-self:center}
+.pf-big{display:flex;justify-content:center;align-items:baseline;gap:8px;margin-top:14px}
+.pf-big small{font:600 16px/1 Manrope,sans-serif;color:rgba(255,255,255,.65)}
+.pf-big b{font:800 clamp(64px,9vw,112px)/1 Manrope,sans-serif;letter-spacing:-.045em;background:linear-gradient(180deg,#fff 30%,#e7d3f5);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.pf-sub{margin:10px 0 0;font:500 15px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.65)}
+.pf .t29-bt{margin-top:28px}
+@media(max-width:599px){.pf-n button{width:44px;height:44px;font-size:16px}.pf-n{gap:4px}}
+
+/* ============ ЦЕНИ G: какво получаваш (модулите като етикети + добавките) ============ */
+.pg{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);border-radius:28px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);background:#141218}
+.pg-l{padding:clamp(24px,3.6vw,44px)}
+.pg-l h3{margin:0;font:800 24px/1.2 Manrope,sans-serif;letter-spacing:-.02em}
+.pg-mods{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.pg-mods img{height:30px;width:auto}
+.pg-add{margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08)}
+.pg-add p{margin:0;font:600 13px/1 Manrope,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.pg-add div{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.pg-add span{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border-radius:999px;font:700 14px/1 Manrope,sans-serif;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.pg-ok{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:10px}
+.pg-ok li{display:flex;gap:10px;font:500 15px/1.4 Manrope,sans-serif;color:rgba(255,255,255,.78)}
+.pg-ok svg{flex:none;width:18px;height:18px;margin-top:1px;fill:none;stroke:#e070ff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.pg-r{display:grid;grid-template-rows:1fr 1fr;background:radial-gradient(90% 70% at 100% 0%,rgba(182,29,255,.2),transparent 60%),#18161d;border-left:1px solid rgba(255,255,255,.08)}
+.pg-p{display:flex;align-items:center;gap:20px;padding:clamp(20px,3vw,36px)}
+.pg-p+.pg-p{border-top:1px solid rgba(255,255,255,.08)}
+.pg-p>div:first-child{flex:1;min-width:0}
+.pg-p h4{margin:10px 0 0;font:800 19px/1.2 Manrope,sans-serif}
+.pg-p small{display:block;margin-top:4px;font:500 13px/1.4 Manrope,sans-serif;color:rgba(255,255,255,.55)}
+.pg-p .eb-pr b{font-size:34px}
+.pg-bt{grid-column:1/-1;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:22px;border-top:1px solid rgba(255,255,255,.08)}
+.pg-bt .btn{min-height:52px;padding:0 28px}
+@media(max-width:899px){.pg{grid-template-columns:1fr}.pg-r{border-left:0;border-top:1px solid rgba(255,255,255,.08)}}
+@media(max-width:599px){.pg-p .eb-pr b{font-size:26px}.pg-bt{flex-direction:column}}
+
+/* ============ ЦЕНИ H: един тъмен банер, цената е героят ============ */
+.ph{position:relative;isolation:isolate;max-width:1100px;margin:0 auto;padding:clamp(32px,5vw,64px);border-radius:32px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);background:#0f0d13}
+.ph::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 80% at 85% 50%,rgba(182,29,255,.35),transparent 70%),radial-gradient(50% 60% at 100% 100%,rgba(255,0,0,.2),transparent 70%)}
+.ph>img{position:absolute;right:-6%;top:50%;height:130%;translate:0 -50%;opacity:.12;z-index:-1;pointer-events:none}
+.ph-l .h2{margin:0}
+.ph-l p{margin:14px 0 0;max-width:40ch;font:500 17px/1.55 Manrope,sans-serif;color:rgba(255,255,255,.7)}
+.ph-l .t29-bt{justify-content:flex-start;margin-top:30px}
+.ph-r{display:grid;gap:12px}
+.ph-r>div{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;border-radius:20px;background:rgba(255,255,255,.05);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.ph-r>div.hi{background:linear-gradient(rgba(30,24,36,.85),rgba(30,24,36,.85)) padding-box,var(--g29) border-box;border:1px solid transparent;box-shadow:none}
+.ph-r h4{margin:10px 0 0;font:800 18px/1.2 Manrope,sans-serif}
+.ph-r small{display:block;margin-top:4px;font:500 13px/1.4 Manrope,sans-serif;color:rgba(255,255,255,.55)}
+.ph-r .eb-pr b{font-size:36px}
+.ph .t29-f{grid-column:1/-1;margin:0!important}
+@media(max-width:899px){.ph{grid-template-columns:1fr}.ph-l .t29-bt{justify-content:stretch}}
+@media(max-width:599px){.ph-r>div{padding:18px}.ph-r .eb-pr b{font-size:28px}}
+
+/* ============ КРАЙ D: бенто - планът е голямата плочка ============ */
+.ed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto 240px;gap:14px}
+.ed-plan{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 40px;align-items:center;padding:clamp(24px,3.6vw,44px);border-radius:24px;
+  background:radial-gradient(70% 120% at 100% 0%,rgba(182,29,255,.28),transparent 60%),#141218;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.ed-plan .h2{margin:0}
+.ed-plan>div>p{margin:12px 0 0;max-width:50ch;font:500 16px/1.55 Manrope,sans-serif;color:rgba(255,255,255,.7)}
+.ed-pr{display:flex;gap:28px}
+.ed-pr div span{display:block;font:700 12px/1 Manrope,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.ed-pr div b{display:block;margin-top:8px;font:800 40px/1 Manrope,sans-serif;letter-spacing:-.03em;white-space:nowrap}
+.ed-pr div small{display:block;margin-top:6px;font:500 13px/1 Manrope,sans-serif;color:rgba(255,255,255,.6)}
+.ed-plan .t29-bt{grid-column:1/-1;justify-content:flex-start;margin-top:0}
+.ed-plan .t29-f{grid-column:1/-1;margin:-8px 0 0!important}
+.ed .m29-c{aspect-ratio:auto!important;min-height:0}
+@media(max-width:899px){.ed{grid-template-columns:1fr;grid-template-rows:none}.ed-plan{grid-template-columns:1fr}.ed .m29-c{min-height:240px}}
+@media(max-width:599px){.ed-pr{gap:20px}.ed-pr div b{font-size:30px}.ed-plan .t29-bt{flex-direction:column;align-items:stretch}}
+
+/* ============ КРАЙ E: кадър от модула на цял екран, планът отгоре ============ */
+.ee{position:relative;isolation:isolate;border-radius:32px;overflow:hidden;min-height:620px;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,4vw,56px)}
+.ee>video,.ee>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.ee::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,13,.55),rgba(10,9,13,.35) 40%,rgba(10,9,13,.92))}
+.ee-top{max-width:560px}
+.ee-top .h2{margin:0}
+.ee-top p{margin:12px 0 0;font:500 17px/1.55 Manrope,sans-serif;color:rgba(255,255,255,.8)}
+.ee-top .ed-pr{margin-top:24px}
+.ee-top .t29-bt{justify-content:flex-start}
+.ee-m{display:flex;gap:10px;flex-wrap:wrap;margin-top:40px}
+.ee-m a{display:inline-flex;align-items:center;gap:12px;padding:12px 16px 12px 12px;border-radius:16px;background:rgba(20,18,24,.55);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);color:#fff;text-decoration:none;transition:background .3s}
+.ee-m a:hover{background:rgba(255,255,255,.14)}
+.ee-m a>img:first-child{width:72px;height:48px;border-radius:9px;object-fit:cover}
+.ee-m .tx img{display:block;height:20px;width:auto}
+.ee-m .tx b{display:block;margin-top:4px;font:700 14px/1.2 Manrope,sans-serif}
+.ee-m svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:599px){.ee{min-height:0;border-radius:24px}.ee-m{flex-direction:column}.ee-m a{width:100%}.ee-top .t29-bt{flex-direction:column;align-items:stretch}}
+
+/* ============ КРАЙ F: първо модулите като високи плакати, после тънка лента с цената ============ */
+.ef{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ef .m29-c{aspect-ratio:3/4!important}
+.ef-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 28px;margin-top:18px;padding:18px 18px 18px 28px;border-radius:20px;background:linear-gradient(#141218,#141218) padding-box,var(--g29) border-box;border:1px solid transparent}
+.ef-bar p{margin:0;font:600 16px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.78)}
+.ef-bar p b{font-weight:800;color:#fff;font-size:20px}
+.ef-bar p small{color:rgba(255,255,255,.5);font-size:13px}
+.ef-bar .t29-bt{margin:0}
+@media(max-width:899px){.ef{grid-template-columns:1fr}.ef .m29-c{aspect-ratio:16/10!important;min-height:280px}.ef-bar{padding:20px}.ef-bar .t29-bt{width:100%;flex-direction:column;align-items:stretch}}
+/* D поправка: постерите са в собствена зона горе, текстът е под тях */
+.pd-c{justify-content:flex-start;min-height:0;padding:0 30px 30px}
+.pd-art{position:relative;inset:auto;z-index:0;height:300px;margin:0 -30px 6px;padding:34px 0 0;overflow:hidden;-webkit-mask-image:linear-gradient(#000 55%,transparent 98%);mask-image:linear-gradient(#000 55%,transparent 98%)}
+.pd-c::after{display:none}
+.pd-c .t29-p{margin-top:0;padding-top:18px}
+.pd-c--s .pd-art img{width:auto;height:330px}
+.pd-c--t .pd-art img{width:auto;height:290px}
+@media(max-width:767px){.pd-c{padding:0 22px 24px}.pd-art{height:240px;margin:0 -22px 6px;padding-top:26px}.pd-c--s .pd-art img{height:260px}.pd-c--t .pd-art img{height:220px}}
+/* E бенто: малките плочки без описание, за да не се трупа текстът */
+@media(min-width:900px){.me{grid-template-rows:280px 280px}.me .m29-c:nth-child(n+3) p{display:none}.me .m29-c:nth-child(n+3) h3{font-size:20px}}
+.ed .m29-c p{display:none}
+@media(max-width:599px){
+  .pf-big{flex-wrap:wrap;column-gap:6px;row-gap:4px}.pf-big [data-u]{flex-basis:100%;text-align:center}
+  .ph{display:flex;flex-direction:column;gap:20px}.ph-l{display:contents}.ph-l .h2{order:1}.ph-l p{order:2;margin:0}.ph-r{order:3}.ph-l .t29-bt{order:4;margin-top:4px}.ph .t29-f{order:5}
+}
