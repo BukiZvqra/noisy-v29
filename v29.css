@@ -28,9 +28,7 @@
 .ar-lg .ar-pm,#mods .th-lg .ar-pm{box-shadow:0 0 0 3px #0A090D!important}
 
 /* 4) Бутоните по дизайн системата на Лили: градиент (Branded) само за главното действие на екрана,
-   в менюто е Primary (бял), второстепенните са Default (сив) */
-.pnav .pcta,.hdr .cta{background:#FBFBFB!important;color:#0E0E0E!important;box-shadow:none!important}
-.pnav .pcta:hover,.hdr .cta:hover{background:#fff!important;box-shadow:0 8px 24px rgba(255,255,255,.14)!important}
+   второстепенните са Default (сив). Бутонът в менюто остава Branded, както е в Figma на Лили. */
 .btn,.b1,.b2{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .3s,background-color .2s,filter .2s,color .2s}
 .btn-p:hover,.k27-bt .b1:hover{transform:translateY(-1px);filter:brightness(1.08);box-shadow:0 10px 30px rgba(140,35,141,.45)}
 .btn-p:active,.btn-s:active,.btn-w:active{transform:translateY(0) scale(.98)}
