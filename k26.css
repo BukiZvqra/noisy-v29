@@ -324,3 +324,8 @@ h2.k26w .w{padding:0!important}
 @media(min-width:735px){.ag-stick:has(.k26-big) .ar-lgw{margin-top:22px}
 .ag-stick:has(.k26-big) .ar-note{margin-top:14px!important}
 .ag-stick:has(.k26-big) .ag-shelves{translate:0 -24px}}
+/* 22.10 (Коста): логата под всеки модул водят към официалните сайтове (нов таб) */
+.lg-a{display:contents;color:inherit;text-decoration:none;cursor:pointer}
+.th-lg:has(.lg-a),.ar-lg:has(.lg-a){transition:transform .25s cubic-bezier(.4,0,.6,1),filter .25s}
+@media(hover:hover){.th-lg:has(.lg-a):hover,.ar-lg:has(.lg-a):hover{transform:translateY(-3px);filter:brightness(1.15)}}
+.lg-a:focus-visible>*:first-child{outline:2px solid #fff;outline-offset:3px;border-radius:50%}
