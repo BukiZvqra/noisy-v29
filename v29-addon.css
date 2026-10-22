@@ -1,0 +1,64 @@
+/* Край на Theatre/Arena = промоция на добавката на същия модул (Arena → Arena Premium, Theatre → Premium Films), без линкове към другите модули. 23.10.2026 */
+.ad-sw{display:inline-flex;gap:4px;padding:4px;margin:0 0 22px;border-radius:999px;background:rgba(255,255,255,.06)}
+.ad-sw button{appearance:none;border:0;border-radius:999px;padding:9px 16px;background:none;color:rgba(255,255,255,.65);font:700 14px/1 Manrope,sans-serif;cursor:pointer}
+.ad-sw button.on{background:#fff;color:#0E0E0E}
+.ad-m{display:none}.ad-m.on{display:block;animation:adin .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes adin{from{opacity:0;transform:translateY(8px)}}
+.ad-k{display:inline-flex;align-items:center;gap:10px}
+.ad-k img{height:30px;width:auto}
+.ad-k b{display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;font:800 12px/1 Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#0E0E0E;background:#fff}
+.ad-lg{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.ad-lg span{display:grid;place-items:center;width:64px;height:64px;border-radius:16px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.ad-lg img{max-width:44px;max-height:44px;object-fit:contain}
+.ad-pr{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:28px}
+.ad-pr b{font:800 clamp(40px,4.4vw,56px)/1 Manrope,sans-serif;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.ad-pr small{font:600 15px/1.3 Manrope,sans-serif;color:rgba(255,255,255,.65)}
+.ad-f{margin:10px 0 0;font:500 13px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.5)}
+.ad-bt{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.ad-bt .btn{min-height:52px;padding:0 26px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:16px}
+.ad-ok{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:10px}
+.ad-ok li{display:flex;gap:10px;font:500 15px/1.45 Manrope,sans-serif;color:rgba(247,245,250,.82)}
+.ad-ok svg{width:18px;height:18px;flex:none;margin-top:2px;fill:none;stroke:#E070FF;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ad-h{margin:18px 0 0;font:800 clamp(30px,3.8vw,50px)/1.06 Manrope,sans-serif;letter-spacing:-.035em;text-wrap:balance}
+.ad-p{margin:14px 0 0;max-width:44ch;font:500 17px/1.6 Manrope,sans-serif;color:rgba(247,245,250,.72)}
+.ad-tag{position:absolute;right:12px;top:12px;z-index:2;display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font:800 10px/1 Manrope,sans-serif;letter-spacing:.06em;color:#0E0E0E;background:#fff}
+
+/* N: кинематографичен банер с видео отзад */
+.adn{position:relative;isolation:isolate;min-height:600px;border-radius:32px;overflow:hidden;display:flex;align-items:center;padding:clamp(28px,5vw,72px)}
+.adn>video,.adn>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.adn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,9,13,.96) 0%,rgba(10,9,13,.82) 38%,rgba(10,9,13,.25) 75%,rgba(10,9,13,.1)),radial-gradient(60% 80% at 0% 100%,rgba(182,29,255,.28),transparent 70%)}
+.adn-t{max-width:560px}
+@media(max-width:767px){.adn{min-height:0;align-items:flex-end;padding:220px 22px 26px;border-radius:22px}.adn::after{background:linear-gradient(180deg,rgba(10,9,13,.15) 0%,rgba(10,9,13,.85) 40%,rgba(10,9,13,.97))}.ad-bt{flex-direction:column}.ad-bt .btn{width:100%}}
+
+/* O: „Твоят план + добавката“ (Apple One разбивка) */
+.ado{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,72px);align-items:center}
+.ado-eq{display:grid;gap:12px}
+.ado-r{display:flex;align-items:center;gap:16px;padding:20px 22px;border-radius:18px;background:#16141b;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.ado-r--a{background:linear-gradient(#1b1621,#1b1621) padding-box,linear-gradient(90deg,#B61DFF,#CE13A8 33%,#FF0000) border-box;border:1.5px solid transparent;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.ado-r .ic{flex:none;width:52px;height:52px;border-radius:14px;overflow:hidden;background:#0d0c10;display:grid;place-items:center}
+.ado-r .ic img{width:100%;height:100%;object-fit:cover}
+.ado-r div{flex:1;min-width:0}
+.ado-r h4{margin:0;font:800 17px/1.25 Manrope,sans-serif}
+.ado-r small{display:block;margin-top:3px;font:500 13px/1.4 Manrope,sans-serif;color:rgba(255,255,255,.6)}
+.ado-r>b{flex:none;font:800 20px/1 Manrope,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ado-plus{justify-self:center;display:grid;place-items:center;width:34px;height:34px;margin:-6px 0;border-radius:50%;background:#fff;color:#0E0E0E;font:800 20px/1 Manrope,sans-serif;z-index:1}
+.ado-tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 4px 0;margin-top:6px;border-top:1px solid rgba(255,255,255,.1);font:700 15px/1.3 Manrope,sans-serif;color:rgba(255,255,255,.7)}
+.ado-tot b{font:800 28px/1 Manrope,sans-serif;color:#fff;font-variant-numeric:tabular-nums}
+.ado-psw{display:inline-flex;gap:4px;padding:4px;margin-top:14px;border-radius:999px;background:rgba(255,255,255,.06)}
+.ado-psw button{appearance:none;border:0;border-radius:999px;padding:8px 14px;background:none;color:rgba(255,255,255,.65);font:700 13px/1 Manrope,sans-serif;cursor:pointer}
+.ado-psw button.on{background:rgba(255,255,255,.14);color:#fff}
+@media(max-width:899px){.ado{grid-template-columns:1fr}.ad-bt{flex-direction:column}.ad-bt .btn{width:100%}}
+
+/* P: стена със заглавията в добавката, движи се бавно; текстът в средата */
+.adp{position:relative;isolation:isolate;border-radius:32px;overflow:hidden;padding:clamp(56px,8vw,110px) 20px;text-align:center;background:#0c0b0f}
+.adp-w{position:absolute;inset:-10% -5%;z-index:-2;display:grid;gap:14px;transform:rotate(0);opacity:.55}
+.adp-row{display:flex;gap:14px;width:max-content;animation:adp 60s linear infinite}
+.adp-row:nth-child(2){animation-direction:reverse;animation-duration:70s}
+.adp-row:nth-child(3){animation-duration:80s}
+.adp-row img{height:clamp(150px,16vw,220px);aspect-ratio:var(--ar,2/3);object-fit:cover;border-radius:14px}
+@keyframes adp{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.adp-row{animation:none}}
+.adp::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(50% 60% at 50% 50%,rgba(10,9,13,.96),rgba(10,9,13,.78) 60%,rgba(10,9,13,.5))}
+.adp .ad-k,.adp .ad-lg,.adp .ad-pr,.adp .ad-bt{justify-content:center}
+.adp .ad-p{margin-left:auto;margin-right:auto}
+@media(max-width:599px){.adp{border-radius:22px}.adp .ad-bt{flex-direction:column;align-items:stretch}}

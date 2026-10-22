@@ -1,0 +1,84 @@
+/* Together по най-добрите абонаментни страници (23.10): Strava (S), 1Password (T), Headspace (U) + лента с референциите */
+.rfb{position:relative;margin:28px auto 0;width:min(1260px,calc(100vw - 40px));padding:22px 24px;border-radius:20px;background:radial-gradient(60% 120% at 100% 0%,rgba(168,85,247,.2),transparent 60%),#131117;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09)}
+.rfb h2{margin:0;font:800 18px/1.3 Manrope,sans-serif}
+.rfb p{margin:4px 0 14px;font:500 14px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.6)}
+.rfb ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.rfb a{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);color:#fff;text-decoration:none;font:700 14px/1 Manrope,sans-serif;transition:background .2s}
+.rfb a:hover{background:rgba(255,255,255,.13)}
+.rfb a i{font-style:normal;display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:6px;background:#fff;color:#0E0E0E;font-size:12px}
+.rfb a span{font-weight:500;color:rgba(255,255,255,.6)}
+.rfb .src{color:#fff}
+.vnote .src{margin-left:6px;font-weight:700;color:#d8a6ff}
+
+/* ===== S: по Strava - смело заглавие, времева линия „как работи“, плочки ===== */
+.rs{border-radius:32px;overflow:hidden;background:#0B0A0E;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.rs-top{position:relative;isolation:isolate;padding:clamp(40px,6vw,80px) 24px clamp(40px,5vw,64px);text-align:center;background:radial-gradient(70% 90% at 50% 0%,rgba(206,19,168,.32),rgba(182,29,255,.14) 45%,transparent 75%)}
+.rs-top img.lg{height:26px;width:auto}
+.rs-top h3{margin:16px auto 0;max-width:18ch;font:800 clamp(30px,4vw,48px)/1.06 Manrope,sans-serif;letter-spacing:-.035em}
+.rs-tl{list-style:none;margin:30px auto 0;padding:22px 26px;max-width:520px;text-align:left;border-radius:18px;background:#fff;color:#0E0E0E;box-shadow:0 30px 70px rgba(0,0,0,.5);display:grid;gap:0}
+.rs-tl li{position:relative;display:grid;grid-template-columns:32px 1fr;gap:12px;padding:0 0 18px}
+.rs-tl li:last-child{padding-bottom:0}
+.rs-tl li::before{content:"";position:absolute;left:15px;top:32px;bottom:2px;width:2px;background:#e7e2ee}
+.rs-tl li:last-child::before{display:none}
+.rs-tl i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#f3eefa}
+.rs-tl i svg{width:16px;height:16px;fill:none;stroke:#8024B6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rs-tl b{display:block;font:800 16px/1.3 Manrope,sans-serif}
+.rs-tl span{display:block;margin-top:3px;font:500 14px/1.45 Manrope,sans-serif;color:#555060}
+.rs-pl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:760px;margin:0 auto;padding:clamp(32px,4vw,56px) 24px}
+.rs-c{display:flex;flex-direction:column;padding:24px;border-radius:16px;background:#141218;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.rs-c--t{background:#fff;color:#0E0E0E;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.rs-c em{align-self:flex-start;display:inline-flex;height:22px;padding:0 9px;align-items:center;border-radius:6px;font:800 11px/1 Manrope,sans-serif;font-style:normal;letter-spacing:.06em;text-transform:uppercase;background:#2a2730;color:#fff}
+.rs-c--t em{background:linear-gradient(90deg,#8024B6,#B2261B);color:#fff}
+.rs-c h4{margin:14px 0 0;font:800 13px/1.2 Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.rs-c .pr{margin:14px 0 0;font:800 40px/1 Manrope,sans-serif;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.rs-c .pr small{font-size:15px;font-weight:700;letter-spacing:0}
+.rs-c p{margin:8px 0 0;font:500 13px/1.45 Manrope,sans-serif;opacity:.7}
+.rs-c .btn{margin-top:auto;min-height:48px;width:100%;margin-top:22px}
+.rs-c--t .btn{background:linear-gradient(90deg,#8024B6 0%,#8C238D 45%,#B2261B 100%);color:#fff}
+.rs-tb{max-width:760px;margin:0 auto;padding:0 24px clamp(36px,5vw,56px)}
+.rs-tb h4{margin:0 0 14px;text-align:center;font:800 20px/1.3 Manrope,sans-serif}
+.rs-tb table{width:100%;border-collapse:collapse;border-radius:16px;overflow:hidden;background:#fff;color:#0E0E0E}
+.rs-tb th,.rs-tb td{padding:13px 16px;border-top:1px solid #eee;font:500 14px/1.35 Manrope,sans-serif;text-align:left}
+.rs-tb thead th{border-top:0;font:800 12px/1 Manrope,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#6b6872}
+.rs-tb td:not(:first-child),.rs-tb th:not(:first-child){text-align:center;width:22%}
+.rs-tb .y{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#B61DFF,#FF0000);color:#fff;font:800 12px/1 Manrope}
+.rs-tb .n{color:#b9b4c2}
+@media(max-width:599px){.rs-pl{grid-template-columns:1fr}.rs-tl{padding:18px}.rs-tb th,.rs-tb td{padding:11px 10px;font-size:13px}}
+
+/* ===== T: по 1Password - две големи карти „Само за теб“ / „За твоите хора“ с плаващи профили ===== */
+.rt{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.rt-c{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:560px;padding:28px;border-radius:24px;overflow:hidden;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.rt-c>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.rt-c::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,13,.05) 25%,rgba(10,9,13,.6) 58%,rgba(10,9,13,.95))}
+.rt-c h3{margin:0;font:800 clamp(26px,2.8vw,34px)/1.1 Manrope,sans-serif;letter-spacing:-.03em}
+.rt-c p{margin:8px 0 0;max-width:38ch;font:500 15px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.78)}
+.rt-row{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:18px}
+.rt-pr b{display:block;font:800 34px/1 Manrope,sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.rt-pr small{display:block;margin-top:5px;font:600 13px/1.3 Manrope,sans-serif;color:rgba(255,255,255,.7)}
+.rt-c .btn{min-height:48px;padding:0 22px}
+.rt-ch{position:absolute;display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:14px;background:rgba(255,255,255,.95);color:#0E0E0E;box-shadow:0 18px 40px rgba(0,0,0,.4);font:800 13px/1.2 Manrope,sans-serif;animation:rtf 6s ease-in-out infinite}
+.rt-ch small{display:block;font:600 11px/1.2 Manrope,sans-serif;color:#6b6872}
+.rt-ch .ai{width:34px;height:34px;flex:none}
+.rt-ch:nth-of-type(2){animation-delay:-2s}.rt-ch:nth-of-type(3){animation-delay:-4s}
+@keyframes rtf{50%{transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){.rt-ch{animation:none}}
+@media(max-width:899px){.rt{grid-template-columns:1fr}.rt-c{min-height:480px}}
+
+/* ===== U: по Headspace - „Една голяма група“ + за кого е ===== */
+.ru{border-radius:32px;overflow:hidden;background:#141218;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.ru-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:24px;padding:clamp(28px,5vw,64px);background:radial-gradient(70% 90% at 100% 50%,rgba(206,19,168,.28),rgba(182,29,255,.12) 50%,transparent 80%)}
+.ru-top h3{margin:0;font:800 clamp(30px,3.6vw,46px)/1.06 Manrope,sans-serif;letter-spacing:-.035em}
+.ru-top p{margin:12px 0 0;font:600 17px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.75)}
+.ru-top .btn{margin-top:24px;min-height:52px;padding:0 28px}
+.ru-cl{position:relative;height:280px}
+.ru-cl .ai{position:absolute;width:var(--s);height:var(--s);left:var(--x);top:var(--y);box-shadow:0 0 0 5px #1a1720,0 20px 40px rgba(0,0,0,.45);animation:ruf 7s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes ruf{50%{transform:translateY(-10px)}}
+@media(prefers-reduced-motion:reduce){.ru-cl .ai{animation:none}}
+.ru-who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:0 clamp(20px,4vw,56px) clamp(28px,4vw,56px)}
+.ru-who div{padding:20px;border-radius:16px;background:#0f0d13;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);text-align:center}
+.ru-who .em{font-size:30px;line-height:1}
+.ru-who b{display:block;margin-top:10px;font:800 16px/1.25 Manrope,sans-serif}
+.ru-who span{display:block;margin-top:4px;font:500 13px/1.45 Manrope,sans-serif;color:rgba(255,255,255,.6)}
+.ru-ft{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding:20px clamp(20px,4vw,56px);border-top:1px solid rgba(255,255,255,.08);font:600 14px/1.4 Manrope,sans-serif;color:rgba(255,255,255,.7)}
+.ru-ft b{color:#fff}
+@media(max-width:899px){.ru-top{grid-template-columns:1fr}.ru-cl{height:220px}.ru-who{grid-template-columns:repeat(2,minmax(0,1fr))}}

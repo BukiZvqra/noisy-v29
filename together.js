@@ -26,12 +26,13 @@
   /* чекаут */
   var co=document.getElementById('co');if(!co)return;
   var steps=[].slice.call(co.querySelectorAll('.co-s')),bars=[].slice.call(co.querySelectorAll('.co-st i')),nx=co.querySelector('[data-co-next]'),bk=co.querySelector('[data-co-back]'),
-      cur=1,last=null,P={tog:24.90,solo:14.90},D={1:0,3:.10,12:.15};
+      cur=1,last=null,P={tog:24.90,solo:14.90},D={1:0,3:.10,12:.15},AD={sport:13.14,films:6.84},ADN={sport:'Arena Premium',films:'Premium Films'};
   function st(){var pl=co.querySelector('input[name=pl]:checked').value,per=+co.querySelector('input[name=per]:checked').value;return{pl:pl,per:per}}
   function prices(){var s=st(),b=P[s.pl];[1,3,12].forEach(function(m){var mo=Math.floor(b*(1-D[m])*100+1e-6)/100;co.querySelector('[data-pm="'+m+'"]').textContent=eur(mo);
       var t=co.querySelector('[data-pt="'+m+'"]');if(t)t.textContent=eur(mo*m)+(m===12?' на година':' на всеки 3 месеца')})}
   function inv(){return [].filter.call(co.querySelectorAll('.inv input'),function(i){return /.+@.+\..+/.test(i.value)}).length}
-  function summary(){var s=st(),mo=Math.floor(P[s.pl]*(1-D[s.per])*100+1e-6)/100;
+  function ads(){return [].filter.call(co.querySelectorAll('input[name=ad]'),function(i){return i.checked}).map(function(i){return i.value})}
+  function summary(){var s=st(),mo=Math.floor(P[s.pl]*(1-D[s.per])*100+1e-6)/100,a=ads();a.forEach(function(k){mo+=AD[k]});mo=Math.round(mo*100)/100;var sa=co.querySelector('[data-sum-ad]');if(sa)sa.textContent=a.length?a.map(function(k){return ADN[k]}).join(', '):'няма';
     co.querySelector('[data-sum-pl]').textContent=s.pl==='tog'?'Together':'Solo';
     co.querySelector('[data-sum-per]').textContent=s.per===1?'всеки месец':s.per===3?'на 3 месеца':'на 12 месеца';
     co.querySelector('[data-sum-inv]').textContent=s.pl==='tog'?inv()+(inv()===1?' човек':' души'):'няма';
@@ -41,9 +42,10 @@
     bk.hidden=n===1||n===4;nx.textContent=n===3?'Абонирай се (демо)':n===4?'Готово':'Продължи';
     if(n===3)summary();if(n===4){var a=co.querySelector('[data-av2]');if(a)play(a)}
     co.querySelector('.co-p').scrollTop=0}
-  function open(pl,btn){last=btn;co.hidden=false;void co.offsetWidth;co.classList.add('on');co.querySelector('input[name=pl][value='+pl+']').checked=true;prices();show(1);
+  function open(pl,btn,ad){last=btn;if(!co.parentElement.classList.contains('tgx-co')){var w=document.createElement('div');w.className='tgx tgx-co';document.body.appendChild(w);w.appendChild(co)}[].forEach.call(co.querySelectorAll('input[name=ad]'),function(i){i.checked=i.value===ad});co.hidden=false;void co.offsetWidth;co.classList.add('on');co.querySelector('input[name=pl][value='+pl+']').checked=true;prices();show(1);
     document.documentElement.style.overflow='hidden';setTimeout(function(){co.querySelector('.co-x').focus()},60)}
   function close(){co.classList.remove('on');document.documentElement.style.overflow='';setTimeout(function(){co.hidden=true},450);if(last)last.focus()}
+  window.noisyCO=open;
   [].forEach.call(document.querySelectorAll('[data-co]'),function(b){b.addEventListener('click',function(){open(b.dataset.co,b)})});
   [].forEach.call(co.querySelectorAll('[data-co-x]'),function(b){b.addEventListener('click',close)});
   co.addEventListener('keydown',function(e){if(e.key==='Escape')close();
