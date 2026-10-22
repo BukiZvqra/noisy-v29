@@ -15,10 +15,15 @@
       var bar=document.createElement('div');bar.className='k26-tabs';bar.setAttribute('role','tablist');
       bar.innerHTML=slides.map(function(s,i){return '<button type="button" role="tab" data-i="'+i+'"'+(i?'':' class="on" aria-selected="true"')+'>'+(i?s.title:(/arena/.test(location.pathname)?'Всички спортове':'Всичко'))+'</button>'}).join('');
       stick.appendChild(bar);
+      /* 22.10 (Коста): в Arena първият таб е „Футбол“; след прехода с N се влиза направо във футбола, „Всички спортове“ е втори */
+      if(/arena/.test(location.pathname)){var fi=-1;slides.forEach(function(s,k){if(s.world==='football')fi=k});
+       if(fi>0){var fb=bar.children[fi];bar.insertBefore(fb,bar.firstChild);
+        var entered=false,mo=new MutationObserver(function(){if(entered)return;if(root.classList.contains('nfree')&&!root.classList.contains('is-shrinking')&&window.agGo){entered=true;mo.disconnect();window.agGo(fi)}});
+        mo.observe(root,{attributes:true,attributeFilter:['class']})}}
       var btns=[].slice.call(bar.children);
       bar.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(window.agGo)window.agGo(+b.dataset.i);else{var d=root.querySelector('.agd[data-i="'+b.dataset.i+'"]');if(d)d.click()}});
       var frame=document.getElementById('frame');
-      var sync=function(){var cur=frame.querySelector('.ag-slide.is-current'),i=cur?[].indexOf.call(frame.querySelectorAll('.ag-slide'),cur):0;btns.forEach(function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-selected',k===i)})}
+      var sync=function(){var cur=frame.querySelector('.ag-slide.is-current'),i=cur?[].indexOf.call(frame.querySelectorAll('.ag-slide'),cur):0;btns.forEach(function(b){var on=+b.dataset.i===i;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)})}
       /* големите карти (важен мач / филм) за избрания таб */
       var ar=/arena/.test(location.pathname),I='img/',A='img/ar/';
       var SET=ar?{
