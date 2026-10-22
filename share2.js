@@ -66,8 +66,8 @@
   adds.forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');totals()})});
   function setA(v){c.setAttribute('data-a',v);ba.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-a')===v)});totals()}
   ba.forEach(function(b){b.addEventListener('click',function(){setA(b.getAttribute('data-a'))})});
-  setA(c.getAttribute('data-a')||'1');
-  var m=/^#([abcd])([1-6])(m?)$/.exec(location.hash);set(m?m[1]:'a',m?m[2]:'1');setP(m&&m[3]?'m':'s');
+  setA(c.getAttribute('data-a')||'0');
+  var m=/^#([abcd])([1-6])(m?)(?:\+([12]))?$/.exec(location.hash);set(m?m[1]:'a',m?m[2]:'1');setP(m&&m[3]?'m':'s');if(m&&m[4])setA(m[4]);
   if(rm||!('IntersectionObserver' in window)){finalState();return}
   new IntersectionObserver(function(e){e[0].isIntersecting?start():stop()},{threshold:.3}).observe(av);
   addEventListener('resize',function(){S.forEach(function(s,i){if(s.style.opacity==='1')s.style.transform='translateX('+x(i)+'px)'})});
