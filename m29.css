@@ -45,5 +45,13 @@
  /* „Питай NOISY“: на телефон компактен кръгъл бутон само с иконата (48px), за да не покрива текста и бутоните; надписът остава за екранните четци (aria-label) */
  .fab{width:48px!important;height:48px!important;padding:0!important;gap:0!important;justify-content:center;font-size:0!important;border-radius:50%!important;background:rgba(22,20,28,.92)!important;color:#fff;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 0 0 1px rgba(255,255,255,.12),0 10px 26px rgba(0,0,0,.55)!important}
  .fab svg{width:22px!important;height:22px!important}
+ /* ceni-together (Together цени): флагчетата на модулите 2+2 вместо 3+1; лентите тъмно/светло по 48px; край на светлата лента 40px */
+ .tgp-c .mods{display:grid!important;grid-template-columns:repeat(2,auto);justify-content:center;gap:6px 8px!important}
+ .tgp-a{padding-bottom:48px!important}
+ .tgp-b{padding-top:48px!important;padding-bottom:40px!important}
+ /* сиянието на „Гледай навсякъде“ не прелива върху светлата лента с цените */
+ .tgp-g{gap:24px!important}
+ #ceni.tgp+#platforms{overflow:hidden}
+ #ceni.tgp+#platforms .wa::before{top:0!important}
 }
 @media(max-width:359px){.platforms .wa-h{white-space:normal}.platforms .wa-b .badge{width:142px!important;padding:0 10px 0 9px!important}.platforms .wa-b .badge b{font-size:15px!important}}
