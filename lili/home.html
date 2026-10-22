@@ -93,7 +93,7 @@ h2#h .w:last-of-type{margin-right:0}
 h2#h.go .w{opacity:1;transform:none;filter:blur(0)}
 @media(prefers-reduced-motion:reduce){h2#h .w{opacity:1;transform:none;filter:none;transition:none}}</style>
 <link rel="stylesheet" href="v29-lili.css?v=1">
-</head>
+<style id="m29">/* 22.10: отстояния на телефон по стандарта (виж m29.css) */@media(max-width:734px){.sec{padding-top:40px!important;padding-bottom:32px!important}}</style></head>
 <body class="fx-gradients">
 <section class="sec" aria-labelledby="h">
  <h2 class="h" id="h">Повече от гледане.</h2>
@@ -173,7 +173,7 @@ h2#h.go .w{opacity:1;transform:none;filter:blur(0)}
 <script src="vendor/fx/gsap.min.js"></script>
 <script src="lili-cards.js?v=122"></script>
 
-<script>(function(){function send(){try{var h=Math.ceil(document.documentElement.scrollHeight);parent.postMessage({lili:'h',h:h},'*')}catch(e){}}
+<script>(function(){function send(){try{var h=Math.ceil(Math.max(document.body.scrollHeight,document.body.getBoundingClientRect().height));if(innerWidth>734)h=Math.max(h,900); /* 22.10: височината на съдържанието; documentElement.scrollHeight връщаше височината на самия iframe и той не се свиваше на телефон */parent.postMessage({lili:'h',h:h},'*')}catch(e){}}
 addEventListener('load',send);addEventListener('resize',send);setInterval(send,800);if(window.ResizeObserver)new ResizeObserver(send).observe(document.body)})();</script><script>(function(){var h=document.getElementById('h');if(!h||!h.firstChild||h.firstChild.nodeType!==3)return;
 var words=h.firstChild.textContent.trim().split(/\s+/),frag=document.createDocumentFragment();
 words.forEach(function(w,i){var s=document.createElement('span');s.className='w';s.style.setProperty('--i',i);s.textContent=w;frag.appendChild(s)});

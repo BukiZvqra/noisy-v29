@@ -1,0 +1,49 @@
+/* 22.10 (Коста: „яко се фокусирай върху мобайл, оправи всичко“). Само за телефон (до 734px), зарежда се последен.
+   Ритъм по измерената библиотека (.design-library: molotov на телефон 40-75px, на компютър до 150px):
+   между секциите ~72px (32 отдолу + 40 отгоре), вътре в секцията 24-48px. Не използва класа .m29 (зает във v29.css). */
+@media(max-width:734px){
+ /* общи секции */
+ main>section.sec,main>section.nfaq,main>section.k26-om,main>section.ar-sec{padding-top:40px!important;padding-bottom:32px!important}
+ footer.foot{padding-top:40px!important}
+ main>section.e29{padding-top:40px!important;padding-bottom:32px!important}
+ /* начална: под „Ново съдържание всеки ден“ остава празната част на залепената сцена (~280px); „Четири модула“ се качва върху нея */
+ main>section#moduli{position:relative;z-index:3;margin-top:-321px!important;padding-top:72px!important;padding-bottom:32px!important}
+ /* „Повече от гледане“ вече не покрива края на „Четири модула“ (старият -157px беше за друга съседна секция) */
+ #moduli+.lili-host{margin-top:0!important}
+ .lili-host~#ceni{margin-top:0!important}
+ main>section#livescore{margin-top:0!important}
+ /* бележката под логата -> „Повече от …“: ~72px (в Theatre логата вече са на 2 реда) */
+ .th-page main>section#kak{margin-top:-60px!important}
+ body:not(.th-page) main>section#kak.ar-more{margin-top:-70px!important}
+ /* новите лога в Theatre (широки, тъмни): по-големи и по-светли, за да се четат в кръга */
+ .th-lg.th-lg-w img{width:96%!important;height:96%!important;filter:brightness(1.35) contrast(1.1)}
+ /* За нас */
+ main>section.za-sec,main>section.za-creator{padding-top:40px!important}
+ .za-creator{padding-bottom:32px!important}
+ .a7-tk,.a7-lic,.a7-questions{padding-top:40px!important;padding-bottom:32px!important}
+ .a7-questions>.w{padding-top:0!important}
+ .za-end{padding-top:48px!important;margin-top:32px!important}
+
+ /* „Гледай навсякъде“: центрирана композиция като в App Store/Netflix; иконата 72px, двата бутона на магазините един до друг, еднакви, 44px */
+ .platforms .wa{flex-direction:column!important;align-items:center!important;text-align:center;gap:0!important;padding:8px 0 0!important}
+ .platforms .wa::before{left:50%!important;right:auto!important;width:120vw;translate:-50% 0;background:radial-gradient(50% 42% at 50% 24%,rgba(206,19,168,.26),rgba(140,24,190,.10) 55%,transparent 80%)!important;-webkit-mask-image:none!important;mask-image:none!important}
+ .platforms .wa-ic{width:72px!important;height:72px!important;border-radius:18px!important;box-shadow:0 0 0 1px rgba(255,255,255,.07),0 0 40px rgba(206,19,168,.45),0 0 90px rgba(140,24,190,.25)!important}
+ .platforms .wa-t{flex:none!important;margin-top:20px}
+ .platforms .wa-h{font-size:28px!important;line-height:1.15!important;white-space:nowrap}
+ .platforms .wa-t p{margin:10px auto 0!important;max-width:30ch;font-size:16px!important;line-height:1.45;text-wrap:balance;color:rgba(255,255,255,.72)}
+ .platforms .wa-b{flex-direction:row!important;flex-wrap:nowrap!important;justify-content:center;gap:10px!important;width:auto!important;margin-top:24px}
+ .platforms .wa-b .badge{flex:none!important;width:150px!important;min-width:0;height:44px!important;justify-content:flex-start;min-height:44px!important;padding:0 14px 0 11px!important;gap:8px!important;border-radius:10px!important;border:1px solid rgba(255,255,255,.32)!important;background:#000!important;display:inline-flex!important;align-items:center}
+ .platforms .wa-b .badge svg{width:22px!important;height:22px!important;flex:none}
+ .platforms .wa-b .badge span{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+ .platforms .wa-b .badge small{font-size:9px!important;letter-spacing:.02em;line-height:1.1!important;margin:0 0 2px!important}
+ .platforms .wa-b .badge b{font-size:17px!important;font-weight:600;line-height:1.05!important;letter-spacing:-.01em}
+ /* хедърът при скрол: тъмен и замъглен (иначе текстът минава под логото и „Вход“ на Цени/Въпроси/За нас) */
+ .hdr.solid,.hdr.mini{background:rgba(10,9,13,.9)!important;-webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important;box-shadow:0 1px 0 rgba(255,255,255,.06)!important}
+ /* „Виж всички въпроси“: зона за натискане 44px (беше 28px), без да мести текста */
+ .nfaq a[href*="faq"]{display:inline-flex;align-items:center;min-height:44px;margin:-8px 0}
+ a[href^="mailto:"]{display:inline-block;padding:13px 0;margin:-13px 0}
+ /* „Питай NOISY“: на телефон компактен кръгъл бутон само с иконата (48px), за да не покрива текста и бутоните; надписът остава за екранните четци (aria-label) */
+ .fab{width:48px!important;height:48px!important;padding:0!important;gap:0!important;justify-content:center;font-size:0!important;border-radius:50%!important;background:rgba(22,20,28,.92)!important;color:#fff;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 0 0 1px rgba(255,255,255,.12),0 10px 26px rgba(0,0,0,.55)!important}
+ .fab svg{width:22px!important;height:22px!important}
+}
+@media(max-width:359px){.platforms .wa-h{white-space:normal}.platforms .wa-b .badge{width:142px!important;padding:0 10px 0 9px!important}.platforms .wa-b .badge b{font-size:15px!important}}
