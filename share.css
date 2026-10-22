@@ -1,42 +1,24 @@
-/* Цени: компактна карта 1:1 по NYT „Share savings“ (family subscription), в тъмната тема на NOISY. 22.10.2026 */
+/* Цени (22.10.2026): анимираното заглавие по NYT family header е заглавието на секцията,
+   а човечетата (силуетите от Figma „Friends & Family“) са горе в картата Together. */
 .shr{padding:0}
-.shr-top{padding:72px 16px 64px;display:flex;justify-content:center}
-.shr-c{position:relative;width:100%;max-width:567px;box-sizing:border-box;padding:0 16px;text-align:center;color:#fff}
-.shr-b{display:inline-block;padding:7px 16px;border-radius:980px;background:var(--g29,#CE13A8);color:#fff;font:800 13px/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase}
-.shr-h{position:relative;margin:18px 0 0;height:1.2em;font:500 36px/1.2 var(--font-head);letter-spacing:-.02em;white-space:nowrap}
-.shr-h .shw{display:inline-block;opacity:0;transform:translateY(10px)}
+.shp-h.shr-h{position:relative;height:1.15em;white-space:nowrap}
+.shr-h .shw{display:inline-block;color:var(--a1-ink,#F5F5F7);opacity:0;transform:translateY(10px)}
 /* влизане на дума: opacity за 9 кадъра (ease-out), позиция с лек отскок за ~30 кадъра, по NYT */
 .shr-h .shw.in{opacity:1;transform:none;transition:opacity .15s cubic-bezier(.25,.6,.4,1),transform .5s cubic-bezier(.3,1.5,.5,1)}
 .shr-h .shw.fin{transform:translateY(35px)}.shr-h .shw.fin.in{transform:none;transition:opacity .25s cubic-bezier(.25,.6,.4,1),transform .45s cubic-bezier(.3,1.35,.5,1)}
 .shr-h .shw.out{opacity:0;transform:none;transition:opacity .07s linear}
 .shr-h .shw.out2{opacity:0;transform:none;transition:opacity .2s cubic-bezier(.65,0,.35,1)}
-.shr-av{position:relative;margin:26px 0 0;height:92px}
-.shr-av .s{position:absolute;left:50%;top:0;width:92px;height:92px;margin-left:-46px;border-radius:50%;border:3px solid #0A090D;box-sizing:border-box;overflow:hidden;background:#2a2530;opacity:0;
+.shr-av{position:relative;width:100%;height:104px;margin:0 0 18px}
+.shr-av .s{position:absolute;left:50%;top:10px;width:84px;height:84px;margin-left:-42px;border-radius:50%;border:3px solid var(--a1-tile,#1B1920);box-sizing:border-box;overflow:hidden;background:#2a2530;opacity:0;z-index:2;
   transition:transform .5s cubic-bezier(.3,1.45,.5,1),opacity .17s cubic-bezier(.65,0,.35,1)}
-.shr-av .s:nth-child(1){z-index:5}.shr-av .s:nth-child(2){z-index:4}.shr-av .s:nth-child(3){z-index:3}.shr-av .s:nth-child(4){z-index:2}.shr-av .s:nth-child(5){z-index:1}
+.shr-av .s:nth-child(1){top:0;width:104px;height:104px;margin-left:-52px;z-index:6}
+.shr-av .s:nth-child(2),.shr-av .s:nth-child(3){z-index:4}
 .shr-av .s img{display:block;width:100%;height:100%;object-fit:cover}
-/* средното (розовото) е по-голямо и отпред, както във Figma „Friends & Family“ */
-.shr-av .s:nth-child(3){width:112px;height:112px;margin-left:-56px;top:-10px;z-index:6}
-.shr-c.fade .shr-av .s,.shr-c.fade .shr-h .shw{opacity:0!important;transition:opacity .22s cubic-bezier(.65,0,.35,1)!important}
-.shr-p{margin:30px 0 0;font:700 22px/1.25 var(--font-body)}
-.shr-pr{margin:8px 0 0;font:500 22px/1.3 var(--font-body);font-variant-numeric:tabular-nums}
-.shr-pr small{font-size:16px;color:rgba(255,255,255,.7);margin-left:2px}
-.shr-k{display:block;margin-top:4px;font:600 15px/1.3 var(--font-body);color:rgba(255,255,255,.7)}
-.shr-pr.in,.shr-nt.in{animation:shrUp .5s cubic-bezier(.3,1.5,.5,1)}
-@keyframes shrUp{0%{opacity:0;transform:translateY(8px)}30%{opacity:1}100%{opacity:1;transform:none}}
-.shr-nt{display:block;margin-top:2px;color:#fff;font-weight:600}
-.shr-pr s{color:rgba(255,255,255,.5);margin-right:6px}
-.shr-n{display:block;margin:8px auto 0;max-width:400px;color:rgba(255,255,255,.66);font:400 15px/1.45 var(--font-body)}
-.shr-n b{color:#fff;font-weight:700;font-variant-numeric:tabular-nums}
-.shr-cta{display:flex;align-items:center;justify-content:center;width:100%;max-width:335px;height:48px;margin:22px auto 0;border-radius:var(--btn-radius,8px);background:var(--btn-w-bg,#FBFBFB);color:var(--btn-w-fg,#0E0E0E);font:800 16px/1 var(--font-body);text-decoration:none}
-.shr-cta:hover{background:#fff}
-.shr-cta:focus-visible,.shr-l a:focus-visible{outline:2px solid #FFC2D4;outline-offset:3px}
-.shr-x{margin:10px 0 0;font:600 15px/1.3 var(--font-body)}
-.shr-l{margin:16px 0 -10px;font:400 15px/1.4 var(--font-body);color:rgba(255,255,255,.85)}
-.shr-l a{display:inline-flex;align-items:center;min-height:44px;color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
-@media (max-width:480px){.shr-h{height:2.4em;font-size:34px;white-space:normal}.shr-h .shw{display:block}.shr-top{padding:80px 16px 44px}.shr-c{padding:0}.shr-av,.shr-av .s{height:66px}.shr-av .s{width:66px;margin-left:-33px}.shr-av .s:nth-child(3){width:80px;height:80px;margin-left:-40px;top:-7px}.shr-p{margin-top:24px;font-size:20px}.shr-pr{font-size:20px}}
-@media (prefers-reduced-motion:reduce){.shr-av .s,.shr-h .shw{transition:none!important}.shr-pr.in,.shr-nt.in{animation:none}}
-
+.shr-av--1 .s{opacity:1}
+.shp.fade .shr-av .s,.shp.fade .shr-h .shw{opacity:0!important;transition:opacity .22s cubic-bezier(.65,0,.35,1)!important}
+@media (max-width:480px){.shp-h.shr-h{height:2.3em;white-space:normal}.shr-h .shw{display:block}
+  .shr-av{height:84px}.shr-av .s{top:8px;width:68px;height:68px;margin-left:-34px}.shr-av .s:nth-child(1){top:0;width:84px;height:84px;margin-left:-42px}}
+@media (prefers-reduced-motion:reduce){.shr-av .s,.shr-h .shw{transition:none!important}}
 /* Двата статични плана отдолу: структурата на NYT „Two family subscriptions“, в нашите v29 токени (лента, плочка, градиентна рамка, бутони на Лили) */
 .shp{padding:64px 20px 56px;background:var(--a1-band,#110F15);border-top:1px solid rgba(255,255,255,.04)}
 .shp-h{margin:0 auto!important;text-align:center;font-size:clamp(28px,3.4vw,40px)!important;line-height:1.12!important;text-wrap:balance}
@@ -45,8 +27,6 @@
 .shp-c{position:relative;display:flex;flex-direction:column;align-items:center;padding:40px 32px 32px;border-radius:20px;background:var(--a1-tile,#1B1920);border:1px solid var(--a1-line,rgba(255,255,255,.1));text-align:center;color:var(--a1-ink,#F5F5F7)}
 .shp-c--t{background:linear-gradient(var(--a1-tile,#1B1920),var(--a1-tile,#1B1920)) padding-box,var(--g29) border-box;border-color:transparent}
 .shp-b{position:absolute;top:-13px;left:50%;translate:-50% 0;padding:6px 12px;border-radius:980px;background:var(--g29);color:#fff;font:800 12px/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-.shp-m{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 8px;margin:0 0 20px}
-.shp-m img{height:18px;width:auto;opacity:.9}
 .shp-c h3{margin:0;font:600 24px/28px var(--font-head);letter-spacing:-.01em}
 .shp-pr{margin:10px 0 0;font:700 32px/1.1 var(--font-body);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .shp-pr s{margin-right:8px;font-size:20px;font-weight:600;color:rgba(245,245,247,.42)}
@@ -60,4 +40,4 @@
 .shp-f{max-width:780px;margin:28px auto 0;text-align:center;font:500 15px/1.55 var(--font-body);color:rgba(245,245,247,.55)}
 .shp-f a{display:inline-flex;align-items:center;min-height:44px;color:var(--a1-link,#C78BFF)}
 .shp-btn:focus-visible,.shp-f a:focus-visible{outline:2px solid #C78BFF;outline-offset:3px}
-@media(max-width:734px){.shp{padding:48px 16px 44px}.shp-g{grid-template-columns:1fr;gap:28px;margin-top:36px}.shp-c{padding:36px 20px 24px}.shp-pr{font-size:28px}}
+@media(max-width:734px){.shp{padding:96px 16px 44px}.shp-g{grid-template-columns:1fr;gap:28px;margin-top:36px}.shp-c{padding:36px 20px 24px}.shp-pr{font-size:28px}}
