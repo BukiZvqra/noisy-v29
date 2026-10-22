@@ -1,0 +1,104 @@
+/* v29 варианти, пета партида (22.10.2026): по бележката на дизайнерката (G и H са ясни; цените винаги за 1 месец) */
+
+/* ============ ЦЕНИ N: таблица Solo / Together ============ */
+.pn{max-width:900px;margin:0 auto;border-radius:28px;overflow:hidden;background:#141218;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09)}
+.pn table{width:100%;border-collapse:collapse;table-layout:fixed}
+.pn th,.pn td{padding:18px clamp(14px,2.4vw,28px);text-align:left;vertical-align:middle;border-top:1px solid rgba(255,255,255,.07);font:500 15px/1.4 Manrope,sans-serif;color:rgba(255,255,255,.78)}
+.pn thead th{border-top:0;padding-top:28px;padding-bottom:24px;vertical-align:top}
+.pn thead th:first-child{font:700 13px/1.3 Manrope,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.45);vertical-align:bottom}
+.pn thead th .l29{margin-bottom:12px}
+.pn thead th b{display:block;font:800 clamp(30px,3.4vw,42px)/1 Manrope,sans-serif;letter-spacing:-.03em;color:#fff;font-variant-numeric:tabular-nums}
+.pn thead th small{display:block;margin-top:6px;font:600 13px/1.3 Manrope,sans-serif;color:rgba(255,255,255,.6)}
+.pn th[scope=row]{font-weight:700;color:#fff;width:34%}
+.pn td b{color:#fff;font-weight:800}
+.pn .hi{background:linear-gradient(180deg,rgba(168,85,247,.12),rgba(168,85,247,.04))}
+.pn thead .hi{box-shadow:inset 0 3px 0 #A855F7}
+.pn .ok{display:inline-flex;align-items:center;gap:8px}
+.pn .ok svg{width:18px;height:18px;fill:none;stroke:#e070ff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.pn tfoot td{padding-top:22px;padding-bottom:26px}
+.pn tfoot .btn{width:100%;min-height:48px}
+@media(max-width:599px){.pn th[scope=row]{width:30%;font-size:13px}.pn th,.pn td{padding:14px 10px;font-size:13px}.pn thead th b{font-size:26px}.pn thead th:first-child{font-size:11px}.pn tfoot .btn{font-size:14px;padding:0 8px}}
+
+/* ============ ЦЕНИ O: плановете вляво (като H) + мини графика вдясно ============ */
+.po{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:stretch;max-width:1100px;margin:0 auto;padding:clamp(22px,3.6vw,44px);border-radius:32px;background:radial-gradient(60% 80% at 100% 0%,rgba(168,85,247,.2),transparent 60%),#0f0d13;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.po-l{display:flex;flex-direction:column;gap:12px}
+.po-l .h2{margin:0 0 6px}
+.po-l .ph-r{display:grid;gap:12px}
+.po-l .t29-bt{justify-content:flex-start;margin-top:8px}
+.po-r{display:flex;flex-direction:column;padding:22px;border-radius:22px;background:rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.po-r h4{margin:0;font:800 17px/1.3 Manrope,sans-serif}
+.po-r>p{margin:4px 0 0;font:500 13px/1.4 Manrope,sans-serif;color:rgba(255,255,255,.55)}
+.po-ch{flex:1;position:relative;display:grid;grid-template-columns:repeat(5,1fr);align-items:end;gap:0;min-height:210px;margin-top:20px;border-bottom:1px solid rgba(255,255,255,.14)}
+.po-ch>div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.po-ch i{width:22px;height:calc(var(--v) / 16 * 100%);border-radius:4px 4px 0 0;background:var(--c-tog);transition:height .9s cubic-bezier(.2,.8,.2,1)}
+.po-ch>div:first-child i{background:var(--c-solo)}
+.po:not(.in) .po-ch i{height:0}
+.po-ch b{margin-bottom:6px;font:800 13px/1 Manrope,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
+.po-x{display:grid;grid-template-columns:repeat(5,1fr);margin-top:8px;text-align:center;font:600 12px/1.3 Manrope,sans-serif;color:rgba(255,255,255,.6)}
+.po-r .pi-leg{margin-top:14px}
+.po .t29-f{grid-column:1/-1;margin:0!important}
+@media(max-width:899px){.po{grid-template-columns:1fr}.po-l .t29-bt{flex-direction:column;align-items:stretch}}
+@media(max-width:599px){.po-ch b{font-size:11px}.po-ch i{width:16px}}
+
+/* ============ ЦЕНИ P: сметката, показана като пример ============ */
+.pp{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pp-c{display:flex;flex-direction:column;padding:clamp(22px,3vw,34px);border-radius:24px;background:#141218;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09)}
+.pp-c--t{background:linear-gradient(#17141c,#17141c) padding-box,var(--g29) border-box;border:1px solid transparent;box-shadow:none}
+.pp-c h3{margin:14px 0 0;font:800 22px/1.2 Manrope,sans-serif;letter-spacing:-.02em}
+.pp-c>p{margin:6px 0 0;font:500 15px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.65)}
+.pp-eq{display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px;margin-top:auto;padding-top:26px;font:800 clamp(22px,2.6vw,30px)/1 Manrope,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.pp-eq .op{color:rgba(255,255,255,.4);font-weight:600}
+.pp-eq .ava{height:34px}
+.pp-eq .ava i{width:30px;height:30px}
+.pp-eq .ava i svg{width:15px;height:15px}
+.pp-eq .ava i+i{margin-left:-9px}
+.pp-eq .res{padding:8px 14px;border-radius:12px;background:#fff;color:#0E0E0E}
+.pp-u{margin:10px 0 0!important;font:600 13px/1.4 Manrope,sans-serif!important;color:rgba(255,255,255,.55)!important}
+.pp-n{display:inline-flex;gap:4px;margin-top:16px;padding:4px;border-radius:999px;background:rgba(255,255,255,.06);align-self:flex-start}
+.pp-n button{appearance:none;border:0;width:36px;height:36px;border-radius:50%;background:none;color:rgba(255,255,255,.7);font:800 14px/1 Manrope,sans-serif;cursor:pointer}
+.pp-n button.on{background:#fff;color:#0E0E0E}
+.pp-b{grid-column:1/-1}
+@media(max-width:767px){.pp{grid-template-columns:1fr}}
+
+/* ============ МОДУЛИ K: тесте карти - плъзгаш горната настрани ============ */
+.mk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center}
+.mk-st{position:relative;height:clamp(420px,42vw,540px);touch-action:pan-y}
+.mk-c{position:absolute;inset:0;border-radius:26px;overflow:hidden;color:#fff;text-decoration:none;box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.08);
+  transform:translate(calc(var(--k) * 26px),calc(var(--k) * -18px)) rotate(calc(var(--k) * 3deg)) scale(calc(1 - var(--k) * .05));transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s;z-index:calc(10 - var(--k));cursor:grab;user-select:none;-webkit-user-select:none}
+.mk-c.drag{transition:none;cursor:grabbing}
+.mk-c.gone{opacity:0;pointer-events:none}
+.mk-c>img:first-child,.mk-c>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.mk-c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,9,13,.92))}
+.mk-c .in{position:absolute;left:28px;right:28px;bottom:26px;z-index:1}
+.mk-c .in img{display:block;height:28px;width:auto;margin-bottom:12px}
+.mk-c .in b{display:block;font:800 clamp(24px,2.6vw,34px)/1.1 Manrope,sans-serif;letter-spacing:-.02em}
+.mk-c .in span{display:block;margin-top:8px;font:500 15px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.75)}
+.mk-t h3{margin:0;font:800 clamp(24px,2.6vw,32px)/1.2 Manrope,sans-serif;letter-spacing:-.02em}
+.mk-t p{margin:12px 0 0;max-width:38ch;font:500 16px/1.55 Manrope,sans-serif;color:rgba(255,255,255,.65)}
+.mk-nav{display:flex;gap:10px;margin-top:24px}
+.mk-nav button{appearance:none;border:0;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .25s}
+.mk-nav button:hover{background:rgba(255,255,255,.16)}
+.mk-nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-go{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font:800 15px/1 Manrope,sans-serif;text-decoration:none;color:#fff}
+.mk-go svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ct{margin-top:22px;font:700 13px/1 Manrope,sans-serif;color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums}
+@media(max-width:899px){.mk{grid-template-columns:1fr}.mk-st{height:440px;margin-right:24px}}
+
+/* ============ КРАЙ K: тъмен банер като цени H + модулите под него ============ */
+.ek .ph{max-width:none}
+.ek .ec-m{margin-top:14px}
+
+/* ============ КРАЙ L: като цени G (какво получаваш + плановете), модулите са в лявата колона ============ */
+.el .pg{max-width:none}
+.el .pg-l .el-m{display:grid;gap:8px;margin-top:18px}
+.el .el-m a{display:flex;align-items:center;gap:12px;padding:8px 12px 8px 8px;border-radius:12px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);color:#fff;text-decoration:none;transition:background .25s}
+.el .el-m a:hover{background:rgba(255,255,255,.09)}
+.el .el-m a>img:first-child{width:64px;height:40px;border-radius:7px;object-fit:cover;flex:none}
+.el .el-m .tx{flex:1;min-width:0}
+.el .el-m .tx img{display:block;height:18px;width:auto}
+.el .el-m .tx b{display:block;margin-top:4px;font:700 13px/1.2 Manrope,sans-serif}
+.el .el-m svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.pp-eq{font-size:clamp(20px,2.1vw,26px);gap:8px 10px}
+.pp-eq .ava i{width:26px;height:26px}.pp-eq .ava i+i{margin-left:-11px}.pp-eq .ava i svg{width:13px;height:13px}
+@media(max-width:899px){.mk-c{transform:translate(calc(var(--k) * 8px),calc(var(--k) * -12px)) rotate(calc(var(--k) * 2deg)) scale(calc(1 - var(--k) * .04))}.mk-st{margin-right:18px;margin-top:30px}}
+.po-l .ph-r{order:0!important}

@@ -21,7 +21,7 @@
 .pi-col{position:relative;appearance:none;border:0;background:none;padding:0;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;border-radius:12px 12px 0 0;transition:background .25s}
 .pi-col:hover,.pi-col:focus-visible{background:rgba(255,255,255,.035);outline:none}
 .pi-col.on{background:rgba(168,85,247,.08)}
-.pi-bar{width:24px;height:calc(var(--v) / 14 * 100%);border-radius:4px 4px 0 0;background:var(--c-tog);transform-origin:bottom;transition:height .9s cubic-bezier(.2,.8,.2,1),filter .25s}
+.pi-bar{width:24px;height:calc(var(--v) / 16 * 100%);border-radius:4px 4px 0 0;background:var(--c-tog);transform-origin:bottom;transition:height .9s cubic-bezier(.2,.8,.2,1),filter .25s}
 .pi-col[data-n="1"] .pi-bar{background:var(--c-solo)}
 .pi:not(.in) .pi-bar{height:0}
 .pi-col.on .pi-bar,.pi-col:hover .pi-bar{filter:brightness(1.25)}

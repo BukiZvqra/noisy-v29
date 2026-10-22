@@ -2,7 +2,7 @@
 (function(){
   var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var eur=function(x){return (Math.floor(x*100+1e-6)/100).toFixed(2).replace('.',',')+' €'};
-  var TOG=21.16,SOLO=12.66;
+  var TOG=24.90,SOLO=14.90;
 
   /* МОДУЛИ J: табло с прелистващи се букви, сменя реда на 6 сек. */
   [].forEach.call(document.querySelectorAll('[data-mj]'),function(b){
@@ -37,7 +37,7 @@
     function set(i){bs.forEach(function(b,k){b.classList.toggle('on',k===i)});var tog=i===1;
       D.textContent='Бележка · план '+(tog?'Together':'Solo');
       L.innerHTML=row('Theatre','✓')+row('Arena','✓')+row('Showtime','✓')+row('Newsroom','✓')+row('Профили',tog?'до 5':'1')+row('Реклами','0')+row('Premium Sports / Films','по желание',1);
-      T.textContent=eur(tog?TOG:SOLO);F.textContent=tog?'При 5 души: по 4,23 € на човек. При плащане за 12 месеца.':'Един профил, само твой. При плащане за 12 месеца.';
+      T.textContent=eur(tog?TOG:SOLO);F.textContent=tog?'При 5 души: по 4,98 € на човек. При месечно плащане.':'Един профил, само твой. При месечно плащане.';
       rc.classList.remove('pr');void rc.offsetWidth;if(!rm)rc.classList.add('pr')}
     bs.forEach(function(b,k){b.addEventListener('click',function(){set(k)})});set(1);
   });

@@ -29,7 +29,7 @@
   [].forEach.call(document.querySelectorAll('[data-pj]'),function(c){
     var bs=[].slice.call(c.querySelectorAll('.pf-n button')),seg=[].slice.call(c.querySelectorAll('.pj-row:not(.pj-solo) .pj-seg')),
         L=c.querySelector('[data-pj-l]'),R=c.querySelector('[data-pj-r]');
-    function set(n){var v=Math.floor(21.16/n*100+1e-6)/100;bs.forEach(function(b){b.classList.toggle('on',+b.dataset.n===n)});
+    function set(n){var v=Math.floor(24.90/n*100+1e-6)/100;bs.forEach(function(b){b.classList.toggle('on',+b.dataset.n===n)});
       seg.forEach(function(s,k){s.classList.toggle('off',k>=n);s.querySelector('b').textContent=eur(v)});
       L.textContent=n+' души, по '+eur(v);R.textContent=eur(v)+' на месец'}
     bs.forEach(function(b){b.addEventListener('click',function(){set(+b.dataset.n)})});

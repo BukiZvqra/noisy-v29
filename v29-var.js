@@ -14,7 +14,7 @@
   [].forEach.call(document.querySelectorAll('.vsec'),function(sec){
     sec.querySelector('.vtabs').addEventListener('click',function(e){var b=e.target.closest('button');if(b)pick(sec,b.dataset.v,true)});
   });
-  var m=location.hash.match(/^#(\w+)-([a-m])$/i);
+  var m=location.hash.match(/^#(\w+)-([a-p])$/i);
   if(m){var s=document.getElementById(m[1]);if(s){pick(s,m[2].toUpperCase());setTimeout(function(){s.scrollIntoView()},50)}}
 
   /* картите A (същото като v29.js) */
@@ -51,14 +51,14 @@
     bs.forEach(function(b,i){b.addEventListener('click',function(){bs.forEach(function(x,k){x.classList.toggle('on',k===i)});vs.forEach(function(v,k){v.classList.toggle('on',k===i)})})});
   });
 
-  /* цени F: „Колко души ще гледате?“ - 1 = Solo, 2-5 = Together, разделено на човек (21,16 € / n, отрязано до стотинки като в калкулатора) */
+  /* цени F: „Колко души ще гледате?“ - 1 = Solo, 2-5 = Together, разделено на човек (24,90 € / n, месечна цена, отрязана до стотинки като в калкулатора) */
   [].forEach.call(document.querySelectorAll('[data-pf]'),function(c){
     var bs=[].slice.call(c.querySelectorAll('.pf-n button')),av=[].slice.call(c.querySelectorAll('.ava i')),
         pl=c.querySelector('[data-plan]'),pr=c.querySelector('[data-pr]'),u=c.querySelector('[data-u]'),sub=c.querySelector('[data-sub]');
     var eur=function(x){return (Math.floor(x*100+1e-6)/100).toFixed(2).replace('.',',')+'\u00a0€'};
     function set(n){bs.forEach(function(b){b.classList.toggle('on',+b.dataset.n===n)});av.forEach(function(a,k){a.classList.toggle('off',k>=n)});
-      if(n===1){pl.textContent='Solo';pr.textContent=eur(12.66);u.textContent='/ месец';sub.textContent='Solo е един профил, само твой. Цената е при плащане за 12 месеца.'}
-      else{pl.textContent='Together';pr.textContent=eur(21.16/n);u.textContent='на човек / месец';sub.textContent='Together е 21,16\u00a0€ на месец за целия абонамент, при плащане за 12 месеца. Плаща един човек, сметката се разделя по ваше желание.'}}
+      if(n===1){pl.textContent='Solo';pr.textContent=eur(14.90);u.textContent='/ месец';sub.textContent='Solo е един профил, само твой. Цената е при месечно плащане.'}
+      else{pl.textContent='Together';pr.textContent=eur(24.90/n);u.textContent='на човек / месец';sub.textContent='Together е 24,90\u00a0€ на месец за целия абонамент, при месечно плащане. Плаща един човек, сметката се разделя по ваше желание.'}}
     bs.forEach(function(b){b.addEventListener('click',function(){set(+b.dataset.n)})});
   });
   /* модули D/E/F: видео при посочване (на телефон при влизане в екрана) */
