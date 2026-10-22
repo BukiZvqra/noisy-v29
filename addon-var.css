@@ -1,0 +1,72 @@
+/* Варианти на банера за добавката (dobavka-varianti.html) */
+.vv{padding:120px 0 40px}
+.vv-head{max-width:1280px;margin:0 auto;padding:0 2.5vw}
+.vv-head h1{margin:0 0 8px;font:700 clamp(28px,3vw,40px)/1.1 Unbounded,Manrope,sans-serif;color:#fff}
+.vv-head p{margin:0 0 20px;font:500 15px/1.5 Manrope,system-ui,sans-serif;color:#9d99a8}
+.vv-sw{display:inline-flex;gap:4px;padding:4px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.vv-sw button{height:38px;padding:0 16px;border:0;border-radius:9px;background:none;font:700 14px/1 Manrope,system-ui,sans-serif;color:#b9b6c2;cursor:pointer}
+.vv-sw button.on{background:#fff;color:#0b0a10}
+.vv-nav{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.vv-nav a{padding:8px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.14);font:600 13px/1 Manrope,system-ui,sans-serif;color:#e7e4ee;text-decoration:none}
+.vv-nav a:hover{background:rgba(255,255,255,.08)}
+.vv-v{scroll-margin-top:90px;padding-top:56px}
+.vv-lb{max-width:1280px;margin:0 auto;padding:0 2.5vw;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.vv-lb b{font:700 18px/1.2 Manrope,system-ui,sans-serif;color:#fff}
+.vv-lb span{font:500 14px/1.4 Manrope,system-ui,sans-serif;color:#9d99a8}
+.vv .k27{padding-top:20px}
+html[data-vm="th"] .vv .k27[data-m="ar"],html[data-vm="ar"] .vv .k27[data-m="th"]{display:none}
+html:not([data-vm]) .vv .k27[data-m="ar"]{display:none}
+
+/* B: логата горе на мястото на етикета */
+.vb-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.vb-top .ad-lgs--th img{height:38px}
+.vb-top .ad-lgs--ar img{width:46px;height:46px}
+.vb-sep{width:1px;height:22px;background:rgba(255,255,255,.18)}
+.vb-lb{font:700 12px/1 Manrope,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#9d99a8}
+
+/* C: лента с логата в долния край на картата */
+.v-c .k27-card{grid-template-rows:auto auto}
+.vc-strip{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;padding:18px clamp(28px,4.5cqw,60px);border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025)}
+.vc-strip>span{font:700 12px/1 Manrope,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#8f8b9b}
+.vc-strip .ad-lgs{gap:8px 34px;margin:0}
+.vc-strip .ad-lgs--th img{height:44px}
+.vc-strip .ad-lgs--ar{gap:14px}
+.vc-strip .ad-lgs--ar img{width:48px;height:48px}
+
+/* D: логата под кадрите вдясно */
+.v-d .k27-card{grid-template-rows:1fr auto}
+.v-d .k27-tx{grid-row:1/3}
+.v-d .vd-ps{grid-column:2;grid-row:1;min-height:240px}
+.vd-lg{grid-column:2;grid-row:2;display:flex;justify-content:center;padding:0 24px 32px}
+.vd-lg .ad-lgs{justify-content:center;padding:8px 18px;border-radius:99px;background:rgba(10,9,14,.55);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}
+.vd-lg .ad-lgs--th img{height:38px}
+.vd-lg .ad-lgs--ar{padding:6px 10px}
+.vd-lg .ad-lgs--ar img{width:42px;height:42px}
+
+/* E: стъклени плочки за логата + хапче Together до цената */
+.ve-chips{gap:8px}
+.ve-chips li{padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.ve-chips.ad-lgs--th img{height:36px}
+.ve-chips.ad-lgs--ar li{padding:0}
+.ve-chips.ad-lgs--ar img{width:42px;height:42px;box-shadow:none}
+.ve-pr{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.ve-pill{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:99px;background:linear-gradient(90deg,rgba(128,36,182,.35),rgba(178,38,27,.35));border:1px solid rgba(206,19,168,.45);font:700 13px/1 Manrope,system-ui,sans-serif;color:#fff;white-space:nowrap}
+.ve-pill svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:1.5;stroke-linecap:round}
+
+@media (max-width:900px){
+ .v-d .k27-card{grid-template-rows:auto}
+ .v-d .k27-tx,.v-d .vd-ps,.vd-lg{grid-column:1;grid-row:auto}
+ .v-d .vd-ps{min-height:200px}
+ .vd-lg{padding:0 16px 24px}
+}
+@media (max-width:734px){
+ .vv{padding-top:90px}
+ .vv-head,.vv-lb{padding:0 16px}
+ .vv-sw{display:flex}
+ .vv-sw button{flex:1;padding:0 8px;font-size:13px}
+ .vc-strip{padding:16px 20px}
+ .vc-strip .ad-lgs{gap:8px 20px}
+ .vc-strip .ad-lgs--th img{height:36px}
+ .vb-sep{display:none}
+ .vb-lb{flex-basis:100%}
+}
