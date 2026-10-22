@@ -50,3 +50,39 @@
  .ad-tl-c,.ad-tl-pl,.ad-tl-on{height:26px}
  .ad-tl-f{flex-direction:column;gap:8px}
 }
+
+/* Типография по v29: Unbounded 700 само за заглавието на секцията, цената е Manrope 800 */
+.k27--ad h2{font:700 clamp(28px,2.9cqw,38px)/1.08 Unbounded,Manrope,sans-serif!important;letter-spacing:-.015em!important}
+.k27--ad .k27-pr b{font:800 clamp(34px,3.4cqw,46px)/1 Manrope,system-ui,sans-serif;letter-spacing:-.03em}
+.k27--ad .k27-pr i{font:800 clamp(26px,2.4cqw,32px)/1 Manrope,system-ui,sans-serif;margin-right:-.35em;color:#d9b8ff}
+
+/* Arena: логата на лигите са кръгли значки, показват се цели (без изрязване) */
+.k27--ar .k27-ps .ad-lg{width:clamp(104px,9.4cqw,124px);aspect-ratio:1;border-radius:50%;background:#07070b}
+.k27--ar .k27-ps .ad-lg::after{display:none}
+.k27--ar .k27-ps .ad-lg img{object-fit:cover;transform:scale(1.06)}
+.k27--ar .k27-ps .ad-lg b{display:none}
+.k27--ar .k27-ps .p1.ad-lg{transform:translate(-178%,-96%) rotate(-6deg)}
+.k27--ar .k27-ps .p3.ad-lg{transform:translate(78%,-8%) rotate(6deg)}
+.k27--ar .k27-card:hover .p1.ad-lg{transform:translate(-186%,-100%) rotate(-9deg)}
+.k27--ar .k27-card:hover .p3.ad-lg{transform:translate(86%,-4%) rotate(9deg)}
+
+/* Месеците с добавката: лек отблясък веднъж, след като се включат */
+.ad-tl-on::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);transform:translateX(-120%)}
+.ad-tl.ad-in .ad-tl-on::after{transition:transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(1.5s + var(--d,0) * .18s);transform:translateX(120%)}
+@media (prefers-reduced-motion:reduce){.ad-tl-on::after{display:none}}
+@media (max-width:734px){
+ .k27--ar .k27-ps .ad-lg{width:84px}
+ .k27--ad .k27-ps{min-height:180px}
+}
+.k27--ad h2 em{white-space:nowrap}
+@media (max-width:734px){.k27--ad h2{font-size:clamp(24px,7.2vw,30px)!important}}
+/* Цената в клетката само когато има място за нея */
+.ad-tl{container-type:inline-size}
+@container (max-width:860px){.ad-tl-on{font-size:0}}
+@media (max-width:900px){
+ .k27--ar .k27-ps .ad-lg{width:96px}
+ .k27--ar .k27-ps .p1.ad-lg,.k27--ar .k27-card:hover .p1.ad-lg{transform:translate(-168%,-78%) rotate(-6deg)}
+ .k27--ar .k27-ps .p3.ad-lg,.k27--ar .k27-card:hover .p3.ad-lg{transform:translate(70%,-22%) rotate(6deg)}
+ .k27--ad .k27-ps{min-height:200px}
+}
+@media (max-width:734px){.k27--ar .k27-ps .ad-lg{width:80px}.k27--ad .k27-ps{min-height:180px}}
