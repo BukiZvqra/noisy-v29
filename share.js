@@ -35,7 +35,7 @@
   var tb=[].slice.call(c.querySelectorAll('.shv [data-t]'));
   function pick(v,save){c.setAttribute('data-v',v);tb.forEach(function(b){b.setAttribute('aria-selected',b.getAttribute('data-t')===v)});if(save)try{history.replaceState(null,'','#v'+v)}catch(e){}}
   tb.forEach(function(b){b.addEventListener('click',function(){pick(b.getAttribute('data-t'),1)})});
-  pick((/^#v([1-4])$/.exec(location.hash)||[0,'1'])[1]);
+  pick((/^#v([1-3])$/.exec(location.hash)||[0,'1'])[1]);
   if(rm||!('IntersectionObserver' in window)){finalState();return}
   new IntersectionObserver(function(e){e[0].isIntersecting?start():stop()},{threshold:.3}).observe(av);
   addEventListener('resize',function(){S.forEach(function(s,i){if(s.style.opacity==='1')s.style.transform='translateX('+x(i)+'px)'})});

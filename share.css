@@ -35,50 +35,61 @@
 .shv{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:860px;margin:56px auto 0;padding:10px;border:1px dashed rgba(255,255,255,.18);border-radius:12px}
 .shv button{min-height:44px;padding:0 14px;border-radius:980px;border:1px solid rgba(255,255,255,.14);background:transparent;color:rgba(245,245,247,.72);font:600 14px/1 var(--font-body);cursor:pointer}
 .shv button[aria-selected="true"]{background:#F5F5F7;color:#0E0E0E;border-color:#F5F5F7}
-.shs{display:none;max-width:860px;margin:24px auto 0;padding:40px;box-sizing:border-box;border-radius:20px;background:var(--a1-tile,#1B1920);border:1px solid var(--a1-line,rgba(255,255,255,.1));text-align:center}
-.shp[data-v="1"] .shs-v1,.shp[data-v="2"] .shs-v2,.shp[data-v="3"] .shs-v3,.shp[data-v="4"] .shs-v4{display:block}
-.shs-lead{margin:0;font:600 24px/1.25 var(--font-head);letter-spacing:-.01em}
-.shs-d{max-width:52ch;margin:12px auto 0;font:500 16px/1.5 var(--font-body);color:var(--a1-copy,rgba(245,245,247,.72))}
-.shs-n{display:block;font:700 18px/1.3 var(--font-body)}
-.shs-n i{font-style:normal;font-weight:600;color:rgba(245,245,247,.5);margin-left:6px}
-.shs-p{display:block;margin-top:6px;font:700 32px/1.1 var(--font-body);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.shs-p small{font-size:16px;font-weight:600;color:var(--a1-copy,rgba(245,245,247,.72));margin-left:2px}
-.shs-x{display:block;min-height:20px;margin-top:6px;font:500 15px/20px var(--font-body);color:var(--a1-link,#C78BFF)}
-.shs-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:280px;margin-top:18px;text-decoration:none}
-.shs-bv{display:inline-block;padding:6px 12px;border-radius:980px;background:var(--g29);color:#fff;font:800 12px/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-/* 1: една карта, два избора един до друг */
-.shs-opts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
-.shs-o{position:relative;padding:28px 20px 24px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--a1-line,rgba(255,255,255,.1))}
-.shs-o.is-t{background:linear-gradient(#211E27,#211E27) padding-box,var(--g29) border-box;border-color:transparent}
-.shs-o .shs-bv{position:absolute;top:-12px;left:50%;translate:-50% 0}
-/* 2: една карта, два реда един под друг */
-.shs-rows{margin-top:28px;border-top:1px solid var(--a1-line,rgba(255,255,255,.1))}
-.shs-r{display:grid;grid-template-columns:1fr auto 240px;align-items:center;gap:20px;padding:20px 4px;border-bottom:1px solid var(--a1-line,rgba(255,255,255,.1));text-align:left}
-.shs-r .shs-p{margin:0;font-size:28px;text-align:right}
-.shs-r .shs-p em{display:block;margin-top:4px;font:500 14px/1.2 var(--font-body);font-style:normal;color:var(--a1-link,#C78BFF)}
-.shs-r .shs-btn{margin:0;max-width:none}
-.shs-r .shs-bv{margin-left:10px;vertical-align:2px}
-/* 3: скала по хора */
-.shs-scale{display:grid;grid-template-columns:1fr 2.2fr;gap:16px;margin-top:28px}
-.shs-g1,.shs-g2{position:relative;display:flex;flex-direction:column;align-items:center;padding:24px 16px}
-.shs-g2 .shs-bv{position:absolute;top:-6px;left:50%;translate:-50% 0}
-.shs-faces{display:flex;justify-content:center;gap:10px;margin-top:8px}
-.shs-faces img{width:48px;height:48px;border-radius:50%;display:block}
-.shs-br{display:block;align-self:stretch;height:10px;margin:14px 8px 14px;border:2px solid rgba(255,255,255,.22);border-top:0;border-radius:0 0 8px 8px}
-.shs-g2 .shs-br{border-color:#CE13A8}
-.shs-v3 .shs-d{margin-top:24px}
-/* 4: едно изречение */
-.shs-big{margin:0;font:600 clamp(26px,3.4vw,40px)/1.2 var(--font-head);letter-spacing:-.02em;text-wrap:balance}
-.shs-big .g{background:var(--g29);-webkit-background-clip:text;background-clip:text;color:transparent}
-.shs-btns{display:flex;justify-content:center;gap:12px;margin-top:26px}
-.shs-btns .shs-btn{margin:0;max-width:260px}
-.shs-cap{margin:14px 0 0;font:500 14px/1.4 var(--font-body);color:rgba(245,245,247,.5)}
+/* Статичната част по вариант H от varianti.html#ceni-h (тъмен банер, цената е героят, Together с градиентна рамка).
+   Мерки от H: банер max 1100, padding clamp(32,5vw,64), колони 1.1fr/1fr gap 32, плочка padding 22/24, цена 36/800.
+   Радиуси в мерената скала на NOISY (20 и 14). Светлина: три радиални слоя, както при стрийминг сайтовете (composition.md). */
+.shh{display:none;position:relative;isolation:isolate;max-width:1100px;margin:24px auto 0;padding:clamp(28px,5vw,64px);box-sizing:border-box;border-radius:20px;overflow:hidden;
+  background:#0F0D13;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);text-align:left}
+.shh::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(55% 75% at 84% 46%,rgba(182,29,255,.34),rgba(140,35,141,.16) 45%,transparent 72%),
+             radial-gradient(42% 55% at 102% 104%,rgba(255,0,0,.22),rgba(206,19,168,.08) 55%,transparent 75%),
+             radial-gradient(40% 50% at 0% 0%,rgba(199,139,255,.08),transparent 70%)}
+.shh-sym{position:absolute;right:-6%;top:50%;height:130%;width:auto;translate:0 -50%;opacity:.1;z-index:-1;pointer-events:none}
+.shp[data-v="1"] .shh-v1,.shp[data-v="2"] .shh-v2,.shp[data-v="3"] .shh-v3{display:grid}
+.shh-v1,.shh-v2{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center}
+.shh-v2{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+.shh-v3{grid-template-columns:1fr;gap:32px;text-align:center}
+.shh-h{margin:0!important;font-size:clamp(28px,3.2vw,40px)!important;line-height:1.12!important;letter-spacing:-.02em;text-wrap:balance}
+.shh-p{margin:14px 0 0;max-width:42ch;font:500 17px/1.55 var(--font-body);color:rgba(255,255,255,.7)}
+.shh-v3 .shh-p{margin-left:auto;margin-right:auto}
+.shh-bt{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.shh-v3 .shh-bt{justify-content:center}
+.shh-bt .btn{min-height:52px;padding:0 28px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:16px}
+.shh-v3 .shh-l1{display:contents}.shh-v3 .shh-h{order:1}.shh-v3 .shh-p{order:2;margin-top:-18px}.shh-v3 .shh-r{order:3}.shh-v3 .shh-bt{order:4;margin-top:0}.shh-v3 .shh-f{order:5;margin-top:-16px}
+.shh-r{display:grid;gap:12px}
+.shh-r--row{grid-template-columns:1fr 1fr}
+.shh-v3 .shh-r--row{max-width:720px;width:100%;margin:0 auto}
+.shh-t{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 44px 22px 24px;border-radius:14px;color:#fff;text-decoration:none;
+  background:rgba(255,255,255,.05);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),background-color .25s}
+.shh-t.hi{background:linear-gradient(rgba(30,24,36,.86),rgba(30,24,36,.86)) padding-box,var(--g29) border-box;border:1px solid transparent;box-shadow:none}
+@media(hover:hover){.shh-t:hover{transform:translateY(-2px);background-color:rgba(255,255,255,.08)}.shh-t:hover .shh-go{transform:translateX(3px)}}
+.shh-t:focus-visible,.shh-bt .btn:focus-visible{outline:2px solid #C78BFF;outline-offset:3px}
+.shh-go{position:absolute;right:16px;top:50%;width:16px;height:16px;margin-top:-8px;fill:none;stroke:rgba(255,255,255,.55);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.shh-l{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:980px;background:#fff;color:#0E0E0E;font:800 12px/1 var(--font-body);letter-spacing:.06em;text-transform:uppercase}
+.shh-t.hi .shh-l{background:linear-gradient(#fff,#fff) padding-box,var(--g29) border-box;border:1.5px solid transparent}
+.shh-t h4{margin:10px 0 0;font:800 18px/1.2 var(--font-body)}
+.shh-pr{text-align:right;white-space:nowrap}
+.shh-pr b{display:block;font:800 36px/1 var(--font-body);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.shh-pr span{display:block;margin-top:6px;font:600 15px/1.2 var(--font-body);color:rgba(255,255,255,.6)}
+.shh-t.hi .shh-pr span{color:#E4B8FF}
+.shh-bv{position:absolute;top:-11px;right:18px;padding:5px 10px;border-radius:980px;background:var(--g29);color:#fff;font:800 11px/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase}
+/* една до друга: плочката става вертикална */
+.shh-r--row .shh-t{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:18px;padding:24px 22px 22px}
+.shh-r--row .shh-pr{text-align:left}
+.shh-r--row .shh-go{top:auto;bottom:24px;margin:0}
+.shh-v3 .shh-r--row .shh-t{align-items:center;text-align:center}.shh-v3 .shh-r--row .shh-pr{text-align:center}.shh-v3 .shh-r--row .shh-bv{right:50%;translate:50% 0}
+.shh-f{grid-column:1/-1;margin:0;font:500 15px/1.45 var(--font-body);color:rgba(255,255,255,.5)}
+@media(max-width:899px){.shh-v1,.shh-v2{grid-template-columns:1fr}}
+@media(max-width:599px){
+  .shh{display:none;gap:20px;padding:24px 18px}
+  .shp[data-v="1"] .shh-v1,.shp[data-v="2"] .shh-v2,.shp[data-v="3"] .shh-v3{display:flex;flex-direction:column;align-items:stretch}
+  .shh-l1{display:contents}.shh-h{order:1}.shh-p{order:2;margin:0}.shh-r{order:3}.shh-bt{order:4;margin-top:4px;flex-direction:column}.shh-f{order:5}
+  .shh-bt .btn{width:100%}
+  .shh-t{padding:18px 40px 18px 18px}.shh-pr b{font-size:28px}
+  .shh-r--row{grid-template-columns:1fr 1fr;gap:10px}.shh-r--row .shh-t{padding:20px 14px 40px}.shh-r--row .shh-pr b{font-size:24px}.shh-r--row .shh-go{bottom:16px;right:14px}
+  .shh-r--row .shh-pr span{white-space:normal}}
 .shp-f{max-width:780px;margin:28px auto 0;text-align:center;font:500 15px/1.55 var(--font-body);color:rgba(245,245,247,.55)}
 .shp-f a{display:inline-flex;align-items:center;min-height:44px;color:var(--a1-link,#C78BFF)}
-.shs-btn:focus-visible,.shp-f a:focus-visible,.shv button:focus-visible{outline:2px solid #C78BFF;outline-offset:3px}
-@media(max-width:734px){.shs-o:not(.is-t) .shs-x{display:none}.shp{padding:96px 16px 44px}.shs{padding:28px 18px}.shs-lead{font-size:20px}
-  .shs-opts{grid-template-columns:1fr;gap:22px}
-  .shs-r{grid-template-columns:1fr auto;gap:12px}.shs-r .shs-btn{grid-column:1/-1}
-  .shs-scale{grid-template-columns:1fr 2.4fr;gap:6px}.shs-g1,.shs-g2{padding:20px 4px}.shs-faces{gap:4px}.shs-faces img{width:34px;height:34px}
-  .shs-v3 .shs-p{font-size:22px}.shs-v3 .shs-n{font-size:15px}.shs-v3 .shs-n i{display:block;margin:2px 0 0}.shs-v3 .shs-btn{font-size:14px!important;padding:0 8px}
-  .shs-btns{flex-direction:column;align-items:center}.shs-btns .shs-btn{max-width:320px}}
+.shv button:focus-visible{outline:2px solid #C78BFF;outline-offset:3px}
+@media(max-width:734px){.shp{padding:96px 16px 44px}}
