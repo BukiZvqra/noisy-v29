@@ -26,7 +26,7 @@
     /* ширината на думата се анимира, затова фразата остава в средата, а „Сподели“ се плъзга меко */
     ph.style.width=w.getBoundingClientRect().width+'px';
     requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.add('in')})})}
-  function per(k){count(PP[k]);pt.classList.add('fd');T.push(setTimeout(function(){pt.textContent='24,90 € за '+k+' души';pt.classList.remove('fd')},450))}
+  function per(k){if(c.getAttribute('data-p')==='s')return;count(PP[k]);pt.classList.add('fd');T.push(setTimeout(function(){pt.textContent='24,90 € за '+k+' души';pt.classList.remove('fd')},450))}
   function at(ms,fn){T.push(setTimeout(fn,ms))}
   function step(k){word(W[k]);per(k)}
   function cycle(first){
@@ -46,10 +46,28 @@
     bd.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-d')===c.getAttribute('data-d'))});
     bs.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-s')===c.getAttribute('data-s'))});
     S.forEach(function(s,i){if(s.style.opacity==='1'){s.style.transition='none';s.style.transform='translateX('+x(i)+'px)';void s.offsetWidth;s.style.transition=''}});
-    if(save)try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s'))}catch(e){}}
+    if(save)try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s')+(c.getAttribute('data-p')==='m'?'m':''))}catch(e){}}
   bd.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-d'),null,1)})});
+  var bp=[].slice.call(c.querySelectorAll('.shv [data-p]'));
+  function setP(v){c.setAttribute('data-p',v);bp.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-p')===v)});
+    if(v==='s'){cancelAnimationFrame(raf);pp.style.filter='';pp.textContent=eur(4.98);cur=4.98;pt.textContent='24,90 € на месец за до 5 души'}}
+  bp.forEach(function(b){b.addEventListener('click',function(){setP(b.getAttribute('data-p'))})});
   bs.forEach(function(b){b.addEventListener('click',function(){set(null,b.getAttribute('data-s'),1)})});
-  var m=/^#([abc])([1-6])$/.exec(location.hash);set(m?m[1]:'a',m?m[2]:'1');
+  /* добавките: балонче с добавяне (сумите в сепаратора се отброяват плавно) или само информация */
+  var ba=[].slice.call(c.querySelectorAll('.shv [data-a]')),adds=[].slice.call(c.querySelectorAll('.sha-1 .sha-c')),
+      tots=[].slice.call(c.querySelectorAll('[data-tot]')),p5=c.querySelector('[data-pp5]');
+  function tween(el,from,to,d){var t0=performance.now();(function f(t){var q=Math.min(1,(t-t0)/d),e=q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2;
+    el.textContent=eur(from+(to-from)*e);if(q<1)requestAnimationFrame(f)})(t0)}
+  function addSum(){return adds.reduce(function(a,b){return a+(b.getAttribute('aria-pressed')==='true'?parseFloat(b.getAttribute('data-add')):0)},0)}
+  function totals(){var s=c.getAttribute('data-a')==='1'?addSum():0;
+    tots.forEach(function(el){var base=parseFloat(el.getAttribute('data-tot')),from=parseFloat(el.getAttribute('data-cur')||base),to=Math.round((base+s)*100)/100;
+      el.setAttribute('data-cur',to);if(Math.abs(from-to)>.001)tween(el,from,to,900)});
+    var f5=parseFloat(p5.getAttribute('data-cur')||4.98),t5=Math.round((24.90+s)/5*100)/100;p5.setAttribute('data-cur',t5);if(Math.abs(f5-t5)>.001)tween(p5,f5,t5,900)}
+  adds.forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');totals()})});
+  function setA(v){c.setAttribute('data-a',v);ba.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-a')===v)});totals()}
+  ba.forEach(function(b){b.addEventListener('click',function(){setA(b.getAttribute('data-a'))})});
+  setA(c.getAttribute('data-a')||'1');
+  var m=/^#([abcd])([1-6])(m?)$/.exec(location.hash);set(m?m[1]:'a',m?m[2]:'1');setP(m&&m[3]?'m':'s');
   if(rm||!('IntersectionObserver' in window)){finalState();return}
   new IntersectionObserver(function(e){e[0].isIntersecting?start():stop()},{threshold:.3}).observe(av);
   addEventListener('resize',function(){S.forEach(function(s,i){if(s.style.opacity==='1')s.style.transform='translateX('+x(i)+'px)'})});
