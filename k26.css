@@ -329,3 +329,5 @@ h2.k26w .w{padding:0!important}
 .th-lg:has(.lg-a),.ar-lg:has(.lg-a){transition:transform .25s cubic-bezier(.4,0,.6,1),filter .25s}
 @media(hover:hover){.th-lg:has(.lg-a):hover,.ar-lg:has(.lg-a):hover{transform:translateY(-3px);filter:brightness(1.15)}}
 .lg-a:focus-visible>*:first-child{outline:2px solid #fff;outline-offset:3px;border-radius:50%}
+/* 22.10 (Коста): нови лога в Theatre (Под прикритие, Мамник, Supernatural, The Big Bang Theory, Criminal Minds); широките са по-големи в кръга */
+.th-lg.th-lg-w img{width:92%;height:92%}
