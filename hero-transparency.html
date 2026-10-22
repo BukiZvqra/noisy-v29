@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="icon" href="data:,">
+  <title>NOISY v29 · Прозрачност на хирото</title>
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;overflow-x:clip;background:#0a090d;color:#f7f5fa;font-family:Manrope,system-ui,sans-serif}
+    body{display:flex;flex-direction:column;height:100vh;height:100dvh}
+    .controls{position:sticky;top:0;z-index:1;flex:none;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.15);background:#141218}
+    .row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;max-width:1440px;margin:auto}
+    h1{margin:0;font-size:16px;line-height:1.5;font-weight:700}
+    .choices{display:flex;gap:4px}
+    button{appearance:none;min-height:44px;padding:0 16px;border:1px solid rgba(255,255,255,.2);border-radius:8px;background:transparent;color:inherit;font:700 16px/1 system-ui,sans-serif;cursor:pointer}
+    .choices button{border:0;border-bottom:2px solid transparent;border-radius:0;color:#aaa7af}
+    .choices button[aria-pressed="true"]{color:#fff;border-bottom-color:#fff}
+    button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+    .pause{font-size:14px;font-weight:500}
+    .note{max-width:1440px;margin:8px auto 0;color:#c4c1c8;font-size:12px;line-height:1.5}
+    iframe{display:block;flex:1;min-height:0;width:100%;border:0;background:#0a090d}
+    @media(max-width:734px){.controls{padding:8px 12px}.row{gap:8px}.choices{order:3;width:100%;justify-content:space-between}.choices button{flex:1;padding:0 8px}h1{font-size:14px}.pause{padding:0 12px;font-size:12px}.note{font-size:12px}}
+  </style>
+</head>
+<body>
+  <header class="controls">
+    <div class="row">
+      <h1>NOISY v29 · Хиро</h1>
+      <div class="choices" role="group" aria-label="Прозрачност на фона около N">
+        <button type="button" data-transparency="0" aria-pressed="false">0%</button>
+        <button type="button" data-transparency="25" aria-pressed="true">25%</button>
+        <button type="button" data-transparency="50" aria-pressed="false">50%</button>
+        <button type="button" data-transparency="75" aria-pressed="false">75%</button>
+        <button type="button" data-transparency="100" aria-pressed="false">100%</button>
+      </div>
+      <button class="pause" type="button" aria-pressed="false" disabled>Пауза на видеото</button>
+    </div>
+    <p class="note" aria-live="polite">Прозрачност на фона около N: 25%. 0% = плътен фон; 100% = видимо видео навсякъде.</p>
+  </header>
+  <iframe title="Оригиналното хиро от NOISY версия 29" src="index.html?fon=0.25" allow="autoplay; fullscreen"></iframe>
+  <script>
+    (function(){
+      'use strict';
+      var frame=document.querySelector('iframe'),buttons=Array.from(document.querySelectorAll('[data-transparency]')),pause=document.querySelector('.pause'),note=document.querySelector('.note');
+      var values=[0,25,50,75,100],current=25,paused=false,ready=false;
+      function fromHash(){var n=Number(location.hash.slice(1));return location.hash&&values.includes(n)?n:25}
+      function apply(){
+        buttons.forEach(function(b){b.setAttribute('aria-pressed',String(Number(b.dataset.transparency)===current))});
+        note.textContent='Прозрачност на фона около N: '+current+'%. 0% = плътен фон; 100% = видимо видео навсякъде.';
+        if(!ready)return;
+        var root=frame.contentDocument.documentElement;
+        root.classList.remove('fon0');root.style.setProperty('--fon29',String(current/100));
+      }
+      function set(n){current=n;history.replaceState(null,'','#'+n);apply()}
+      buttons.forEach(function(b){b.addEventListener('click',function(){set(Number(b.dataset.transparency))})});
+      frame.addEventListener('load',function(){ready=true;pause.disabled=false;frame.contentDocument.addEventListener('play',function(e){if(paused&&e.target.tagName==='VIDEO')e.target.pause()},true);apply()});
+      pause.addEventListener('click',function(){
+        paused=!paused;pause.setAttribute('aria-pressed',String(paused));pause.textContent=paused?'Пусни видеото':'Пауза на видеото';
+        if(ready)frame.contentDocument.querySelectorAll('video').forEach(function(v){if(paused){v.dataset.reviewPlaying=String(!v.paused);v.pause()}else if(v.dataset.reviewPlaying==='true'){var p=v.play();if(p)p.catch(function(){})}});
+      });
+      addEventListener('hashchange',function(){current=fromHash();apply()});
+      current=fromHash();apply();
+    })();
+  </script>
+</body>
+</html>
