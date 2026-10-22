@@ -14,7 +14,7 @@
   [].forEach.call(document.querySelectorAll('.vsec'),function(sec){
     sec.querySelector('.vtabs').addEventListener('click',function(e){var b=e.target.closest('button');if(b)pick(sec,b.dataset.v,true)});
   });
-  var m=location.hash.match(/^#(\w+)-([a-h])$/i);
+  var m=location.hash.match(/^#(\w+)-([a-j])$/i);
   if(m){var s=document.getElementById(m[1]);if(s){pick(s,m[2].toUpperCase());setTimeout(function(){s.scrollIntoView()},50)}}
 
   /* картите A (същото като v29.js) */

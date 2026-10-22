@@ -1,0 +1,200 @@
+/* v29 варианти, трета партида (22.10.2026): цени I-J (графика, сметка), модули G-H (телевизор, история при скрол), край G-H (следващ епизод, билети) */
+:root{--c-solo:#F0567A;--c-tog:#A855F7}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ============ ЦЕНИ I: графика - колко плаща всеки според броя хора ============ */
+.pi{max-width:920px;margin:0 auto;padding:clamp(22px,3.6vw,44px);border-radius:28px;background:#141218;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09)}
+.pi-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 32px;flex-wrap:wrap}
+.pi-top h3{margin:0;max-width:20ch;font:800 clamp(22px,2.4vw,28px)/1.2 Manrope,sans-serif;letter-spacing:-.02em}
+.pi-top p{margin:8px 0 0;font:500 15px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.62)}
+.pi-read{text-align:right;min-width:220px}
+.pi-read small{display:block;font:600 14px/1.3 Manrope,sans-serif;color:rgba(255,255,255,.62)}
+.pi-read b{display:block;margin-top:6px;font:800 clamp(40px,4.6vw,56px)/1 Manrope,sans-serif;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.pi-read em{display:inline-block;margin-top:10px;font:700 13px/1 Manrope,sans-serif;font-style:normal;color:#fff;padding:6px 10px;border-radius:999px;background:linear-gradient(#fff0,#fff0) padding-box,var(--g29) border-box;border:1px solid transparent}
+.pi-ch{position:relative;margin-top:28px;height:280px;border-bottom:1px solid rgba(255,255,255,.14)}
+.pi-grid{position:absolute;inset:0 0 0 44px;pointer-events:none}
+.pi-grid i{position:absolute;left:0;right:0;height:1px;background:rgba(255,255,255,.06)}
+.pi-grid span{position:absolute;left:-44px;width:36px;text-align:right;translate:0 -50%;font:600 12px/1 Manrope,sans-serif;color:rgba(255,255,255,.4);font-variant-numeric:tabular-nums}
+.pi-ref{position:absolute;left:44px;right:0;height:0;border-top:1px solid rgba(240,86,122,.55);pointer-events:none}
+.pi-ref span{position:absolute;right:0;bottom:6px;font:700 12px/1 Manrope,sans-serif;color:rgba(255,255,255,.72)}
+.pi-cols{position:absolute;inset:0 0 0 44px;display:grid;grid-template-columns:repeat(5,1fr)}
+.pi-col{position:relative;appearance:none;border:0;background:none;padding:0;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;border-radius:12px 12px 0 0;transition:background .25s}
+.pi-col:hover,.pi-col:focus-visible{background:rgba(255,255,255,.035);outline:none}
+.pi-col.on{background:rgba(168,85,247,.08)}
+.pi-bar{width:24px;height:calc(var(--v) / 14 * 100%);border-radius:4px 4px 0 0;background:var(--c-tog);transform-origin:bottom;transition:height .9s cubic-bezier(.2,.8,.2,1),filter .25s}
+.pi-col[data-n="1"] .pi-bar{background:var(--c-solo)}
+.pi:not(.in) .pi-bar{height:0}
+.pi-col.on .pi-bar,.pi-col:hover .pi-bar{filter:brightness(1.25)}
+.pi-val{margin-bottom:8px;font:800 15px/1 Manrope,sans-serif;color:#fff;white-space:nowrap;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s}
+.pi-col[data-n="1"] .pi-val,.pi-col[data-n="5"] .pi-val,.pi-col.on .pi-val,.pi-col:hover .pi-val{opacity:1}
+.pi-x{display:grid;grid-template-columns:repeat(5,1fr);margin:10px 0 0 44px;text-align:center}
+.pi-x span{font:700 14px/1.3 Manrope,sans-serif;color:rgba(255,255,255,.8)}
+.pi-x small{display:block;font:500 12px/1.3 Manrope,sans-serif;color:rgba(255,255,255,.45)}
+.pi-leg{display:flex;gap:20px;margin-top:18px;font:600 13px/1 Manrope,sans-serif;color:rgba(255,255,255,.7)}
+.pi-leg span{display:inline-flex;align-items:center;gap:8px}
+.pi-leg i{width:12px;height:12px;border-radius:3px;background:var(--c-tog)}
+.pi-leg span:first-child i{background:var(--c-solo)}
+.pi-tip{position:absolute;z-index:3;pointer-events:none;min-width:170px;padding:10px 12px;border-radius:10px;background:#221f28;box-shadow:0 10px 30px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.1);opacity:0;transition:opacity .15s;translate:-50% -100%}
+.pi-tip.on{opacity:1}
+.pi-tip b{display:block;font:800 16px/1.2 Manrope,sans-serif}
+.pi-tip span{display:block;margin-top:3px;font:500 13px/1.35 Manrope,sans-serif;color:rgba(255,255,255,.68)}
+.pi .t29-f{margin-top:16px!important}
+.pi .t29-bt{margin-top:22px}
+@media(max-width:599px){
+  .pi-read{text-align:left;min-width:0}
+  .pi-ch{height:220px}
+  .pi-bar{width:20px}
+  .pi-val{font-size:12px}
+  .pi-x span{font-size:13px}.pi-x small{font-size:11px}
+  .pi .t29-bt{flex-direction:column;align-items:stretch}
+}
+
+/* ============ ЦЕНИ J: една сметка, разделена на всички ============ */
+.pj{max-width:920px;margin:0 auto;padding:clamp(22px,3.6vw,44px);border-radius:28px;background:radial-gradient(70% 80% at 100% 0%,rgba(168,85,247,.18),transparent 60%),#141218;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09)}
+.pj-h{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.pj-h h3{margin:0;font:800 clamp(22px,2.4vw,28px)/1.2 Manrope,sans-serif;letter-spacing:-.02em}
+.pj .pf-n{margin:0}
+.pj-row{margin-top:30px}
+.pj-row>p{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 10px;font:700 15px/1.3 Manrope,sans-serif}
+.pj-row>p span{color:rgba(255,255,255,.62);font-weight:600}
+.pj-bar{display:flex;gap:2px;height:64px}
+.pj-seg{position:relative;flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:4px;background:var(--c-tog);color:#0E0E0E;font:800 16px/1 Manrope,sans-serif;transition:flex .6s cubic-bezier(.2,.8,.2,1),opacity .4s;font-variant-numeric:tabular-nums}
+.pj-seg:first-child{border-radius:10px 4px 4px 10px}.pj-seg:last-child{border-radius:4px 10px 10px 4px}.pj-seg:only-child{border-radius:10px}
+.pj-seg svg{width:18px;height:18px;fill:#0E0E0E;opacity:.8;flex:none}
+.pj-seg.off{flex:0 0 0;opacity:0;overflow:hidden;margin-left:-2px}
+.pj-solo .pj-seg{background:var(--c-solo)}
+.pj-solo .pj-bar{width:calc(12.66 / 21.16 * 100%)}
+.pj-sum{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08)}
+.pj-sum p{margin:0;font:500 15px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.68)}
+.pj-sum p b{display:block;font:800 clamp(30px,3.4vw,40px)/1.1 Manrope,sans-serif;letter-spacing:-.03em;color:#fff}
+.pj-sum .t29-bt{margin:0}
+@media(max-width:599px){.pj-bar{height:52px}.pj-seg{font-size:13px;gap:4px}.pj-seg svg{display:none}.pj-sum .t29-bt{width:100%;flex-direction:column;align-items:stretch}}
+
+/* ============ МОДУЛИ G: телевизор - смяна на канала с шум ============ */
+.mg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.mg-ch{display:flex;flex-direction:column;gap:8px}
+.mg-ch button{display:flex;align-items:center;gap:14px;appearance:none;border:0;background:none;color:#fff;text-align:left;cursor:pointer;padding:14px 16px;border-radius:14px;transition:background .25s}
+.mg-ch button:hover{background:rgba(255,255,255,.04)}
+.mg-ch button.on{background:rgba(255,255,255,.07)}
+.mg-ch kbd{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:10px;font:800 15px/1 Manrope,sans-serif;background:rgba(255,255,255,.07);color:rgba(255,255,255,.6)}
+.mg-ch button.on kbd{background:#fff;color:#0E0E0E}
+.mg-ch b{display:block;font:800 18px/1.2 Manrope,sans-serif}
+.mg-ch small{display:block;margin-top:3px;font:500 13px/1.35 Manrope,sans-serif;color:rgba(255,255,255,.55)}
+.mg-tv{position:relative}
+.mg-scr{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 0 0 10px #1b1a20,0 0 0 11px rgba(255,255,255,.12),0 40px 90px rgba(0,0,0,.6),0 0 120px rgba(168,85,247,.18)}
+.mg-scr video,.mg-scr>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mg-scr canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;mix-blend-mode:screen;pointer-events:none}
+.mg-scr.zap canvas{opacity:.85}
+.mg-scr.zap video{filter:saturate(0) contrast(1.6) brightness(1.4)}
+.mg-osd{position:absolute;left:22px;top:20px;display:flex;align-items:center;gap:12px;padding:10px 14px 10px 10px;border-radius:12px;background:rgba(10,9,13,.6);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:opacity .4s}
+.mg-osd kbd{font:800 22px/1 Manrope,sans-serif;font-variant-numeric:tabular-nums}
+.mg-osd img{height:24px;width:auto}
+.mg-cap{position:absolute;left:22px;right:22px;bottom:20px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.mg-cap p{margin:0;max-width:40ch;font:700 clamp(16px,1.6vw,20px)/1.35 Manrope,sans-serif;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.mg-cap a{flex:none;display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;background:#fff;color:#0E0E0E;font:800 14px/1 Manrope,sans-serif;text-decoration:none}
+.mg-cap a svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mg-stand{width:22%;height:14px;margin:12px auto 0;border-radius:0 0 12px 12px;background:linear-gradient(#26242c,#15141a)}
+@media(max-width:899px){.mg{grid-template-columns:1fr}.mg-tv{order:-1}.mg-ch{flex-direction:row;overflow-x:auto;scrollbar-width:none}.mg-ch button{flex:none}.mg-ch small{display:none}}
+@media(max-width:599px){.mg-scr{border-radius:12px;box-shadow:0 0 0 6px #1b1a20,0 0 0 7px rgba(255,255,255,.12),0 20px 50px rgba(0,0,0,.6)}.mg-cap{flex-direction:column;align-items:flex-start;left:14px;right:14px;bottom:12px}.mg-cap p{font-size:14px}.mg-osd{left:12px;top:12px}}
+
+/* ============ МОДУЛИ H: история при скрол - текстът стои, кадрите се сменят ============ */
+.mh{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,72px)}
+.mh-st{position:sticky;top:120px;align-self:start;height:calc(100vh - 180px);display:flex;flex-direction:column;justify-content:center}
+.mh-t{display:grid}
+.mh-t>div{grid-area:1/1;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .6s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.mh-t>div.on{opacity:1;transform:none;pointer-events:auto}
+.mh-t img{display:block;height:30px;width:auto;margin-bottom:16px}
+.mh-t b{display:block;font:800 clamp(30px,3.4vw,46px)/1.1 Manrope,sans-serif;letter-spacing:-.03em}
+.mh-t p{margin:14px 0 0;max-width:36ch;font:500 17px/1.55 Manrope,sans-serif;color:rgba(255,255,255,.7)}
+.mh-t a{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font:800 15px/1 Manrope,sans-serif;text-decoration:none}
+.mh-t a svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mh-dots{display:flex;gap:6px;margin-top:32px}
+.mh-dots i{width:28px;height:3px;border-radius:3px;background:rgba(255,255,255,.18);transition:background .3s,width .3s}
+.mh-dots i.on{width:48px;background:#fff}
+.mh-m{display:flex;flex-direction:column;gap:clamp(40px,8vh,96px);padding:6vh 0}
+.mh-m figure{position:relative;margin:0;aspect-ratio:4/5;border-radius:24px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:opacity .5s,transform .6s;opacity:.35;transform:scale(.96)}
+.mh-m figure.on{opacity:1;transform:none}
+.mh-m figure>img,.mh-m video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mh-m video{opacity:0;transition:opacity .5s}.mh-m figure.pl video{opacity:1}
+.mh-m figcaption{display:none}
+@media(max-width:899px){
+  .mh{grid-template-columns:1fr}.mh-st{display:none}
+  .mh-m{padding:0;gap:16px}.mh-m figure{opacity:1;transform:none;aspect-ratio:4/5}
+  .mh-m figcaption{display:block;position:absolute;left:18px;right:18px;bottom:18px;z-index:2}
+  .mh-m figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(10,9,13,.92))}
+  .mh-m figcaption img{display:block;height:24px;width:auto;margin-bottom:10px}
+  .mh-m figcaption b{display:block;font:800 22px/1.15 Manrope,sans-serif}
+  .mh-m figcaption span{display:block;margin-top:6px;font:500 14px/1.45 Manrope,sans-serif;color:rgba(255,255,255,.72)}
+}
+
+/* ============ КРАЙ G: „Следва“ като в края на епизод ============ */
+.eg{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px}
+.eg-next{position:relative;isolation:isolate;min-height:440px;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(22px,3vw,36px);color:#fff;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.eg-next>img:not(.m29-bd),.eg-next>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:opacity .6s}
+.eg-next>video{opacity:0}.eg-next.pl>video{opacity:1}
+.eg-next::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,13,.3),rgba(10,9,13,.1) 35%,rgba(10,9,13,.92))}
+.eg-k{display:flex;align-items:center;gap:12px;font:700 14px/1 Manrope,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.eg-ring{position:relative;width:46px;height:46px;flex:none}
+.eg-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.eg-ring circle{fill:none;stroke-width:3}
+.eg-ring .bg{stroke:rgba(255,255,255,.2)}
+.eg-ring .fg{stroke:#fff;stroke-linecap:round;stroke-dasharray:126;stroke-dashoffset:126}
+.eg-next.run .eg-ring .fg{animation:egring var(--eg-t,8s) linear forwards}
+@keyframes egring{to{stroke-dashoffset:0}}
+.eg-ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 15px/1 Manrope,sans-serif;font-variant-numeric:tabular-nums}
+.eg-next .m29-bd{height:30px;width:auto;margin:18px 0 12px}
+.eg-next h3{margin:0;font:800 clamp(26px,3vw,40px)/1.1 Manrope,sans-serif;letter-spacing:-.03em}
+.eg-next p{margin:10px 0 0;max-width:44ch;font:500 16px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.75)}
+.eg-act{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.eg-act a{text-decoration:none;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:8px;background:#fff;color:#0E0E0E;font:800 15px/1 Manrope,sans-serif}
+.eg-act a svg{width:14px;height:14px;fill:#0E0E0E}
+.eg-act button{appearance:none;border:0;min-height:46px;padding:0 18px;border-radius:8px;background:rgba(255,255,255,.14);color:#fff;font:700 15px/1 Manrope,sans-serif;cursor:pointer}
+.eg-side{display:flex;flex-direction:column;gap:16px}
+.eg-q{display:flex;flex-direction:column;gap:10px}
+.eg-q p{margin:0 0 2px;font:700 13px/1 Manrope,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.eg-q button{display:flex;align-items:center;gap:14px;appearance:none;border:0;padding:8px;border-radius:14px;background:#141218;color:#fff;text-align:left;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);transition:background .25s}
+.eg-q button:hover{background:#1c1a21}
+.eg-q button.on{box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.eg-q button>img{width:96px;height:60px;border-radius:9px;object-fit:cover;flex:none}
+.eg-q button span img{display:block;height:20px;width:auto;margin-bottom:6px}
+.eg-q button b{font:800 15px/1.2 Manrope,sans-serif}
+.eg-plan{flex:1;display:flex;flex-direction:column;justify-content:center;padding:22px;border-radius:20px;background:linear-gradient(#141218,#141218) padding-box,var(--g29) border-box;border:1px solid transparent}
+.eg-plan h4{margin:0;font:800 20px/1.25 Manrope,sans-serif}
+.eg-plan p{margin:8px 0 0;font:500 14px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.65)}
+.eg-plan p b{color:#fff}
+.eg-plan .t29-bt{justify-content:flex-start;margin-top:16px}
+.eg-plan .btn{min-height:46px!important;padding:0 18px!important;font-size:15px!important}
+@media(max-width:899px){.eg{grid-template-columns:1fr}.eg-next{min-height:420px}}
+@media(max-width:599px){.eg-plan .t29-bt{flex-direction:column;align-items:stretch}}
+
+/* ============ КРАЙ H: планът като кино билети ============ */
+.ehx{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:980px;margin:0 auto}
+.tk{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 128px;border-radius:20px;color:#0E0E0E;background:#F4F1F7;
+  -webkit-mask:radial-gradient(circle 14px at calc(100% - 128px) 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at calc(100% - 128px) 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+  mask:radial-gradient(circle 14px at calc(100% - 128px) 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at calc(100% - 128px) 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.tk:hover{transform:translateY(-4px) rotate(-.4deg)}
+.tk--t{background:linear-gradient(135deg,#F7E9FF,#FFE3EE)}
+.tk-m{padding:26px 24px;border-right:2px dashed rgba(14,14,14,.18)}
+.tk-m small{display:block;font:800 11px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(14,14,14,.5)}
+.tk-m h3{margin:10px 0 0;font:800 28px/1.05 Manrope,sans-serif;letter-spacing:-.03em}
+.tk-m p{margin:8px 0 0;font:500 14px/1.45 Manrope,sans-serif;color:rgba(14,14,14,.7)}
+.tk-row{display:flex;gap:18px;margin-top:18px;font:700 12px/1.3 Manrope,sans-serif;color:rgba(14,14,14,.55);text-transform:uppercase;letter-spacing:.06em}
+.tk-row b{display:block;margin-top:4px;font:800 15px/1 Manrope,sans-serif;color:#0E0E0E;text-transform:none;letter-spacing:0}
+.tk-s{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:18px 10px;text-align:center}
+.tk-s small{font:700 12px/1 Manrope,sans-serif;color:rgba(14,14,14,.55)}
+.tk-s b{font:800 28px/1 Manrope,sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.tk-s span{font:600 11px/1.3 Manrope,sans-serif;color:rgba(14,14,14,.6)}
+.tk-bc{width:84px;height:26px;margin-top:10px;background:repeating-linear-gradient(90deg,#0E0E0E 0 2px,transparent 2px 4px,#0E0E0E 4px 5px,transparent 5px 8px)}
+.ehx-f{max-width:980px;margin:16px auto 0;text-align:center}
+.ehm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:8px}
+.ehm .ec-m{display:contents}
+@media(max-width:767px){.ehx{grid-template-columns:1fr}.ehm{grid-template-columns:1fr}}
+@media(max-width:399px){.tk{grid-template-columns:minmax(0,1fr) 108px;-webkit-mask:radial-gradient(circle 12px at calc(100% - 108px) 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 12px at calc(100% - 108px) 100%,#0000 98%,#000) bottom/100% 51% no-repeat;mask:radial-gradient(circle 12px at calc(100% - 108px) 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 12px at calc(100% - 108px) 100%,#0000 98%,#000) bottom/100% 51% no-repeat}.tk-m{padding:22px 18px}.tk-m h3{font-size:24px}.tk-s b{font-size:24px}}
+
+.eg-next .m29-bd{display:block;position:static}
+.vtabs{flex-wrap:wrap;max-width:100%}
+@media(max-width:599px){.vtabs button{padding:9px 11px}}
+table.sr{display:block}
+.mg>*{min-width:0}
+.eg-next .m29-bd{align-self:flex-start}
