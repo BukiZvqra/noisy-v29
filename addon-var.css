@@ -1,8 +1,8 @@
 /* Варианти на банера за добавката (dobavka-varianti.html) */
 .vv{padding:120px 0 40px}
 .vv-head{max-width:1280px;margin:0 auto;padding:0 2.5vw}
-.vv-head h1{margin:0 0 8px;font:700 clamp(28px,3vw,40px)/1.1 Unbounded,Manrope,sans-serif;color:#fff}
-.vv-head p{margin:0 0 20px;font:500 15px/1.5 Manrope,system-ui,sans-serif;color:#9d99a8}
+.vv-head h1{margin:0 0 14px;font:700 clamp(28px,3vw,40px)/1.1 Unbounded,Manrope,sans-serif;color:#fff}
+.vv-head p{margin:0 0 24px;max-width:46em;font:500 15px/1.5 Manrope,system-ui,sans-serif;color:#9d99a8}
 .vv-sw{display:inline-flex;gap:4px;padding:4px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
 .vv-sw button{height:38px;padding:0 16px;border:0;border-radius:9px;background:none;font:700 14px/1 Manrope,system-ui,sans-serif;color:#b9b6c2;cursor:pointer}
 .vv-sw button.on{background:#fff;color:#0b0a10}
