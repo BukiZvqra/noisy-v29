@@ -1,0 +1,155 @@
+/* v29 (22.10.2026): секциите „модули“ и „цени“ 1:1 по apple.com/apple-one (Apple One: пакет от услуги + Individual/Family),
+   пренесени в тъмната тема на NOISY. Стойностите са измерени от страницата им на 1440px:
+   router: padding 80/60, заглавие 72/600 центрирано, mb 60; колона 332px (padding 0 25, mb 40), иконка 58, етикет 24/600, текст 17/25 (mt 13.6), линк 17 (mt 10).
+   plans: padding 80/160 върху по-светъл фон; плочка 310x558 (min 540), радиус 20, padding 40, gap 20; име 24/600; цена 40/700 в цвят (mt 5);
+   текст 17/21 (mt 10, mb 20); „споделяне“ 12/700 с иконка (gap 5); списък mt 18 mb 34, ред 22px mb 11; бутон хапче 1px, 8x16, радиус 18, 17px. */
+:root{--a1-bg:#0A090D;--a1-band:#110F15;--a1-tile:#1B1920;--a1-ink:#F5F5F7;--a1-copy:rgba(245,245,247,.72);--a1-link:#C78BFF;--a1-line:rgba(255,255,255,.1)}
+
+/* ----- router: „Четири модула“ ----- */
+.a1r{padding:80px 0 60px}
+.a1r-in{width:min(997px,calc(100vw - 40px));margin:0 auto;display:flex;flex-wrap:wrap}
+.a1r-h{flex:0 0 100%;margin:0 auto 60px!important;max-width:830px;text-align:center;font-size:clamp(34px,4.6vw,56px)!important;line-height:1.06!important}
+.a1r-c{flex:0 0 25%;box-sizing:border-box;padding:0 25px;margin:0 0 40px}
+.a1r-c>img{display:block;height:30px;width:auto;margin:0 0 22px}
+.a1r-c h3{margin:0;font:700 24px/28px Manrope,system-ui,sans-serif;letter-spacing:-.01em;color:var(--a1-ink)}
+.a1r-c p{margin:13.6px 0 0;font:500 17px/25px Manrope,system-ui,sans-serif;letter-spacing:-.01em;color:var(--a1-copy)}
+.a1r-c a{display:inline-flex;align-items:center;gap:4px;margin-top:10px;font:600 17px/25px Manrope,system-ui,sans-serif;color:var(--a1-link);text-decoration:none}
+.a1r-c a:hover{text-decoration:underline;text-underline-offset:3px}
+.a1r-c a i{font-style:normal;font-size:18px;line-height:1;transform:translateY(-1px)}
+.a1r--3 .a1r-c{flex-basis:33.333%}
+@media(max-width:1068px){.a1r-c,.a1r--3 .a1r-c{flex-basis:50%}}
+@media(max-width:734px){.a1r{padding:56px 0 24px}.a1r-h{margin-bottom:36px!important}.a1r-c,.a1r--3 .a1r-c{flex-basis:100%;padding:0 4px;margin-bottom:32px}.a1r-c h3{font-size:21px;line-height:25px}.a1r-c p,.a1r-c a{font-size:16px;line-height:23px}}
+
+/* ----- plans: цените ----- */
+.a1p{padding:80px 0 120px;background:var(--a1-band);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
+.a1p-h{margin:0 auto 60px!important;max-width:830px;text-align:center;font-size:clamp(34px,4.6vw,56px)!important;line-height:1.06!important}
+.a1p-g{display:flex;justify-content:center;gap:20px;padding:0 20px}
+.a1t{position:relative;flex:0 0 310px;min-height:540px;border-radius:20px;background:var(--a1-tile);perspective:1600px;color:var(--a1-ink)}
+.a1t--t{background:linear-gradient(var(--a1-tile),var(--a1-tile)) padding-box,var(--g29) border-box;border:1px solid transparent}
+.a1t-in{position:relative;height:100%;min-height:inherit;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.a1t.flip .a1t-in{transform:rotateY(180deg)}
+.a1t-f,.a1t-b{position:absolute;inset:0;display:flex;flex-direction:column;padding:40px;border-radius:19px;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.a1t-f{position:relative;min-height:inherit}
+.a1t-b{transform:rotateY(180deg);background:var(--a1-tile)}
+.a1t-top{min-height:200px}
+.a1t h3{margin:0;font:700 24px/28px Manrope,system-ui,sans-serif;letter-spacing:-.01em;color:#fff}
+.a1t-pr{margin:5px 0 0;font:800 40px/40px Manrope,system-ui,sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.a1t-pr small{font-size:.5em;font-weight:700;letter-spacing:0;color:inherit}
+.a1t--s .a1t-pr{color:#FF6F8E}
+.a1t--t .a1t-pr{background:linear-gradient(90deg,#D07BFF,#FF5FA0 60%,#FF5A4E);-webkit-background-clip:text;background-clip:text;color:transparent}
+.a1t-cp{margin:10px 0 20px;font:500 17px/21px Manrope,system-ui,sans-serif;letter-spacing:-.01em;color:var(--a1-copy)}
+.a1t-cp b{color:#fff;font-weight:700}
+.a1t-sh{display:flex;align-items:center;gap:6px;font:800 12px/16px Manrope,system-ui,sans-serif;color:#fff}
+.a1t-sh svg{width:16px;height:16px;fill:#fff;flex:none}
+.a1t ul{list-style:none;margin:18px 0 34px;padding:0}
+.a1t li{display:flex;justify-content:space-between;align-items:center;min-height:22px;margin:0 0 11px;font:500 15px/22px Manrope,system-ui,sans-serif;color:var(--a1-copy)}
+.a1t li img{height:22px;width:auto}
+.a1t li b{color:#fff;font-weight:700;font-variant-numeric:tabular-nums}
+.a1t-bt{margin-top:auto}
+.a1t-btn{appearance:none;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:18px;border:1px solid rgba(255,255,255,.8);background:none;color:#fff;font:600 17px/20px Manrope,system-ui,sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.a1t-btn:hover{background:#fff;color:#0E0E0E}
+.a1t-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.a1t-x{position:absolute;right:20px;bottom:20px;appearance:none;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:none;color:#fff;cursor:pointer;display:grid;place-items:center}
+.a1t-x:hover{background:#fff;color:#0E0E0E}
+.a1t-x svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.a1t-b h4{margin:0 0 18px;font:700 19px/24px Manrope,system-ui,sans-serif;color:#fff}
+.a1t-tot{margin-top:auto;padding-top:14px;border-top:1px solid var(--a1-line);text-align:right}
+.a1t-tot s{display:block;font:500 17px/21px Manrope,system-ui,sans-serif;color:var(--a1-copy)}
+.a1t-tot b{display:block;margin-top:10px;font:700 17px/21px Manrope,system-ui,sans-serif;color:#fff}
+.a1t-tot span{display:block;margin-top:4px;font:500 13px/18px Manrope,system-ui,sans-serif;color:var(--a1-copy)}
+/* графиката в разбивката на Together */
+.a1-bars{display:grid;grid-template-columns:repeat(5,1fr);align-items:end;gap:8px;height:120px;margin-top:4px}
+.a1-bars div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;height:100%}
+.a1-bars i{width:22px;height:calc(var(--v) / 14.9 * 88px);border-radius:4px 4px 0 0;background:#A855F7}
+.a1-bars div:first-child i{background:#F0567A}
+.a1-bars b{font:700 11px/1 Manrope,system-ui,sans-serif;color:var(--a1-copy);white-space:nowrap;font-variant-numeric:tabular-nums}
+.a1-bars div:last-child b{color:#fff}
+.a1-bx{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding-top:6px;margin-top:4px;border-top:1px solid var(--a1-line);text-align:center;font:600 11px/1.2 Manrope,system-ui,sans-serif;color:var(--a1-copy)}
+.a1p-ft{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:44px;padding:0 20px;text-align:center}
+.a1p-ft .t29-bt{margin:0}
+.a1p-ft .btn{min-height:50px;padding:0 26px}
+.a1p-ft p{margin:0;max-width:60ch;font:500 13px/1.5 Manrope,system-ui,sans-serif;color:rgba(245,245,247,.5)}
+@media(max-width:734px){
+  .a1p{padding:56px 0 72px}.a1p-h{margin-bottom:32px!important}
+  .a1p-g{flex-direction:column;align-items:center;gap:16px}
+  .a1t{flex:none;width:100%;max-width:420px;min-height:0}
+  .a1t-f,.a1t-b{padding:28px}
+  .a1t-top{min-height:0}
+  .a1t-b{overflow:auto}
+  .a1t.flip .a1t-in{min-height:520px}
+  .a1p-ft .t29-bt{flex-direction:column;align-items:stretch;width:100%;max-width:420px}
+}
+@media(prefers-reduced-motion:reduce){.a1t-in{transition:none}}
+#ceni.a1p .ticks25{display:none}
+/* кадър над всяка колона (Коста 22.10: модулите със снимки), видео при посочване */
+.a1r-im{position:relative;display:block;aspect-ratio:16/10;margin:0 0 22px;border-radius:16px;overflow:hidden;background:#141218;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.a1r-im img,.a1r-im video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .5s}
+.a1r-im video{opacity:0}.a1r-im.pl video{opacity:1}
+.a1r-im::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);pointer-events:none}
+.a1r-c:hover .a1r-im img,.a1r-c:hover .a1r-im video{transform:scale(1.04)}
+.a1r-c>.a1r-bd{display:block;height:28px;width:auto;margin:0 0 14px}
+.a1r-c{padding:0 10px}
+.a1r-in{width:min(1260px,calc(100vw - 40px))}
+.a1r-h,.a1p-h{text-wrap:balance}
+@media(max-width:734px){.a1r-c{padding:0}}
+/* мрежата: заглавието винаги на собствен ред */
+.a1r-in{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:20px}
+.a1r--3 .a1r-in{grid-template-columns:repeat(3,minmax(0,1fr))}
+.a1r-h{grid-column:1/-1;justify-self:center}
+.a1r-c{flex:none!important;padding:0!important}
+@media(max-width:1068px){.a1r-in,.a1r--3 .a1r-in{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:734px){.a1r-in,.a1r--3 .a1r-in{grid-template-columns:1fr}}
+.a1r-c .a1r-im{display:block;width:100%;margin:0 0 22px;gap:0}
+
+/* ===== „Четири модула“ по прототипа на дизайнерката (Figma 30206:129817): вляво лента с кадри и телефони, вдясно списъкът.
+   Лентата върви бавно сама; списъкът се сменя само при посочване/натискане (по-малко движение). ===== */
+.mz{padding:clamp(88px,10vw,140px) 0 0}
+.mz-in{width:min(1260px,calc(100vw - 40px));margin:0 auto;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:stretch}
+.mz-st{position:relative;min-height:560px;border-radius:24px;overflow:hidden;background:radial-gradient(70% 60% at 30% 40%,rgba(168,85,247,.16),transparent 70%),#131117;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.mz-st::before,.mz-st::after{content:"";position:absolute;top:0;bottom:0;width:72px;z-index:3;pointer-events:none}
+.mz-st::before{left:0;background:linear-gradient(90deg,#131117,transparent)}
+.mz-st::after{right:0;background:linear-gradient(270deg,#131117,transparent)}
+.mz-tr{position:absolute;inset:0;opacity:0;transition:opacity .6s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.mz-tr.on{opacity:1;pointer-events:auto}
+.mz-rl{position:absolute;left:0;top:50%;display:flex;align-items:center;gap:16px;translate:0 -50%;will-change:transform}
+.mz-ld{flex:none;width:300px;aspect-ratio:16/10;border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.08)}
+.mz-ld img{width:100%;height:100%;object-fit:cover;display:block}
+.mz-ph{flex:none;width:236px;aspect-ratio:9/19.2;border-radius:36px;padding:6px;background:#0a0a0c;box-shadow:0 0 0 2px #2b2a31,0 28px 60px rgba(0,0,0,.55);position:relative}
+.mz-ph::before{content:"";position:absolute;left:50%;top:13px;z-index:2;width:72px;height:20px;border-radius:12px;background:#000;translate:-50% 0}
+.mz-ph video,.mz-ph img{width:100%;height:100%;object-fit:cover;border-radius:30px;display:block;background:#111}
+.mz-r{display:flex;flex-direction:column;justify-content:center}
+.mz-r .h2{margin:0;font-size:clamp(30px,3.4vw,44px)!important;line-height:1.08!important;text-wrap:balance}
+.mz-r>p{margin:14px 0 26px;max-width:40ch;font:500 17px/1.55 Manrope,system-ui,sans-serif;color:rgba(247,245,250,.66)}
+.mz-l{display:flex;flex-direction:column;gap:6px}
+.mz-i{display:block;width:100%;appearance:none;border:0;background:none;text-align:left;color:#F7F5FA;cursor:pointer;padding:16px 20px;border-radius:16px;font:inherit;transition:background .35s}
+.mz-i:hover{background:rgba(255,255,255,.03)}
+.mz-i.on{background:#16141b;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.mz-i>img{display:block;height:24px;width:auto;margin-bottom:10px}
+.mz-i h3{margin:0;font:800 20px/1.25 Manrope,system-ui,sans-serif;letter-spacing:-.01em;color:rgba(247,245,250,.6);transition:color .3s}
+.mz-i.on h3,.mz-i:hover h3{color:#fff}
+.mz-x{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+.mz-x>span{overflow:hidden}
+.mz-i.on .mz-x{grid-template-rows:1fr}
+.mz-x p{margin:8px 0 0;font:500 15px/1.5 Manrope,system-ui,sans-serif;color:rgba(247,245,250,.68)}
+.mz-x a{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font:700 14px/1 Manrope,system-ui,sans-serif;color:#fff;text-decoration:none}
+.mz-x a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.mz-x a:hover svg{transform:translateX(3px)}
+@media(max-width:899px){
+  .mz-in{grid-template-columns:1fr}
+  .mz-r{order:-1}
+  .mz-st{min-height:400px;border-radius:18px}
+  .mz-ld{width:220px}.mz-ph{width:170px;border-radius:28px}.mz-ph video,.mz-ph img{border-radius:23px}.mz-ph::before{width:52px;height:15px;top:10px}
+  .mz-st::before,.mz-st::after{width:36px}
+}
+@media(prefers-reduced-motion:reduce){.mz-tr{transition:none}}
+@media(max-width:899px){.mz-r{display:contents}.mz-r .h2{order:1}.mz-r>p{order:2;margin:-8px 0 0}.mz-st{order:3}.mz-l{order:4}.mz-in{gap:20px}}
+.mz-ph{aspect-ratio:auto;height:auto}
+.mz-ph video,.mz-ph img{aspect-ratio:9/16;height:auto}
+/* 22.10: по-широки плочки, Together е водещата (по NYT/Apple фамилните страници) */
+.a1t{flex-basis:380px}
+.a1t--t{flex-basis:420px;box-shadow:0 30px 70px rgba(0,0,0,.4)}
+.a1t--t::before{content:"Най-изгодно";position:absolute;top:-14px;left:40px;z-index:2;display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;font:800 12px/1 Manrope,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#0E0E0E;background:#fff}
+.a1t--t .a1t-pr{font-size:48px;line-height:48px}
+.a1t-tg{display:inline-flex;align-items:center;gap:6px;margin-left:14px;font:700 15px/20px Manrope,system-ui,sans-serif;color:#fff;text-decoration:none}
+.a1t-tg:hover{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:734px){.a1t,.a1t--t{flex-basis:auto}.a1p-g{flex-direction:column-reverse}.a1t--t{margin-top:12px}}

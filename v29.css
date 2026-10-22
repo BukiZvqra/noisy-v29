@@ -170,3 +170,11 @@ html:not(.fon0) .ag-root:not(.nfree) .ag-vid{
 .m29-c{min-width:0;width:100%}
 .m29-g--3 .m29-c,.m29-g--3 .m29-c:last-child{aspect-ratio:auto!important;min-height:300px}
 @media(max-width:599px){.m29-c{aspect-ratio:auto!important;min-height:300px}}
+
+/* 22.10 (Коста, първата секция): заглавията в големите карти бяха под тъмния градиент (::after на същия слой) и изглеждаха сиви */
+.k26-cd span,.k26-cd em{z-index:3!important}
+.k26-cd{border-radius:12px!important}
+.k26-cd span{left:18px!important;right:18px!important;bottom:16px!important;font:800 clamp(15px,1.35vw,20px)/1.2 Manrope,system-ui,sans-serif!important;letter-spacing:-.01em;text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.k26-cd span .k29-bd{height:22px!important;margin-bottom:10px!important}
+.k26-cd::after{background:linear-gradient(180deg,transparent 42%,rgba(10,9,13,.55) 68%,rgba(10,9,13,.9))!important}
+.k26-cd.on{box-shadow:0 24px 60px rgba(0,0,0,.45)!important}

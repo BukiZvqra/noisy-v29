@@ -1,0 +1,115 @@
+/* v29 финал (22.10.2026): три изпипани секции - модулите, цените, краят на Theatre/Arena.
+   Една сянка, радиуси 8/16/24/пил, светлина от многоцветни радиални градиенти, без наклони и без шум. */
+:root{
+  --f-bg:#0A090D;--f-card:#131117;--f-card2:#18161d;--f-line:rgba(255,255,255,.08);--f-line2:rgba(255,255,255,.14);
+  --f-ink:#F7F5FA;--f-mute:rgba(247,245,250,.66);--f-dim:rgba(247,245,250,.46);
+  --f-shadow:0 24px 60px rgba(0,0,0,.45);
+  --f-ease:cubic-bezier(.2,.8,.2,1);
+  --c-solo:#F0567A;--c-tog:#A855F7;
+}
+.f-sec{position:relative;padding:clamp(88px,10vw,144px) 0 0}
+.f-head{display:grid;gap:14px;max-width:720px;margin:0 0 clamp(32px,4vw,48px)}
+.f-head .h2{margin:0}
+.f-head p{margin:0;font:500 18px/1.55 Manrope,system-ui,sans-serif;color:var(--f-mute);text-wrap:pretty}
+.f-arw{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;transition:transform .3s var(--f-ease)}
+@media(max-width:767px){.f-head p{font-size:16px}}
+
+/* ================= 1. Модулите: списък вляво, един голям кадър вдясно ================= */
+.fm{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:center}
+.fm-l{display:flex;flex-direction:column}
+.fm-i{position:relative;display:block;width:100%;appearance:none;border:0;background:none;text-align:left;color:var(--f-ink);cursor:pointer;padding:22px 0 24px;border-top:1px solid var(--f-line);font:inherit}
+.fm-i:last-child{border-bottom:1px solid var(--f-line)}
+.fm-i>img{display:block;height:26px;width:auto;margin-bottom:12px;opacity:.55;transition:opacity .35s}
+.fm-i h3{margin:0;font:800 clamp(22px,2vw,26px)/1.2 Manrope,system-ui,sans-serif;letter-spacing:-.02em;color:var(--f-dim);transition:color .35s}
+.fm-i:hover h3,.fm-i:hover>img{color:var(--f-ink);opacity:1}
+.fm-i.on>img{opacity:1}.fm-i.on h3{color:var(--f-ink)}
+.fm-x{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--f-ease)}
+.fm-x>div{overflow:hidden}
+.fm-i.on .fm-x{grid-template-rows:1fr}
+.fm-x p{margin:10px 0 0;max-width:40ch;font:500 16px/1.55 Manrope,system-ui,sans-serif;color:var(--f-mute)}
+.fm-x a{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font:700 15px/1 Manrope,system-ui,sans-serif;color:var(--f-ink);text-decoration:none}
+.fm-x a:hover .f-arw{transform:translateX(3px)}
+.fm-bar{position:absolute;left:0;right:0;bottom:-1px;height:1px;overflow:hidden}
+.fm-bar i{display:block;height:100%;background:var(--g29);transform:scaleX(0);transform-origin:left}
+.fm-i.on .fm-bar i{animation:fmbar var(--fm-t,7s) linear forwards}
+.fm.hold .fm-i.on .fm-bar i{animation-play-state:paused}
+@keyframes fmbar{to{transform:scaleX(1)}}
+.fm-r{position:relative;isolation:isolate}
+.fm-r::before{content:"";position:absolute;inset:-12% -8% -16%;z-index:-1;pointer-events:none;
+  background:radial-gradient(40% 46% at 70% 30%,rgba(182,29,255,.28),rgba(206,19,168,.12) 45%,transparent 72%),radial-gradient(36% 40% at 22% 85%,rgba(255,0,0,.12),rgba(206,19,168,.05) 50%,transparent 75%);filter:blur(10px)}
+.fm-fr{position:relative;aspect-ratio:16/11;border-radius:24px;overflow:hidden;background:var(--f-card);box-shadow:var(--f-shadow),inset 0 0 0 1px var(--f-line)}
+.fm-fr figure{position:absolute;inset:0;margin:0;opacity:0;transform:scale(1.035);transition:opacity .8s var(--f-ease),transform 1.6s var(--f-ease)}
+.fm-fr figure.on{opacity:1;transform:none}
+.fm-fr img,.fm-fr video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fm-fr video{opacity:0;transition:opacity .6s}.fm-fr figure.pl video{opacity:1}
+.fm-fr::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--f-line);background:linear-gradient(180deg,transparent 70%,rgba(10,9,13,.35))}
+@media(max-width:899px){
+  .fm{grid-template-columns:1fr;gap:20px}
+  .fm-r{order:-1}
+  .fm-fr{aspect-ratio:16/10;border-radius:16px}
+  .fm-i{padding:18px 0 20px}
+  .fm-i>img{height:22px;margin-bottom:10px}
+  .fm-x p{font-size:15px}
+}
+
+/* ================= 2. Цените: един банер, два плана, подчертан е Together ================= */
+.fp{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(28px,4vw,64px);align-items:center;
+  padding:clamp(28px,5vw,64px);border-radius:24px;overflow:hidden;background:#0F0D13;box-shadow:inset 0 0 0 1px var(--f-line)}
+.fp::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(55% 75% at 92% 8%,rgba(182,29,255,.30),rgba(206,19,168,.14) 45%,transparent 75%),radial-gradient(45% 60% at 100% 100%,rgba(255,0,0,.14),rgba(206,19,168,.06) 50%,transparent 80%),radial-gradient(40% 50% at 0% 0%,rgba(255,255,255,.04),transparent 70%)}
+.fp-l .h2{margin:0}
+.fp-l>p{margin:16px 0 0;max-width:42ch;font:500 17px/1.6 Manrope,system-ui,sans-serif;color:var(--f-mute);text-wrap:pretty}
+.fp-l>p b{color:var(--f-ink);font-weight:700}
+.fp-ok{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:10px}
+.fp-ok li{display:flex;align-items:center;gap:10px;font:500 15px/1.4 Manrope,system-ui,sans-serif;color:rgba(247,245,250,.8)}
+.fp-ok svg{width:18px;height:18px;flex:none;fill:none;stroke:#E070FF;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fp-bt{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.fp-bt .btn{min-height:52px;padding:0 28px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:16px}
+.fp-r{display:grid;gap:12px}
+.fp-c{position:relative;padding:22px 24px;border-radius:16px;background:rgba(255,255,255,.04);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:inset 0 0 0 1px var(--f-line)}
+.fp-c--t{background:linear-gradient(rgba(26,21,32,.92),rgba(26,21,32,.92)) padding-box,var(--g29) border-box;border:1px solid transparent;box-shadow:var(--f-shadow)}
+.fp-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.fp-top h3{margin:12px 0 0;font:800 19px/1.25 Manrope,system-ui,sans-serif;letter-spacing:-.01em;color:var(--f-ink)}
+.fp-top p{margin:4px 0 0;font:500 14px/1.45 Manrope,system-ui,sans-serif;color:var(--f-mute)}
+.fp-pr{flex:none;text-align:right}
+.fp-pr small{display:block;font:600 13px/1.2 Manrope,system-ui,sans-serif;color:var(--f-mute)}
+.fp-pr b{display:block;margin-top:4px;font:800 clamp(30px,3vw,38px)/1 Manrope,system-ui,sans-serif;letter-spacing:-.035em;color:var(--f-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fp-pr span{display:block;margin-top:6px;font:600 13px/1.2 Manrope,system-ui,sans-serif;color:var(--f-mute)}
+/* мини графиката в Together: колко плаща всеки според броя хора */
+.fp-sp{margin-top:20px;padding-top:18px;border-top:1px solid var(--f-line)}
+.fp-sp>p{display:flex;justify-content:space-between;gap:12px;margin:0 0 12px;font:600 13px/1.3 Manrope,system-ui,sans-serif;color:var(--f-mute)}
+.fp-sp>p b{color:var(--f-ink);font-weight:700}
+.fp-bars{display:grid;grid-template-columns:repeat(5,1fr);align-items:end;gap:8px;height:84px}
+.fp-bars div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px}
+.fp-bars i{width:100%;max-width:28px;height:calc(var(--v) / 14.9 * 62px);border-radius:4px 4px 0 0;background:linear-gradient(180deg,#C084FC,#A855F7);transition:height .9s var(--f-ease)}
+.fp-bars div:first-child i{background:linear-gradient(180deg,#F58AA3,#F0567A)}
+.fp:not(.in) .fp-bars i{height:0}
+.fp-bars b{font:700 11px/1 Manrope,system-ui,sans-serif;color:var(--f-mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fp-bars div:last-child b{color:var(--f-ink)}
+.fp-xl{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:6px;padding-top:6px;border-top:1px solid var(--f-line2);text-align:center;font:600 11px/1.2 Manrope,system-ui,sans-serif;color:var(--f-dim)}
+.fp-f{grid-column:1/-1;margin:0;font:500 13px/1.5 Manrope,system-ui,sans-serif;color:var(--f-dim)}
+@media(max-width:899px){
+  .fp{grid-template-columns:1fr;display:flex;flex-direction:column;align-items:stretch;gap:24px;padding:24px 20px;border-radius:20px}
+  .fp-l{display:contents}
+  .fp-l .h2{order:1}.fp-l>p{order:2;margin:-8px 0 0}.fp-r{order:3}.fp-ok{order:4;margin:0}.fp-bt{order:5;margin:0;flex-direction:column}.fp-f{order:6}
+  .fp-bt .btn{width:100%}
+  .fp-c{padding:18px}
+  .fp-pr b{font-size:28px}
+}
+#ceni.f-ceni{padding-top:clamp(88px,10vw,144px)}
+#ceni.f-ceni .ticks25{display:none}
+
+/* ================= 3. Краят на Theatre/Arena: банерът с цените + тесни плочки за другите модули ================= */
+.fe .fp{margin:0}
+.fe-mh{margin:clamp(56px,6vw,80px) 0 18px;font:800 clamp(22px,2.2vw,28px)/1.2 Manrope,system-ui,sans-serif;letter-spacing:-.02em;color:var(--f-ink)}
+.fe-m{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.fe-m a{position:relative;isolation:isolate;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;min-height:168px;padding:20px 22px;border-radius:16px;overflow:hidden;color:var(--f-ink);text-decoration:none;box-shadow:inset 0 0 0 1px var(--f-line);transition:box-shadow .35s}
+.fe-m a>img:first-child,.fe-m a>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s var(--f-ease),opacity .5s}
+.fe-m a>video{opacity:0}.fe-m a.pl>video{opacity:1}
+.fe-m a::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,13,.05) 0%,rgba(10,9,13,.55) 55%,rgba(10,9,13,.92))}
+.fe-m .tx>img{display:block;height:24px;width:auto;margin-bottom:10px}
+.fe-m .tx b{display:block;font:800 18px/1.2 Manrope,system-ui,sans-serif;letter-spacing:-.01em}
+.fe-m .go{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.12);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:background .3s}
+@media(hover:hover){.fe-m a:hover{box-shadow:inset 0 0 0 1px var(--f-line2)}.fe-m a:hover>img:first-child,.fe-m a:hover>video{transform:scale(1.04)}.fe-m a:hover .go{background:#fff;color:#0E0E0E}}
+@media(max-width:899px){.fe-m{grid-template-columns:1fr}.fe-m a{min-height:128px}}
+.f-sec .h2{font-size:clamp(30px,3.6vw,44px)!important;line-height:1.08}
