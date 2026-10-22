@@ -1,0 +1,52 @@
+/* „Четири модула“ с екраните на приложението (22.10): вляво 4 телефона с UI-то на всеки модул, вдясно списъкът.
+   Двете страни са свързани: натиснат модул вдясно завърта телефоните, натиснат телефон вляво сменя модула. */
+.mui{padding:clamp(88px,10vw,140px) 0 0}
+.mui-in{width:min(1260px,calc(100vw - 40px));margin:0 auto;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:stretch}
+.mui-st{position:relative;min-height:620px;border-radius:24px;overflow:hidden;background:radial-gradient(60% 55% at 50% 45%,rgba(168,85,247,.18),transparent 70%),#131117;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);perspective:1400px;touch-action:pan-y;user-select:none}
+.mui-ph{position:absolute;left:50%;top:50%;width:250px;margin:0;padding:6px;border:0;border-radius:38px;background:#0a0a0c;box-shadow:0 0 0 2px #2b2a31,0 30px 70px rgba(0,0,0,.6);cursor:pointer;
+  transform:translate(-50%,-54%) translateX(var(--x,0)) scale(var(--s,1)) rotateY(var(--r,0deg));opacity:var(--o,1);z-index:var(--z,1);
+  transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .5s,filter .5s;filter:brightness(var(--b,1))}
+.mui-ph::before{content:"";position:absolute;left:50%;top:14px;z-index:2;width:74px;height:21px;border-radius:12px;background:#000;translate:-50% 0}
+.mui-ph img,.mui-ph video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:32px;background:#111}
+.mui-ph video{position:absolute;left:6px;top:6px;width:calc(100% - 12px);opacity:0;transition:opacity .4s}
+.mui-ph.pl video{opacity:1}
+.mui-ph .mui-tg{position:absolute;left:50%;bottom:-46px;height:24px;width:auto;aspect-ratio:auto;border-radius:0;background:none;translate:-50% 0;opacity:var(--t,0);transition:opacity .4s}
+.mui-ph:focus-visible{outline:2px solid #fff;outline-offset:4px}
+/* позиции: 0 = в центъра, 1 = вдясно, -1 = вляво, 2 = скрит отзад */
+.mui-ph[data-p="0"]{--x:0px;--s:1;--r:0deg;--o:1;--z:3;--b:1;--t:1;cursor:default}
+.mui-ph[data-p="1"]{--x:205px;--s:.74;--r:-22deg;--o:.75;--z:2;--b:.55}
+.mui-ph[data-p="-1"]{--x:-205px;--s:.74;--r:22deg;--o:.75;--z:2;--b:.55}
+.mui-ph[data-p="2"]{--x:0px;--s:.55;--r:0deg;--o:0;--z:1;--b:.4;pointer-events:none}
+.mui-ph[data-p="1"]:hover,.mui-ph[data-p="-1"]:hover{--b:.85;--o:1}
+.mui-nv{position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:8px;z-index:4}
+.mui-nv button{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:rgba(255,255,255,.28);cursor:pointer;transition:width .35s,background .35s}
+.mui-nv button.on{width:26px;background:#fff}
+.mui-r{display:flex;flex-direction:column;justify-content:center}
+.mui-r .h2{margin:0;font-size:clamp(30px,3.4vw,44px)!important;line-height:1.08!important;text-wrap:balance}
+.mui-r>p{margin:14px 0 26px;max-width:40ch;font:500 17px/1.55 Manrope,system-ui,sans-serif;color:rgba(247,245,250,.66)}
+.mui-l{display:flex;flex-direction:column;gap:6px}
+.mui-i{display:block;width:100%;appearance:none;border:0;background:none;text-align:left;color:#F7F5FA;cursor:pointer;padding:16px 20px;border-radius:16px;font:inherit;transition:background .35s}
+.mui-i:hover{background:rgba(255,255,255,.03)}
+.mui-i.on{background:#16141b;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);cursor:default}
+.mui-i>img{display:block;height:24px;width:auto;margin-bottom:10px}
+.mui-i h3{margin:0;font:800 20px/1.25 Manrope,system-ui,sans-serif;letter-spacing:-.01em;color:rgba(247,245,250,.6);transition:color .3s}
+.mui-i.on h3,.mui-i:hover h3{color:#fff}
+.mui-x{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+.mui-x>span{overflow:hidden}
+.mui-i.on .mui-x{grid-template-rows:1fr}
+.mui-x p{margin:8px 0 0;font:500 15px/1.5 Manrope,system-ui,sans-serif;color:rgba(247,245,250,.68)}
+.mui-x a{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font:700 14px/1 Manrope,system-ui,sans-serif;color:#fff;text-decoration:none}
+.mui-x a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.mui-x a:hover svg{transform:translateX(3px)}
+@media(max-width:899px){
+  .mui-in{grid-template-columns:1fr;gap:20px}
+  .mui-r{display:contents}.mui-r .h2{order:1}.mui-r>p{order:2;margin:-8px 0 0}.mui-st{order:3}.mui-l{order:4}
+  .mui-st{min-height:470px;border-radius:18px}
+  .mui-ph{width:190px;border-radius:30px;padding:5px}.mui-ph img,.mui-ph video{border-radius:25px}.mui-ph video{left:5px;top:5px;width:calc(100% - 10px)}
+  .mui-ph::before{width:56px;height:16px;top:11px}
+  .mui-ph .mui-tg{bottom:-40px;height:22px}
+  .mui-ph[data-p="1"]{--x:130px;--s:.7}.mui-ph[data-p="-1"]{--x:-130px;--s:.7}
+}
+@media(prefers-reduced-motion:reduce){.mui-ph,.mui-x{transition:none}}
+.mui-ph video{height:calc(100% - 12px);aspect-ratio:auto}
+@media(max-width:899px){.mui-ph video{height:calc(100% - 10px)}.mui-st{min-height:500px}.mui-ph{transform:translate(-50%,-58%) translateX(var(--x,0)) scale(var(--s,1)) rotateY(var(--r,0deg))}}
