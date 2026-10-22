@@ -1,0 +1,52 @@
+/* Банер за добавката (Premium Films / Premium Sports): дизайнът на k27 + как се плаща добавката */
+.k27--ad .k27-card{grid-template-rows:auto auto;min-height:0}
+.k27--ad .k27-tx{padding-bottom:clamp(20px,2cqw,28px)}
+.k27-ey{font-size:12px;height:30px;padding:0 12px;color:#e7e4ee}
+.k27-sub{margin:0;max-width:34em;font:500 clamp(14px,1.1cqw,16px)/1.45 Manrope,system-ui,sans-serif;color:#c9c6d2}
+.k27-sub b{color:#fff;font-weight:700}
+.k27--ad .k27-pr{flex-wrap:wrap;row-gap:6px}
+.k27--ad .k27-pr i{font-style:normal;font:600 clamp(24px,2.4cqw,30px)/1 Unbounded,Manrope,sans-serif;color:#fff;margin-right:-.3em}
+.k27-tg{margin:-4px 0 0;font:500 13px/1.3 Manrope,system-ui,sans-serif;color:#8f8b9b}
+.k27--ad .k27-ck{flex-direction:column;gap:10px}
+.k27--ad .k27-ck b{color:#fff;font-weight:700}
+
+/* Лентата „Как работи“: планът върви непрекъснато, добавката само в избраните месеци */
+.ad-tl{grid-column:1/-1;margin:0 clamp(16px,2.4cqw,28px) clamp(16px,2.4cqw,28px);padding:clamp(18px,2cqw,26px) clamp(16px,2.6cqw,32px);border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+.ad-tl-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px;margin:0 0 16px}
+.ad-tl-h h3{margin:0;font:600 15px/1.2 Manrope,system-ui,sans-serif;color:#fff}
+.ad-tl-h p{margin:0;font:500 13px/1.35 Manrope,system-ui,sans-serif;color:#9d99a8}
+.ad-tl-r{display:grid;grid-template-columns:120px repeat(12,minmax(0,1fr));gap:4px;align-items:center}
+.ad-tl-r+.ad-tl-r{margin-top:8px}
+.ad-tl-l{font:700 12px/1.2 Manrope,system-ui,sans-serif;color:#c9c6d2;padding-right:10px}
+.ad-tl-m{font:600 11px/1 Manrope,system-ui,sans-serif;color:#77737f;text-align:center;text-transform:lowercase}
+.ad-tl-c{height:30px;border-radius:7px;background:rgba(255,255,255,.04)}
+.ad-tl-pl{grid-column:2/-1;height:30px;border-radius:8px;display:flex;align-items:center;padding:0 12px;background:rgba(255,255,255,.10);font:600 12px/1 Manrope,system-ui,sans-serif;color:#e7e4ee;white-space:nowrap;overflow:hidden}
+.ad-tl-on{position:relative;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,#8024B6 0%,#8C238D 45%,#B2261B 100%);font:700 11px/1 Manrope,system-ui,sans-serif;color:#fff;white-space:nowrap;overflow:hidden;transform-origin:left center}
+.ad-tl-f{display:flex;flex-wrap:wrap;gap:8px 24px;margin:16px 0 0;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.07);font:500 13px/1.4 Manrope,system-ui,sans-serif;color:#b9b6c2}
+.ad-tl-f b{color:#fff;font-weight:700}
+.ad-tl-f em{font-style:normal}
+.ad-tl-f span{display:inline-flex;align-items:center;gap:8px}
+.ad-tl-f span::before{content:"";width:8px;height:8px;border-radius:50%;background:#ce13a8;flex:none}
+.ad-tl-f span:first-child::before{background:rgba(255,255,255,.35)}
+
+/* Появяване: планът се изтегля, после се включват месеците с добавката */
+.ad-tl.ad-js .ad-tl-pl{clip-path:inset(0 100% 0 0);transition:clip-path 1s cubic-bezier(.2,.7,.2,1)}
+.ad-tl.ad-js .ad-tl-on{opacity:0;transform:scaleX(.4);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
+.ad-tl.ad-in .ad-tl-pl{clip-path:inset(0 0 0 0)}
+.ad-tl.ad-in .ad-tl-on{opacity:1;transform:none;transition-delay:calc(.9s + var(--d,0) * .18s)}
+@media (prefers-reduced-motion:reduce){.ad-tl.ad-js .ad-tl-pl,.ad-tl.ad-js .ad-tl-on{clip-path:none;opacity:1;transform:none;transition:none}}
+
+@media (max-width:734px){
+ .k27--ad .k27-tx{padding-bottom:8px}
+ .k27--ad .k27-bt a{flex:1 1 100%}
+ .k27--ad .k27-ps{min-height:170px}
+ .ad-tl{margin:4px 12px 12px;padding:16px 12px}
+ .ad-tl-r{grid-template-columns:repeat(12,minmax(0,1fr));gap:3px}
+ .ad-tl-l{grid-column:1/-1;padding:0 0 4px}
+ .ad-tl-r--m .ad-tl-l{display:none}
+ .ad-tl-pl{grid-column:1/-1}
+ .ad-tl-m{font-size:9.5px}
+ .ad-tl-on{font-size:0}
+ .ad-tl-c,.ad-tl-pl,.ad-tl-on{height:26px}
+ .ad-tl-f{flex-direction:column;gap:8px}
+}
