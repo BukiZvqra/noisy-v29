@@ -28,25 +28,13 @@
 @keyframes shGlow{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 
 .shr-av{position:relative;max-width:560px;height:104px;margin:30px auto 0;--sp:.72}
-.shp[data-d="a"] .shr-av,.shp[data-d="c"] .shr-av{--sp:1.14}
 .shr-av .s{position:absolute;left:50%;top:10px;width:84px;height:84px;margin-left:-42px;opacity:0;z-index:2;will-change:transform,opacity,filter;
   transition:transform 1.1s cubic-bezier(.16,1,.3,1),opacity .9s cubic-bezier(.22,1,.36,1),filter .9s cubic-bezier(.22,1,.36,1)}
 .shr-av .s.out{transition:transform .9s cubic-bezier(.65,0,.35,1),opacity .7s cubic-bezier(.65,0,.35,1),filter .7s cubic-bezier(.65,0,.35,1)}
 .shr-av .s:nth-child(1){top:0;width:104px;height:104px;margin-left:-52px;z-index:6}
 .shr-av .s:nth-child(2),.shr-av .s:nth-child(3){z-index:4}
-/* B: силуетите в градиента на бранда */
-.shr-av .du{display:none;width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #110F15,0 10px 30px rgba(0,0,0,.35)}
-.shp[data-d="b"] .shr-av .du{display:block}
-/* A и C: профили като в „Кой гледа?“, в цветовете на бранда */
-.pf{display:grid;place-items:center;width:100%;height:100%;border-radius:20px;color:#fff;font:600 30px/1 var(--font-head);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),0 12px 30px rgba(0,0,0,.35)}
-.shr-av .s:nth-child(1) .pf{font-size:38px}
-.shp[data-d="b"] .pf{display:none}
-.pf-c{background:linear-gradient(135deg,#B61DFF 0%,#CE13A8 50%,#FF2A2A 100%)}
-.pf-p{background:linear-gradient(135deg,#E0309F 0%,#CE13A8 45%,#8C238D 100%)}
-.pf-v{background:linear-gradient(135deg,#8024B6 0%,#CE13A8 55%,#FF5A7A 100%)}
-.pf-r{background:linear-gradient(135deg,#FF5A7A 0%,#E2364A 45%,#B2261B 100%)}
-.pf-l{background:linear-gradient(135deg,#C78BFF 0%,#FF7AC6 50%,#CE13A8 100%)}
+/* човечетата: силуетите от Figma, оцветени в градиента на бранда */
+.shr-av .du{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #110F15,0 10px 30px rgba(0,0,0,.35)}
 
 .shd-pr{display:flex;justify-content:center;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:26px 0 0}
 .shd-pr b{font:700 clamp(30px,3.2vw,38px)/1 var(--font-body);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
@@ -116,7 +104,6 @@
   .shd .shr-h{grid-template-columns:1fr;font-size:34px!important}
   .sh-a,.sh-b,.sh-b .shw{justify-self:center}
   .shr-av{height:84px}.shr-av .s{top:8px;width:66px;height:66px;margin-left:-33px}.shr-av .s:nth-child(1){top:0;width:84px;height:84px;margin-left:-42px}
-  .pf{font-size:24px;border-radius:16px}.shr-av .s:nth-child(1) .pf{font-size:30px}
   .shh{gap:24px;padding:24px 16px}
   .shx-s{padding:4px 6px}.shx-p{font-size:30px}.shx-p small{display:block;margin:6px 0 0;font-size:13px}.shx-n{font-size:15px}
   .shx-btn{font-size:14px!important;padding:0 8px;min-height:46px}.shx-x{font-size:13px}.shx-sep{margin:0 4px}.shx-sep span{width:34px;height:34px;font-size:12px}
@@ -127,3 +114,113 @@
 .shp[data-s="3"] .shx-s{padding:8px 14px}
 @media(min-width:900px){.shb-row{grid-template-columns:repeat(4,auto);justify-content:center;column-gap:44px}.shb-row li{max-width:230px}}
 @media(max-width:599px){.shd-pr{flex-direction:column;align-items:center;gap:6px}}
+/* 4 и 5: списъкът „Какво получаваш“ отгоре или отдолу, на две колони */
+.shp[data-s="4"] .shb-ltop,.shp[data-s="5"] .shb-lbot{display:block}
+.shb-list{text-align:center}
+.shb-list ul{list-style:none;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(2,max-content);justify-content:center;gap:14px 48px;text-align:left}
+.shb-list li{display:flex;gap:10px;font:500 16px/1.45 var(--font-body);color:rgba(245,245,247,.85)}
+.shb-list svg{width:18px;height:18px;margin-top:2px;stroke-width:2.2}
+.shb-ltop{padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1)}
+.shb-lbot{padding-top:28px;border-top:1px solid rgba(255,255,255,.1)}
+@media(max-width:599px){.shb-list ul{grid-template-columns:1fr;justify-content:start;max-width:320px}.shb-list .shb-eb{text-align:left;max-width:320px;margin-left:auto;margin-right:auto}}
+
+/* ---------- детайли (22.10 вечер) ---------- */
+/* заглавие: центрирано, ширината на думата се анимира плавно */
+@media(min-width:600px){
+  .shd .shr-h{display:flex;justify-content:center;align-items:baseline;column-gap:.28em}
+  .sh-b{position:relative;display:block;height:1.15em;transition:width .9s cubic-bezier(.65,0,.35,1)}
+  .sh-b .shw{position:absolute;left:0;top:0;white-space:nowrap}}
+/* човечетата: пръстен около средното, леко дишане, отблясък под тях */
+.shr-av{animation:shFloat 7.6s ease-in-out infinite}
+@keyframes shFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.shr-ring{position:absolute;left:50%;top:-6px;width:116px;height:116px;margin-left:-58px;border-radius:50%;z-index:7;pointer-events:none;
+  background:conic-gradient(from 210deg,#B61DFF,#CE13A8,#FF2A2A,#B61DFF);
+  -webkit-mask:radial-gradient(closest-side,transparent calc(100% - 2px),#000 calc(100% - 1.5px));mask:radial-gradient(closest-side,transparent calc(100% - 2px),#000 calc(100% - 1.5px));
+  opacity:.9;animation:shSpin 14s linear infinite}
+@keyframes shSpin{to{transform:rotate(360deg)}}
+.shr-floor{position:absolute;left:50%;bottom:-22px;width:min(420px,80%);height:28px;translate:-50% 0;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(206,19,168,.32),rgba(182,29,255,.12) 60%,transparent);filter:blur(8px)}
+.shr-av .du{box-shadow:0 0 0 3px #110F15,0 14px 34px rgba(0,0,0,.45),0 0 26px rgba(206,19,168,.18)}
+/* „на човек“ в капсула */
+.shd-t{margin-top:14px}
+.shd-chip{display:inline-flex!important;align-items:center;gap:8px;min-height:36px;padding:0 16px;border-radius:980px;
+  background:rgba(206,19,168,.1);box-shadow:inset 0 0 0 1px rgba(228,184,255,.22)}
+.shd-chip svg{width:18px;height:18px;fill:none;stroke:#E4B8FF;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.shd-chip [data-pt]{transition:opacity .45s cubic-bezier(.45,0,.55,1),filter .45s cubic-bezier(.45,0,.55,1)}
+.shd-chip [data-pt].fd{opacity:0;filter:blur(4px)}
+/* бутоните: леко повдигане, блясък по брандирания */
+.shx-btn{position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s cubic-bezier(.22,1,.36,1)}
+.shx-btn.btn-p::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);transform:translateX(-120%);transition:transform .9s cubic-bezier(.22,1,.36,1)}
+@media(hover:hover){.shx-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(206,19,168,.25)}.shx-btn.btn-s:hover{box-shadow:0 10px 24px rgba(0,0,0,.35)}.shx-btn.btn-p:hover::after{transform:translateX(120%)}}
+/* сепараторът: светлинка, която минава по линията */
+.shx-sep::after{content:"";position:absolute;left:-1px;width:3px;height:60px;top:0;border-radius:3px;background:linear-gradient(180deg,transparent,#FF7AC6,transparent);opacity:.8;animation:shRun 5s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes shRun{0%{top:0;opacity:0}15%{opacity:.8}85%{opacity:.8}100%{top:calc(100% - 60px);opacity:0}}
+@media(max-width:599px){.shr-ring{top:-5px;width:94px;height:94px;margin-left:-47px}}
+@media(prefers-reduced-motion:reduce){.shr-av,.shr-ring,.shx-sep::after{animation:none!important}.sh-b{transition:none!important}}
+/* 6: ползите като карти с истински елементи на NOISY (лога на модулите, нашите човечета), без шаблонни иконки */
+.shp[data-s="6"] .shb-cards{display:grid}
+.shb-cards{list-style:none;margin:0;padding:0;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;text-align:left}
+.shb-cards li{display:flex;flex-direction:column;padding:14px 14px 18px;border-radius:14px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.09);
+  transition:transform .4s cubic-bezier(.22,1,.36,1),background-color .4s}
+@media(hover:hover){.shb-cards li:hover{transform:translateY(-3px);background-color:rgba(255,255,255,.07)}}
+.shb-cards b{margin-top:14px;font:800 16px/1.25 var(--font-body);color:#fff}
+.shb-cards li>span{margin-top:4px;font:500 15px/1.4 var(--font-body);color:rgba(245,245,247,.62)}
+.shc-v{position:relative;height:92px;border-radius:10px;overflow:hidden;background:radial-gradient(120% 120% at 100% 0%,rgba(206,19,168,.2),rgba(255,0,0,.06) 50%,transparent 70%),#16131B;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.shc-mods{display:grid;grid-template-columns:1fr 1fr;align-content:center;justify-items:center;gap:10px 6px;padding:10px}
+.shc-mods img{height:19px;width:auto}
+.shc-ads{display:flex;flex-direction:column;justify-content:center;padding:0 14px}
+.shc-ads p{margin:0;font:600 15px/1 var(--font-body);color:rgba(245,245,247,.7)}
+.shc-ads em{font:800 40px/1 var(--font-head);font-style:normal;margin-right:4px;background:var(--g29);-webkit-background-clip:text;background-clip:text;color:transparent;vertical-align:-4px}
+.shc-ads i{display:block;height:4px;margin-top:14px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden}
+.shc-ads u{display:block;height:100%;width:62%;border-radius:4px;background:var(--g29);animation:shPlay 6s linear infinite}
+@keyframes shPlay{from{width:8%}to{width:96%}}
+.shc-faces{display:flex;align-items:center;justify-content:center}
+.shc-faces img{width:44px;height:44px;border-radius:50%;margin-left:-10px;box-shadow:0 0 0 3px #16131B}
+.shc-faces img:first-child{margin-left:0}
+.shc-faces span{display:grid;place-items:center;width:44px;height:44px;margin-left:-10px;border-radius:50%;background:#2A2233;box-shadow:0 0 0 3px #16131B;font:800 14px/1 var(--font-body);color:#E4B8FF}
+.shc-bill{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 14px;
+  background:linear-gradient(#16131B,#16131B) padding-box,linear-gradient(135deg,rgba(182,29,255,.6),rgba(206,19,168,.3) 50%,rgba(255,0,0,.4)) border-box;border:1px solid transparent}
+.shc-bill p{display:flex;justify-content:space-between;margin:0;font:600 14px/1 var(--font-body);color:rgba(245,245,247,.65)}
+.shc-bill p span:last-child{color:#fff;font-weight:800;font-variant-numeric:tabular-nums}
+.shc-bill p+p{padding-top:8px;border-top:1px dashed rgba(255,255,255,.18)}
+@media(max-width:899px){.shb-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.shc-ads u{animation:none}}
+
+/* голямата цена на човек (по желание на Коста от старата версия), с текущите ефекти */
+.shd-pr{margin-top:28px;gap:4px 12px}
+.shd-pr b{font:700 clamp(44px,5.4vw,64px)/1 var(--font-body);letter-spacing:-.035em;font-variant-numeric:tabular-nums;will-change:filter}
+.shd-pr span{font:600 17px/1.3 var(--font-body);color:rgba(245,245,247,.62)}
+@media(max-width:599px){.shd-pr b{font-size:48px}}
+
+/* превключвателите: плаващ панел отстрани, за да се вижда секцията цяла (само за прегледа) */
+.shv{position:fixed;z-index:60;left:16px;top:50%;translate:0 -50%;display:flex;flex-direction:column;align-items:stretch;gap:6px;width:200px;max-width:none;margin:0;padding:12px;
+  background:rgba(17,15,21,.82);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.12);border-style:solid;border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.shv span{margin:4px 2px 2px}
+.shv i{width:auto;height:1px;margin:6px 0}
+.shv button{min-height:36px;padding:0 12px;text-align:left;border-radius:10px;font-size:13px;line-height:1.2}
+.shh{margin-top:40px}
+@media(max-width:1400px){.shv{width:172px}.shv button{font-size:12.5px;padding:0 10px}}
+@media(max-width:1100px){
+  .shv{left:8px;right:8px;top:auto;bottom:76px;translate:none;width:auto;flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:8px;gap:6px}
+  .shv::-webkit-scrollbar{display:none}
+  .shv button{flex:none;white-space:nowrap;min-height:36px}.shv span{flex:none;align-self:center}.shv i{width:1px;height:24px;align-self:center}}
+/* карти с ползите на телефон */
+@media(max-width:599px){
+  .shb-cards{gap:10px}.shb-cards li{padding:10px 10px 14px}
+  .shc-v{height:80px}.shc-faces img,.shc-faces span{width:34px;height:34px;margin-left:-8px}.shc-faces span{font-size:12px}
+  .shc-bill{padding:0 10px;gap:6px}.shc-bill p{flex-direction:column;gap:3px;font-size:12px}.shc-bill p+p{padding-top:6px}
+  .shc-ads em{font-size:32px}.shc-mods img{height:15px}}
+
+/* картите не са еднакви: модулите са по-широки, логата на един ред */
+.shb-cards{grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr))}
+.shc-mods{grid-template-columns:repeat(4,auto);justify-content:center;gap:10px}
+.shc-mods img{height:20px}
+@media(max-width:899px){.shb-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.shb-cards li:first-child{grid-column:1/-1}.shc-mods{grid-template-columns:repeat(2,auto)}}
+@media(max-width:599px){.shc-mods{grid-template-columns:repeat(4,auto);gap:8px}.shc-mods img{height:14px}}
+@media(max-width:1500px){.shv{left:10px;width:146px;padding:10px}.shv button{font-size:12px;padding:0 9px;min-height:34px}}
+@media(max-width:1340px){
+  .shv{left:8px;right:8px;top:auto;bottom:16px;translate:none;width:auto;flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:8px;gap:6px}
+  .shv button{flex:none;white-space:nowrap;min-height:36px}.shv span{flex:none;align-self:center}.shv i{width:1px;height:24px;align-self:center;margin:0 4px}}
+@media(max-width:1100px){.shv{bottom:76px}}
+@media(max-width:899px){.shb-cards li:last-child{grid-column:1/-1}.shb-cards li:last-child .shc-bill p{flex-direction:row}}

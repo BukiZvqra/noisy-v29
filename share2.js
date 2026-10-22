@@ -7,7 +7,12 @@
   var av=c.querySelector('.shr-av'),S=[].slice.call(av.querySelectorAll('.s')),ph=c.querySelector('[data-ph]'),pt=c.querySelector('[data-pt]');
   var SLOT=[0,1,-1,2,-2],STEP=1700,T=[],on=false;
   var W={2:'мача.',3:'сериала.',4:'вечерта.',5:'сметката.'};
-  var PP={2:'12,45 € на човек при двама',3:'8,30 € на човек при трима',4:'6,23 € на човек при четирима',5:'4,98 € на човек при петима'};
+  var PP={2:12.45,3:8.30,4:6.23,5:4.98},pp=c.querySelector('[data-pp]'),cur=12.45,raf=0;
+  var eur=function(v){return v.toFixed(2).replace('.',',')+' €'};
+  /* цената на човек се отброява меко: 1,3 сек., easeInOutCubic, с лек blur в средата на движението */
+  function count(to){var from=cur,t0=performance.now(),d=1300;cur=to;cancelAnimationFrame(raf);
+    (function f(t){var q=Math.min(1,(t-t0)/d),e=q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2;pp.textContent=eur(from+(to-from)*e);
+      pp.style.filter='blur('+(Math.sin(Math.PI*q)*1.2).toFixed(2)+'px)';if(q<1)raf=requestAnimationFrame(f);else pp.style.filter=''})(t0)}
   function sp(){return parseFloat(getComputedStyle(av).getPropertyValue('--sp'))||.72}
   function x(i){return SLOT[i]*S[1].offsetWidth*sp()}
   function show(i){var s=S[i],k=SLOT[i],from=k?x(i)-Math.sign(k)*S[1].offsetWidth*.45:0;
@@ -17,8 +22,11 @@
   function hide(i){var s=S[i],k=SLOT[i];s.classList.add('out');s.style.opacity='0';s.style.filter='blur(8px)';
     s.style.transform='translateX('+(x(i)-Math.sign(k)*S[1].offsetWidth*.45)+'px) scale(.88)'}
   function word(t){var old=ph.querySelectorAll('.shw:not(.go)');[].forEach.call(old,function(o){o.classList.remove('in');o.classList.add('go');setTimeout(function(){o.remove()},900)});
-    var w=document.createElement('span');w.className='shw';w.textContent=t;ph.appendChild(w);requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.add('in')})})}
-  function per(k){pt.classList.add('fd');T.push(setTimeout(function(){pt.textContent=PP[k];pt.classList.remove('fd')},500))}
+    var w=document.createElement('span');w.className='shw';w.textContent=t;ph.appendChild(w);
+    /* ширината на думата се анимира, затова фразата остава в средата, а „Сподели“ се плъзга меко */
+    ph.style.width=w.getBoundingClientRect().width+'px';
+    requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.add('in')})})}
+  function per(k){count(PP[k]);pt.classList.add('fd');T.push(setTimeout(function(){pt.textContent='24,90 € за '+k+' души';pt.classList.remove('fd')},450))}
   function at(ms,fn){T.push(setTimeout(fn,ms))}
   function step(k){word(W[k]);per(k)}
   function cycle(first){
@@ -31,7 +39,7 @@
     at(STEP*3+2500+900,function(){cycle(false)})}
   function start(){if(on)return;on=true;S.forEach(function(s){s.style.transition='none';s.style.opacity='0'});ph.innerHTML='';cycle(true)}
   function stop(){on=false;T.forEach(clearTimeout);T=[]}
-  function finalState(){S.forEach(function(s,i){s.style.transition='none';s.style.opacity='1';s.style.transform='translateX('+x(i)+'px)'});pt.textContent=PP[5]}
+  function finalState(){S.forEach(function(s,i){s.style.transition='none';s.style.opacity='1';s.style.transform='translateX('+x(i)+'px)'});pt.textContent='24,90 € за 5 души';pp.textContent=eur(4.98)}
   /* превключватели за прегледа: горе A/B/C, долу 1/2/3 */
   var bd=[].slice.call(c.querySelectorAll('.shv [data-d]')),bs=[].slice.call(c.querySelectorAll('.shv [data-s]'));
   function set(d,s,save){if(d)c.setAttribute('data-d',d);if(s)c.setAttribute('data-s',s);
@@ -41,7 +49,7 @@
     if(save)try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s'))}catch(e){}}
   bd.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-d'),null,1)})});
   bs.forEach(function(b){b.addEventListener('click',function(){set(null,b.getAttribute('data-s'),1)})});
-  var m=/^#([abc])([123])$/.exec(location.hash);set(m?m[1]:'a',m?m[2]:'1');
+  var m=/^#([abc])([1-6])$/.exec(location.hash);set(m?m[1]:'a',m?m[2]:'1');
   if(rm||!('IntersectionObserver' in window)){finalState();return}
   new IntersectionObserver(function(e){e[0].isIntersecting?start():stop()},{threshold:.3}).observe(av);
   addEventListener('resize',function(){S.forEach(function(s,i){if(s.style.opacity==='1')s.style.transform='translateX('+x(i)+'px)'})});
