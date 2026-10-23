@@ -5,3 +5,13 @@ Internal NOISY review mockup. No new reference-site assets were downloaded.
 - Branding: existing assets/*.svg and img/hero-bg3.jpg from v23.
 - Composition inspiration only: Apple TV/Apple Books and Spotify for Creators screenshots on the user-provided Figma brainstorm board. Their artwork, logos and UI are not embedded in About.
 Production artwork clearance and replacement with licensed files remain with MediaHub, as recorded in the project facts.
+
+# Нови лица за „Сподели сметката“ (ceni-share3, 23.10.2026)
+img/ppl/nf1-nf5.jpg са силуети, изрязани от снимки на светъл фон и оцветени в цветовете на силуетите от Figma (без лица, само контур).
+Източник: Unsplash, филтър „free“ (Unsplash License: безплатна търговска употреба, без задължително авторство; не е Unsplash+):
+- nf1: https://images.unsplash.com/photo-1627626487034-0a3dc7278c18
+- nf2: https://images.unsplash.com/photo-1663232176328-5430c668593e
+- nf3: https://images.unsplash.com/photo-1707025204723-27d332fc36ea
+- nf4: https://images.unsplash.com/photo-1603239699774-885100e49753 (огледално)
+- nf5: https://images.unsplash.com/photo-1540304801084-0944beb20de7
+img/ppl/scr1-5.jpg са изрязвания от вече ползваните на сайта img/levski-goal, fermata-2, derby-1, ergenat-1, cl-1.

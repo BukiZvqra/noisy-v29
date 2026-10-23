@@ -16,11 +16,16 @@
       pp.style.filter='blur('+(Math.sin(Math.PI*q)*1.2).toFixed(2)+'px)';if(q<1)raf=requestAnimationFrame(f);else pp.style.filter=''})(t0)}
   function sp(){return parseFloat(getComputedStyle(av).getPropertyValue('--sp'))||.72}
   function x(i){return SLOT[i]*S[1].offsetWidth*sp()}
+  /* кастинг 4-8: рамката стои на мястото си, ефектът е вътре (класът .on) */
+  function fxm(){return +c.getAttribute('data-h')>=4}
   function show(i){var s=S[i],k=SLOT[i],from=k?x(i)-Math.sign(k)*S[1].offsetWidth*.45:0;
+    if(fxm()){s.classList.remove('out','on');s.style.transition='none';s.style.filter='none';s.style.opacity='1';s.style.transform='translateX('+x(i)+'px)';
+      void s.offsetWidth;s.style.transition='';requestAnimationFrame(function(){requestAnimationFrame(function(){s.classList.add('on')})});return}
+    s.classList.add('on');
     s.classList.remove('out');s.style.transition='none';s.style.opacity='0';s.style.filter='blur(8px)';
     s.style.transform='translateX('+from+'px) scale('+(k?.88:.84)+')';void s.offsetWidth;s.style.transition='';
     s.style.opacity='1';s.style.filter='blur(0)';s.style.transform='translateX('+x(i)+'px) scale(1)'}
-  function hide(i){var s=S[i],k=SLOT[i];s.classList.add('out');s.style.opacity='0';s.style.filter='blur(8px)';
+  function hide(i){var s=S[i],k=SLOT[i];s.classList.remove('on');if(fxm()){T.push(setTimeout(function(){s.style.opacity='0'},650));return}s.classList.add('out');s.style.opacity='0';s.style.filter='blur(8px)';
     s.style.transform='translateX('+(x(i)-Math.sign(k)*S[1].offsetWidth*.45)+'px) scale(.88)'}
   function word(t){var old=ph.querySelectorAll('.shw:not(.go)');[].forEach.call(old,function(o){o.classList.remove('in');o.classList.add('go');setTimeout(function(){o.remove()},900)});
     var w=document.createElement('span');w.className='shw';w.textContent=t;ph.appendChild(w);
@@ -40,14 +45,14 @@
     at(STEP*3+2500+900,function(){cycle(false)})}
   function start(){if(on)return;on=true;S.forEach(function(s){s.style.transition='none';s.style.opacity='0'});ph.innerHTML='';cycle(true)}
   function stop(){on=false;T.forEach(clearTimeout);T=[]}
-  function finalState(){S.forEach(function(s,i){s.style.transition='none';s.style.opacity='1';s.style.transform='translateX('+x(i)+'px)'});pt.textContent='24,90 € за 5 души';pp.textContent=eur(4.98)}
+  function finalState(){S.forEach(function(s,i){s.classList.add('on');s.style.transition='none';s.style.opacity='1';s.style.transform='translateX('+x(i)+'px)'});pt.textContent='24,90 € за 5 души';pp.textContent=eur(4.98)}
   /* превключватели за прегледа: горе A/B/C, долу 1/2/3 */
   var bd=[].slice.call(c.querySelectorAll('.shv [data-d]')),bs=[].slice.call(c.querySelectorAll('.shv [data-s]'));
   function set(d,s,save){if(d)c.setAttribute('data-d',d);if(s)c.setAttribute('data-s',s);
     bd.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-d')===c.getAttribute('data-d'))});
     bs.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-s')===c.getAttribute('data-s'))});
     S.forEach(function(s,i){if(s.style.opacity==='1'){s.style.transition='none';s.style.transform='translateX('+x(i)+'px)';void s.offsetWidth;s.style.transition=''}});
-    if(save)try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s')+(c.getAttribute('data-p')==='m'?'m':'')+'h'+c.getAttribute('data-h')+'+'+c.getAttribute('data-a'))}catch(e){}}
+    if(save)try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s')+(c.getAttribute('data-p')==='m'?'m':'')+'h'+c.getAttribute('data-h')+'f'+c.getAttribute('data-f')+'+'+c.getAttribute('data-a'))}catch(e){}}
   bd.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-d'),null,1)})});
   var bp=[].slice.call(c.querySelectorAll('.shv [data-p]'));
   function setP(v){c.setAttribute('data-p',v);bp.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-p')===v)});
@@ -71,15 +76,18 @@
   ba.forEach(function(b){b.addEventListener('click',function(){setA(b.getAttribute('data-a'))})});
   setA(c.getAttribute('data-a')||'0');
   var bh=[].slice.call(c.querySelectorAll('.shv [data-h]'));
-  function save(){try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s')+(c.getAttribute('data-p')==='m'?'m':'')+'h'+c.getAttribute('data-h')+'+'+c.getAttribute('data-a'))}catch(e){}}
-  function setH(v){c.setAttribute('data-h',v);bh.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-h')===v)});
+  function save(){try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s')+(c.getAttribute('data-p')==='m'?'m':'')+'h'+c.getAttribute('data-h')+'f'+c.getAttribute('data-f')+'+'+c.getAttribute('data-a'))}catch(e){}}
+  function setH(v){c.setAttribute('data-h',v);c.classList.toggle('cast',+v>=3);S.forEach(function(s){if(s.style.opacity==='1'){s.style.filter='none';s.classList.add('on')}});bh.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-h')===v)});
     S.forEach(function(s,i){if(s.style.opacity==='1'){s.style.transition='none';s.style.transform='translateX('+x(i)+'px)';void s.offsetWidth;s.style.transition=''}})}
   bh.forEach(function(b){b.addEventListener('click',function(){setH(b.getAttribute('data-h'));save()})});
+  var bf=[].slice.call(c.querySelectorAll('.shv [data-f]'));
+  function setF(v){c.setAttribute('data-f',v);bf.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===v)})}
+  bf.forEach(function(b){b.addEventListener('click',function(){setF(b.getAttribute('data-f'));save()})});
   ba.forEach(function(b){b.addEventListener('click',save)});bp.forEach(function(b){b.addEventListener('click',save)});
-  /* адрес: #a7h2+3 = горе A, долу 7, човечета 2, добавки 3; старите #a4 също работят */
-  var m=/^#([abcd])([1-8])(m?)(?:h([0-3]))?(?:\+([0-3]))?$/.exec(location.hash);
+  /* адрес: #a7h5f1+3 = горе A, долу 7, човечета 5, нови лица, добавки 3; старите #a4 и #a7h2+3 също работят */
+  var m=/^#([abcd])([1-8])(m?)(?:h([0-8]))?(?:f([01]))?(?:\+([0-3]))?$/.exec(location.hash);
   set(m?m[1]:c.getAttribute('data-d'),m?m[2]:c.getAttribute('data-s'));setP('s');
-  setH(m&&m[4]?m[4]:c.getAttribute('data-h'));if(m&&m[5])setA(m[5]);
+  setH(m&&m[4]?m[4]:c.getAttribute('data-h'));setF(m&&m[5]?m[5]:c.getAttribute('data-f'));if(m&&m[6])setA(m[6]);
   if(rm||!('IntersectionObserver' in window)){finalState();return}
   new IntersectionObserver(function(e){e[0].isIntersecting?start():stop()},{threshold:.3}).observe(av);
   addEventListener('resize',function(){S.forEach(function(s,i){if(s.style.opacity==='1')s.style.transform='translateX('+x(i)+'px)'})});
