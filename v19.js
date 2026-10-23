@@ -45,9 +45,10 @@
   document.body.appendChild(w);
   var pv=w.querySelector('video'),kb=w.querySelector('.kbi'),gate=w.querySelector('.tgate'),bar=w.querySelector('.pbar i'),pt=w.querySelector(".ptm"),pbox=w.querySelector('.pvbox'),DUR=4000,t0=0,raf=0,last=null,timer=0;
   function loop(now){var e=Math.min(1,(now-t0)/DUR);bar.style.width=(e*100)+'%';pt.textContent='0:0'+Math.floor(e*4);if(e<1)raf=requestAnimationFrame(loop);else gate.classList.add('on')}
-  function open(tile){
-   var x=B[S[cur].world][+tile.dataset.r][+tile.dataset.i];if(!x)return;last=tile;
-   var kind=x[4]||S[cur].world;
+  function open(tile){var x=B[S[cur].world][+tile.dataset.r][+tile.dataset.i];if(!x)return;openX(x,tile,x[4]||S[cur].world)}
+  /* 23.10 (Коста): прегледът се отваря и от голямата карта горе (k26.js) - window.agPreview([кадър, заглавие, , клип], елемент, модул) */
+  window.agPreview=function(x,el,kind){openX(x,el,kind||S[cur].world)};
+  function openX(x,tile,kind){last=tile;
    w.querySelector('.ptitle').textContent=x[1];w.querySelector('.pmeta').textContent=NM[kind]||'NOISY';w.querySelector('.gs').textContent=SUB[kind]||SUB.theatre;
    gate.classList.remove('on');bar.style.width='0';pt.textContent='0:00';
    if(x[3]){kb.hidden=true;kb.classList.remove('go');pv.hidden=false;pv.poster=x[0];pv.src=x[3];pv.currentTime=0;var pr=pv.play();if(pr&&pr.catch)pr.catch(function(){})}
