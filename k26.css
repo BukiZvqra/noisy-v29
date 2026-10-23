@@ -331,3 +331,15 @@ h2.k26w .w{padding:0!important}
 .lg-a:focus-visible>*:first-child{outline:2px solid #fff;outline-offset:3px;border-radius:50%}
 /* 22.10 (Коста): нови лога в Theatre (Под прикритие, Мамник, Supernatural, The Big Bang Theory, Criminal Minds); широките са по-големи в кръга */
 .th-lg.th-lg-w img{width:92%;height:92%}
+
+/* 23.10 (Коста): плавна смяна на табовете. Чертичката се плъзга, текстът не подскача, картите се сменят с преливане */
+.k26 .k26-tabs button.on{font-weight:600}
+.k26 .k26-tabs.k26-ir button::after{display:none}
+.k26 .k26-tabs .k26-ind{position:absolute;left:0;bottom:4px;height:2px;width:0;border-radius:2px;background:linear-gradient(90deg,#8024B6,#CE13A8);pointer-events:none;transition:transform .5s cubic-bezier(.22,1,.36,1),width .5s cubic-bezier(.22,1,.36,1)}
+.k26 .k26-tabs:not(.k26-ir) .k26-ind{opacity:0}
+.k26-tr{transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .23s ease,filter .23s ease}
+.k26-tr.k26-out{opacity:0;filter:blur(6px)}
+.k26-tr.k26-in .k26-cd{animation:k26cin .7s cubic-bezier(.22,1,.36,1) both}
+.k26-tr.k26-in .k26-cd:nth-child(2){animation-delay:.02s}.k26-tr.k26-in .k26-cd:nth-child(3){animation-delay:.06s}.k26-tr.k26-in .k26-cd:nth-child(4){animation-delay:.12s}.k26-tr.k26-in .k26-cd:nth-child(5){animation-delay:.18s}.k26-tr.k26-in .k26-cd:nth-child(n+6){animation-delay:.24s}
+@keyframes k26cin{from{opacity:0;transform:translateY(14px) scale(.985);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@media(prefers-reduced-motion:reduce){.k26 .k26-tabs .k26-ind,.k26-tr{transition:none}.k26-tr.k26-in .k26-cd{animation:none}}

@@ -21,9 +21,13 @@
         var entered=false,mo=new MutationObserver(function(){if(entered)return;if(root.classList.contains('nfree')&&!root.classList.contains('is-shrinking')&&window.agGo){entered=true;mo.disconnect();window.agGo(fi)}});
         mo.observe(root,{attributes:true,attributeFilter:['class']})}}
       var btns=[].slice.call(bar.children);
+      /* 23.10 (Коста): една чертичка, която се плъзга до избрания таб */
+      var bi=document.createElement('i');bi.className='k26-ind';bar.appendChild(bi);
+      var ind=function(){var b=bar.querySelector('button.on')||btns[0];if(!b||!b.offsetWidth)return;var pad=parseFloat(getComputedStyle(b).paddingLeft)||0;bi.style.width=(b.offsetWidth-pad*2)+'px';bi.style.transform='translateX('+(b.offsetLeft+pad)+'px)';bar.classList.add('k26-ir')};
+      addEventListener('resize',ind);if(document.fonts)document.fonts.ready.then(ind);setTimeout(ind,300);
       bar.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(window.agGo)window.agGo(+b.dataset.i);else{var d=root.querySelector('.agd[data-i="'+b.dataset.i+'"]');if(d)d.click()}});
       var frame=document.getElementById('frame');
-      var sync=function(){var cur=frame.querySelector('.ag-slide.is-current'),i=cur?[].indexOf.call(frame.querySelectorAll('.ag-slide'),cur):0;btns.forEach(function(b){var on=+b.dataset.i===i;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)})}
+      var sync=function(){var cur=frame.querySelector('.ag-slide.is-current'),i=cur?[].indexOf.call(frame.querySelectorAll('.ag-slide'),cur):0;btns.forEach(function(b){var on=+b.dataset.i===i;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});ind()}
       /* големите карти (важен мач / филм) за избрания таб */
       var ar=/arena/.test(location.pathname),I='img/',A='img/ar/';
       var SET=ar?{
@@ -40,7 +44,8 @@
        drama:[[I+'white-lotus-back.jpg','Белият лотос',1],[I+'euphoria-back.jpg','Еуфория',1]]
       };
       /* v29: началната - табове по модули, големите карти са по едно силно заглавие от всеки модул */
-      if(document.querySelector('#mods .ag-slide[data-w=theatre]')){var V='vid/',C='vid/c/';SET={
+      var HOME=!!document.querySelector('#mods .ag-slide[data-w=theatre]');
+      if(HOME){var V='vid/',C='vid/c/';SET={
        noisy:[[I+'house-of-the-dragon-back.jpg','Домът на дракона',1,'Theatre'],[I+'levski-kairat.jpg','Кайрат - Левски',0,'Arena'],[I+'igri-2.jpg','Игри на волята: новият сезон',0,'Showtime'],[I+'dune-2-back.jpg','Дюн: Част втора',1,'Theatre'],[A+'s-f1-monaco.jpg','Формула 1: Гран при на Монако',0,'Arena'],[V+'newsroom.jpg','Темата на деня',0,'Newsroom']],
        theatre:[[I+'dune-2-back.jpg','Дюн: Част втора',1],[I+'house-of-the-dragon-back.jpg','Домът на дракона',1],[I+'the-batman-back.jpg','Батман',1],[I+'white-lotus-back.jpg','Белият лотос',1],[I+'the-last-of-us-back.jpg','The Last of Us',1]],
        showtime:[[I+'igri-2.jpg','Игри на волята: новият сезон'],[I+'fermata-1.jpg','Фермата'],[I+'ergenat-1.jpg','Ергенът'],[I+'igri-3.jpg','Игри на волята: битката']],
@@ -52,12 +57,12 @@
       big.innerHTML='<div class="k26-tr"></div><button type="button" class="k26-ar l" aria-label="Предишна">‹</button><button type="button" class="k26-ar r" aria-label="Следваща">›</button>';
       stick.appendChild(big);
       var tr=big.querySelector('.k26-tr'),cards=[],ci=0,curId=slides[0].id;
-      var PAD=2,N=0,snapT=0;
+      var PAD=2,N=0,snapT=0,fillTok=0,RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
       function mark(){cards.forEach(function(c,k){var on=k===ci+PAD;c.classList.toggle('on',on);var v=c.querySelector('video');if(!v)return;if(on){if(!v.src)v.src=v.dataset.src;try{v.currentTime=0}catch(e){}var pr=v.play();if(pr&&pr.then)pr.then(function(){if(c.classList.contains('on'))v.classList.add('pl')}).catch(function(){});else v.classList.add('pl')}else{v.pause();v.classList.remove('pl')}})}
       function place(){tr.style.setProperty('--i',ci+PAD)}
       function snap(){clearTimeout(snapT);if(!N||(ci>=0&&ci<N))return;ci=((ci%N)+N)%N;tr.style.transition='none';place();mark();void tr.offsetWidth;tr.style.transition=''}
       function go(i){if(!N)return;if(i>N+PAD-1||i<-PAD)snap();ci=i;place();mark();clearTimeout(snapT);snapT=setTimeout(snap,760)}
-      function fill(id){curId=id;var L=SET[id]||SET.noisy;N=L.length;var pre=[],post=[];for(var k=0;k<PAD;k++){pre.push(L[((N-PAD+k)%N+N)%N]);post.push(L[k%N])}var all=pre.concat(L,post);tr.innerHTML=all.map(function(x){var vf=VID[x[0].split('/').pop()];return '<div class="k26-cd"><img src="'+x[0].replace(/^lg:/,'')+'" alt="" loading="lazy">'+(vf?'<video muted loop playsinline preload="none" data-src="'+vf+'"></video>':'')+(x[2]?'<em>PREMIUM</em>':'')+'<span>'+(x[3]?'<img class="k29-bd" src="assets/'+x[3]+'-w.svg" alt="'+x[3]+'">':'')+x[1]+'</span></div>'}).join('');cards=[].slice.call(tr.children);cards.forEach(function(c,k){c.addEventListener('click',function(){if(k-PAD!==ci)go(k-PAD)})});clearTimeout(snapT);tr.style.transition='none';ci=0;place();mark();void tr.offsetWidth;tr.style.transition=''}
+      function fill(id,anim){if(anim&&cards.length&&!RM){curId=id;var tok=++fillTok;tr.classList.remove('k26-in');tr.classList.add('k26-out');setTimeout(function(){if(tok!==fillTok)return;fill(id);tr.classList.remove('k26-out');void tr.offsetWidth;tr.classList.add('k26-in');setTimeout(function(){if(tok===fillTok)tr.classList.remove('k26-in')},900)},230);return}curId=id;var L=SET[id]||SET.noisy;N=L.length;var pre=[],post=[];for(var k=0;k<PAD;k++){pre.push(L[((N-PAD+k)%N+N)%N]);post.push(L[k%N])}var all=pre.concat(L,post);tr.innerHTML=all.map(function(x){var vf=VID[x[0].split('/').pop()];return '<div class="k26-cd"><img src="'+x[0].replace(/^lg:/,'')+'" alt="" loading="lazy">'+(vf?'<video muted loop playsinline preload="none" data-src="'+vf+'"></video>':'')+(x[2]&&!HOME?'<em>PREMIUM</em>':'')+'<span>'+(x[3]?'<img class="k29-bd" src="assets/'+x[3]+'-w.svg" alt="'+x[3]+'">':'')+x[1]+'</span></div>'}).join('');cards=[].slice.call(tr.children);cards.forEach(function(c,k){c.addEventListener('click',function(){if(k-PAD!==ci)go(k-PAD)})});clearTimeout(snapT);tr.style.transition='none';ci=0;place();mark();void tr.offsetWidth;tr.style.transition=''}
       big.querySelector('.l').addEventListener('click',function(){go(ci-1)});big.querySelector('.r').addEventListener('click',function(){go(ci+1)});
       /* v28: суайп/влачене настрани (телефон, мишка) и хоризонтален скрол с тъчпада */
       (function(){var sx=0,sy=0,dx=0,on=false,lock=0,moved=false,cw=function(){var c=cards[0];return c?c.getBoundingClientRect().width+16:300};
@@ -73,7 +78,7 @@
       /* без самосменяне на категориите: пауза на въртележката (смяна само с клик на таб или стрелка) */
       var pz=root.querySelector('.ag-pause');if(pz&&pz.getAttribute('aria-pressed')!=='true')pz.click();
       fill(slides[0].id);
-      var syncOld=sync;sync=function(){syncOld();var cur=frame.querySelector('.ag-slide.is-current');var id=cur?cur.dataset.w:slides[0].id;if(id!==curId)fill(id)};
+      var syncOld=sync;sync=function(){syncOld();var cur=frame.querySelector('.ag-slide.is-current');var id=cur?cur.dataset.w:slides[0].id;if(id!==curId)fill(id,1);ind()};
       new MutationObserver(function(){sync()}).observe(frame,{subtree:true,attributes:true,attributeFilter:['class']});sync();
       /* самосменяне: карта по карта, след последната - следващата категория; пауза при мишка и 9 сек след ръчна смяна */
       var hov=false,lastUser=0,zone=root.querySelector('.ag-stick'),slideIdx=function(){var c=frame.querySelector('.ag-slide.is-current');return c?[].indexOf.call(frame.querySelectorAll('.ag-slide'),c):0};
@@ -148,4 +153,4 @@
 (function(){if(!matchMedia('(hover:hover)').matches)return;document.querySelectorAll('.k26-om .omc').forEach(function(a){var v=a.querySelector('.omv');if(!v)return;a.addEventListener('mouseenter',function(){if(!v.src)v.src=v.dataset.tv;var p=v.play();if(p&&p.catch)p.catch(function(){})});a.addEventListener('mouseleave',function(){v.pause()})})})();
 /* върху свиващата се карта: същото като върху първата голяма карта (PREMIUM и заглавие) */
 (function(){var s=document.querySelector('#mods .ag-slide[data-w=noisy] .ag-surface');if(!s)return;var ar=/arena/.test(location.pathname);
- var d=document.createElement('div');d.className='k26-ph';d.innerHTML=(ar?'':'<em>PREMIUM</em>')+'<span>'+(ar?'Бразилия - Норвегия':'Дюн: Част втора')+'</span>';s.appendChild(d)})();
+ var d=document.createElement('div');d.className='k26-ph';d.innerHTML=(ar||document.querySelector('#mods .ag-slide[data-w=theatre]')?'':'<em>PREMIUM</em>')+'<span>'+(ar?'Бразилия - Норвегия':'Дюн: Част втора')+'</span>';s.appendChild(d)})();
