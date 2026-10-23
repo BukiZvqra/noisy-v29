@@ -6,3 +6,22 @@ svg.ck29{flex:none;width:16px!important;height:16px!important;padding:2px;box-si
 .gu div::before{margin-right:0}
 .trust.tr8 span::before{content:none!important;display:none!important}
 .inc li::before{content:""!important;width:16px;height:16px;top:.2em;background:var(--ck29) center/12px 12px no-repeat}
+
+/* 23.10.2026 (Коста): всички етикети (PREMIUM и др.) с радиус 8px по Noisy Design System; бяха 5px и 999px */
+.ag-pm,.ar-pm,.k26-cd em{border-radius:8px!important}
+
+/* 23.10.2026 (Коста): пагинаторът на „Повече от …“ в Theatre и Arena е 1:1 като на началната (lili/home.html):
+   кръгли ‹ › 48px #333336, точки 6px #737378 без капсула, активната = бяла чертичка 24px; без пауза и без странични стрелки */
+.tf-controls,.ar-ctl{margin-top:32px!important;display:flex!important;justify-content:center!important;align-items:center!important;gap:10px!important;background:none!important;border:0!important;box-shadow:none!important;padding:0!important}
+.tf-prev,.tf-next,.ar-cb.p,.ar-cb.n{width:48px!important;height:48px!important;min-width:0!important;padding:0!important;border:0!important;border-radius:980px!important;background:#333336!important;color:#fff!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;display:grid!important;place-items:center!important;font:400 20px/1 Arial,sans-serif!important;cursor:pointer;transition:background .2s,transform .2s!important}
+.tf-prev svg,.tf-next svg,.ar-cb.p svg,.ar-cb.n svg{display:none!important}
+.tf-prev::before,.ar-cb.p::before{content:"‹"}
+.tf-next::before,.ar-cb.n::before{content:"›"}
+.tf-prev:hover,.tf-next:hover,.ar-cb.p:hover,.ar-cb.n:hover{background:#4b4b50!important;transform:scale(1.06)}
+.tf-prev:focus-visible,.tf-next:focus-visible,.ar-cb:focus-visible,.tf-dots button:focus-visible,.ar-dots button:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.tf-pause,.ar-cb.pp,.ar-side{display:none!important}
+.tf-dots,.ar-dots{display:flex!important;align-items:center!important;gap:4px!important;padding:0!important;background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.tf-dots button,.ar-dots button{position:relative!important;width:36px!important;height:44px!important;padding:0!important;border:0!important;background:none!important;display:grid!important;place-items:center!important;border-radius:980px!important}
+.tf-dots button::before,.tf-dots button::after,.ar-dots button::before,.ar-dots button::after,.tf-dots button i::before,.tf-dots button i::after,.ar-dots button i::before,.ar-dots button i::after{display:none!important}
+.tf-dots button i,.ar-dots button i{position:static!important;display:block!important;width:6px!important;height:6px!important;border-radius:8px!important;background:#737378!important;background-image:none!important;transform:none!important;animation:none!important;opacity:1!important;transition:width .4s,background .4s!important}
+.tf-dots button[aria-current="true"] i,.ar-dots button.on i{width:24px!important;background:#fff!important}
