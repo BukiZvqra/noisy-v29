@@ -1,0 +1,166 @@
+/* NOISY · moduli-3.html: H Всичко на картата, I Таблица, J Чекмедже, K Речник.
+   Скала от .design-library (molotov): текст 13-40px, отстояния 4-100, радиуси 8/12/16/100.
+   Цветове и бутони по Noisy Design System (Figma): Branded градиент, засивено #CCCCCC, чавка #CE13A8. */
+:root{
+  --bg:#0A090D;--s1:#121016;--s2:#1A171F;--ink:#fff;--mute:#CCCCCC;--dim:rgba(255,255,255,.5);--line:rgba(255,255,255,.1);
+  --g29:linear-gradient(90deg,#8C18BE 0%,#A01076 33%,#C20406 100%);
+  --head:Unbounded,Manrope,system-ui,sans-serif;--body:Manrope,system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);--sh:0 24px 64px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+ul{list-style:none}
+.w{max-width:1280px;margin:0 auto;padding:0 40px}
+:focus-visible{outline:2px solid #CE13A8;outline-offset:3px;border-radius:4px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font:700 15px/1 var(--body);background:var(--g29);white-space:nowrap}
+.btn:hover{background:linear-gradient(90deg,#B61DFF 0%,#CE13A8 33%,#FF0000 100%)}
+.hdr{position:sticky;top:0;z-index:40;background:rgba(10,9,13,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;gap:24px;height:64px}
+.logo img{height:24px;width:auto}
+.jump{display:flex;gap:4px;margin:0 auto;padding:4px;border-radius:12px;background:rgba(255,255,255,.05)}
+.jump a{padding:8px 14px;border-radius:8px;font:600 14px/1 var(--body);color:var(--mute)}
+.jump a:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+/* увод на страницата с вариантите */
+.intro{padding:72px 0 24px}
+.intro small{font:700 14px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.intro h1{margin-top:12px;font:700 clamp(28px,3.4vw,40px)/1.1 var(--head);letter-spacing:-.01em}
+.intro p{margin-top:12px;max-width:62ch;color:var(--mute)}
+
+/* общо за вариантите */
+.v{padding:88px 0 100px;border-top:1px solid var(--line)}
+.tag{display:inline-flex;gap:8px;align-items:center;font:700 14px/1 var(--body);color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
+.tag b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:100px;background:var(--g29);color:#fff;letter-spacing:0}
+.idea{margin:8px 0 40px;font-size:15px;color:var(--dim);max-width:70ch}
+.sh{max-width:920px;margin-bottom:40px}
+.sh h2{font:700 clamp(30px,3.6vw,44px)/1.08 var(--head);letter-spacing:-.01em}
+.sh p{margin-top:16px;font-size:18px;color:var(--mute)}
+.what{display:flex;gap:12px;align-items:flex-start;margin-top:20px;padding:14px 16px;border-radius:12px;background:var(--s1);border:1px solid var(--line);font-size:15px;color:var(--mute)}
+.what b{color:#fff}
+.what svg{flex:none;width:20px;height:20px;margin-top:2px}
+
+.bd{display:block;width:auto}
+.ck{flex:none;width:16px;height:16px;border:1.5px solid rgba(206,19,168,.55);border-radius:4px;padding:1px;margin-top:4px}
+.ck path{fill:none;stroke:#CE13A8;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fl{display:grid;gap:10px}
+.fl li{display:flex;gap:10px;font-size:15px;line-height:1.5;color:#fff}
+.go{display:inline-flex;align-items:center;gap:8px;min-height:44px;font:700 15px/1 var(--body);color:#fff}
+.go svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .25s var(--ease)}
+.go:hover svg{transform:translateX(4px)}
+.how{display:flex;gap:8px;align-items:baseline;font:600 14px/1.3 var(--body)}
+.how span{flex:none;padding:4px 8px;border-radius:100px;background:rgba(255,255,255,.08);font-size:14px;color:var(--mute)}
+.ln{color:var(--mute);font-size:16px}
+.pv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* H · всичко на картата: 2×2, кадър вляво, обяснение вдясно */
+.h-g{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.h-c{display:grid;grid-template-columns:42% 1fr;border-radius:16px;overflow:hidden;background:var(--s1);border:1px solid var(--line);transition:border-color .3s}
+.h-c:hover{border-color:rgba(206,19,168,.5)}
+.h-m{position:relative;min-height:100%}
+.h-m::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,9,13,.7))}
+.h-m .bd{position:absolute;left:16px;bottom:16px;z-index:1}
+.h-t{display:flex;flex-direction:column;gap:14px;padding:24px}
+.eq{font:700 22px/1.2 var(--body)}
+.eq b{font-weight:800}
+.h-t .go{margin-top:auto}
+
+/* I · таблица: колоните са модулите, редовете са въпросите */
+.i-tab{border-radius:16px;background:var(--s1);border:1px solid var(--line);overflow:hidden}
+.i-row{display:grid;grid-template-columns:200px repeat(4,1fr);border-top:1px solid var(--line)}
+.i-row:first-child{border-top:0}
+.i-lb{padding:20px 24px;font:700 14px/1.4 var(--body);color:var(--mute)}
+.i-col{padding:20px 24px;font-size:16px;line-height:1.45;border-left:1px solid var(--line)}
+.i-hd .i-col{padding:16px}
+.i-th{display:block;cursor:default}
+.i-pic{position:relative;display:block;aspect-ratio:16/9;border-radius:8px;overflow:hidden;margin-bottom:12px;background:var(--s2)}
+.i-all{background:rgba(255,255,255,.02)}
+.i-span{grid-column:2/-1;display:flex;gap:10px;align-items:flex-start;padding:20px 24px;border-left:1px solid var(--line);font-weight:600}
+.i-ft .i-col{padding:8px 24px}
+
+/* J · чекмедже: картите като на началната, под тях се отваря модулът */
+.j-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.j-c{position:relative;height:300px;border-radius:16px;overflow:hidden;background:var(--s2);border:1px solid transparent;transition:transform .35s var(--ease),border-color .3s,height .45s var(--ease)}
+.j-c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,13,0) 30%,rgba(10,9,13,.88))}
+.j-c:not(.on) .pv{filter:brightness(.6) saturate(.8)}
+.j-c.on{height:340px;border-color:transparent;background:linear-gradient(var(--s2),var(--s2)) padding-box,var(--g29) border-box}
+.j-in{position:absolute;left:20px;right:20px;bottom:20px;z-index:1;display:grid;gap:8px;justify-items:start}
+.j-in b{font:700 22px/1.2 var(--body)}
+.j-more{display:inline-flex;align-items:center;gap:6px;font:600 14px/1 var(--body);color:var(--mute)}
+.j-more svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;transform:rotate(90deg);transition:transform .3s}
+.j-c.on .j-more{color:#fff}
+.j-c.on .j-more svg{transform:rotate(-90deg)}
+.j-row{align-items:end}
+.j-p{position:relative;margin-top:24px;display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:center;padding:40px 56px;border-radius:16px;background:var(--s1);border:1px solid var(--line)}
+.j-p::before{content:"";position:absolute;top:-9px;left:var(--x,12.5%);width:16px;height:16px;background:var(--s1);border-left:1px solid var(--line);border-top:1px solid var(--line);transform:translateX(-50%) rotate(45deg);transition:left .45s var(--ease)}
+.j-ph{width:240px;border-radius:36px;padding:8px;background:#000;border:1px solid rgba(255,255,255,.18);box-shadow:var(--sh);overflow:hidden;justify-self:center}
+.j-ph video{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:28px}
+.j-t{display:grid;gap:16px;justify-items:start;max-width:560px}
+.j-t h3{font:700 28px/1.2 var(--body)}
+
+/* K · речник: по един ред на модул */
+.k-l{display:grid}
+.k-r{display:grid;grid-template-columns:56px 1fr 1.25fr 320px;gap:32px;padding:40px 0;border-top:1px solid var(--line);align-items:start}
+.k-r:last-child{border-bottom:1px solid var(--line)}
+.k-no{font:700 15px/1 var(--body);color:var(--dim);padding-top:6px}
+.k-h{display:grid;gap:14px;justify-items:start}
+.k-h h3{font:700 32px/1.1 var(--body);letter-spacing:-.01em}
+.k-b{display:grid;gap:16px;justify-items:start}
+.k-m{position:relative;aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:var(--s2)}
+
+/* таблет */
+@media(max-width:1100px){
+  .h-g{grid-template-columns:1fr}
+  .k-r{grid-template-columns:40px 1fr 1fr;}
+  .k-m{grid-column:2/-1;grid-row:2;max-width:520px}
+  .i-row{grid-template-columns:150px repeat(4,1fr)}
+  .i-lb,.i-col{padding:16px}
+}
+
+/* телефон */
+@media(max-width:760px){
+  .w{padding:0 16px}
+  .jump{display:none}
+  .intro{padding:48px 0 16px}
+  .v{padding:56px 0 64px}
+  .idea{margin-bottom:28px}
+  .sh{margin-bottom:28px}
+  .sh p{font-size:16px}
+  .h-c{grid-template-columns:1fr}
+  .h-m{aspect-ratio:16/9;min-height:0}
+  .h-t{padding:20px}
+  /* таблицата става табове: една колона наведнъж */
+  .i-row{grid-template-columns:1fr}
+  .i-hd{grid-template-columns:repeat(4,1fr);gap:8px;padding:12px}
+  .i-hd .i-lb{display:none}
+  .i-hd .i-col{padding:0;border:0}
+  .i-th{cursor:pointer;padding:6px!important;border-radius:12px!important;border:1px solid transparent!important}
+  .i-th[aria-selected="true"]{border-color:#CE13A8!important;background:rgba(206,19,168,.08)}
+  .i-th:not([aria-selected="true"]) .i-pic{opacity:.5}
+  .i-th .bd{height:18px;max-width:100%}
+  .i-pic{margin-bottom:8px}
+  .i-row:not(.i-hd) .i-col:not(.on){display:none}
+  .i-lb{padding:16px 16px 0;font-size:14px}
+  .i-col,.i-span{border-left:0;padding:6px 16px 16px}
+  .i-span{grid-column:1}
+  /* чекмеджето: картите в два реда по две */
+  .j-row{grid-template-columns:repeat(2,1fr);gap:12px}
+  .j-c,.j-c.on{height:180px}
+  .j-in{left:12px;right:12px;bottom:12px;gap:4px}
+  .j-in .bd{height:20px}
+  .j-in b{font-size:17px}
+  .j-more{font-size:14px}
+  .j-p{grid-template-columns:1fr;gap:24px;padding:24px 20px}
+  .j-p::before{display:none}
+  .j-ph{width:200px}
+  .j-t h3{font-size:22px}
+  .k-r{grid-template-columns:1fr;gap:16px;padding:28px 0}
+  .k-no{padding:0}
+  .k-m{grid-column:1;grid-row:auto;max-width:none;aspect-ratio:16/9}
+  .k-h h3{font-size:26px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
