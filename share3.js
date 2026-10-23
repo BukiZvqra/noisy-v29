@@ -112,7 +112,13 @@
     S.forEach(function(s,i){if(s.style.opacity==='1'){s.style.transition='none';s.style.transform='translateX('+x(i)+'px)';void s.offsetWidth;s.style.transition=''}})}
   bh.forEach(function(b){b.addEventListener('click',function(){var was=c.getAttribute('data-h');setH(b.getAttribute('data-h'));if((was==='9')!==(b.getAttribute('data-h')==='9')&&vis)restart();if(c.getAttribute('data-c')==='2'){pReset();setTimeout(function(){pdone=true;pIn()},350)}save()})});
   var bf=[].slice.call(c.querySelectorAll('.shv [data-f]'));
-  function setF(v){c.setAttribute('data-f',v);bf.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===v)})}
+  /* лица: 0 старите от Figma, 1 новите изрязани, 2 новите кръгли в стила на Figma (img/ppl/r1-5); подменят се само адресите на снимките */
+  var RF=['img/ppl/r1.jpg','img/ppl/r4.jpg','img/ppl/r3.jpg','img/ppl/r2.jpg','img/ppl/r5.jpg'];
+  var RFI={c3:0,c4:3,c2:2,c5:1,c1:4};
+  S.forEach(function(s){[].forEach.call(s.querySelectorAll('.co,.pf img,.cs-n'),function(im){im.setAttribute('data-o',im.getAttribute('src'))})});
+  function setF(v){c.setAttribute('data-f',v);bf.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===v)});
+    S.forEach(function(s){var co=s.querySelector('.co'),k=co&&/(c\d)\.jpg/.exec(co.getAttribute('data-o')),r=k?RF[RFI[k[1]]]:null;
+      [].forEach.call(s.querySelectorAll('.co,.pf img,.cs-n'),function(im){var t=v==='2'&&r?r:im.getAttribute('data-o');if(im.getAttribute('src')!==t)im.setAttribute('src',t)})})}
   bf.forEach(function(b){b.addEventListener('click',function(){setF(b.getAttribute('data-f'));save()})});
   var br=[].slice.call(c.querySelectorAll('.shv [data-r]')),bc=[].slice.call(c.querySelectorAll('.shv [data-c]'));
   function setR(v,go){c.setAttribute('data-r',v);br.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-r')===v)});if(go&&on)restart()}
@@ -126,7 +132,7 @@
   bc.forEach(function(b){b.addEventListener('click',function(){setC(b.getAttribute('data-c'),1);save()})});
   ba.forEach(function(b){b.addEventListener('click',save)});bp.forEach(function(b){b.addEventListener('click',save)});
   /* адрес: #a7h5f1r2c2+3 = горе A, долу 7, човечета 5, нови лица, ритъм 2, цена 2, добавки 3; по-старите адреси също работят */
-  var m=/^#([abcd])([1-9]|1[0-3])(m?)(?:h([0-9]))?(?:f([01]))?(?:r([1-3]))?(?:c([0-7]))?(?:t([1-6]))?(?:\+([0-3]))?$/.exec(location.hash);
+  var m=/^#([abcd])([1-9]|1[0-3])(m?)(?:h([0-9]))?(?:f([012]))?(?:r([1-3]))?(?:c([0-7]))?(?:t([1-7]))?(?:\+([0-3]))?$/.exec(location.hash);
   set(m?m[1]:c.getAttribute('data-d'),m?m[2]:c.getAttribute('data-s'));setP('s');
   setH(m&&m[4]?m[4]:c.getAttribute('data-h'));setF(m&&m[5]?m[5]:c.getAttribute('data-f'));setR(m&&m[6]?m[6]:c.getAttribute('data-r'));setC(m&&m[7]?m[7]:c.getAttribute('data-c'));setT(m&&m[8]?m[8]:c.getAttribute('data-t'));if(m&&m[9])setA(m[9]);
   /* панелът с вариантите: бутон „Варианти“ отваря/затваря; на компютър е отворен по подразбиране */

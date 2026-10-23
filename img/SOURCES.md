@@ -15,3 +15,12 @@ img/ppl/nf1-nf5.jpg са силуети, изрязани от снимки на
 - nf4: https://images.unsplash.com/photo-1603239699774-885100e49753 (огледално)
 - nf5: https://images.unsplash.com/photo-1540304801084-0944beb20de7
 img/ppl/scr1-5.jpg са изрязвания от вече ползваните на сайта img/levski-goal, fermata-2, derby-1, ergenat-1, cl-1.
+
+# Нови кръгли лица в стила на силуетите от Figma (ceni-share3/4, „Лица 2“, 23.10.2026)
+img/ppl/r1-r5.jpg: снимките са оцветени двутонално в цветовете на Figma силуетите, с ореол и тъмни ъгли. Unsplash, филтър „free“ (Unsplash License):
+- r1: https://images.unsplash.com/photo-1704202632056-de2c85caf4cf
+- r2: https://images.unsplash.com/photo-1663232176328-5430c668593e
+- r3: https://images.unsplash.com/photo-1629740936456-4b990c27e503
+- r4: https://images.unsplash.com/photo-1618599056968-4eefc008cef6 (огледално)
+- r5: https://images.unsplash.com/photo-1540304801084-0944beb20de7
+Скрипт: scratchpad/tools/round.py (сесия c2c8d9cc). Ако Лили даде собствени изображения, се подменят само r1-r5.jpg.

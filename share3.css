@@ -394,3 +394,9 @@ html .shp .shv span{min-width:0}
 /* връзка между версия 1 и версия 2 в панела */
 .shv-v1{display:inline-flex;align-items:center;min-height:30px;padding:5px 9px;border-radius:10px;font:600 12px/1.2 var(--font-body);color:#E4B8FF;text-decoration:none;border:1px dashed rgba(228,184,255,.4)}
 @media(max-width:1099px){.shv-v1{min-height:36px}}
+
+/* лица 2: новите кръгли в стила на Figma (img/ppl/r1-5); в кастинга се показват на мястото на новите изрязани */
+.shp[data-f="2"] .cs .cs-n{display:block}.shp[data-f="2"] .cs .cs-o{display:none}
+/* заглавие 7: „NOISY за петима.“ */
+.shp[data-t="7"] .sh-a,.shp[data-t="7"] .sh-b{display:none!important}
+.shp[data-t="7"] .sh-st7{display:block;white-space:normal;text-wrap:balance}
