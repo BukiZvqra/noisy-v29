@@ -50,3 +50,6 @@
 @media(prefers-reduced-motion:reduce){.mui-ph,.mui-x{transition:none}}
 .mui-ph video{height:calc(100% - 12px);aspect-ratio:auto}
 @media(max-width:899px){.mui-ph video{height:calc(100% - 10px)}.mui-st{min-height:500px}.mui-ph{transform:translate(-50%,-58%) translateX(var(--x,0)) scale(var(--s,1)) rotateY(var(--r,0deg))}}
+/* 23.10: без фон зад устройствата; отстъп отдолу, защото следващата секция застъпва с margin-top:-24px и режеше последния ред */
+main>section#moduli.mui{padding-bottom:88px!important}
+.mui-st{background:none;box-shadow:none;border-radius:0}
