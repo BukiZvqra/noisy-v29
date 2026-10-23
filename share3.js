@@ -129,6 +129,10 @@
   function setT(v){c.setAttribute('data-t',v);bt.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-t')===v)});
     var w=ph.querySelector('.shw:not(.go)');if(w)ph.style.width=(v==='2'?maxW():w.getBoundingClientRect().width)+'px'}
   bt.forEach(function(b){b.addEventListener('click',function(){setT(b.getAttribute('data-t'));save()})});
+  /* превключвател на версията: запазва избора горе, долу взима подразбирането на другата версия */
+  [].forEach.call(c.querySelectorAll('.shv-ver a'),function(a){a.addEventListener('click',function(e){if(a.getAttribute('aria-current'))return e.preventDefault();
+    var s=a.getAttribute('data-v')==='2'?'9':'7',g=function(k){return c.getAttribute('data-'+k)};
+    a.href=a.getAttribute('href').split('#')[0]+'#'+g('d')+s+'h'+g('h')+'f'+g('f')+'r'+g('r')+'c'+g('c')+'t'+g('t')+'+'+g('a')})});
   bc.forEach(function(b){b.addEventListener('click',function(){setC(b.getAttribute('data-c'),1);save()})});
   ba.forEach(function(b){b.addEventListener('click',save)});bp.forEach(function(b){b.addEventListener('click',save)});
   /* адрес: #a7h5f1r2c2+3 = горе A, долу 7, човечета 5, нови лица, ритъм 2, цена 2, добавки 3; по-старите адреси също работят */

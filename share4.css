@@ -110,8 +110,6 @@
 .v13-t .btn-p{background:#fff;color:#0E0E0E}
 .v2-13 .v13{grid-template-columns:minmax(0,1fr) 172px;--cut:calc(100% - 172px)}
 
-/* ---------- панел: връзка към версия 1 ---------- */
-.shv-v1{display:inline-flex;align-items:center;min-height:30px;padding:5px 9px;border-radius:10px;font:600 12px/1.2 var(--font-body);color:#E4B8FF;text-decoration:none;border:1px dashed rgba(228,184,255,.4)}
 
 /* ---------- таблет и телефон ---------- */
 @media(max-width:899px){
@@ -144,4 +142,3 @@
 /* стълбовете: плътен цвят вместо едноцветен градиент; маркираният е в градиента на бранда */
 .v12-ch i{background:rgba(228,184,255,.26)}
 .v12-ch li.hi i{background:var(--g29)}
-@media(max-width:1099px){.shv-v1{min-height:36px}}
