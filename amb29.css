@@ -2,14 +2,15 @@
    светлина зад цялата страница: лилаво и магента от марката, малко синьо и тюркоаз. По-тих от сиянието при „Гледай
    навсякъде“, движи се бавно. Секциите със собствен плътен фон (#mods, залепената сцена, „Повече от гледане“ и iframe-ът
    вътре) стават прозрачни, за да няма шевове. */
-html{background:#0a090d}
+html{background:#0d0b12}
 body{background:transparent!important}
-body::before{content:"";position:fixed;inset:-8%;z-index:-1;pointer-events:none;
+body::before{content:"";position:fixed;inset:-12%;z-index:-1;pointer-events:none;
   background:
-    radial-gradient(52% 44% at 14% 20%,rgba(140,24,190,.17),transparent 70%),
-    radial-gradient(44% 40% at 86% 30%,rgba(206,19,168,.10),transparent 72%),
-    radial-gradient(50% 46% at 76% 90%,rgba(60,110,255,.09),transparent 72%),
-    radial-gradient(44% 40% at 20% 86%,rgba(49,202,186,.06),transparent 72%);
+    radial-gradient(70% 60% at 10% 16%,rgba(140,24,190,.22),transparent 72%),
+    radial-gradient(60% 55% at 92% 26%,rgba(206,19,168,.13),transparent 74%),
+    radial-gradient(90% 70% at 50% 55%,rgba(110,40,190,.07),transparent 75%),
+    radial-gradient(65% 60% at 82% 92%,rgba(60,110,255,.12),transparent 74%),
+    radial-gradient(60% 55% at 14% 88%,rgba(49,202,186,.08),transparent 74%);
   animation:amb29 40s ease-in-out infinite alternate}
 @keyframes amb29{to{transform:translate3d(-2.5%,2%,0) scale(1.06)}}
 #mods,.ag-root,.ag-stick,.lili-host,#lilif{background:transparent!important}
