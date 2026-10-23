@@ -7,7 +7,7 @@
   var nowT=document.getElementById('agNowT'),nowS=document.getElementById('agNowS'),more=document.getElementById('agMore'),dots=[].slice.call(root.querySelectorAll('.agd'));
   var hint=root.querySelector('.ag-hint');if(hint)hint.textContent=matchMedia('(max-width:734px)').matches?'← Плъзни картата →':'Избери модул: редовете долу се сменят';
   function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  function strip(r,k,hid){return '<div class="ag-strip" style="--ag-count:'+r.length+'"'+(hid?' aria-hidden="true"':'')+'>'+r.map(function(x,i){return '<a class="ag-tile" style="--ag-i:'+i+'" href="'+x[2]+'" data-r="'+k+'" data-i="'+i+'"'+(hid?' tabindex="-1"':'')+'>'+(!x[0]?'<span class="ag-tt ag-tt0" data-w="'+(x[4]||'')+'"></span>':x[0].indexOf('lg:')===0?'<span class="ag-tt"><img src="'+x[0].slice(3)+'" alt="" loading="lazy"></span>':'<img src="'+x[0]+'" alt="" loading="lazy">')+(x[3]?'<video muted loop playsinline preload="none" data-src="'+x[3]+'"></video>':'')+'<span class="ag-tile-label">'+esc(x[1])+'</span>'+(x[5]?'<span class="ag-pm">Premium</span>':'')+'</a>'}).join('')+'</div>'}
+  function strip(r,k,hid){return '<div class="ag-strip" style="--ag-count:'+r.length+'"'+(hid?' aria-hidden="true"':'')+'>'+r.map(function(x,i){return '<a class="ag-tile" style="--ag-i:'+i+'" href="'+x[2]+'" data-r="'+k+'" data-i="'+i+'"'+(hid?' tabindex="-1"':'')+'>'+(!x[0]?'<span class="ag-tt ag-tt0" data-w="'+(x[4]||'')+'"></span>':x[0].indexOf('lg:')===0?'<span class="ag-tt"><img src="'+x[0].slice(3)+'" alt="" loading="lazy"></span>':'<img src="'+String(x[0]).replace(/^lg:/,'')+'" alt="" loading="lazy">')+(x[3]?'<video muted loop playsinline preload="none" data-src="'+x[3]+'"></video>':'')+'<span class="ag-tile-label">'+esc(x[1])+'</span>'+(x[5]?'<span class="ag-pm">Premium</span>':'')+'</a>'}).join('')+'</div>'}
   function rows(w){var fl=root.querySelectorAll('.ag-flow');return B[w].map(function(r,k){var ms=fl[k]?fl[k].style.getPropertyValue('--ag-marquee-ms'):'';return '<div class="ag-row"><div class="ag-flow"'+(ms?' style="--ag-marquee-ms:'+ms+'"':'')+'>'+strip(r,k)+strip(r,k,true)+'</div></div>'}).join('')}
   /* 13.10: плочките стоят на картинката; видеото върви само при посочване с мишката (при натискане се отваря прегледът с видео) */
   var tio={disconnect:function(){}},hov=matchMedia('(hover:hover) and (pointer:fine)');
@@ -73,7 +73,7 @@
 
   /* кадрите на всички модули се зареждат предварително, щом галерията наближи, за да няма празни плочки при смяна */
   var done=false;new IntersectionObserver(function(es,o){if(done||!es.some(function(x){return x.isIntersecting}))return;done=true;o.disconnect();
-   Object.keys(B).forEach(function(k){B[k].forEach(function(r){r.forEach(function(x){var im=new Image();im.src=x[0]})})})},{rootMargin:'600px'}).observe(root);
+   Object.keys(B).forEach(function(k){B[k].forEach(function(r){r.forEach(function(x){var im=new Image();im.src=String(x[0]).replace(/^lg:/,'')})})})},{rootMargin:'600px'}).observe(root);
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();

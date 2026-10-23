@@ -18,7 +18,7 @@
       /* 22.10 (Коста): в Arena първият таб е „Футбол“; след прехода с N се влиза направо във футбола, „Всички спортове“ е втори */
       if(/arena/.test(location.pathname)){var fi=-1;slides.forEach(function(s,k){if(s.world==='football')fi=k});
        if(fi>0){var fb=bar.children[fi];bar.insertBefore(fb,bar.firstChild);
-        var entered=false,mo=new MutationObserver(function(){if(entered)return;if(root.classList.contains('nfree')&&!root.classList.contains('is-shrinking')&&window.agGo){entered=true;mo.disconnect();window.agGo(fi)}});
+        /* 23.10: при всяко приземяване на прехода (и след връщане нагоре), не само първия път */var landed=false,mo=new MutationObserver(function(){var down=root.classList.contains('nfree')&&!root.classList.contains('is-shrinking');if(down&&!landed&&window.agGo){landed=true;window.k26Instant=true;window.agGo(fi);setTimeout(function(){window.k26Instant=false},60)}else if(!down)landed=false});
         mo.observe(root,{attributes:true,attributeFilter:['class']})}}
       var btns=[].slice.call(bar.children);
       /* 23.10 (Коста): една чертичка, която се плъзга до избрания таб */
@@ -78,7 +78,7 @@
       /* без самосменяне на категориите: пауза на въртележката (смяна само с клик на таб или стрелка) */
       var pz=root.querySelector('.ag-pause');if(pz&&pz.getAttribute('aria-pressed')!=='true')pz.click();
       fill(slides[0].id);
-      var syncOld=sync;sync=function(){syncOld();var cur=frame.querySelector('.ag-slide.is-current');var id=cur?cur.dataset.w:slides[0].id;if(id!==curId)fill(id,1);ind()};
+      var syncOld=sync;sync=function(){syncOld();var cur=frame.querySelector('.ag-slide.is-current');var id=cur?cur.dataset.w:slides[0].id;if(id!==curId)fill(id,window.k26Instant?0:1);ind()}; /* 23.10: автоматичното влизане във „Футбол“ след прехода е мигновено, плавната смяна остава само при избор на таб */
       new MutationObserver(function(){sync()}).observe(frame,{subtree:true,attributes:true,attributeFilter:['class']});sync();
       /* самосменяне: карта по карта, след последната - следващата категория; пауза при мишка и 9 сек след ръчна смяна */
       var hov=false,lastUser=0,zone=root.querySelector('.ag-stick'),slideIdx=function(){var c=frame.querySelector('.ag-slide.is-current');return c?[].indexOf.call(frame.querySelectorAll('.ag-slide'),c):0};
