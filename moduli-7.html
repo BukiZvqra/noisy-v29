@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NOISY · Четирите модула, три фона</title>
+<link rel="icon" href="assets/symbol.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap">
+<style>
+/* NOISY · „Четири модула“: плочки 45/55 и 55/45, всяка води към своята под-марка.
+   Цветът на всяка плочка тръгва от долния десен ъгъл, далеч от етикета: по бранд правилата
+   градиентното N не стои върху лилав, розов или червен фон. Стадионът в Arena е ambient, под 8% бяло. */
+:root{--bg:#0A090D;--tile:#131118;--ink:#fff;--mute:#CCCCCC;
+  --head:Unbounded,Manrope,system-ui,sans-serif;--body:Manrope,system-ui,-apple-system,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{display:block}
+:focus-visible{outline:2px solid #CE13A8;outline-offset:4px;border-radius:16px}
+
+.mz{padding:140px 40px}
+.mz-in{max-width:1200px;margin:0 auto}
+.mz h2{font:700 clamp(32px,4.4vw,56px)/1.06 var(--head);letter-spacing:-.01em;text-align:center}
+.mz-g{margin-top:80px;display:grid;grid-template-columns:repeat(20,1fr);gap:16px}
+.mz-t{position:relative;isolation:isolate;display:flex;flex-direction:column;min-height:240px;padding:32px;border-radius:16px;background:var(--tile);overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);transition:box-shadow .4s var(--ease),transform .5s var(--ease)}
+.mz-t::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--tint);opacity:.9;transition:opacity .5s var(--ease)}
+.mz-t:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.mz-t:hover::before{opacity:1}
+/* 45/55 горе, 55/45 долу */
+.mz-g>a:nth-child(1),.mz-g>a:nth-child(4){grid-column:span 9}
+.mz-g>a:nth-child(2),.mz-g>a:nth-child(3){grid-column:span 11}
+
+.t-th{--tint:radial-gradient(90% 120% at 100% 100%,rgba(182,29,255,.20),rgba(182,29,255,0) 70%)}
+.t-ar{--tint:radial-gradient(90% 130% at 100% 100%,rgba(34,197,94,.20),rgba(34,197,94,0) 70%)}
+.t-sh{--tint:radial-gradient(90% 130% at 100% 100%,rgba(206,19,168,.18),rgba(206,19,168,0) 70%)}
+.t-nr{--tint:radial-gradient(90% 120% at 100% 100%,rgba(56,132,255,.18),rgba(56,132,255,0) 70%)}
+
+.mz-t img{height:30px;width:auto;align-self:flex-start}
+.mz-t b{margin-top:auto;padding-top:40px;font:700 28px/1.15 var(--body);letter-spacing:-.02em}
+.mz-t span{margin-top:8px;font-size:17px;line-height:1.5;color:var(--mute);max-width:40ch}
+
+/* стадионът: само очертания, едва загатнати */
+.std{position:absolute;z-index:-1;right:-70px;top:50%;width:440px;height:auto;transform:translateY(-50%);fill:none;stroke:#fff;stroke-width:1.2;opacity:.07;
+  -webkit-mask-image:radial-gradient(70% 70% at 60% 50%,#000 30%,transparent 80%);mask-image:radial-gradient(70% 70% at 60% 50%,#000 30%,transparent 80%)}
+
+@media(max-width:760px){
+  .mz{padding:88px 16px}
+  .mz-g{margin-top:48px;grid-template-columns:1fr;gap:12px}
+  .mz-g>a:nth-child(n){grid-column:auto}
+  .mz-t{min-height:200px;padding:24px}
+  .mz-t img{height:26px}
+  .mz-t b{padding-top:32px;font-size:22px}
+  .mz-t span{font-size:16px}
+  .std{width:340px;right:-90px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.ver{display:flex;gap:10px;align-items:center;justify-content:center;margin-bottom:40px;font:700 14px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.ver b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:100px;background:linear-gradient(90deg,#8C18BE,#A01076 33%,#C20406);color:#fff;letter-spacing:0}
+.mz+.mz{border-top:1px solid rgba(255,255,255,.08)}
+.jmp{position:sticky;top:0;z-index:9;display:flex;justify-content:center;gap:4px;padding:12px;background:rgba(10,9,13,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.jmp a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:8px;font:600 15px/1 var(--body);color:var(--mute)}
+.jmp a:hover{color:#fff;background:rgba(255,255,255,.06)}
+/* по-тесните плочки: рисунката отива по-вдясно, за да не влиза под текста */
+.mz-g>a:nth-child(1) .std{right:-50px;width:400px}.mz-g>a:nth-child(4) .std{right:-130px}
+/* версия 3: два слоя цвят, без линии */
+.v3 .t-th{--tint:radial-gradient(80% 110% at 100% 100%,rgba(182,29,255,.34),rgba(182,29,255,0) 70%),radial-gradient(60% 80% at 85% 0%,rgba(206,19,168,.12),rgba(206,19,168,0) 70%)}
+.v3 .t-ar{--tint:radial-gradient(80% 120% at 100% 100%,rgba(34,197,94,.32),rgba(34,197,94,0) 70%),radial-gradient(60% 80% at 80% 0%,rgba(20,184,166,.12),rgba(20,184,166,0) 70%)}
+.v3 .t-sh{--tint:radial-gradient(80% 120% at 100% 100%,rgba(206,19,168,.32),rgba(206,19,168,0) 70%),radial-gradient(60% 80% at 85% 0%,rgba(255,64,64,.10),rgba(255,64,64,0) 70%)}
+.v3 .t-nr{--tint:radial-gradient(80% 110% at 100% 100%,rgba(56,132,255,.32),rgba(56,132,255,0) 70%),radial-gradient(60% 80% at 85% 0%,rgba(34,211,238,.12),rgba(34,211,238,0) 70%)}
+@media(max-width:760px){.ver{margin-bottom:28px}.mz-g>a:nth-child(1) .std,.mz-g>a:nth-child(4) .std{right:-90px}}
+</style>
+</head>
+<body>
+<nav class="jmp" aria-label="Версии"><a href="#v1">Версия 1</a><a href="#v2">Версия 2</a><a href="#v3">Версия 3</a></nav>
+<section class="mz v1" id="v1" aria-labelledby="mzh1">
+  <div class="mz-in">
+    <p class="ver"><b>1</b>Както го описа: линии само в Arena</p>
+    <h2 id="mzh1">Четири модула. Един план.</h2>
+    <div class="mz-g">
+      <a class="mz-t t-th" href="theatre.html"><img src="assets/Theatre-w.svg" alt="Theatre"><b>Твоето кино.</b><span>Избираш филм или сериал и го гледаш докрай. Спреш ли, продължаваш оттам.</span></a>
+      <a class="mz-t t-ar" href="arena.html"><svg class="std" viewBox="0 0 440 300" aria-hidden="true"><rect x="6" y="6" width="428" height="288" rx="140"/><rect x="34" y="30" width="372" height="240" rx="110"/><rect x="90" y="62" width="260" height="176"/><path d="M220 62v176"/><circle cx="220" cy="150" r="30"/><circle cx="220" cy="150" r="2"/><rect x="90" y="108" width="42" height="84"/><rect x="90" y="128" width="16" height="44"/><rect x="308" y="108" width="42" height="84"/><rect x="334" y="128" width="16" height="44"/><path d="M132 132a20 20 0 0 1 0 36M308 132a20 20 0 0 0 0 36"/></svg><img src="assets/Arena-w.svg" alt="Arena"><b>Твоят стадион.</b><span>Мачът е на живо, а резултатът и статистиката са върху него.</span></a>
+      <a class="mz-t t-sh" href="f/f-showtime.html"><img src="assets/Showtime-w.svg" alt="Showtime"><b>Реалито без чакане.</b><span>Всеки епизод е нарязан на най-силните моменти. Гледаш само тях.</span></a>
+      <a class="mz-t t-nr" href="f/f-newsroom.html"><img src="assets/Newsroom-w.svg" alt="Newsroom"><b>Денят за една минута.</b><span>Важното от деня в кратки клипове, едно след друго.</span></a>
+    </div>
+  </div>
+</section>
+<section class="mz v2" id="v2" aria-labelledby="mzh2">
+  <div class="mz-in">
+    <p class="ver"><b>2</b>Всеки модул със свои загатнати линии</p>
+    <h2 id="mzh2">Четири модула. Един план.</h2>
+    <div class="mz-g">
+      <a class="mz-t t-th" href="theatre.html"><svg class="std" viewBox="0 0 440 300" aria-hidden="true"><path d="M70 40Q220 22 370 40V128Q220 112 70 128Z"/><path d="M40 182Q220 154 400 182M20 216Q220 184 420 216M0 252Q220 214 440 252M-20 290Q220 246 460 290"/><path d="M220 128v26" stroke-dasharray="2 6"/></svg><img src="assets/Theatre-w.svg" alt="Theatre"><b>Твоето кино.</b><span>Избираш филм или сериал и го гледаш докрай. Спреш ли, продължаваш оттам.</span></a>
+      <a class="mz-t t-ar" href="arena.html"><svg class="std" viewBox="0 0 440 300" aria-hidden="true"><rect x="6" y="6" width="428" height="288" rx="140"/><rect x="34" y="30" width="372" height="240" rx="110"/><rect x="90" y="62" width="260" height="176"/><path d="M220 62v176"/><circle cx="220" cy="150" r="30"/><circle cx="220" cy="150" r="2"/><rect x="90" y="108" width="42" height="84"/><rect x="90" y="128" width="16" height="44"/><rect x="308" y="108" width="42" height="84"/><rect x="334" y="128" width="16" height="44"/><path d="M132 132a20 20 0 0 1 0 36M308 132a20 20 0 0 0 0 36"/></svg><img src="assets/Arena-w.svg" alt="Arena"><b>Твоят стадион.</b><span>Мачът е на живо, а резултатът и статистиката са върху него.</span></a>
+      <a class="mz-t t-sh" href="f/f-showtime.html"><svg class="std" viewBox="0 0 440 300" aria-hidden="true"><path d="M110 0L40 246M110 0L196 250M330 0L244 250M330 0L400 246"/><ellipse cx="220" cy="252" rx="200" ry="36"/><ellipse cx="220" cy="252" rx="120" ry="18"/><circle cx="110" cy="6" r="6"/><circle cx="330" cy="6" r="6"/></svg><img src="assets/Showtime-w.svg" alt="Showtime"><b>Реалито без чакане.</b><span>Всеки епизод е нарязан на най-силните моменти. Гледаш само тях.</span></a>
+      <a class="mz-t t-nr" href="f/f-newsroom.html"><svg class="std" viewBox="0 0 440 300" aria-hidden="true"><circle cx="220" cy="150" r="130"/><ellipse cx="220" cy="150" rx="86" ry="130"/><ellipse cx="220" cy="150" rx="40" ry="130"/><path d="M220 20v260M90 150h260M100 100h240M100 200h240M131 55h178M131 245h178"/></svg><img src="assets/Newsroom-w.svg" alt="Newsroom"><b>Денят за една минута.</b><span>Важното от деня в кратки клипове, едно след друго.</span></a>
+    </div>
+  </div>
+</section>
+<section class="mz v3" id="v3" aria-labelledby="mzh3">
+  <div class="mz-in">
+    <p class="ver"><b>3</b>Без линии, по-богат цветен градиент</p>
+    <h2 id="mzh3">Четири модула. Един план.</h2>
+    <div class="mz-g">
+      <a class="mz-t t-th" href="theatre.html"><img src="assets/Theatre-w.svg" alt="Theatre"><b>Твоето кино.</b><span>Избираш филм или сериал и го гледаш докрай. Спреш ли, продължаваш оттам.</span></a>
+      <a class="mz-t t-ar" href="arena.html"><img src="assets/Arena-w.svg" alt="Arena"><b>Твоят стадион.</b><span>Мачът е на живо, а резултатът и статистиката са върху него.</span></a>
+      <a class="mz-t t-sh" href="f/f-showtime.html"><img src="assets/Showtime-w.svg" alt="Showtime"><b>Реалито без чакане.</b><span>Всеки епизод е нарязан на най-силните моменти. Гледаш само тях.</span></a>
+      <a class="mz-t t-nr" href="f/f-newsroom.html"><img src="assets/Newsroom-w.svg" alt="Newsroom"><b>Денят за една минута.</b><span>Важното от деня в кратки клипове, едно след друго.</span></a>
+    </div>
+  </div>
+</section>
+</body>
+</html>
