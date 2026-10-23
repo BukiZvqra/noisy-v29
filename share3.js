@@ -88,6 +88,14 @@
   var m=/^#([abcd])([1-8])(m?)(?:h([0-8]))?(?:f([01]))?(?:\+([0-3]))?$/.exec(location.hash);
   set(m?m[1]:c.getAttribute('data-d'),m?m[2]:c.getAttribute('data-s'));setP('s');
   setH(m&&m[4]?m[4]:c.getAttribute('data-h'));setF(m&&m[5]?m[5]:c.getAttribute('data-f'));if(m&&m[6])setA(m[6]);
+  /* панелът с вариантите: бутон „Варианти“ отваря/затваря; на компютър е отворен по подразбиране */
+  (function(){var pv=c.querySelector('.shv');if(!pv)return;pv.id='shv';var tg=document.createElement('button');tg.type='button';tg.className='shv-tg';tg.setAttribute('aria-controls','shv');
+    document.body.appendChild(tg);var de=document.documentElement;
+    function op(o){de.classList.toggle('shv-open',o);tg.setAttribute('aria-expanded',o);
+      tg.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+(o?'<path d="M6 6l12 12M18 6 6 18"/>':'<path d="M4 7h16M4 12h16M4 17h10"/>')+'</svg>'+(o?'Скрий вариантите':'Варианти')}
+    tg.addEventListener('click',function(){op(!de.classList.contains('shv-open'))});
+    addEventListener('keydown',function(e){if(e.key==='Escape'&&de.classList.contains('shv-open')&&innerWidth<1100)op(false)});
+    op(matchMedia('(min-width:1100px)').matches)})();
   if(rm||!('IntersectionObserver' in window)){finalState();return}
   new IntersectionObserver(function(e){e[0].isIntersecting?start():stop()},{threshold:.3}).observe(av);
   addEventListener('resize',function(){S.forEach(function(s,i){if(s.style.opacity==='1')s.style.transform='translateX('+x(i)+'px)'})});
