@@ -8,3 +8,10 @@
   .fx-managed[data-i="0"] .dv,.card[data-i="0"] .dv{transform:scale(.95)!important;transform-origin:50% 0!important;top:226px!important;left:calc(50% - 129px)!important}
   .fx-managed[data-i="4"] .dv,.card[data-i="4"] .dv{transform:scale(.85)!important;transform-origin:50% 0!important;top:196px!important;left:calc(50% - 142px)!important}
 }
+/* 23.10 (Коста): на телефон картите са в колона (fx-gradients); старите позиции горе изместваха телефоните. Центрирани и изцяло в своето място. */
+@media(max-width:734px){
+  .fx-gradients .card.fx-managed[data-i="0"] .dv{left:calc(50% - 129px)!important;top:0!important;transform:scale(.636)!important;transform-origin:50% 0!important}
+  .fx-gradients .card.fx-managed[data-i="4"] .dv{left:calc(50% - 142px)!important;top:0!important;transform:scale(.415)!important;transform-origin:50% 0!important}
+  .fx-gradients .card[data-i="5"] .st::after{content:"";position:absolute;left:0;right:0;top:0;height:46%;background:linear-gradient(180deg,rgba(10,9,13,.88),rgba(10,9,13,0));z-index:3;pointer-events:none}
+  .fx-gradients .card[data-i="5"] .tx{position:relative;z-index:6!important}
+}
