@@ -1,33 +1,65 @@
 /* 23.10.2026 (Коста): „Четири модула“ без заглавие. Плочки 45/55 горе и 55/45 долу, логото на под-марката ~1/3 от височината,
-   обяснително заглавие + най-много един ред подзаглавие, лек цветен градиент от долния десен ъгъл (бранд правило: градиентното N
-   не стои върху лилав/розов/червен фон) и загатнати очертания, еднакво видими във всяка плочка, изместени вдясно. */
+   обяснително заглавие + най-много един ред подзаглавие. В покой: тъмна плочка, лек цветен градиент от долния десен ъгъл
+   (бранд правило: градиентното N не стои върху лилав/розов/червен фон), загатнати очертания и едва видима черно-бяла снимка.
+   При посочване (на телефон: плочката в средата на екрана) снимката излиза в цвят и леко се приближава, линиите се оттеглят. */
 #moduli.mq{padding:clamp(64px,7vw,96px) 0 0}
 .mq-g{display:grid;grid-template-columns:repeat(20,1fr);gap:16px}
-.mq-c{position:relative;isolation:isolate;display:flex;flex-direction:column;min-height:280px;padding:32px;border-radius:16px;background:#131118;overflow:hidden;color:#fff;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);transition:box-shadow .4s cubic-bezier(.2,.7,.2,1)}
-.mq-c::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--tint)}
-.mq-c:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.mq-c{--ease:cubic-bezier(.2,.7,.2,1);position:relative;isolation:isolate;display:flex;flex-direction:column;min-height:280px;padding:32px;border-radius:16px;background:#131118;overflow:hidden;color:#fff;text-decoration:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);transition:box-shadow .6s var(--ease)}
 .mq-g>a:nth-child(1),.mq-g>a:nth-child(4){grid-column:span 9}
 .mq-g>a:nth-child(2),.mq-g>a:nth-child(3){grid-column:span 11}
-.mq-th{--tint:radial-gradient(90% 120% at 100% 100%,rgba(182,29,255,.22),rgba(182,29,255,0) 70%)}
-.mq-ar{--tint:radial-gradient(90% 130% at 100% 100%,rgba(34,197,94,.22),rgba(34,197,94,0) 70%)}
-.mq-sh{--tint:radial-gradient(90% 130% at 100% 100%,rgba(206,19,168,.20),rgba(206,19,168,0) 70%)}
-.mq-nr{--tint:radial-gradient(90% 120% at 100% 100%,rgba(56,132,255,.20),rgba(56,132,255,0) 70%)}
-.mq-c>img{height:76px;width:auto;align-self:flex-start}
-.mq-c h3{margin:auto 0 0;padding-top:32px;font:700 26px/1.2 Manrope,system-ui,sans-serif;letter-spacing:-.02em;max-width:30ch;text-wrap:balance}
-.mq-c p{margin:8px 0 0;font:400 16px/1.5 Manrope,system-ui,sans-serif;color:#CCCCCC;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-/* очертанията: еднаква сила във всички плочки, вдясно, избледняват към текста */
-.mq-art{position:absolute;z-index:-1;top:50%;right:-48px;height:118%;width:auto;transform:translateY(-50%);fill:none;stroke:#fff;stroke-width:1.5;stroke-linecap:round;opacity:.13;
+.mq-th{--rgb:182,29,255}
+.mq-ar{--rgb:34,197,94}
+.mq-sh{--rgb:206,19,168}
+.mq-nr{--rgb:56,132,255}
+.mq-th .mq-ph{object-position:38% 30%}
+.mq-ar .mq-ph{object-position:50% 70%}
+.mq-sh .mq-ph{object-position:62% 40%}
+.mq-nr .mq-ph{object-position:50% 40%}
+
+/* слоеве: снимка (-3) -> цвят (-2) -> тъмнина за текста (-2) -> линии (-1) */
+.mq-ph{position:absolute;top:0;right:0;z-index:-3;width:68%;height:100%;object-fit:cover;opacity:.07;filter:grayscale(1) contrast(1.1);transform:scale(1.08);transform-origin:70% 50%;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 22%,#000 48%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 22%,#000 48%);
+  transition:opacity .8s var(--ease),filter .8s var(--ease),transform 1.2s var(--ease)}
+.mq-c::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(90% 125% at 100% 100%,rgba(var(--rgb),.22),rgba(var(--rgb),0) 70%);transition:opacity .8s var(--ease)}
+.mq-c::after{content:"";position:absolute;inset:0;z-index:-2;opacity:0;transition:opacity .8s var(--ease);
+  background:linear-gradient(0deg,rgba(10,9,13,.55) 0%,rgba(10,9,13,0) 45%),radial-gradient(70% 100% at 100% 100%,rgba(var(--rgb),.30),rgba(var(--rgb),0) 70%)}
+.mq-art{position:absolute;z-index:-1;top:50%;right:-48px;height:118%;width:auto;transform:translateY(-50%);fill:none;stroke:#fff;stroke-width:1.5;stroke-linecap:round;opacity:.13;transition:opacity .6s var(--ease);
   -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%);mask-image:linear-gradient(90deg,transparent 0%,#000 40%)}
+
+.mq-c>img.mq-lg{height:76px;width:auto;align-self:flex-start;transition:transform .8s var(--ease)}
+.mq-c h3{margin:auto 0 0;padding-top:32px;font:700 26px/1.2 Manrope,system-ui,sans-serif;letter-spacing:-.02em;max-width:30ch;text-wrap:balance}
+.mq-c p{margin:8px 0 0;font:400 16px/1.5 Manrope,system-ui,sans-serif;color:#CCCCCC;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .6s var(--ease)}
+
+/* активна плочка */
+.mq-c.on .mq-ph{opacity:1;filter:none;transform:scale(1)}
+.mq-c.on::after{opacity:1}
+.mq-c.on::before{opacity:0}
+.mq-c.on .mq-art{opacity:0}
+.mq-c.on{box-shadow:inset 0 0 0 1px rgba(var(--rgb),.45),0 24px 64px rgba(var(--rgb),.16)}
+.mq-c.on p{color:#fff}
+@media(hover:hover){
+  .mq-c:hover .mq-ph,.mq-c:focus-visible .mq-ph{opacity:1;filter:none;transform:scale(1)}
+  .mq-c:hover::after,.mq-c:focus-visible::after{opacity:1}
+  .mq-c:hover::before,.mq-c:focus-visible::before{opacity:0}
+  .mq-c:hover .mq-art,.mq-c:focus-visible .mq-art{opacity:0}
+  .mq-c:hover,.mq-c:focus-visible{box-shadow:inset 0 0 0 1px rgba(var(--rgb),.45),0 24px 64px rgba(var(--rgb),.16)}
+  .mq-c:hover p,.mq-c:focus-visible p{color:#fff}
+  .mq-c:hover>img.mq-lg{transform:translateY(-2px)}
+}
+
 @media(max-width:734px){
   main>section#moduli.mq{padding-top:64px!important}
   .mq-g{grid-template-columns:1fr;gap:12px}
   .mq-g>a:nth-child(n){grid-column:auto}
   .mq-c{min-height:240px;padding:24px}
-  .mq-c>img{height:60px}
+  .mq-c>img.mq-lg{height:60px}
   .mq-c h3{padding-top:24px;font-size:21px}
   .mq-c p{font-size:15px}
   .mq-art{right:-96px;height:110%}
+  .mq-ph{width:72%}
+  .mq-c::after{background:linear-gradient(90deg,rgba(10,9,13,.88) 0%,rgba(10,9,13,.55) 45%,rgba(10,9,13,.1) 85%),linear-gradient(0deg,rgba(10,9,13,.6) 0%,rgba(10,9,13,0) 50%),radial-gradient(70% 100% at 100% 100%,rgba(var(--rgb),.30),rgba(var(--rgb),0) 70%)}
 }
-@media(prefers-reduced-motion:reduce){.mq-c{transition:none}}
 /* компютър: под „Ново съдържание всеки ден“ остава празната част на залепената сцена; качваме плочките до ~96px от реда */
-@media(min-width:735px){main>section#moduli.mq{margin-top:var(--mq-up,-160px)}}
+@media(min-width:735px){main>section#moduli.mq{margin-top:-160px}}
+@media(prefers-reduced-motion:reduce){.mq-c,.mq-ph,.mq-c::before,.mq-c::after,.mq-art,.mq-c>img.mq-lg,.mq-c p{transition:none}.mq-ph{transform:none}}
