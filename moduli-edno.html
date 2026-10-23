@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap">
-<link rel="stylesheet" href="me.css?v=1">
+<link rel="stylesheet" href="me.css?v=3">
 </head>
 <body>
 
@@ -21,21 +21,23 @@
   </div>
 </header>
 
-<!-- Хирото е само за контекст: така посетителят идва до секцията -->
-<section class="hero" aria-label="Начало">
-  <video class="hero-v" muted loop playsinline autoplay preload="metadata" poster="vid/noisy-hero.jpg" src="vid/noisy-hero.mp4" aria-hidden="true"></video>
-  <div class="hero-t w">
-    <h1>Всичко за гледане<br>На едно място</h1>
-    <p>Стрийминг със сериали, реалити, спорт и новини.</p>
-    <div class="hero-c"><a class="btn btn-p" href="ceni.html">Пробвай NOISY</a><span>Без карта.</span></div>
-  </div>
-  <a class="hero-hint" href="#moduli">Скролни</a>
+<section class="intro w" aria-labelledby="ih">
+  <p class="intro-k">Началната страница · секцията след хирото</p>
+  <h1 id="ih">Четири варианта на една секция</h1>
+  <p class="intro-p">Секция 1 (табовете със съдържание) и „Четири модула. Един план.“ стават една секция: какво е NOISY, какво е всеки модул и какво има в него. Четирите варианта са един под друг.</p>
+  <nav class="jump" aria-label="Към вариант">
+    <a href="#a"><b>A</b><span>Рафтове</span><em>Като в приложението: един ред за всеки модул</em></a>
+    <a href="#b"><b>B</b><span>Колони</span><em>Цялото съдържание на един екран</em></a>
+    <a href="#c"><b>C</b><span>Формати</span><em>Дълго гледане и кратки моменти</em></a>
+    <a href="#d"><b>D</b><span>Един ден</span><em>Кога влизаш във всеки модул</em></a>
+  </nav>
 </section>
 
 <!-- ===== НОВАТА СЕКЦИЯ: един от четирите варианта е видим ===== -->
 <div id="moduli" class="me-host">
 
   <!-- A · РАФТОВЕ -->
+  <div class="vlab w" id="a"><b>Вариант A</b><span>Рафтове</span><em>Като в самото приложение: един ред за всеки модул, обяснението е в началото на реда.</em></div>
   <section class="me va" data-v="a" aria-labelledby="ha">
     <div class="w">
       <div class="me-head">
@@ -43,52 +45,63 @@
         <p>Филми и сериали, спорт, реалити и новини. Всеки модул е отделен свят, а абонаментът е един.</p>
       </div>
       <div class="a-rows" id="aRows"></div>
+      <div class="me-end">
+        <p>Theatre, Arena, Showtime и Newsroom са в плана. <b>Premium Films</b> и <b>Premium Sports</b> добавяш по желание.</p>
+        <a class="btn btn-p" href="ceni.html">Пробвай NOISY</a>
+      </div>
     </div>
   </section>
 
   <!-- B · КОЛОНИ -->
-  <section class="me vb" data-v="b" aria-labelledby="hb" hidden>
+  <div class="vlab w" id="b"><b>Вариант B</b><span>Колони</span><em>Цялото съдържание на един екран: посоченият модул се разтваря.</em></div>
+  <section class="me vb" data-v="b" aria-labelledby="hb">
     <div class="w">
       <div class="me-head">
         <h2 id="hb">Четири модула. Един план.</h2>
         <p>Филми и сериали, спорт, реалити и новини. Посочи модул, за да видиш какво има в него.</p>
       </div>
       <div class="b-wall" id="bWall"></div>
+      <div class="me-end">
+        <p>Theatre, Arena, Showtime и Newsroom са в плана. <b>Premium Films</b> и <b>Premium Sports</b> добавяш по желание.</p>
+        <a class="btn btn-p" href="ceni.html">Пробвай NOISY</a>
+      </div>
     </div>
   </section>
 
   <!-- C · ФОРМАТИ -->
-  <section class="me vc" data-v="c" aria-labelledby="hc" hidden>
+  <div class="vlab w" id="c"><b>Вариант C</b><span>Формати</span><em>Всеки модул в своя формат: дълго гледане вляво, кратки моменти вдясно.</em></div>
+  <section class="me vc" data-v="c" aria-labelledby="hc">
     <div class="w">
       <div class="me-head">
         <h2 id="hc">Четири модула. Един план.</h2>
         <p>Два са за дълго гледане, два са за няколко минути. Всеки е направен за начина, по който го гледаш.</p>
       </div>
       <div class="c-grid" id="cGrid"></div>
+      <div class="me-end">
+        <p>Theatre, Arena, Showtime и Newsroom са в плана. <b>Premium Films</b> и <b>Premium Sports</b> добавяш по желание.</p>
+        <a class="btn btn-p" href="ceni.html">Пробвай NOISY</a>
+      </div>
     </div>
   </section>
 
   <!-- D · ЕДИН ДЕН -->
-  <section class="me vd" data-v="d" aria-labelledby="hd" hidden>
+  <div class="vlab w" id="d"><b>Вариант D</b><span>Един ден</span><em>Модулите през един ден: кога и защо влизаш във всеки от тях.</em></div>
+  <section class="me vd" data-v="d" aria-labelledby="hd">
     <div class="w">
       <div class="me-head">
         <h2 id="hd">Четири модула. Един план.</h2>
         <p>Влизаш в този, който ти трябва в момента. Ето един обикновен ден.</p>
       </div>
       <div class="d-wrap" id="dWrap"></div>
+      <div class="me-end">
+        <p>Theatre, Arena, Showtime и Newsroom са в плана. <b>Premium Films</b> и <b>Premium Sports</b> добавяш по желание.</p>
+        <a class="btn btn-p" href="ceni.html">Пробвай NOISY</a>
+      </div>
     </div>
   </section>
 
-  <div class="w">
-    <div class="me-end">
-      <p>Theatre, Arena, Showtime и Newsroom са в плана. <b>Premium Films</b> и <b>Premium Sports</b> добавяш по желание.</p>
-      <a class="btn btn-p" href="ceni.html">Пробвай NOISY</a>
-    </div>
-  </div>
 </div>
 
-<!-- Следващата секция на началната, само за контекст -->
-<section class="next" aria-hidden="true"><div class="w"><h2>Повече от гледане.</h2></div></section>
 
 <nav class="vs" aria-label="Варианти на секцията">
   <span class="vs-l">Вариант</span>
@@ -98,9 +111,8 @@
     <button type="button" role="tab" data-go="c"><b>C</b><span>Формати</span></button>
     <button type="button" role="tab" data-go="d"><b>D</b><span>Един ден</span></button>
   </div>
-  <p class="vs-n" id="vsNote" aria-live="polite"></p>
 </nav>
 
-<script src="me.js?v=1"></script>
+<script src="me.js?v=3"></script>
 </body>
 </html>

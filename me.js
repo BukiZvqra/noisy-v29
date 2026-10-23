@@ -218,55 +218,41 @@ var D={tick:function(){},enter:function(){},leave:function(){},live:false};
 
 function play(v){if(!v)return;if(!v.src&&v.dataset.src)v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){})}
 
-/* ---------- превключване ---------- */
-var NOTES={
-  a:'Като в самото приложение: един ред за всеки модул, обяснението е в началото на реда.',
-  b:'Цялото съдържание на един екран: четири колони, посоченият модул се разтваря.',
-  c:'Всеки модул показан в своя формат: дълго гледане вляво, кратки моменти вдясно.',
-  d:'Модулите през един ден: кога и защо влизаш във всеки от тях.'
-};
-var built={},cur='',secs={};
+/* ---------- всички варианти един под друг ---------- */
+var secs={},seen={};
 [].forEach.call(document.querySelectorAll('.me'),function(s){secs[s.getAttribute('data-v')]=s});
+buildA();buildB();buildC();buildD();
 var btns=document.querySelectorAll('.vs-b button');
-function show(v,scroll){
-  if(!secs[v])v='a';
-  if(cur===v)return;
-  if(!built[v]){({a:buildA,b:buildB,c:buildC,d:buildD})[v]();built[v]=1}
-  Object.keys(secs).forEach(function(k){secs[k].hidden=k!==v});
-  [].forEach.call(btns,function(b){b.setAttribute('aria-selected',b.getAttribute('data-go')===v)});
-  document.getElementById('vsNote').textContent=NOTES[v];
-  if(cur==='d')D.leave();
-  cur=v;
-  if(history.replaceState)history.replaceState(null,'','#'+v);
-  vis();
-  if(scroll)document.getElementById('moduli').scrollIntoView({behavior:RM?'auto':'smooth'});
-}
-[].forEach.call(btns,function(b){b.addEventListener('click',function(){show(b.getAttribute('data-go'),true)})});
+[].forEach.call(btns,function(b){b.addEventListener('click',function(){
+  var el=document.getElementById(b.getAttribute('data-go'));
+  if(el)el.scrollIntoView({behavior:RM?'auto':'smooth'});
+})});
+function markBtn(v){[].forEach.call(btns,function(b){b.setAttribute('aria-selected',b.getAttribute('data-go')===v)})}
 
-/* видеата вървят само когато секцията се вижда */
-var inView=false;
-function vis(){
-  var s=secs[cur];if(!s)return;
-  var vids=s.querySelectorAll('.c-t video, .t-ft video');
-  [].forEach.call(vids,function(v){if(inView)play(v);else v.pause()});
-  D.live=inView&&cur==='d';
-  if(cur==='d'){if(inView)D.enter();else D.leave()}
+/* видеата и движението вървят само във варианта, който се вижда */
+function vis(v){
+  var s=secs[v],on=!!seen[v];
+  [].forEach.call(s.querySelectorAll('.c-t video, .t-ft video'),function(x){if(on)play(x);else x.pause()});
+  if(v==='d'){D.live=on;if(on)D.enter();else D.leave()}
 }
-new IntersectionObserver(function(es){es.forEach(function(e){inView=e.isIntersecting});vis()},{threshold:.15}).observe(document.getElementById('moduli'));
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){var v=e.target.getAttribute('data-v');seen[v]=e.isIntersecting;vis(v)});
+},{threshold:.2});
+Object.keys(secs).forEach(function(v){io.observe(secs[v])});
+/* кой вариант е в средата на екрана: за бутона долу */
+var mid=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting)markBtn(e.target.getAttribute('data-v'))});
+},{rootMargin:'-45% 0px -45% 0px'});
+Object.keys(secs).forEach(function(v){mid.observe(secs[v])});
 
 var last=performance.now(),bT=0;
 function loop(now){
   var dt=Math.min(.05,(now-last)/1000);last=now;
-  if(inView){
-    if(cur==='a')[].forEach.call(document.querySelectorAll('.a-rail'),function(r){r._tick&&r._tick(dt,now)});
-    if(cur==='b'){bT+=dt;if(bT>4.5){bT=0;B.next()}}
-    if(cur==='d')D.tick(now);
-  }
+  if(seen.a)[].forEach.call(secs.a.querySelectorAll('.a-rail'),function(r){r._tick&&r._tick(dt,now)});
+  if(seen.b){bT+=dt;if(bT>4.5){bT=0;B.next()}}
+  if(seen.d)D.tick(now);
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
-
-function fromHash(){var h=(location.hash||'').slice(1);return /^[abcd]$/.test(h)?h:''}
-addEventListener('hashchange',function(){var h=fromHash();if(h)show(h)});
-show(fromHash()||'a');
+markBtn('a');
 })();
