@@ -1,0 +1,8 @@
+/* 23.10.2026 (Коста): всички чавки във v29 по Noisy Design System, Figma 1990:54 (icon-wrapper 16px, check 12px, линия 2px, заоблени краища, #CE13A8) */
+:root{--ck29:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M9.9996 3L4.50015 8.4996L2.0004 5.99978' fill='none' stroke='%23CE13A8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+svg.ck29{flex:none;width:16px!important;height:16px!important;padding:2px;box-sizing:border-box;fill:none!important;stroke:#CE13A8!important;stroke-width:2!important;stroke-linecap:round!important;stroke-linejoin:round!important;overflow:visible}
+.k27-ck li::before{width:16px!important;height:16px!important;border-radius:2px!important;background:var(--ck29) center/12px 12px no-repeat!important;box-shadow:none!important}
+.trust span::before,.su .tr span::before,.gu div::before{content:""!important;display:inline-block!important;width:16px!important;height:16px!important;border-radius:2px!important;background:var(--ck29) center/12px 12px no-repeat!important;vertical-align:-3px;margin-right:6px;flex:none}
+.gu div::before{margin-right:0}
+.trust.tr8 span::before{content:none!important;display:none!important}
+.inc li::before{content:""!important;width:16px;height:16px;top:.2em;background:var(--ck29) center/12px 12px no-repeat}

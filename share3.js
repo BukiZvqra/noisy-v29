@@ -7,7 +7,7 @@
   var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var av=c.querySelector('.shr-av'),S=[].slice.call(av.querySelectorAll('.s')),ph=c.querySelector('[data-ph]'),pt=c.querySelector('[data-pt]');
   var SLOT=[0,1,-1,2,-2],STEP=1700,T=[],on=false;
-  var W={2:'мача.',3:'сериала.',4:'вечерта.',5:'сметката.'};
+  var W={2:'мача',3:'сериала',4:'вечерта',5:'сметката'};
   var PP={2:12.45,3:8.30,4:6.23,5:4.98},pp=c.querySelector('[data-pp]'),cur=12.45,raf=0;
   var eur=function(v){return v.toFixed(2).replace('.',',')+' €'};
   /* цената на човек се отброява меко: 1,3 сек., easeInOutCubic, с лек blur в средата на движението */
@@ -114,10 +114,11 @@
   var bf=[].slice.call(c.querySelectorAll('.shv [data-f]'));
   /* лица: 0 старите от Figma, 1 новите изрязани, 2 новите кръгли в стила на Figma (img/ppl/r1-5); подменят се само адресите на снимките */
   /* 2 ореол (r), 3 плътни като Figma (k), 4 в градиента на бранда (b), 5 тъмни със светъл ръб (e); номерът е по мястото: 1 център, 2 вдясно, 3 вляво, 4 най-вдясно, 5 най-вляво */
-  var FS={'2':'r','3':'k','4':'b','5':'e'},SI={c3:1,c4:2,c2:3,c5:4,c1:5};
+  /* 6 смесени (23.10, Коста): мъжете са силуетите от Figma, Мира и Дани са жените от „плътни“ (k), в същия цвят на мястото */
+  var FS={'2':'r','3':'k','4':'b','5':'e'},SI={c3:1,c4:2,c2:3,c5:4,c1:5},MIX={c4:'img/ppl/k2.jpg',c1:'img/ppl/k5.jpg'};
   S.forEach(function(s){[].forEach.call(s.querySelectorAll('.co,.pf img,.cs-n'),function(im){im.setAttribute('data-o',im.getAttribute('src'))})});
   function setF(v){c.setAttribute('data-f',v);bf.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===v)});
-    S.forEach(function(s){var co=s.querySelector('.co'),k=co&&/(c\d)\.jpg/.exec(co.getAttribute('data-o')),r=k&&FS[v]?'img/ppl/'+FS[v]+SI[k[1]]+'.jpg':null;
+    S.forEach(function(s){var co=s.querySelector('.co'),k=co&&/(c\d)\.jpg/.exec(co.getAttribute('data-o')),r=k&&FS[v]?'img/ppl/'+FS[v]+SI[k[1]]+'.jpg':k&&v==='6'?MIX[k[1]]||null:null;
       [].forEach.call(s.querySelectorAll('.co,.pf img,.cs-n'),function(im){var t=r||im.getAttribute('data-o');if(im.getAttribute('src')!==t)im.setAttribute('src',t)})})}
   bf.forEach(function(b){b.addEventListener('click',function(){setF(b.getAttribute('data-f'));save()})});
   var br=[].slice.call(c.querySelectorAll('.shv [data-r]')),bc=[].slice.call(c.querySelectorAll('.shv [data-c]'));
@@ -136,7 +137,7 @@
   bc.forEach(function(b){b.addEventListener('click',function(){setC(b.getAttribute('data-c'),1);save()})});
   ba.forEach(function(b){b.addEventListener('click',save)});bp.forEach(function(b){b.addEventListener('click',save)});
   /* адрес: #a7h5f1r2c2+3 = горе A, долу 7, човечета 5, нови лица, ритъм 2, цена 2, добавки 3; по-старите адреси също работят */
-  var m=/^#([abcd])([1-9]|1[0-3])(m?)(?:h([0-9]))?(?:f([0-5]))?(?:r([1-3]))?(?:c([0-7]))?(?:t([1-7]))?(?:g([0-2]))?(?:\+([0-3]))?$/.exec(location.hash);
+  var m=/^#([abcd])([1-9]|1[0-3])(m?)(?:h([0-9]))?(?:f([0-6]))?(?:r([1-3]))?(?:c([0-7]))?(?:t([1-7]))?(?:g([0-2]))?(?:\+([0-3]))?$/.exec(location.hash);
   set(m?m[1]:c.getAttribute('data-d'),m?m[2]:c.getAttribute('data-s'));setP('s');
   setH(m&&m[4]?m[4]:c.getAttribute('data-h'));setF(m&&m[5]?m[5]:c.getAttribute('data-f'));setR(m&&m[6]?m[6]:c.getAttribute('data-r'));setC(m&&m[7]?m[7]:c.getAttribute('data-c'));setT(m&&m[8]?m[8]:c.getAttribute('data-t'));if(m&&m[10])setA(m[10]);setG(m&&m[9]?m[9]:c.getAttribute('data-g')||'0');
   /* панелът с вариантите: бутон „Варианти“ отваря/затваря; на компютър е отворен по подразбиране */
