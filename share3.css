@@ -296,3 +296,47 @@ html .shp .shv button{flex:none;width:100%;min-height:36px;padding:8px 12px;bord
   html .shp .shv button{min-height:36px;padding:6px 11px;font-size:13px}
   .shv-tg{bottom:16px}
   html:not(.shv-open) .shv-tg{bottom:88px}}
+
+/* ---------- цената, вързана с човечетата (група „Цена“). Ефектът се изиграва веднъж (.pin), когато влезе петият, после цената стои. ---------- */
+.shd-dots{display:none}
+.shp .shd-pr,.shp .shd-t{transition:opacity .9s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.16,1,.3,1),filter .9s cubic-bezier(.22,1,.36,1),clip-path 1.1s cubic-bezier(.16,1,.3,1)}
+/* 1. влиза с петия: меко отдолу */
+.shp[data-c="1"] .shd-pr:not(.pin),.shp[data-c="1"] .shd-t:not(.pin),
+.shp[data-c="2"]:not(.cast) .shd-pr:not(.pin),.shp[data-c="2"]:not(.cast) .shd-t:not(.pin),
+.shp[data-c="2"][data-h="3"] .shd-pr:not(.pin),.shp[data-c="2"][data-h="3"] .shd-t:not(.pin){opacity:0;transform:translateY(12px);filter:blur(8px)}
+/* 2. същият ефект като хората */
+.shp[data-c="2"][data-h="4"] .shd-pr:not(.pin),.shp[data-c="2"][data-h="4"] .shd-t:not(.pin){clip-path:inset(100% 0 0 0);filter:brightness(2.2)}
+.shp[data-c="2"][data-h="4"] .pin{clip-path:inset(-20% -10% -20% -10%)}
+.shp[data-c="2"][data-h="5"] .shd-pr,.shp[data-c="2"][data-h="5"] .shd-t{transform-origin:50% 100%;transition:transform .9s cubic-bezier(.34,1.4,.64,1),opacity .5s ease}
+.shp[data-c="2"][data-h="5"] .shd-pr:not(.pin),.shp[data-c="2"][data-h="5"] .shd-t:not(.pin){transform:scaleY(0);opacity:0}
+.shp[data-c="2"][data-h="6"] .shd-pr:not(.pin),.shp[data-c="2"][data-h="6"] .shd-t:not(.pin){filter:brightness(.14) saturate(.3)}
+.shp[data-c="2"][data-h="6"] .shd-pr.pin b{animation:shPrBeam 1.6s cubic-bezier(.22,1,.36,1)}
+@keyframes shPrBeam{0%{text-shadow:0 0 0 rgba(255,220,245,0)}30%{text-shadow:0 0 28px rgba(255,200,240,.75)}100%{text-shadow:0 0 0 rgba(255,220,245,0)}}
+.shp[data-c="2"][data-h="7"] .shd-pr:not(.pin),.shp[data-c="2"][data-h="7"] .shd-t:not(.pin){opacity:0;filter:blur(12px) brightness(1.7);transform:scale(1.08)}
+.shp[data-c="2"][data-h="7"] .shd-pr,.shp[data-c="2"][data-h="7"] .shd-t{transition:opacity .6s ease,filter 1.2s cubic-bezier(.16,1,.3,1),transform 1.4s cubic-bezier(.16,1,.3,1)}
+.shp[data-c="2"][data-h="8"] .shd-pr:not(.pin),.shp[data-c="2"][data-h="8"] .shd-t:not(.pin){clip-path:inset(0 50% 0 50%)}
+.shp[data-c="2"][data-h="8"] .pin{clip-path:inset(-20% 0 -20% 0)}
+/* 3. точки за хората: цената стои, пет лентички в капсулата светват с всеки човек */
+.shp[data-c="3"] .shd-dots{display:inline-flex;gap:4px;margin-right:2px}
+.shp[data-c="3"] .shd-chip>svg{display:none}
+.shd-dots i{width:10px;height:10px;border-radius:3px;background:rgba(255,255,255,.16);transition:background-color .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.34,1.4,.64,1)}
+.shd-dots i.on{background:#E4B8FF;transform:scale(1.08)}
+.shd-dots i.on:nth-child(1){background:#D6408F}.shd-dots i.on:nth-child(2){background:#B8E04A}.shd-dots i.on:nth-child(3){background:#3D8BF2}.shd-dots i.on:nth-child(4){background:#2CC4D8}.shd-dots i.on:nth-child(5){background:#F2574A}
+/* 4. зачертаване: старата цена се зачертава, когато влезе петият, новата блясва веднъж */
+.shp[data-c="4"] .shd-was{position:relative;text-decoration:none}
+.shp[data-c="4"] .shd-was::after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:2px;border-radius:2px;background:rgba(245,245,247,.7);transform:scaleX(0);transform-origin:0 50%;transition:transform .6s cubic-bezier(.65,0,.35,1)}
+.shp[data-c="4"] .shd-pr.pin .shd-was::after{transform:none}
+.shp[data-c="4"] .shd-pr.pin b{background:linear-gradient(100deg,#fff 0 42%,#F7D6FF 47%,#FFB8C8 50%,#F7D6FF 53%,#fff 58% 100%) 100% 0/300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shPrSweep 1.3s cubic-bezier(.45,0,.55,1) .45s forwards}
+@keyframes shPrSweep{from{background-position:100% 0}to{background-position:0 0}}
+@media(prefers-reduced-motion:reduce){.shp .shd-pr,.shp .shd-t,.shd-dots i,.shp[data-c="4"] .shd-was::after{transition:none!important}.shp .shd-pr b{animation:none!important}}
+/* панелът: още по-стегнато, за да се събират и групите „Ритъм“ и „Цена“ */
+@media(min-width:1100px){
+  html .shp .shv{width:340px;gap:4px;padding:12px 12px 66px}
+  html .shp .shv span{margin:8px 2px 1px}
+  html .shp .shv button{min-height:30px;padding:5px 9px;font-size:12px}
+  html.shv-open body{padding-left:340px}}
+@media(max-width:1099px){
+  html .shp .shv{max-height:94vh;gap:4px;padding:10px 10px 64px}
+  html .shp .shv span{margin:6px 2px 0}
+  html .shp .shv button{min-height:36px;padding:5px 9px;font-size:12.5px}}

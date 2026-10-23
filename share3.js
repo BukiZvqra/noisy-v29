@@ -34,25 +34,33 @@
     requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.add('in')})})}
   function per(k){return;count(PP[k]);pt.classList.add('fd');T.push(setTimeout(function(){pt.textContent='24,90 € за '+k+' души';pt.classList.remove('fd')},450))}
   function at(ms,fn){T.push(setTimeout(fn,ms))}
-  function step(k){word(W[k]);per(k)}
-  function cycle(first){
-    if(first){show(0);at(200,function(){show(1)})}
-    step(2);
-    at(STEP,function(){show(2);step(3)});
-    at(STEP*2,function(){show(3);step(4)});
-    at(STEP*3,function(){show(4);step(5)});
-    at(STEP*3+2500,function(){hide(4);hide(3);at(120,function(){hide(2)})});
-    at(STEP*3+2500+900,function(){cycle(false)})}
+  /* ритъм: 1 един по един (2-3-4-5), 2 по двама (2-4-5), 3 симетрично по двама (3-5); keep = кои остават между кръговете */
+  var RH={1:{g:[[0,1],[2],[3],[4]],keep:[0,1]},2:{g:[[0,1],[2,3],[4]],keep:[0,1]},3:{g:[[0,1,2],[3,4]],keep:[0]}};
+  function rh(){return RH[c.getAttribute('data-r')]||RH[1]}
+  /* цената: ефектът се изиграва ВЕДНЪЖ, когато влезе петият, после цената стои; 3 = точките следват хората, цената стои */
+  var prx=[c.querySelector('.shd-pr'),c.querySelector('.shd-t')],pdone=false,dots=[].slice.call(c.querySelectorAll('.shd-dots i'));
+  function pIn(){prx.forEach(function(e,i){setTimeout(function(){e.classList.add('pin')},i*180)})}
+  function pReset(){pdone=false;prx.forEach(function(e){e.classList.remove('pin')})}
+  function dotsTo(n){dots.forEach(function(d,i){d.classList.toggle('on',i<n)})}
+  function priceAt(n){dotsTo(n);if(n===5&&!pdone){pdone=true;pIn()}}
+  function step(k){word(W[k]);per(k);priceAt(k)}
+  function cycle(first){var R=rh(),G=R.g,n=0;
+    G.forEach(function(g,gi){n+=g.length;var k=n;at(gi*STEP,function(){
+      g.forEach(function(i,j){if(gi===0&&!first&&R.keep.indexOf(i)>-1)return;at(first&&gi===0?j*200:0,function(){show(i)})});step(k)})});
+    var end=(G.length-1)*STEP+2500,out=[0,1,2,3,4].filter(function(i){return R.keep.indexOf(i)<0}).reverse();
+    at(end,function(){out.forEach(function(i,j){at(j*120,function(){hide(i)})});dotsTo(R.keep.length)});
+    at(end+900,function(){cycle(false)})}
   function start(){if(on)return;on=true;S.forEach(function(s){s.style.transition='none';s.style.opacity='0'});ph.innerHTML='';cycle(true)}
   function stop(){on=false;T.forEach(clearTimeout);T=[]}
-  function finalState(){S.forEach(function(s,i){s.classList.add('on');s.style.transition='none';s.style.opacity='1';s.style.transform='translateX('+x(i)+'px)'});pt.textContent='24,90 € за 5 души';pp.textContent=eur(4.98)}
+  function restart(){stop();S.forEach(function(s){s.classList.remove('on','out')});start()}
+  function finalState(){S.forEach(function(s,i){s.classList.add('on');s.style.transition='none';s.style.opacity='1';s.style.transform='translateX('+x(i)+'px)'});priceAt(5)}
   /* превключватели за прегледа: горе A/B/C, долу 1/2/3 */
   var bd=[].slice.call(c.querySelectorAll('.shv [data-d]')),bs=[].slice.call(c.querySelectorAll('.shv [data-s]'));
   function set(d,s,save){if(d)c.setAttribute('data-d',d);if(s)c.setAttribute('data-s',s);
     bd.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-d')===c.getAttribute('data-d'))});
     bs.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-s')===c.getAttribute('data-s'))});
     S.forEach(function(s,i){if(s.style.opacity==='1'){s.style.transition='none';s.style.transform='translateX('+x(i)+'px)';void s.offsetWidth;s.style.transition=''}});
-    if(save)try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s')+(c.getAttribute('data-p')==='m'?'m':'')+'h'+c.getAttribute('data-h')+'f'+c.getAttribute('data-f')+'+'+c.getAttribute('data-a'))}catch(e){}}
+    if(save)try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s')+(c.getAttribute('data-p')==='m'?'m':'')+'h'+c.getAttribute('data-h')+'f'+c.getAttribute('data-f')+'r'+c.getAttribute('data-r')+'c'+c.getAttribute('data-c')+'+'+c.getAttribute('data-a'))}catch(e){}}
   bd.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-d'),null,1)})});
   var bp=[].slice.call(c.querySelectorAll('.shv [data-p]'));
   function setP(v){c.setAttribute('data-p',v);bp.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-p')===v)});
@@ -76,18 +84,24 @@
   ba.forEach(function(b){b.addEventListener('click',function(){setA(b.getAttribute('data-a'))})});
   setA(c.getAttribute('data-a')||'0');
   var bh=[].slice.call(c.querySelectorAll('.shv [data-h]'));
-  function save(){try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s')+(c.getAttribute('data-p')==='m'?'m':'')+'h'+c.getAttribute('data-h')+'f'+c.getAttribute('data-f')+'+'+c.getAttribute('data-a'))}catch(e){}}
+  function save(){try{history.replaceState(null,'','#'+c.getAttribute('data-d')+c.getAttribute('data-s')+(c.getAttribute('data-p')==='m'?'m':'')+'h'+c.getAttribute('data-h')+'f'+c.getAttribute('data-f')+'r'+c.getAttribute('data-r')+'c'+c.getAttribute('data-c')+'+'+c.getAttribute('data-a'))}catch(e){}}
   function setH(v){c.setAttribute('data-h',v);c.classList.toggle('cast',+v>=3);S.forEach(function(s){if(s.style.opacity==='1'){s.style.filter='none';s.classList.add('on')}});bh.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-h')===v)});
     S.forEach(function(s,i){if(s.style.opacity==='1'){s.style.transition='none';s.style.transform='translateX('+x(i)+'px)';void s.offsetWidth;s.style.transition=''}})}
-  bh.forEach(function(b){b.addEventListener('click',function(){setH(b.getAttribute('data-h'));save()})});
+  bh.forEach(function(b){b.addEventListener('click',function(){setH(b.getAttribute('data-h'));if(c.getAttribute('data-c')==='2'){pReset();setTimeout(function(){pdone=true;pIn()},350)}save()})});
   var bf=[].slice.call(c.querySelectorAll('.shv [data-f]'));
   function setF(v){c.setAttribute('data-f',v);bf.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===v)})}
   bf.forEach(function(b){b.addEventListener('click',function(){setF(b.getAttribute('data-f'));save()})});
+  var br=[].slice.call(c.querySelectorAll('.shv [data-r]')),bc=[].slice.call(c.querySelectorAll('.shv [data-c]'));
+  function setR(v,go){c.setAttribute('data-r',v);br.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-r')===v)});if(go&&on)restart()}
+  function setC(v,go){c.setAttribute('data-c',v);bc.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-c')===v)});
+    if(go){pReset();if(v!=='3')setTimeout(function(){pdone=true;pIn()},350)}}
+  br.forEach(function(b){b.addEventListener('click',function(){setR(b.getAttribute('data-r'),1);save()})});
+  bc.forEach(function(b){b.addEventListener('click',function(){setC(b.getAttribute('data-c'),1);save()})});
   ba.forEach(function(b){b.addEventListener('click',save)});bp.forEach(function(b){b.addEventListener('click',save)});
-  /* адрес: #a7h5f1+3 = горе A, долу 7, човечета 5, нови лица, добавки 3; старите #a4 и #a7h2+3 също работят */
-  var m=/^#([abcd])([1-8])(m?)(?:h([0-8]))?(?:f([01]))?(?:\+([0-3]))?$/.exec(location.hash);
+  /* адрес: #a7h5f1r2c2+3 = горе A, долу 7, човечета 5, нови лица, ритъм 2, цена 2, добавки 3; по-старите адреси също работят */
+  var m=/^#([abcd])([1-8])(m?)(?:h([0-8]))?(?:f([01]))?(?:r([1-3]))?(?:c([0-4]))?(?:\+([0-3]))?$/.exec(location.hash);
   set(m?m[1]:c.getAttribute('data-d'),m?m[2]:c.getAttribute('data-s'));setP('s');
-  setH(m&&m[4]?m[4]:c.getAttribute('data-h'));setF(m&&m[5]?m[5]:c.getAttribute('data-f'));if(m&&m[6])setA(m[6]);
+  setH(m&&m[4]?m[4]:c.getAttribute('data-h'));setF(m&&m[5]?m[5]:c.getAttribute('data-f'));setR(m&&m[6]?m[6]:c.getAttribute('data-r'));setC(m&&m[7]?m[7]:c.getAttribute('data-c'));if(m&&m[8])setA(m[8]);
   /* панелът с вариантите: бутон „Варианти“ отваря/затваря; на компютър е отворен по подразбиране */
   (function(){var pv=c.querySelector('.shv');if(!pv)return;pv.id='shv';var tg=document.createElement('button');tg.type='button';tg.className='shv-tg';tg.setAttribute('aria-controls','shv');
     document.body.appendChild(tg);var de=document.documentElement;
