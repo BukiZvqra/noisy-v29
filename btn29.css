@@ -1,0 +1,15 @@
+/* 23.10.2026 (Коста): бутоните в подмодулите са като „Избери Solo / Избери Together“ на началната (Noisy Design System, Button/Web).
+   Основен: градиент #8C18BE → #A01076 → #C20406, при hover плавно прелива в #B61DFF → #CE13A8 → #FF0000. Вторичен: #323232, при hover #3D3D3D.
+   Заобляне 8px, Manrope Bold 16, без кант, без подскачане и без сянка. Хваща и бутоните в цените на добавките (.k27-bt), „Напред“ в регистрацията и „Виж историята“. */
+.btn.btn-p,.btn.btn-s,.k27-bt .b1,.k27-bt .b2,#suf button:not([type=button]),.af-story-btn{font-family:Manrope,system-ui,sans-serif!important;font-weight:700!important;font-size:16px!important;border:0!important;border-radius:8px!important;clip-path:none!important;box-shadow:none!important;transform:none!important;filter:none!important;transition:background-color .2s,color .2s!important}
+.btn.btn-p,.k27-bt .b1,#suf button:not([type=button]),.af-story-btn{position:relative;isolation:isolate;color:#fff!important;background:linear-gradient(90deg,#8C18BE 0%,#A01076 33%,#C20406 100%)!important}
+.btn.btn-p::before,.k27-bt .b1::before,#suf button:not([type=button])::before,.af-story-btn::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:linear-gradient(90deg,#B61DFF 0%,#CE13A8 33%,#FF0000 100%);opacity:0;transition:opacity .25s;pointer-events:none}
+.btn.btn-s,.k27-bt .b2{color:#fff!important;background:#323232!important}
+@media(hover:hover){
+ .btn.btn-p:hover::before,.k27-bt .b1:hover::before,#suf button:not([type=button]):hover::before,.af-story-btn:hover::before{opacity:1}
+ .btn.btn-s:hover,.k27-bt .b2:hover{background:#3D3D3D!important}
+}
+.btn.btn-p:hover,.btn.btn-s:hover,.k27-bt .b1:hover,.k27-bt .b2:hover,#suf button:hover,.af-story-btn:hover{box-shadow:none!important;transform:none!important;filter:none!important}
+.btn.btn-p:active,.btn.btn-s:active,.k27-bt .b1:active,.k27-bt .b2:active,#suf button:not([type=button]):active,.af-story-btn:active{transform:scale(.98)!important}
+.btn.btn-p:focus-visible,.btn.btn-s:focus-visible,.k27-bt a:focus-visible,#suf button:focus-visible,.af-story-btn:focus-visible{outline:2px solid #C78BFF;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.btn.btn-p::before,.k27-bt .b1::before,#suf button::before,.af-story-btn::before{transition:none}}
