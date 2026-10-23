@@ -61,5 +61,7 @@
   .mq-c h3{font-size:clamp(11.5px,3.3vw,13px);letter-spacing:-.02em}
 }
 /* компютър: под „Ново съдържание всеки ден“ остава празната част на залепената сцена; качваме плочките до ~96px от реда */
-@media(min-width:735px){main>section#moduli.mq{margin-top:-160px}}
+/* Празнината от сцената расте с височината на екрана (≈ 50vh - C, C = 341px при 1440 ширина, 369px от 1920 нагоре; измерено 23.10).
+   Изваждаме разликата, така че разстоянието до реда остава като на 13" лаптоп (87px), леко расте до 120px на високи екрани. */
+@media(min-width:735px){main>section#moduli.mq{margin-top:calc(-160px - max(0px, 50vh - clamp(341px, 341px + (100vw - 1440px) * .0583, 369px) - clamp(87px, 10.9vh, 120px)))}}
 @media(prefers-reduced-motion:reduce){.mq-c,.mq-ph,.mq-c::before,.mq-c::after,.mq-lg{transition:none}.mq-ph{transform:none}}
