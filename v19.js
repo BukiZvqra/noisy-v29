@@ -41,7 +41,7 @@
   w.innerHTML='<div class="pvbox"><video muted playsinline loop preload="none"></video><div class="kbi" hidden></div><span class="flash"></span>'+
    '<div class="ptopbar"><span class="chip pmeta"></span><button type="button" class="px" aria-label="Затвори">×</button></div>'+
    '<div class="pfoot"><div class="ptitle"></div><div class="pbar"><i></i></div><div class="ptimes"><span class="ptm">0:00</span><span>Преглед</span></div></div>'+
-   '<div class="tgate"><div class="gbox"><p class="gk">Хареса ти?</p><h3>Продължи да гледаш.</h3><p class="gs"></p><div class="gbtns"><a class="btn btn-p" href="#" data-su>Пробвай NOISY</a><button type="button" class="btn btn-s gother">Друго заглавие</button></div><p class="gf">Без карта.</p></div></div></div>';
+   '<div class="tgate"><div class="gbox"><h3>Хареса ти?</h3><p class="gs"></p><div class="gbtns"><a class="btn btn-p" href="#" data-su>Продължи да гледаш</a><button type="button" class="btn btn-s gback">Обратно към сайта</button></div></div></div></div>';
   document.body.appendChild(w);
   var pv=w.querySelector('video'),kb=w.querySelector('.kbi'),gate=w.querySelector('.tgate'),bar=w.querySelector('.pbar i'),pt=w.querySelector(".ptm"),pbox=w.querySelector('.pvbox'),DUR=4000,t0=0,raf=0,last=null,timer=0;
   function loop(now){var e=Math.min(1,(now-t0)/DUR);bar.style.width=(e*100)+'%';pt.textContent='0:0'+Math.floor(e*4);if(e<1)raf=requestAnimationFrame(loop);else gate.classList.add('on')}
@@ -65,7 +65,7 @@
   function close(){clearTimeout(timer);cancelAnimationFrame(raf);pv.pause();w.classList.remove('on');w.setAttribute('aria-hidden','true');gate.classList.remove('on');root.classList.remove('pv-open');document.documentElement.style.overflow='';
    document.querySelectorAll('.pflip').forEach(function(f){f.remove()});pbox.style.visibility='';if(last)last.focus({preventScroll:true})}
   box.addEventListener('click',function(e){var t=e.target.closest('.ag-tile');if(!t)return;e.preventDefault();open(t)});
-  w.querySelector('.px').addEventListener('click',close);w.querySelector('.gother').addEventListener('click',close);
+  w.querySelector('.px').addEventListener('click',close);w.querySelector('.gback').addEventListener('click',close);
   w.querySelector('[data-su]').addEventListener('click',function(){close()});
   w.addEventListener('click',function(e){if(e.target===w)close()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&w.classList.contains('on'))close()});

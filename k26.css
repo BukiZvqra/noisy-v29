@@ -346,3 +346,7 @@ h2.k26w .w{padding:0!important}
 
 /* 23.10: в „Всичко“ картите водят към модула си */
 .k26-cd.k29-go{cursor:pointer}
+
+/* 23.10 (Коста): засега логата на студиата и лигите не са връзки - без курсор и без повдигане */
+span.lg-a{cursor:default}
+.th-lg:has(span.lg-a),.ar-lg:has(span.lg-a){transform:none!important;filter:none!important}
