@@ -184,5 +184,7 @@ words.forEach(function(w,i){var s=document.createElement('span');s.className='w'
 h.replaceChild(frag,h.firstChild);
 function go(){h.classList.add('go')}
 if(matchMedia('(prefers-reduced-motion:reduce)').matches||window.parent===window){go();return}
-window.addEventListener('message',function(e){if(e.data==='lili-heading')go()})})();</script></body>
+window.addEventListener('message',function(e){if(e.data==='lili-heading')go()});
+/* 23.10: съобщението от родителя понякога се губи (пристига преди този слушател) и заглавието оставаше невидимо; затова iframe-ът сам следи кога заглавието е на екрана */
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){go();io.disconnect()}})},{threshold:.4});io.observe(h)}else go()})();</script></body>
 </html>
