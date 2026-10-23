@@ -41,4 +41,5 @@ img/ppl/k1-5 (плътни, като Figma), b1-5 (градиент на бра�
 
 ## „Четири модула“ плочки (img/mq), 23.10.2026
 - img/mq/arena.jpg - Pexels https://www.pexels.com/photo/35898730/ (същата като img/ar/sp-stadium.jpg, 1600px версия, Pexels License)
-- img/mq/theatre.jpg, showtime.jpg, newsroom.jpg - преоразмерени копия на вече ползваните на сайта img/dune-2-back.jpg, img/fermata-2.jpg, vid/newsroom.jpg
+- img/mq/theatre.jpg, newsroom.jpg - преоразмерени копия на вече ползваните на сайта img/dune-2-back.jpg, vid/newsroom.jpg
+- img/mq/showtime.jpg - кадър, изпратен от Коста за Showtime (23.10.2026), 906x489
