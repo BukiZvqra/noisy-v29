@@ -340,3 +340,54 @@ html .shp .shv button{flex:none;width:100%;min-height:36px;padding:8px 12px;bord
   html .shp .shv{max-height:94vh;gap:4px;padding:10px 10px 64px}
   html .shp .shv span{margin:6px 2px 0}
   html .shp .shv button{min-height:36px;padding:5px 9px;font-size:12.5px}}
+
+/* ---------- заглавие: 1 думата се сменя, 2 „Сподели“ стои (слотът е с ширината на най-дългата дума), 6 думата се търкаля,
+   3 статично, 4 статично + ред отдолу, 5 друг текст ---------- */
+.sh-st,.sh-sub{display:none}
+.shp[data-t="3"] .sh-a,.shp[data-t="3"] .sh-b,.shp[data-t="4"] .sh-a,.shp[data-t="4"] .sh-b,.shp[data-t="5"] .sh-a,.shp[data-t="5"] .sh-b{display:none!important}
+.shp[data-t="3"] .sh-st3,.shp[data-t="4"] .sh-st3,.shp[data-t="5"] .sh-st5{display:block;white-space:normal;text-wrap:balance}
+.shp[data-t="4"] .sh-sub{display:block;max-width:34ch;margin:14px auto 0;font:500 18px/1.45 var(--font-body);color:rgba(245,245,247,.66);text-wrap:balance}
+@media(min-width:600px){.shp[data-t="2"] .sh-b{transition:none}}
+.shp[data-t="6"] .sh-b{clip-path:inset(-.08em -.4em -.35em -.4em)}
+.shp[data-t="6"] .sh-b .shw{filter:none!important;transform:translateY(.95em);transition:transform .75s cubic-bezier(.65,0,.35,1),opacity .5s ease}
+.shp[data-t="6"] .sh-b .shw.in{transform:none}
+.shp[data-t="6"] .sh-b .shw.go{transform:translateY(-.95em);opacity:0;transition:transform .75s cubic-bezier(.65,0,.35,1),opacity .5s ease}
+@media(max-width:599px){.shp[data-t="4"] .sh-sub{font-size:16px;margin-top:10px}}
+
+/* ---------- хора 9: статично, нищо не мърда ---------- */
+.shp.still .shr-av{animation:none}
+
+/* ---------- цена на човек според броя хора, без отброяване и без размазване ---------- */
+/* 5. сменя се плавно: числото само избледнява и се появява ново; ширината е постоянна, за да не мърда редът */
+.shp[data-c="5"] [data-pp],.shp[data-c="6"] [data-pp]{display:inline-block;min-width:5.3ch;text-align:center}
+[data-pp].sw,.shd-chip [data-pt].sw{opacity:0;transform:translateY(-.12em)}
+.shp[data-c="5"] [data-pp],.shd-chip [data-pt]{transition:opacity .22s ease,transform .22s ease;filter:none!important}
+/* 6. брояч с цифри: всяка цифра се превърта самостоятелно, като табло */
+.shp[data-c="6"] [data-pp]{display:inline-flex;justify-content:center;line-height:1.1;height:1.1em;overflow:hidden;font-variant-numeric:tabular-nums}
+.sho{display:inline-block;height:1.1em;overflow:hidden}
+.sho-st{display:block;white-space:pre;line-height:1.1em;text-align:center;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.sho-s{display:inline-block;line-height:1.1em}
+/* 7. скала: колко плаща всеки при 2, 3, 4 и 5 души; маркерът следва хората, числата стоят */
+.shd-sc{display:none}
+.shp[data-c="7"] .shd-pr,.shp[data-c="7"] .shd-t{display:none}
+.shp[data-c="7"] .shd-sc{display:flex;justify-content:center;gap:clamp(8px,2vw,14px);margin:26px auto 0;max-width:560px}
+.shd-sc span{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px 16px;border-radius:14px;
+  background:rgba(255,255,255,.03);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:background-color .6s cubic-bezier(.22,1,.36,1),box-shadow .6s cubic-bezier(.22,1,.36,1)}
+.shd-sc em{font:600 14px/1 var(--font-body);font-style:normal;color:rgba(245,245,247,.5);transition:color .6s}
+.shd-sc b{font:800 clamp(20px,2.4vw,28px)/1 var(--font-body);letter-spacing:-.02em;color:rgba(245,245,247,.42);font-variant-numeric:tabular-nums;white-space:nowrap;transition:color .6s}
+.shd-sc span::after{content:"";position:absolute;left:22%;right:22%;bottom:-1px;height:2px;border-radius:2px;background:var(--g29);opacity:0;transition:opacity .6s}
+.shd-sc span.on{background:rgba(206,19,168,.1);box-shadow:inset 0 0 0 1px rgba(228,184,255,.3)}
+.shd-sc span.on em{color:#E4B8FF}.shd-sc span.on b{color:#fff}.shd-sc span.on::after{opacity:1}
+@media(max-width:599px){.shp[data-c="7"] .shd-sc{gap:6px}.shd-sc span{padding:12px 2px 14px}.shd-sc em{font-size:12px}.shd-sc b{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.sho-st,.shd-sc span,.shd-sc em,.shd-sc b{transition:none!important}}
+/* панелът става по-широк, за да побере и „Заглавие“ */
+@media(min-width:1100px){html .shp .shv{width:380px}html.shv-open body{padding-left:380px}}
+/* панелът: името на групата е в началото на реда ѝ, всяка група почва на нов ред (по-малко височина) */
+html .shp .shv span{flex-basis:auto!important;align-self:center;margin:0 4px 0 2px!important;min-width:64px}
+html .shp .shv i{display:block!important;flex-basis:100%;width:100%;height:1px;margin:3px 0!important;background:rgba(255,255,255,.08)}
+html .shp .shv span{min-width:0}
+@media(min-width:1100px){html .shp .shv{width:400px}html.shv-open body{padding-left:400px}}
+@media(max-width:1099px){html .shp .shv{max-height:96vh;gap:3px 4px;padding:8px 8px 60px}html .shp .shv button{padding:4px 8px;font-size:12px}html .shp .shv i{margin:2px 0!important}html .shp .shv span{font-size:10px;margin:0 2px!important}}
+/* брояч: цифрите наследяват размера на цената (иначе ги хваща правилото за „на човек на месец“) */
+.shd-pr [data-pp] .sho,.shd-pr [data-pp] .sho-s,.shd-pr [data-pp] .sho-st{font:inherit!important;color:inherit;letter-spacing:inherit}
+.shd-pr [data-pp] .sho,.shd-pr [data-pp] .sho-s{line-height:1.1em}
