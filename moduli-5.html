@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NOISY · Четирите модула</title>
+<link rel="icon" href="assets/symbol.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap">
+<style>
+/* NOISY · „Четири модула“: една изчистена секция, всеки модул води към своята страница.
+   Скала от .design-library (molotov); бутони по Noisy Design System (Default #323232, радиус 8, Manrope Bold 16/24). */
+:root{--bg:#0A090D;--ink:#fff;--mute:#CCCCCC;--line:rgba(255,255,255,.1);
+  --g29:linear-gradient(90deg,#8C18BE 0%,#A01076 33%,#C20406 100%);
+  --head:Unbounded,Manrope,system-ui,sans-serif;--body:Manrope,system-ui,-apple-system,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{display:block}
+:focus-visible{outline:2px solid #CE13A8;outline-offset:4px;border-radius:8px}
+
+.mz{padding:140px 40px}
+.mz-in{max-width:1040px;margin:0 auto}
+.mz h2{font:700 clamp(32px,4.4vw,56px)/1.06 var(--head);letter-spacing:-.01em;text-align:center}
+.mz-sub{margin-top:20px;text-align:center;font-size:21px;line-height:1.4;color:var(--mute)}
+.mz-l{list-style:none;margin-top:80px}
+.mz-l li{position:relative}
+.mz-l li::before,.mz-l li:last-child::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line)}
+.mz-l li::before{top:0}
+.mz-l li:last-child::after{bottom:0}
+.mz-r{position:relative;display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:32px;padding:36px 16px;transition:background .4s var(--ease)}
+.mz-r::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--g29);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);z-index:1}
+.mz-r:hover{background:linear-gradient(90deg,rgba(182,29,255,.07),rgba(206,19,168,.03) 45%,rgba(255,255,255,0) 80%)}
+.mz-r:hover::after{transform:scaleX(1)}
+.mz-ic{display:grid;place-items:center;width:72px;height:72px;border-radius:16px;background:#141118;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);transition:transform .5s var(--ease)}
+.mz-ic svg{width:36px;height:36px;fill:none;stroke:url(#gr);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mz-r:hover .mz-ic{transform:scale(1.06)}
+.mz-t img{height:24px;width:auto;margin-bottom:12px}
+.mz-t b{display:block;font:700 28px/1.15 var(--body);letter-spacing:-.02em}
+.mz-t>span{display:block;margin-top:6px;font-size:17px;color:var(--mute)}
+.mz-b{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;min-width:248px;height:48px;padding:0 20px;border-radius:8px;background:#323232;font:700 16px/24px var(--body);white-space:nowrap;transition:background .3s}
+.mz-b svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .3s var(--ease)}
+.mz-r:hover .mz-b{background:linear-gradient(90deg,#B61DFF 0%,#CE13A8 33%,#FF0000 100%)}
+.mz-r:hover .mz-b svg{transform:translateX(3px)}
+
+@media(max-width:760px){
+  .mz{padding:88px 16px}
+  .mz-sub{font-size:18px}
+  .mz-l{margin-top:48px}
+  .mz-r{grid-template-columns:56px 1fr 48px;gap:16px;padding:24px 0}
+  .mz-ic{width:56px;height:56px;border-radius:12px}
+  .mz-ic svg{width:28px;height:28px}
+  .mz-t img{height:18px;margin-bottom:8px}
+  .mz-t b{font-size:21px}
+  .mz-t>span{font-size:15px}
+  .mz-b{width:44px;min-width:0;height:44px;padding:0;justify-content:center;border-radius:100px;background:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+  .mz-r{padding:24px 0}
+  .mz-t img{height:20px}
+  .mz-b span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .mz-r:hover{background:none}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B61DFF"/><stop offset=".45" stop-color="#CE13A8"/><stop offset="1" stop-color="#FF2A1A"/></linearGradient></defs></svg>
+<section class="mz" aria-labelledby="mzh">
+  <div class="mz-in">
+    <h2 id="mzh">Четири модула. Един план.</h2>
+    <p class="mz-sub">Всеки модул е за един вид гледане. И четирите са в плана ти.</p>
+    <ul class="mz-l">
+      <li><a class="mz-r" href="theatre.html"><span class="mz-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="9" width="38" height="26" rx="4"/><path d="M21 17l8 5-8 5z"/><path d="M16 41h16"/></svg></span><span class="mz-t"><img src="assets/Theatre-w.svg" alt="Theatre"><b>Твоето кино.</b><span>Филми и сериали, от началото до края.</span></span><span class="mz-b"><span>Разгледай Theatre</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></li>
+      <li><a class="mz-r" href="arena.html"><span class="mz-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="4"/><path d="M15 15a13 13 0 0 0 0 18M33 15a13 13 0 0 1 0 18M9 9a21 21 0 0 0 0 30M39 9a21 21 0 0 1 0 30"/></svg></span><span class="mz-t"><img src="assets/Arena-w.svg" alt="Arena"><b>Твоят стадион.</b><span>Спортът на живо, със статистиката върху мача.</span></span><span class="mz-b"><span>Разгледай Arena</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></li>
+      <li><a class="mz-r" href="f/f-showtime.html"><span class="mz-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c1.5 9 4 11.5 13 13-9 1.5-11.5 4-13 13-1.5-9-4-11.5-13-13 9-1.5 11.5-4 13-13z"/><path d="M37 32c.6 3.4 1.6 4.4 5 5-3.4.6-4.4 1.6-5 5-.6-3.4-1.6-4.4-5-5 3.4-.6 4.4-1.6 5-5z"/></svg></span><span class="mz-t"><img src="assets/Showtime-w.svg" alt="Showtime"><b>Реалито без чакане.</b><span>Само най-силните моменти от всеки епизод.</span></span><span class="mz-b"><span>Разгледай Showtime</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></li>
+      <li><a class="mz-r" href="f/f-newsroom.html"><span class="mz-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="27" r="15"/><path d="M24 27V18M20 6h8M24 6v6M36 13l3-3"/></svg></span><span class="mz-t"><img src="assets/Newsroom-w.svg" alt="Newsroom"><b>Денят за една минута.</b><span>Новините в кратки клипове, едно след друго.</span></span><span class="mz-b"><span>Разгледай Newsroom</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></li>
+    </ul>
+  </div>
+</section>
+</body>
+</html>
