@@ -1,0 +1,109 @@
+/* NOISY · moduli-4.html: чисти варианти на „Четири модула“ (L Думите, M Иконите, N Плочки).
+   Посока: Apple сдържаност, без кадри; скала от .design-library (molotov), дисплей до 64px.
+   Цветове по Noisy Design System: Branded градиент само в иконите и бутона, засивено #CCCCCC. */
+:root{
+  --bg:#0A090D;--s1:#131118;--ink:#fff;--mute:#CCCCCC;--dim:rgba(255,255,255,.5);--line:rgba(255,255,255,.1);
+  --g29:linear-gradient(90deg,#8C18BE 0%,#A01076 33%,#C20406 100%);
+  --head:Unbounded,Manrope,system-ui,sans-serif;--body:Manrope,system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block}
+a{color:inherit;text-decoration:none}
+.w{max-width:1200px;margin:0 auto;padding:0 40px}
+.c{text-align:center}
+:focus-visible{outline:2px solid #CE13A8;outline-offset:4px;border-radius:4px}
+
+.btn{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:8px;font:700 15px/1 var(--body);background:var(--g29);white-space:nowrap}
+.btn:hover{background:linear-gradient(90deg,#B61DFF 0%,#CE13A8 33%,#FF0000 100%)}
+.hdr{position:sticky;top:0;z-index:40;background:rgba(10,9,13,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;gap:24px;height:64px}
+.logo img{height:24px;width:auto}
+.jump{display:flex;gap:4px;margin:0 auto;padding:4px;border-radius:12px;background:rgba(255,255,255,.05)}
+.jump a{padding:8px 14px;border-radius:8px;font:600 14px/1 var(--body);color:var(--mute)}
+.jump a:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+.intro{padding:72px 40px 24px}
+.intro small{font:700 14px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.intro h1{margin-top:12px;font:700 clamp(28px,3.4vw,40px)/1.1 var(--head)}
+.intro p{margin-top:12px;max-width:60ch;color:var(--mute)}
+
+.v{padding:96px 0 140px;border-top:1px solid var(--line)}
+.tag{display:flex;gap:8px;align-items:center;font:700 14px/1 var(--body);color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
+.tag b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:100px;background:var(--g29);color:#fff;letter-spacing:0}
+.idea{margin-top:8px;font-size:15px;color:var(--dim);max-width:70ch}
+.sh{margin:100px auto 80px;max-width:1120px}
+.sh h2{font:700 clamp(32px,4.4vw,56px)/1.06 var(--head);letter-spacing:-.01em}
+.sh p{margin-top:20px;font-size:21px;line-height:1.4;color:var(--mute)}
+.end{margin-top:80px;font:600 21px/1.4 var(--body);color:var(--mute)}
+
+.ic{width:48px;height:48px;fill:none;stroke:url(#gr);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.go{display:inline-flex;align-items:center;gap:8px;min-height:44px;font:700 16px/1 var(--body)}
+.go svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .25s var(--ease)}
+.go:hover svg{transform:translateX(4px)}
+
+/* L · думите: огромни редове, светват при скрол */
+.l-list{list-style:none;max-width:1120px;margin:0 auto;display:grid;gap:56px}
+.l-list li{display:grid;justify-items:center;gap:12px;text-align:center;opacity:.22;transform:translateY(16px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.l-list li.on{opacity:1;transform:none}
+.l-w{font:800 clamp(34px,4.4vw,56px)/1.08 var(--body);letter-spacing:-.025em}
+.l-s{font-size:19px;color:var(--mute)}
+
+/* M · иконите: ред като сравнението на Apple, без рамки */
+.m-row{display:grid;grid-template-columns:repeat(2,1fr);max-width:1000px;margin:0 auto;border-top:1px solid var(--line)}
+.m-i{display:grid;grid-template-columns:72px 1fr;column-gap:24px;row-gap:10px;align-content:start;padding:48px 40px 48px 0;border-bottom:1px solid var(--line)}
+.m-i:nth-child(even){padding:48px 0 48px 40px;border-left:1px solid var(--line)}
+.m-i .ic{grid-row:1/4;width:64px;height:64px;transition:transform .4s var(--ease)}
+.m-i:hover .ic{transform:translateY(-4px)}
+.m-i img{height:22px;width:auto}
+.m-i b{font:700 26px/1.2 var(--body);letter-spacing:-.01em}
+.m-i span{font-size:17px;line-height:1.5;color:var(--mute);max-width:36ch}
+
+/* N · плочки: различни размери, по една мисъл */
+.n-g{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:220px;gap:16px}
+.n-t{position:relative;display:flex;flex-direction:column;gap:14px;padding:32px;border-radius:16px;background:var(--s1);overflow:hidden;transition:background .3s}
+a.n-t:hover{background:#19161f}
+.n-t b{font:700 26px/1.2 var(--body);letter-spacing:-.01em}
+.n-t .ic{position:absolute;right:28px;top:28px;width:56px;height:56px}
+.n-t img{align-self:flex-start;height:24px;width:auto}
+.n-t b{margin-top:auto}
+.n-plan{grid-column:span 6;grid-row:span 1;align-items:center;justify-content:center;text-align:center;background:linear-gradient(var(--s1),var(--s1)) padding-box,var(--g29) border-box;border:1px solid transparent}
+.n-plan b{font-size:clamp(28px,3vw,40px);line-height:1.15}
+.n-k{font:700 14px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.n-g>a:nth-child(2){grid-column:span 4}
+.n-g>a:nth-child(3){grid-column:span 2}
+.n-g>a:nth-child(4){grid-column:span 2}
+.n-g>a:nth-child(5){grid-column:span 4}
+
+@media(max-width:900px){
+  .m-row{grid-template-columns:1fr}
+  .m-i,.m-i:nth-child(even){padding:36px 0;border-left:0}
+}
+@media(max-width:760px){
+  .w,.intro{padding-left:16px;padding-right:16px}
+  .jump{display:none}
+  .intro{padding-top:48px}
+  .v{padding:56px 0 88px}
+  .sh{margin:64px auto 48px}
+  .sh p,.end{font-size:18px}
+  .end{margin-top:56px}
+  .l-list{gap:40px}
+  .l-s{font-size:16px}
+  .m-i{grid-template-columns:48px 1fr;column-gap:16px}
+  .m-i .ic{width:44px;height:44px}
+  .m-i b{font-size:21px}
+  .m-i span{font-size:16px}
+  .n-g{grid-template-columns:1fr 1fr;grid-auto-rows:180px;gap:12px}
+  .n-plan,.n-g>a:nth-child(2),.n-g>a:nth-child(5){grid-column:span 2}
+  .n-g>a:nth-child(3),.n-g>a:nth-child(4){grid-column:span 2}
+  .n-plan{grid-row:span 1}
+  .n-t{padding:20px}
+  .n-t b{font-size:20px}
+  .n-t .ic{right:18px;top:18px;width:40px;height:40px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.l-list li{opacity:1;transform:none}}
+.n-s{font-size:16px;color:var(--mute);max-width:40ch}
+@media(max-width:760px){.n-s{font-size:15px;padding-right:0}.n-g{grid-auto-rows:auto}.n-t{min-height:200px}}
+.n-plan b{margin-top:0}.n-plan{order:5}
