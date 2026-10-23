@@ -33,3 +33,8 @@ img/ppl/k1-5 (плътни, като Figma), b1-5 (градиент на бра�
 - мъж анфас: https://images.unsplash.com/photo-1676195470090-7c90bf539b3b
 - жена с кок, жена с висок кок, мъж с шапка с козирка, мъж с дредове: адресите са по-горе (nf1-5)
 Скрипт: scratchpad/tools/circ.py и people.json (сесия c2c8d9cc).
+
+## Arena добавка (банер Premium Sports), 23.10.2026 - Pexels License (безплатно, вкл. търговско)
+- img/ar/sp-f1.jpg - https://www.pexels.com/photo/29320665/
+- img/ar/sp-stadium.jpg - https://www.pexels.com/photo/35898730/
+- img/ar/sp-dunk.jpg - https://www.pexels.com/photo/31169247/
