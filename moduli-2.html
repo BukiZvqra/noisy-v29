@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NOISY · Модулите, нови варианти</title>
+<link rel="icon" href="assets/symbol.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap">
+<link rel="stylesheet" href="m2.css?v=1">
+</head>
+<body>
+
+<header class="hdr">
+  <div class="w hdr-in">
+    <a class="logo" href="index.html" aria-label="NOISY"><img src="assets/logo.svg" alt="NOISY" width="100" height="24"></a>
+    <nav class="pnav" aria-label="Модули"><a href="index.html" class="on">Home</a><a href="theatre.html">Theatre</a><a href="arena.html">Arena</a><a href="f/f-newsroom.html">Newsroom</a><a href="f/f-showtime.html">Showtime</a></nav>
+    <a class="btn btn-p btn-sm" href="ceni.html">Пробвай NOISY</a>
+  </div>
+</header>
+
+<!-- Хирото е само за контекст: така посетителят стига до секцията -->
+<section class="hero" aria-label="Начало">
+  <video class="hero-v" muted loop playsinline autoplay preload="metadata" poster="vid/noisy-hero.jpg" src="vid/noisy-hero.mp4" aria-hidden="true"></video>
+  <div class="hero-t w">
+    <h1>Всичко за гледане<br>На едно място</h1>
+    <p>Стрийминг със сериали, реалити, спорт и новини.</p>
+    <div class="hero-c"><a class="btn btn-p" href="ceni.html">Пробвай NOISY</a><span>Без карта.</span></div>
+  </div>
+</section>
+
+<div id="moduli" class="host">
+
+  <!-- E · СЦЕНА: табовете са модулите, сцената показва какво има вътре -->
+  <section class="v ve" data-v="e" aria-labelledby="he">
+    <div class="w">
+      <div class="sh">
+        <h2 id="he">Четири модула. Един план.</h2>
+        <p>Всеки модул е отделен свят със собствен ритъм. Влизаш в този, който ти трябва в момента.</p>
+      </div>
+      <div class="e-tabs" role="tablist" aria-label="Модулите на NOISY" id="eTabs"></div>
+      <div id="ePanels"></div>
+    </div>
+  </section>
+
+  <!-- F · РАЗГЪВАНЕ: четири свята един до друг, посоченият се отваря -->
+  <section class="v vf" data-v="f" aria-labelledby="hf" hidden>
+    <div class="w">
+      <div class="sh">
+        <h2 id="hf">Четири модула. Един план.</h2>
+        <p>Всеки модул е отделен свят със собствен ритъм. Влизаш в този, който ти трябва в момента.</p>
+      </div>
+      <div class="f-acc" id="fAcc"></div>
+    </div>
+  </section>
+
+  <!-- G · СПИСЪК: имената са заглавието, кадърът се сменя при скрол -->
+  <section class="v vg" data-v="g" aria-labelledby="hg" hidden>
+    <div class="g-track" id="gTrack">
+      <div class="g-pin">
+        <div class="w g-grid">
+          <div class="g-left">
+            <h2 id="hg" class="g-kick">Четири модула. Един план.</h2>
+            <ol class="g-list" id="gList"></ol>
+          </div>
+          <div class="g-right" id="gRight"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="w">
+    <div class="end">
+      <p>Theatre, Arena, Showtime и Newsroom са в плана. <b>Premium Films</b> и <b>Premium Sports</b> добавяш по желание.</p>
+      <a class="btn btn-p" href="ceni.html">Пробвай NOISY</a>
+    </div>
+  </div>
+</div>
+
+<section class="next" aria-label="Следващата секция"><div class="w"><h2>Повече от гледане.</h2></div></section>
+
+<div class="vs" role="group" aria-label="Вариант">
+  <button type="button" aria-pressed="true" data-go="e">Сцена</button>
+  <button type="button" aria-pressed="false" data-go="f">Разгъване</button>
+  <button type="button" aria-pressed="false" data-go="g">Списък</button>
+</div>
+
+<script src="m2.js?v=1" defer></script>
+</body>
+</html>
