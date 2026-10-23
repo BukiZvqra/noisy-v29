@@ -391,16 +391,44 @@ html .shp .shv span{min-width:0}
 /* брояч: цифрите наследяват размера на цената (иначе ги хваща правилото за „на човек на месец“) */
 .shd-pr [data-pp] .sho,.shd-pr [data-pp] .sho-s,.shd-pr [data-pp] .sho-st{font:inherit!important;color:inherit;letter-spacing:inherit}
 .shd-pr [data-pp] .sho,.shd-pr [data-pp] .sho-s{line-height:1.1em}
-/* превключвател на версията най-горе в панела: сегментиран, в стила на бутоните на панела */
-html .shp .shv .shv-ver{flex:0 0 100%;display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:3px;margin:0 0 6px;border-radius:12px;background:rgba(255,255,255,.07);box-sizing:border-box}
-.shv-ver a{display:flex;align-items:center;justify-content:center;min-height:34px;border-radius:9px;font:700 13px/1 var(--font-body);color:rgba(245,245,247,.68);text-decoration:none;transition:background-color .2s,color .2s}
-.shv-ver a[aria-current]{background:#F5F5F7;color:#0E0E0E;cursor:default}
-@media(hover:hover){.shv-ver a:not([aria-current]):hover{color:#fff;background:rgba(255,255,255,.08)}}
-.shv-ver a:focus-visible{outline:2px solid #C78BFF;outline-offset:2px}
-@media(max-width:1099px){.shv-ver a{min-height:38px}}
+
 
 /* лица 2: новите кръгли в стила на Figma (img/ppl/r1-5); в кастинга се показват на мястото на новите изрязани */
-.shp[data-f="2"] .cs .cs-n{display:block}.shp[data-f="2"] .cs .cs-o{display:none}
+.shp:is([data-f="2"],[data-f="3"],[data-f="4"],[data-f="5"]) .cs .cs-n{display:block}.shp:is([data-f="2"],[data-f="3"],[data-f="4"],[data-f="5"]) .cs .cs-o{display:none}
 /* заглавие 7: „NOISY за петима.“ */
 .shp[data-t="7"] .sh-a,.shp[data-t="7"] .sh-b{display:none!important}
 .shp[data-t="7"] .sh-st7{display:block;white-space:normal;text-wrap:balance}
+
+/* ---------- долу 9: карти на плановете (от бившата версия 2). Together е по-голямата карта с лицата и градиентна рамка ---------- */
+.v2{display:none}
+.shp[data-s="9"] .v2-9{display:grid}
+.shp[data-s="9"] .shh-main{display:none}
+.shp[data-s="9"] .shh{background:none;box-shadow:none;padding:0;overflow:visible;gap:40px}
+.shp[data-s="9"] .shh::before,.shp[data-s="9"] .shh-sym{display:none}
+.v2{max-width:900px;width:100%;margin:0 auto;text-align:left}
+.v2-l{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.v2-l li{display:flex;gap:10px;align-items:flex-start;font:500 15px/1.4 var(--font-body);color:rgba(245,245,247,.82)}
+.v2-l svg{flex:none;width:16px;height:16px;margin-top:2px;fill:none;stroke:#C78BFF;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.v2-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;text-decoration:none;white-space:nowrap}
+.v2-btn:focus-visible{outline:2px solid #C78BFF;outline-offset:3px}
+.v2 .shh-l{align-self:flex-start}
+.v9-t .shh-l{background:linear-gradient(#fff,#fff) padding-box,var(--g29) border-box;border:1.5px solid transparent}
+
+/* ---------- 9. карти: Together е по-голямата карта със светла горна част и лицата ---------- */
+.v2-9{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px;align-items:stretch}
+.v9{display:flex;flex-direction:column;gap:22px;padding:28px 28px 28px;border-radius:20px;background:#1B1920;border:1px solid rgba(255,255,255,.08)}
+.v9-h{display:flex;flex-direction:column;gap:12px;min-height:84px}
+.v9-w{margin:0;font:700 22px/1.2 var(--font-body);color:#fff}
+.v9-pr{margin:0;display:flex;flex-direction:column;gap:8px}
+.v9-pr b{font:800 48px/1 var(--font-body);letter-spacing:-.03em;color:#fff;font-variant-numeric:tabular-nums}
+.v9-pr small{font:500 15px/1.4 var(--font-body);color:rgba(245,245,247,.6)}
+.v9-pr small span{color:#E4B8FF;font-weight:700}
+.v9 .v2-l{flex:1;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)}
+.v9 .v2-btn{width:100%}
+.v9-t{position:relative;overflow:hidden;border:1px solid transparent;
+  background:linear-gradient(180deg,rgba(206,19,168,.22),rgba(27,25,32,0) 46%) padding-box,linear-gradient(#1B1920,#1B1920) padding-box,linear-gradient(160deg,#B61DFF,#CE13A8 45%,#FF2A2A) border-box}
+.v9-f{position:absolute;right:24px;top:24px;display:flex}
+.v9-f img{width:34px;height:54px;object-fit:cover;border-radius:10px;margin-left:-8px;box-shadow:0 0 0 2px #2A1630}
+.v9-f img:first-child{margin-left:0}
+@media(max-width:699px){.v2-9{grid-template-columns:1fr}.v9-t{order:-1}}
+@media(max-width:599px){.v9{padding:22px 20px;gap:18px}.v9-h{min-height:0}.v9-pr b{font-size:40px}.v9-f{right:20px;top:20px}.v9-f img{width:28px;height:44px}}

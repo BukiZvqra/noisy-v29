@@ -24,3 +24,12 @@ img/ppl/r1-r5.jpg: снимките са оцветени двутонално �
 - r4: https://images.unsplash.com/photo-1618599056968-4eefc008cef6 (огледално)
 - r5: https://images.unsplash.com/photo-1540304801084-0944beb20de7
 Скрипт: scratchpad/tools/round.py (сесия c2c8d9cc). Ако Лили даде собствени изображения, се подменят само r1-r5.jpg.
+
+# Кръгли лица, три стила (ceni-share3, „Лица: плътни / бранд / светъл ръб“, 23.10.2026)
+img/ppl/k1-5 (плътни, като Figma), b1-5 (градиент на бранда), e1-5 (тъмни със светъл ръб): маска на силуета от снимки на светъл фон, оцветена от нас.
+Номерът е мястото: 1 център, 2 вдясно, 3 вляво, 4 най-вдясно, 5 най-вляво. Unsplash, филтър „free“ (Unsplash License):
+- жена с афро: https://images.unsplash.com/photo-1655577086372-792d388e15e8
+- жена с опашка: https://images.unsplash.com/photo-1746960901675-3c5baf0a1692
+- мъж анфас: https://images.unsplash.com/photo-1676195470090-7c90bf539b3b
+- жена с кок, жена с висок кок, мъж с шапка с козирка, мъж с дредове: адресите са по-горе (nf1-5)
+Скрипт: scratchpad/tools/circ.py и people.json (сесия c2c8d9cc).
