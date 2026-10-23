@@ -101,6 +101,7 @@
       el.setAttribute('data-cur',to);if(Math.abs(from-to)>.001)tween(el,from,to,900)});
     var f5=parseFloat(p5.getAttribute('data-cur')||4.98),t5=Math.round((24.90+s)/5*100)/100;p5s.forEach(function(el){el.setAttribute('data-cur',t5);if(Math.abs(f5-t5)>.001)tween(el,f5,t5,900)})}
   sw.forEach(function(b){b.addEventListener('change',totals)});
+  [].forEach.call(c.querySelectorAll('.v10-o input'),function(r){r.addEventListener('change',function(){c.setAttribute('data-v10',r.value)})});c.setAttribute('data-v10','t');
   adds.forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');totals()})});
   function setA(v){c.setAttribute('data-a',v);ba.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-a')===v)});totals()}
   ba.forEach(function(b){b.addEventListener('click',function(){setA(b.getAttribute('data-a'))})});
@@ -125,7 +126,7 @@
   bc.forEach(function(b){b.addEventListener('click',function(){setC(b.getAttribute('data-c'),1);save()})});
   ba.forEach(function(b){b.addEventListener('click',save)});bp.forEach(function(b){b.addEventListener('click',save)});
   /* адрес: #a7h5f1r2c2+3 = горе A, долу 7, човечета 5, нови лица, ритъм 2, цена 2, добавки 3; по-старите адреси също работят */
-  var m=/^#([abcd])([1-8])(m?)(?:h([0-9]))?(?:f([01]))?(?:r([1-3]))?(?:c([0-7]))?(?:t([1-6]))?(?:\+([0-3]))?$/.exec(location.hash);
+  var m=/^#([abcd])([1-9]|1[0-3])(m?)(?:h([0-9]))?(?:f([01]))?(?:r([1-3]))?(?:c([0-7]))?(?:t([1-6]))?(?:\+([0-3]))?$/.exec(location.hash);
   set(m?m[1]:c.getAttribute('data-d'),m?m[2]:c.getAttribute('data-s'));setP('s');
   setH(m&&m[4]?m[4]:c.getAttribute('data-h'));setF(m&&m[5]?m[5]:c.getAttribute('data-f'));setR(m&&m[6]?m[6]:c.getAttribute('data-r'));setC(m&&m[7]?m[7]:c.getAttribute('data-c'));setT(m&&m[8]?m[8]:c.getAttribute('data-t'));if(m&&m[9])setA(m[9]);
   /* панелът с вариантите: бутон „Варианти“ отваря/затваря; на компютър е отворен по подразбиране */

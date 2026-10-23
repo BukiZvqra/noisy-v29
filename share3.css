@@ -391,3 +391,6 @@ html .shp .shv span{min-width:0}
 /* брояч: цифрите наследяват размера на цената (иначе ги хваща правилото за „на човек на месец“) */
 .shd-pr [data-pp] .sho,.shd-pr [data-pp] .sho-s,.shd-pr [data-pp] .sho-st{font:inherit!important;color:inherit;letter-spacing:inherit}
 .shd-pr [data-pp] .sho,.shd-pr [data-pp] .sho-s{line-height:1.1em}
+/* връзка между версия 1 и версия 2 в панела */
+.shv-v1{display:inline-flex;align-items:center;min-height:30px;padding:5px 9px;border-radius:10px;font:600 12px/1.2 var(--font-body);color:#E4B8FF;text-decoration:none;border:1px dashed rgba(228,184,255,.4)}
+@media(max-width:1099px){.shv-v1{min-height:36px}}
